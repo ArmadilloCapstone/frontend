@@ -1,0 +1,56 @@
+/* .sticky {
+    position: sticky;
+  top: 0;
+    position: sticky;
+    top: auto;
+    z-index: 2000;
+  } */
+
+  .timeline {
+    font-family: sans-serif;
+    text-align: center;
+  }
+
+  .sticky {
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  .date {
+    background-color: aqua;
+  }
+
+
+  /* .timeline_sort {
+    width: 50px;
+    height: 50px;
+    background-color: red;
+    수평 중앙 정렬하기
+    margin: 0 auto;
+  } */
+
+  button{
+    height: 25px; 
+    width: 85px; 
+    margin: 2px; 
+    position: relative;
+    top:100%; 
+    left:76%;
+  }
+
+  .dolbom {
+    background-color: rgb(251, 103, 128);
+  }
+
+  .art {
+    background-color: rgba(46, 133, 248, 0.932);
+  }
+
+  .cook {
+    background-color: rgb(91, 227, 67);
+  }
+
+  .music {
+    background-color: rgb(243, 252, 0);
+  }
+
