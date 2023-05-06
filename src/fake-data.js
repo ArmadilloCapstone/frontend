@@ -1,140 +1,144 @@
 import moment from "moment";
-import randomColor from "randomcolor";
-
-// let randomSeed = Math.floor(Math.random() * 1000);
+import { student, student_time, after_school_class, student_schedule } from "./back-data";
 
 let id = 1;
 
-export const groupIds = {
-  전호윤: 3,
-  김예지: 1,
-  이아름: 2
-};
+export const defaultTimeStart = moment().startOf('day');
+export const defaultTimeEnd = moment().endOf('day');
 
-const setGroup = (el, i, ary, groupId) =>
+const todayList = student_time.map(obj => {
+  let newList = {};
+  newList['studentId'] = obj.studentId;
+  newList['seed'] = 0;
+  if(moment().day() === 1) {
+    newList['start_time'] = moment(defaultTimeStart).add(obj.entry1, 'h');
+    newList['end_time'] = moment(defaultTimeStart).add(obj.off1, 'h');
+  }
+  else if(moment().day() === 2) {
+    newList['start_time'] = moment(defaultTimeStart).add(obj.entry2, 'h');
+    newList['end_time'] = moment(defaultTimeStart).add(obj.off2, 'h');
+  }
+  else if(moment().day() === 3) {
+    newList['start_time'] = moment(defaultTimeStart).add(obj.entry3, 'h');
+    newList['end_time'] = moment(defaultTimeStart).add(obj.off3, 'h');
+  }
+  else if(moment().day() === 4) {
+    newList['start_time'] = moment(defaultTimeStart).add(obj.entry4, 'h');
+    newList['end_time'] = moment(defaultTimeStart).add(obj.off4, 'h');
+  }
+  else {
+    newList['start_time'] = moment(defaultTimeStart).add(obj.entry5, 'h');
+    newList['end_time'] = moment(defaultTimeStart).add(obj.off5, 'h');
+  }
+  
+  return newList;
+});
+
+export const todayAfterSchoolList = after_school_class.filter(obj => {
+  if(moment().day() === obj.day) {
+    return obj
+  }
+})
+
+function afterSchoolStudentsList(afterSchool, studentSchedule) {
+  let arr = [];
+  for (let i=0; i < afterSchool.length; i++) {
+    for (let j=0; j < studentSchedule.length; j++) {
+      if (afterSchool[i].afterId === studentSchedule[j].afterId) {
+        arr.push(studentSchedule[j]);
+      }
+    }
+  }
+  return arr;
+}
+
+export const itemsForAfterSchool = afterSchoolStudentsList(todayAfterSchoolList, student_schedule);
+
+export const setAfterSchoolItems = itemsForAfterSchool.map(obj => {
+  let newList = {};
+  newList['studentId'] = obj.studentId;
+  newList['seed'] = obj.afterId;
+  newList['start_time'] = moment(defaultTimeStart).add(after_school_class[obj.afterId-1].start_time, 'h');
+  newList['end_time'] = moment(defaultTimeStart).add(after_school_class[obj.afterId-1].end_time, 'h');
+
+  return newList;
+});
+
+setAfterSchoolItems.sort((a,b) => a.studentId - b.studentId); // student_id 기준으로 정렬
+
+
+const setGroup = (el, i, ary, studentId) =>
   new Object({
     id: id++,
-    group: groupId,
+    group: studentId,
     canMove: false,
-    //end_time: i + 1 in ary ? ary[i + 1].start_time : moment(),
     itemProps: {
       style: {
         color: "black",
-        background: ary[i].title === "돌봄교실" ? "rgb(251, 103, 128)"
-          : ary[i].title === "미술" ? "rgba(46, 133, 248, 0.932)"
-          : ary[i].title === "요리" ? " rgb(91, 227, 67)"
+        background: ary[i].seed === 0 ? "rgb(251, 103, 128)"
+          : (ary[i].seed === 1 || ary[i].seed === 2) ? "rgba(46, 133, 248, 0.932)"
+          : (ary[i].seed === 3 || ary[i].seed === 4) ? " rgb(91, 227, 67)"
           : "rgb(243, 252, 0)",
         textAlign: "center"
         },
-        //randomColor({ luminosity: "light", seed: el.title }),
-      
     },
     ...el
   });
 
+let index = 0;
+let after_index = 0;
+
 export let items = [
   {
-    title: "돌봄교실",
-    start_time: moment("2023-05-01 13:00"),
-    end_time: moment("2023-05-01 18:00"),
-    day: "월 or 1" //둘 중 하나로 선택해서 수정 필요!
+    seed: todayList[index].seed,
+    //title: "",
+    start_time: todayList[index].start_time,
+    end_time: todayList[index].end_time
   },
   {
-    title: "돌봄교실",
-    start_time: moment("2023-05-02 13:00"),
-    end_time: moment("2023-05-02 17:00"),
-    day: "화 or 2"
+    seed: setAfterSchoolItems[after_index].seed,
+    start_time: setAfterSchoolItems[after_index].start_time,
+    end_time: setAfterSchoolItems[after_index++].end_time
   },
   {
-    title: "돌봄교실",
-    start_time: moment("2023-05-03 13:00"),
-    end_time: moment("2023-05-03 17:00"),
-    day: "수 or 3"
-  },
-  {
-    title: "돌봄교실",
-    start_time: moment("2023-05-04 13:00"),
-    end_time: moment("2023-05-04 16:00"),
-    day: "목 or 4"
-  },
-  {
-    title: "돌봄교실",
-    start_time: moment("2023-05-05 13:00"),
-    end_time: moment("2023-05-05 15:00"),
-    day: "금 or 5"
+    seed: setAfterSchoolItems[after_index].seed,
+    start_time: setAfterSchoolItems[after_index].start_time,
+    end_time: setAfterSchoolItems[after_index++].end_time
   }
-].map((el, i, ary) => setGroup(el, i, ary, groupIds.전호윤));
+].map((el, i, ary) => setGroup(el, i, ary, student[index].studentId));
 
 items = [
   ...items,
   ...[
     {
-      title: "돌봄교실",
-      start_time: moment("2023-05-01 13:00"),
-      end_time: moment("2023-05-01 18:00"),
+      seed: todayList[++index].seed,
+      start_time: todayList[index].start_time,
+      end_time: todayList[index].end_time,
       day: "월 or 1" //둘 중 하나로 선택해서 수정 필요!
     },
     {
-      title: "돌봄교실",
-      start_time: moment("2023-05-02 13:00"),
-      end_time: moment("2023-05-02 17:00"),
-      day: "화 or 2"
-    },
-    {
-      title: "돌봄교실",
-      start_time: moment("2023-05-03 13:00"),
-      end_time: moment("2023-05-03 15:00"),
-      day: "수 or 3"
-    },
-    {
-      title: "돌봄교실",
-      start_time: moment("2023-05-04 13:00"),
-      end_time: moment("2023-05-04 18:00"),
-      day: "목 or 4"
-    },
-    {
-      title: "돌봄교실",
-      start_time: moment("2023-05-05 13:00"),
-      end_time: moment("2023-05-05 18:00"),
-      day: "금 or 5"
+      seed: setAfterSchoolItems[after_index].seed,
+      start_time: setAfterSchoolItems[after_index].start_time,
+      end_time: setAfterSchoolItems[after_index++].end_time
     }
-  ].map((el, i, ary) => setGroup(el, i, ary, groupIds.김예지))
+  ].map((el, i, ary) => setGroup(el, i, ary, student[index].studentId))
 ];
 
 items = [
   ...items,
   ...[
     {
-      title: "돌봄교실",
-      start_time: moment("2023-05-01 13:00"),
-      end_time: moment("2023-05-01 18:00"),
+      seed: todayList[++index].seed,
+      start_time: todayList[index].start_time,
+      end_time: todayList[index].end_time,
       day: "월 or 1" //둘 중 하나로 선택해서 수정 필요!
     },
-    {
-      title: "돌봄교실",
-      start_time: moment("2023-05-02 13:00"),
-      end_time: moment("2023-05-02 17:00"),
-      day: "화 or 2"
-    },
-    {
-      title: "돌봄교실",
-      start_time: moment("2023-05-03 13:00"),
-      end_time: moment("2023-05-03 17:00"),
-      day: "수 or 3"
-    },
-    {
-      title: "돌봄교실",
-      start_time: moment("2023-05-04 13:00"),
-      end_time: moment("2023-05-04 18:00"),
-      day: "목 or 4"
-    },
-    {
-      title: "돌봄교실",
-      start_time: moment("2023-05-05 13:00"),
-      end_time: moment("2023-05-05 15:00"),
-      day: "금 or 5"
+    { 
+      seed: setAfterSchoolItems[after_index].seed,
+      start_time: setAfterSchoolItems[after_index].start_time,
+      end_time: setAfterSchoolItems[after_index].end_time
     }
-  ].map((el, i, ary) => setGroup(el, i, ary, groupIds.이아름))
+  ].map((el, i, ary) => setGroup(el, i, ary, student[index].studentId))
 ];
 
 items = items.sort((a, b) => b - a)

@@ -35,7 +35,7 @@
     margin: 2px; 
     position: relative;
     top:100%; 
-    left:76%;
+    left:73%;
   }
 
   .dolbom {
@@ -46,11 +46,24 @@
     background-color: rgba(46, 133, 248, 0.932);
   }
 
-  .cook {
+  .music {
     background-color: rgb(91, 227, 67);
   }
 
-  .music {
+  .sport {
     background-color: rgb(243, 252, 0);
   }
 
+  .react-calendar-timeline .rct-sidebar-header {
+    background: #eee;
+    color: #000;
+    text-align: center;
+    padding-top: 1rem;
+    border: none;
+    border-right: solid 2px #ccc !important;
+}
+#root > div > div > div.react-calendar-timeline.timeline {
+  width:1400px;
+  margin-left: auto;
+  margin-right: auto;
+}

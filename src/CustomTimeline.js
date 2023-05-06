@@ -1,5 +1,4 @@
 import React, { Component, useState } from "react";
-import moment from "moment";
 import 'moment/locale/ko';
 
 import Timeline, {
@@ -10,16 +9,40 @@ import Timeline, {
   TimelineMarkers
 } from "react-calendar-timeline/lib";
 
-import { groupIds, items } from "./fake-data";
-import Example from "./example";
+import { student } from "./back-data";
+import { items, defaultTimeStart, defaultTimeEnd } from "./fake-data";
 
-const groups = [
-  { id: groupIds.전호윤, title: "전호윤" },
-  { id: groupIds.김예지, title: "김예지" },
-  { id: groupIds.이아름, title: "이아름" }
-];
+const groups = student.map(obj => {
+  let newList = {};
+  newList['id'] = obj.studentId;
+  newList['title'] = obj.name;
+  return newList;
+});
+// const groups = [
+//   { id: student[0].studentId, title: student[0].name },
+//   { id: student[1].studentId, title: student[1].name },
+//   { id: student[2].studentId, title: student[2].name } // groupIds.하현우 -> student[3].id, "하현우" -> student[2].name
+// ];
 
-//groups.sort((a,b) => a.id - b.id); // 초기엔 이름순 정렬
+groups.sort((a,b) => a.id - b.id); // 초기엔 이름순 정렬
+function Example() {
+  const [Groups, setGroups] = useState(groups);
+
+  return (
+      <div class="timeline_sort">
+      <button onClick={()=>{
+        let copy = [...Groups];
+        copy.sort((a,b) => b.id - a.id);
+        setGroups(copy);
+        alert(JSON.stringify(copy))
+      }}
+      >이름순
+      </button>
+      </div>
+  )
+    }
+
+
 
 
 var keys = {
@@ -36,31 +59,56 @@ var keys = {
 };
 
 function App(props) {
-    const defaultTimeStart = moment()
-      .startOf("day")
-      .toDate();
-    const defaultTimeEnd = moment()
-      .startOf("day")
-      .add(1, "day")
-      .toDate();
+//   const baseUrl = "http://localhost:8080";
+
+//     const [user_username, setUser_username] = useState();
+
+//     useEffect(()=>{
+//       getUser();
+//   },[]);
+
+//   async function getUser(){
+//       await axios
+//           .get(baseUrl + "/" + {user_username})
+//           .then((response) => {
+//               console.log(response.data);
+//               setUser_username(response.data.userName);
+//           })
+//           .catch((error)=>{
+//               console.log(error);
+//           })
+//   }
+
+//   const handleChange_username = (e)=>{
+//     e.preventDefault();
+//     setUser_username(e.target.value);
+// }
+
+    const defaultTimeRange = defaultTimeEnd - defaultTimeStart;
 
     return (
-      <div>
+      <div>  
       <Example></Example>
-      <Timeline className="timeline"
-        groups={groups}
+      <Timeline 
+      minZoom={defaultTimeRange}
+      maxZoom={defaultTimeRange}
+      visibleTimeStart={defaultTimeStart}
+      visibleTimeEnd={defaultTimeEnd}
+      
+        className="timeline"
+        groups= {groups}
         items={items}
         // keys={keys}
         sidebarContent={<div>Above The Left</div>}
         itemsSorted
         itemTouchSendsClick={false}
-        stackItems
+        // stackItems
         itemHeightRatio={0.8}
         showCursorLine
         canMove={false}
         canResize={false}
-        defaultTimeStart={defaultTimeStart}
-        defaultTimeEnd={defaultTimeEnd}
+        // defaultTimeStart={defaultTimeStart}
+        // defaultTimeEnd={defaultTimeEnd}
       >
         <TimelineHeaders className="sticky">
           <SidebarHeader>
@@ -84,8 +132,8 @@ function App(props) {
       <div id="buttons">
       <button class="dolbom">돌봄교실</button>
       <button class="art">미술</button>
-      <button class="cook">요리</button>
       <button class="music">음악</button>
+      <button class="sport">운동</button>
       </div>
 
       </div>
@@ -122,7 +170,7 @@ function App(props) {
 
 //     return (
 //       <div>
-//       {/* <Example></Example> */}
+//       <Example></Example>
 //       <Timeline className="timeline"
 //         groups={groups}
 //         items={items}
