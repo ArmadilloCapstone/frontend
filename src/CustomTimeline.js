@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { useEffect, useState } from "react";
 import 'moment/locale/ko';
 
 import Timeline, {
@@ -10,7 +10,9 @@ import Timeline, {
 } from "react-calendar-timeline/lib";
 
 import { student } from "./back-data";
-import { items, defaultTimeStart, defaultTimeEnd } from "./fake-data";
+import { items, defaultTimeStart, defaultTimeEnd, sortedAllItem } from "./fake-data";
+
+import Detail from "./after-alarm";
 
 const groups = student.map(obj => {
   let newList = {};
@@ -18,26 +20,46 @@ const groups = student.map(obj => {
   newList['title'] = obj.name;
   return newList;
 });
+
 // const groups = [
 //   { id: student[0].studentId, title: student[0].name },
 //   { id: student[1].studentId, title: student[1].name },
 //   { id: student[2].studentId, title: student[2].name } // groupIds.하현우 -> student[3].id, "하현우" -> student[2].name
 // ];
 
-groups.sort((a,b) => a.id - b.id); // 초기엔 이름순 정렬
+groups.sort((a,b) => b.id - a.id); // 초기엔 이름순 정렬
 function Example() {
   const [Groups, setGroups] = useState(groups);
 
   return (
       <div class="timeline_sort">
-      <button onClick={()=>{
+      <button id = "sortingButtons" onClick={()=>{
         let copy = [...Groups];
-        copy.sort((a,b) => b.id - a.id);
+        copy.sort((a,b) => a.id - b.id); // group 속성에 오늘 요일 귀가시간 포함시켜서 정렬
         setGroups(copy);
         alert(JSON.stringify(copy))
       }}
       >이름순
       </button>
+
+      <button id = "sortingButtons" onClick={()=>{
+        let copy = [...Groups];
+        copy.sort((a,b) => b.id - a.id); // group 속성에 오늘 요일 귀가시간 포함시켜서 정렬
+        setGroups(copy);
+        alert(JSON.stringify(copy))
+      }}
+      >귀가순
+      </button>
+
+      <button id = "sortingButtons" onClick={()=>{
+        let copy = [...Groups];
+        copy.sort((a,b) => b.id - a.id); // 방과후수업이랑 현재시간 비교 or 각 방과후 수업 or 알림으로만
+        setGroups(copy);
+        alert(JSON.stringify(copy))
+      }}
+      >방과후순
+      </button>
+      
       </div>
   )
     }
@@ -58,7 +80,9 @@ var keys = {
   groupLabelKey: "title"
 };
 
-function App(props) {
+function App() {
+  console.log(sortedAllItem);
+  console.log(items);
 //   const baseUrl = "http://localhost:8080";
 
 //     const [user_username, setUser_username] = useState();
@@ -87,7 +111,8 @@ function App(props) {
     const defaultTimeRange = defaultTimeEnd - defaultTimeStart;
 
     return (
-      <div>  
+      <div>
+      {/* <Detail></Detail>   */}
       <Example></Example>
       <Timeline 
       minZoom={defaultTimeRange}
@@ -129,11 +154,11 @@ function App(props) {
         </TimelineMarkers>
       </Timeline>
 
-      <div id="buttons">
-      <button class="dolbom">돌봄교실</button>
-      <button class="art">미술</button>
-      <button class="music">음악</button>
-      <button class="sport">운동</button>
+      <div>
+      <button id = "subjectButtons" class="dolbom">돌봄교실</button>
+      <button id = "subjectButtons" class="art">미술</button>
+      <button id = "subjectButtons" class="music">음악</button>
+      <button id = "subjectButtons" class="sport">운동</button>
       </div>
 
       </div>

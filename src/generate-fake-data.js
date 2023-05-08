@@ -48,3 +48,83 @@ export default function (groupCount = 1, itemCount = 10, daysInPast = 30) {
 
   return { groups, items }
 }
+
+
+// items = [
+    //   ...items,
+    //   ...[ sortedAllItem[temp], sortedAllItem[temp+1] ].map((el, i, ary) => setGroup(el, i, ary, student[index].studentId))
+    // ]
+    // temp += 2
+
+
+// export let items = [
+//   sortedAllItem[0], sortedAllItem[1], sortedAllItem[2]
+// ].map((el, i, ary) => setGroup(el, i, ary, student[index].studentId));
+
+// index++;
+
+// items = [
+//   ...items,
+//   ...[sortedAllItem[3], sortedAllItem[4]]
+// ].map((el, i, ary) => setGroup(el, i, ary, student[index].studentId));
+
+// index++;
+
+// items = [
+//   ...items,
+//   ...[sortedAllItem[5], sortedAllItem[6]]
+// ].map((el, i, ary) => setGroup(el, i, ary, student[index].studentId));
+
+
+// export let items = [
+//   {
+//     seed: todayList[index].seed,
+//     //title: "",
+//     start_time: todayList[index].start_time,
+//     end_time: todayList[index].end_time
+//   },
+//   {
+//     seed: setAfterSchoolItems[after_index].seed,
+//     start_time: setAfterSchoolItems[after_index].start_time,
+//     end_time: setAfterSchoolItems[after_index++].end_time
+//   },
+//   {
+//     seed: setAfterSchoolItems[after_index].seed,
+//     start_time: setAfterSchoolItems[after_index].start_time,
+//     end_time: setAfterSchoolItems[after_index++].end_time
+//   }
+// ].map((el, i, ary) => setGroup(el, i, ary, student[index].studentId));
+
+// items = [
+//   ...items,
+//   ...[
+//     {
+//       seed: todayList[++index].seed,
+//       start_time: todayList[index].start_time,
+//       end_time: todayList[index].end_time,
+//       day: "월 or 1" //둘 중 하나로 선택해서 수정 필요!
+//     },
+//     {
+//       seed: setAfterSchoolItems[after_index].seed,
+//       start_time: setAfterSchoolItems[after_index].start_time,
+//       end_time: setAfterSchoolItems[after_index++].end_time
+//     }
+//   ].map((el, i, ary) => setGroup(el, i, ary, student[index].studentId))
+// ];
+
+// items = [
+//   ...items,
+//   ...[
+//     {
+//       seed: todayList[++index].seed,
+//       start_time: todayList[index].start_time,
+//       end_time: todayList[index].end_time,
+//       day: "월 or 1" //둘 중 하나로 선택해서 수정 필요!
+//     },
+//     { 
+//       seed: setAfterSchoolItems[after_index].seed,
+//       start_time: setAfterSchoolItems[after_index].start_time,
+//       end_time: setAfterSchoolItems[after_index].end_time
+//     }
+//   ].map((el, i, ary) => setGroup(el, i, ary, student[index].studentId))
+// ];

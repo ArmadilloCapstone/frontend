@@ -29,13 +29,36 @@
     margin: 0 auto;
   } */
 
-  button{
+  /* button{
     height: 25px; 
     width: 85px; 
     margin: 2px; 
     position: relative;
     top:100%; 
     left:73%;
+  } */
+  #sortingButtons {
+    height: 25px; 
+    width: 85px; 
+    margin: 2px; 
+    position: relative;
+    top:100%; 
+    left:4%;
+    background-color: aliceblue;
+    color: black;
+    font-family: "paybooc-Light", sans-serif;
+    border-radius: 15px;
+  }
+
+  #subjectButtons {
+    height: 25px; 
+    width: 85px; 
+    margin: 2px; 
+    position: relative;
+    top:100%; 
+    left:73%;
+    border-radius: 5px;
+    border: 1px dashed rgba(0, 0, 0, 0.426);
   }
 
   .dolbom {
