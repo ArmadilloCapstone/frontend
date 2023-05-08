@@ -16,7 +16,7 @@ import Detail from "./after-alarm";
 
 const groups = student.map(obj => {
   let newList = {};
-  newList['id'] = obj.studentId;
+  newList['id'] = obj.id;
   newList['title'] = obj.name;
   return newList;
 });
@@ -35,7 +35,7 @@ function Example() {
       <div class="timeline_sort">
       <button id = "sortingButtons" onClick={()=>{
         let copy = [...Groups];
-        copy.sort((a,b) => a.id - b.id); // group 속성에 오늘 요일 귀가시간 포함시켜서 정렬
+        copy.sort((a,b) => a.id - b.id);
         setGroups(copy);
         alert(JSON.stringify(copy))
       }}
@@ -63,9 +63,6 @@ function Example() {
       </div>
   )
     }
-
-
-
 
 var keys = {
   groupIdKey: "id",

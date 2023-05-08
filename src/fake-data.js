@@ -8,7 +8,7 @@ export const defaultTimeEnd = moment().endOf('day');
 /* 오늘의 요일에 맞는 학생들의 입실/퇴실 시간 설정 */
 const todayList = student_time.map(obj => {
   let newList = {};
-  newList['studentId'] = obj.studentId;
+  newList['studentId'] = obj.student_id;
   newList['seed'] = 0;
   if(moment().day() === 1) {
     newList['start_time'] = moment(defaultTimeStart).add(obj.entry1, 'h');
@@ -45,7 +45,7 @@ function afterSchoolStudentsList(afterSchool, studentSchedule) {
   let arr = [];
   for (let i=0; i < afterSchool.length; i++) {
     for (let j=0; j < studentSchedule.length; j++) {
-      if (afterSchool[i].afterId === studentSchedule[j].afterId) {
+      if (afterSchool[i].id === studentSchedule[j].class_id) {
         arr.push(studentSchedule[j]);
       }
     }
@@ -58,10 +58,10 @@ export const itemsForAfterSchool = afterSchoolStudentsList(todayAfterSchoolList,
 /* 학생의 id를 포함한 방과후수업 목록을 item 형태로 설정 */
 const setAfterSchoolItems = itemsForAfterSchool.map(obj => {
   let newList = {};
-  newList['studentId'] = obj.studentId;
-  newList['seed'] = obj.afterId;
-  newList['start_time'] = moment(defaultTimeStart).add(after_school_class[obj.afterId-1].start_time, 'h');
-  newList['end_time'] = moment(defaultTimeStart).add(after_school_class[obj.afterId-1].end_time, 'h');
+  newList['studentId'] = obj.student_id;
+  newList['seed'] = obj.class_id;
+  newList['start_time'] = moment(defaultTimeStart).add(after_school_class[obj.class_id-1].start_time, 'h');
+  newList['end_time'] = moment(defaultTimeStart).add(after_school_class[obj.class_id-1].end_time, 'h');
 
   return newList;
 });
@@ -126,7 +126,7 @@ function individualItems() {
     })
     items = [
       ...items,
-      ...isNowStudent.map((el, i, ary) => setGroup(el, i, ary, student[index].studentId))
+      ...isNowStudent.map((el, i, ary) => setGroup(el, i, ary, student[index].id))
     ]
   }
   items = items.sort((a, b) => b - a)
