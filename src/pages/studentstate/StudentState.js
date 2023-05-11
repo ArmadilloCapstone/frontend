@@ -48,19 +48,14 @@ const sortItems = (box) => {
 }
 
 const StudentState = () => {
-  const [student, setStudent] = useState([]);
 
-  const UserList = ({ users }) => {
-    return (
-        <div>
-            {users.map(user => {
-                return (<div key={user.id}>
-                    {user.name}
-                </div>)
-            })}
-        </div>
-    );
-};
+
+  axios.post('/getStudentInfo').then(function(response){
+    console.log(response)
+  }).catch(function(reason){
+    console.log(reason);
+  });
+
 
   return (
     <div className="StudentState">
