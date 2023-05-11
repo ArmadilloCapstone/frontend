@@ -9,12 +9,12 @@ import Timeline, {
   TimelineMarkers
 } from "react-calendar-timeline/lib";
 
-import { student } from "./back-data";
+import { Student } from "./back-data";
 import { items, defaultTimeStart, defaultTimeEnd, sortedAllItem } from "./fake-data";
 
 import Detail from "./after-alarm";
 
-const groups = student.map(obj => {
+const groups = Student.map(obj => {
   let newList = {};
   newList['id'] = obj.id;
   newList['title'] = obj.name;
@@ -27,7 +27,7 @@ const groups = student.map(obj => {
 //   { id: student[2].studentId, title: student[2].name } // groupIds.하현우 -> student[3].id, "하현우" -> student[2].name
 // ];
 
-groups.sort((a,b) => b.id - a.id); // 초기엔 이름순 정렬
+//groups.sort((a,b) => b.id - a.id); // 초기엔 이름순 정렬
 function Example() {
   const [Groups, setGroups] = useState(groups);
 

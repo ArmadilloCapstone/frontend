@@ -1,12 +1,12 @@
 import moment from "moment";
-import { student, student_time, after_school_class, student_schedule } from "./back-data";
+import { Student, Student_time, After_school_class, Student_schedule } from "./back-data";
 
 /* 오늘의 타임라인을 위한 초기날짜 설정 */
 export const defaultTimeStart = moment().startOf('day');
 export const defaultTimeEnd = moment().endOf('day');
 
 /* 오늘의 요일에 맞는 학생들의 입실/퇴실 시간 설정 */
-const todayList = student_time.map(obj => {
+const todayList = Student_time.map(obj => {
   let newList = {};
   newList['studentId'] = obj.student_id;
   newList['seed'] = 0;
@@ -34,7 +34,7 @@ const todayList = student_time.map(obj => {
 });
 
 /* 오늘의 요일에 맞는 방과후교실 목록 추출 */
-const todayAfterSchoolList = after_school_class.filter(obj => {
+const todayAfterSchoolList = After_school_class.filter(obj => {
   if(moment().day() === obj.day) {
     return obj
   }
@@ -53,15 +53,15 @@ function afterSchoolStudentsList(afterSchool, studentSchedule) {
   return arr;
 }
 
-export const itemsForAfterSchool = afterSchoolStudentsList(todayAfterSchoolList, student_schedule);
+export const itemsForAfterSchool = afterSchoolStudentsList(todayAfterSchoolList, Student_schedule);
 
 /* 학생의 id를 포함한 방과후수업 목록을 item 형태로 설정 */
 const setAfterSchoolItems = itemsForAfterSchool.map(obj => {
   let newList = {};
   newList['studentId'] = obj.student_id;
   newList['seed'] = obj.class_id;
-  newList['start_time'] = moment(defaultTimeStart).add(after_school_class[obj.class_id-1].start_time, 'h');
-  newList['end_time'] = moment(defaultTimeStart).add(after_school_class[obj.class_id-1].end_time, 'h');
+  newList['start_time'] = moment(defaultTimeStart).add(After_school_class[obj.class_id-1].start_time, 'h');
+  newList['end_time'] = moment(defaultTimeStart).add(After_school_class[obj.class_id-1].end_time, 'h');
 
   return newList;
 });
@@ -126,7 +126,7 @@ function individualItems() {
     })
     items = [
       ...items,
-      ...isNowStudent.map((el, i, ary) => setGroup(el, i, ary, student[index].id))
+      ...isNowStudent.map((el, i, ary) => setGroup(el, i, ary, Student[index].id))
     ]
   }
   items = items.sort((a, b) => b - a)
