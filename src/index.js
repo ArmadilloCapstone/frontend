@@ -1,12 +1,18 @@
 import React from "react";
 import { render } from "react-dom";
-import CustomTimeline from "./CustomTimeline";
+import Layout from "./components/Layout/Layout";
+import CustomTimeline from "./pages/timeline/CustomTimeline";
 import "react-calendar-timeline/lib/Timeline.css";
-import "./style.css";
-const App = () => (
-  <div>
+import "./pages/timeline/style.css";
+const App = () => {
+  return (
+  <Layout>
     <CustomTimeline />
-  </div>
-);
+  </Layout>
+  );
 
+
+  
+  };
+//  export default App;
 render(<App />, document.getElementById("root"));

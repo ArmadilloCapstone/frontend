@@ -42,7 +42,7 @@
     width: 85px; 
     margin: 2px; 
     position: relative;
-    top:100%; 
+    top: 100%; 
     left:4%;
     background-color: aliceblue;
     color: black;
@@ -85,8 +85,8 @@
     border: none;
     border-right: solid 2px #ccc !important;
 }
-#root > div > div > div.react-calendar-timeline.timeline {
-  width:1400px;
-  margin-left: auto;
-  margin-right: auto;
+
+#root > div > div > div > div.react-calendar-timeline.timeline {
+  width: 1400px;
+  margin: auto;
 }

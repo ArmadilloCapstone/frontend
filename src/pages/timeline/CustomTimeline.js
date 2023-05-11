@@ -77,7 +77,7 @@ var keys = {
   groupLabelKey: "title"
 };
 
-function App() {
+function CustomTimeline() {
   console.log(sortedAllItem);
   console.log(items);
 //   const baseUrl = "http://localhost:8080";
@@ -163,7 +163,7 @@ function App() {
     );
   }
 
-  export default App;
+  export default CustomTimeline;
 
 // export default class App extends Component {
 //   constructor(props) {

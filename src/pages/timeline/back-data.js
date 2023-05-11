@@ -69,14 +69,14 @@ async function getStudent_schedule(){
 
 // export const student_time = [
 //     {student_id: 1,
-//     entry1: "12:00", entry2: "12:00,", entry3: "12:00", entry4: "12:00,", entry5: "12:00",
-//     off1: "18:00", off2: "18:00,", off3: "18:00", off4: "18:00,", off5: "18:00"},
+//     entry1: "12:00", entry2: "12:00", entry3: "12:00", entry4: "12:00", entry5: "12:00",
+//     off1: "18:00", off2: "18:00", off3: "18:00", off4: "18:00", off5: "18:00"},
 //     {student_id: 2,
-//     entry1: "13:00", entry2: "13:00,", entry3: "13:00", entry4: "13:00,", entry5: "13:00",
-//     off1: "18:00", off2: "18:00,", off3: "18:00", off4: "18:00,", off5: "18:00"},
+//     entry1: "13:00", entry2: "13:00", entry3: "13:00", entry4: "13:00", entry5: "13:00",
+//     off1: "18:00", off2: "18:00", off3: "18:00", off4: "18:00", off5: "18:00"},
 //     {student_id: 3,
-//     entry1: "12:00", entry2: "12:00,", entry3: "12:00", entry4: "12:00,", entry5: "12:00",
-//     off1: "17:00", off2: "17:00,", off3: "17:00", off4: "17:00,", off5: "17:00"}
+//     entry1: "12:00", entry2: "12:00", entry3: "12:00", entry4: "12:00", entry5: "12:00",
+//     off1: "17:00", off2: "17:00", off3: "17:00", off4: "17:00", off5: "17:00"}
 // ]
 
 // export const after_school_class = [
