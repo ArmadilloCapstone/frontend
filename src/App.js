@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import MainPage from './pages/main/MainPage';
+import {MainPage} from './pages/main/MainPage';
 import {TimelinePage} from './pages/timeline/TimelinePage';
 
 import { Link } from "react-router-dom";

@@ -5,40 +5,43 @@ import { Student, Student_time, After_school_class, Student_schedule } from "./b
 export const defaultTimeStart = moment().startOf('day');
 export const defaultTimeEnd = moment().endOf('day');
 
+const todayList = Student_time
 /* 오늘의 요일에 맞는 학생들의 입실/퇴실 시간 설정 */
-const todayList = Student_time.map(obj => {
-  let newList = {};
-  newList['studentId'] = obj.student_id;
-  newList['seed'] = 0;
-  if(moment().day() === 1) {
-    newList['start_time'] = moment(defaultTimeStart).add(obj.entry1, 'h');
-    newList['end_time'] = moment(defaultTimeStart).add(obj.off1, 'h');
-  }
-  else if(moment().day() === 2) {
-    newList['start_time'] = moment(defaultTimeStart).add(obj.entry2, 'h');
-    newList['end_time'] = moment(defaultTimeStart).add(obj.off2, 'h');
-  }
-  else if(moment().day() === 3) {
-    newList['start_time'] = moment(defaultTimeStart).add(obj.entry3, 'h');
-    newList['end_time'] = moment(defaultTimeStart).add(obj.off3, 'h');
-  }
-  else if(moment().day() === 4) {
-    newList['start_time'] = moment(defaultTimeStart).add(obj.entry4, 'h');
-    newList['end_time'] = moment(defaultTimeStart).add(obj.off4, 'h');
-  }
-  else {
-    newList['start_time'] = moment(defaultTimeStart).add(obj.entry5, 'h');
-    newList['end_time'] = moment(defaultTimeStart).add(obj.off5, 'h');
-  }
-  return newList;
-});
+// const todayList = Student_time.map(obj => {
+//   let newList = {};
+//   newList['studentId'] = obj.student_id;
+//   newList['seed'] = 0;
+//   if(moment().day() === 1) {
+//     newList['start_time'] = moment(defaultTimeStart).add(obj.entry1, 'h');
+//     newList['end_time'] = moment(defaultTimeStart).add(obj.off1, 'h');
+//   }
+//   else if(moment().day() === 2) {
+//     newList['start_time'] = moment(defaultTimeStart).add(obj.entry2, 'h');
+//     newList['end_time'] = moment(defaultTimeStart).add(obj.off2, 'h');
+//   }
+//   else if(moment().day() === 3) {
+//     newList['start_time'] = moment(defaultTimeStart).add(obj.entry3, 'h');
+//     newList['end_time'] = moment(defaultTimeStart).add(obj.off3, 'h');
+//   }
+//   else if(moment().day() === 4) {
+//     newList['start_time'] = moment(defaultTimeStart).add(obj.entry4, 'h');
+//     newList['end_time'] = moment(defaultTimeStart).add(obj.off4, 'h');
+//   }
+//   else {
+//     newList['start_time'] = moment(defaultTimeStart).add(obj.entry5, 'h');
+//     newList['end_time'] = moment(defaultTimeStart).add(obj.off5, 'h');
+//   }
+//   return newList;
+// });
 
-/* 오늘의 요일에 맞는 방과후교실 목록 추출 */
-const todayAfterSchoolList = After_school_class.filter(obj => {
-  if(moment().day() === obj.day) {
-    return obj
-  }
-})
+const todayAfterSchoolList = After_school_class
+
+// /* 오늘의 요일에 맞는 방과후교실 목록 추출 */
+// const todayAfterSchoolList = After_school_class.filter(obj => {
+//   if(moment().day() === obj.day) {
+//     return obj
+//   }
+// })
 
 /* 학생들 중 오늘의 방과후수업 목록 포함되어 있는 학생 목록 추출  */
 function afterSchoolStudentsList(afterSchool, studentSchedule) {

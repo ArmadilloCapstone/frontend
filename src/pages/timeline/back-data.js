@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import moment from "moment";
 
+export const defaultTimeStart = moment().startOf('day');
+export const defaultTimeEnd = moment().endOf('day');
+
+export const studentList = []
 export const Student = () => {
     const [student, setStudent] = useState([]);
 
-    useEffect(() => {
-        axios.post("/student")
+    useEffect(async () => {
+        await axios.post("/student")
             .then((response) => {
            //console.log(response.data);
            setStudent(response.data);
@@ -15,31 +20,55 @@ export const Student = () => {
         })
     })
 
-    return student;
+    studentList.push(...student)
 }
+
 
 export const Student_time = () => {
     const [student_time, setStudent_time] = useState([]);
 
-    useEffect(() => {
-        axios.post("/student_time")
+    useEffect(async () => {
+        await axios.post("/student_time")
             .then((response) => {
            //console.log(response.data);
            setStudent_time(response.data);
-        })
-        .catch((error)=>{
-            console.log(error);
-        })
-    })
+        });
+    }, []);
 
-    return student_time;
+    return student_time.map(obj => {
+        let newList = {};
+        newList['studentId'] = obj.student_id;
+        newList['seed'] = 0;
+        if(moment().day() === 1) {
+          newList['start_time'] = moment(defaultTimeStart).add(obj.entry1, 'h');
+          newList['end_time'] = moment(defaultTimeStart).add(obj.off1, 'h');
+        }
+        else if(moment().day() === 2) {
+          newList['start_time'] = moment(defaultTimeStart).add(obj.entry2, 'h');
+          newList['end_time'] = moment(defaultTimeStart).add(obj.off2, 'h');
+        }
+        else if(moment().day() === 3) {
+          newList['start_time'] = moment(defaultTimeStart).add(obj.entry3, 'h');
+          newList['end_time'] = moment(defaultTimeStart).add(obj.off3, 'h');
+        }
+        else if(moment().day() === 4) {
+          newList['start_time'] = moment(defaultTimeStart).add(obj.entry4, 'h');
+          newList['end_time'] = moment(defaultTimeStart).add(obj.off4, 'h');
+        }
+        else {
+          newList['start_time'] = moment(defaultTimeStart).add(obj.entry5, 'h');
+          newList['end_time'] = moment(defaultTimeStart).add(obj.off5, 'h');
+        }
+        return newList;
+      });
 }
+
 
 export const After_school_class = () => {
     const [after_school_class, setAfter_school_class] = useState([]);
 
-    useEffect(() => {
-        axios.post("/after_school_class")
+    useEffect(async () => {
+        await axios.post("/after_school_class")
             .then((response) => {
            //console.log(response.data);
            setAfter_school_class(response.data);
@@ -49,14 +78,18 @@ export const After_school_class = () => {
         })
     })
 
-    return after_school_class;
+    return After_school_class.filter(obj => {
+        if(moment().day() === obj.day) {
+          return obj
+        }
+      })
 }
 
 export const Student_schedule = () => {
     const [student_schedule, setStudent_schedule] = useState([]);
 
-    useEffect(() => {
-        axios.post("/student")
+    useEffect(async () => {
+        await axios.post("/student")
             .then((response) => {
            //console.log(response.data);
            setStudent_schedule(response.data);
@@ -141,6 +174,7 @@ export const Student_schedule = () => {
 //     {id: 2, name: "이아름", class_id: 1},
 //     {id: 3, name: "하현우", class_id: 1},
 // ];
+
 
 // export const Student_time = [
 //     {student_id: 1,

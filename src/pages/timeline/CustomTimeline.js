@@ -9,12 +9,13 @@ import Timeline, {
   TimelineMarkers
 } from "react-calendar-timeline/lib";
 
-import { Student } from "./back-data";
+import { studentList, Student } from "./back-data";
 import { items, defaultTimeStart, defaultTimeEnd, sortedAllItem } from "./fake-data";
 
 import Detail from "./after-alarm";
 
-const groups = Student.map(obj => {
+
+const groups = studentList.map(obj => {
   let newList = {};
   newList['id'] = obj.id;
   newList['title'] = obj.name;
