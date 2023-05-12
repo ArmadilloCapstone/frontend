@@ -29,7 +29,7 @@ const Menu = styled.div`
     const menus = [
       { name: "메인화면", path: "/" },
       { name: "출결 관리", path: "/TimelinePage" },
-      { name: "학생 관리", path: "/student" },
+      { name: "학생 관리", path: "/StudentState" },
       { name: "보호자 관리", path: "/guardian" },
       { name: "메신저", path: "/messanger" },
       { name: "안내장", path: "/invitation" },
@@ -62,48 +62,3 @@ const Menu = styled.div`
   }
 
   export default Sidebar;
-
-
-
-
-
-
-
-
-
-
-// import React from "react";
-// import { Link } from "react-router-dom";
-
-// import SidebarItem from "./SidebarItem";
-
-// function Sidebar() {
-
-//   const menus = [
-//     { name: "메인화면", path: "/" },
-//     { name: "출결 관리", path: "/TimelinePage" },
-//     { name: "학생 관리", path: "/student" },
-//     { name: "보호자 관리", path: "/guardian" },
-//     { name: "메신저", path: "/messanger" },
-//     { name: "안내장", path: "/invitation" },
-//     { name: "사진첩", path: "/gallery" },
-//     { name: "간식 관리", path: "/snack" },
-//     { name: "예산 관리", path: "/budget" }
-//   ];
-
-//   return (
-//     <div className="sidebar">
-//       {menus.map((menu, index) => {
-//         return (
-//           <Link to={menu.path} key={index}>
-//             <SidebarItem
-//               menu={menu}
-//             />
-//           </Link>
-//         );
-//       })}
-//     </div>
-//   );
-// }
-
-// export default Sidebar;

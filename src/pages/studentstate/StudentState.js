@@ -95,9 +95,10 @@ const StudentState = () => {
   }, [student]);
 
   return (
+    <div className='statebody'>
     <div className="StudentState">
       <div className="box" id="box1">
-        <h3>도착하지 않았어요</h3>
+        <h5>도착하지 않았어요</h5>
         {student.filter((item) => item.state === "box1").map(student => (
           <Draggable position={{ x: 0, y: 0 }} key={student.id} onStop={(event, ui) => handleDrag(event, ui, student)}>
             <div className="item" id={student.id}>{student.name}</div>
@@ -106,7 +107,7 @@ const StudentState = () => {
       </div>
 
       <div className="box" id="box2">
-        <h3>돌봄교실에 도착했어요</h3>
+        <h5>돌봄교실에 도착했어요</h5>
         {student.filter((item) => item.state === "box2").map(student => (
           <Draggable position={{ x: 0, y: 0 }} key={student.id} onStop={(event, ui) => handleDrag(event, ui, student)}>
             <div className="item" id={student.id}>{student.name}</div>
@@ -115,7 +116,7 @@ const StudentState = () => {
       </div>
 
       <div className="box" id="box3">
-        <h3>방과후수업에 다녀올게요</h3>
+        <h5>방과후수업에 다녀올게요</h5>
         {student.filter((item) => item.state === "box3").map(student => (
           <Draggable position={{ x: 0, y: 0 }} key={student.id} onStop={(event, ui) => handleDrag(event, ui, student)}>
             <div className="item" id={student.id}>{student.name}</div>
@@ -124,13 +125,14 @@ const StudentState = () => {
       </div>
 
       <div className="box" id="box4">
-        <h3>오늘은 떠날게요</h3>
+        <h5>오늘은 떠날게요</h5>
         {student.filter((item) => item.state === "box4").map(student => (
           <Draggable position={{ x: 0, y: 0 }} key={student.id} onStop={(event, ui) => handleDrag(event, ui, student)}>
             <div className="item" id={student.id}>{student.name}</div>
           </Draggable>
         ))}
       </div>
+    </div>
     </div>
   );
 };

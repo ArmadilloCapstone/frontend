@@ -1,14 +1,15 @@
-body {
+.statebody {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: 100vh;
+	height: 80vh;
+	margin: 10px;
 }
 .StudentState {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	width: 1000px;
+	width: 1250px;
 	height: 400px;
 }
 .box {
