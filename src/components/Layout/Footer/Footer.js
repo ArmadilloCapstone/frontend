@@ -1,8 +1,15 @@
+import styled from "styled-components";
+
+const Foot = styled.p`
+  text-align: center;
+  color: grey;
+  `
+
 const Footer = () => {
     return (
-        <footer>
-            <h3>웹페이지 하단</h3>
-        </footer>
+        <Foot>
+            Dolbomee
+        </Foot>
     )
 }
 

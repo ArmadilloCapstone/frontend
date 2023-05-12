@@ -43,7 +43,7 @@
     margin: 2px; 
     position: relative;
     top: 100%; 
-    left:4%;
+    left: 1%;
     background-color: aliceblue;
     color: black;
     font-family: "paybooc-Light", sans-serif;
@@ -56,7 +56,7 @@
     margin: 2px; 
     position: relative;
     top:100%; 
-    left:73%;
+    left:72%;
     border-radius: 5px;
     border: 1px dashed rgba(0, 0, 0, 0.426);
   }
@@ -86,7 +86,7 @@
     border-right: solid 2px #ccc !important;
 }
 
-#root > div > div > div > div.react-calendar-timeline.timeline {
-  width: 1400px;
-  margin: auto;
+#root > div > div:nth-child(2) > div.react-calendar-timeline.timeline {
+  width: 1280px;
+  margin: 0 auto;
 }
