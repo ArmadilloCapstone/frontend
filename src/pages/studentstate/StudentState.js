@@ -1,7 +1,7 @@
 import './StudentState.css';
 import Draggable from "react-draggable";
 import axios from 'axios';
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 
 function drop(event, student, setStudent) {
   event.preventDefault();
@@ -33,14 +33,6 @@ const sortItems = (box) => {
 
 const StudentState = () => {
 
-  /*
-    // 백엔드의 학생 명단 가져오는 부분
-  axios.post('/getStudentInfo').then(function(response){
-    console.log(response)
-  }).catch(function(reason){
-    console.log(reason);
-  });
- */
 
 
   // 더미데이터 -> 추후에 백엔드에서 학생 명단 받아오면 대체할 부분
@@ -53,6 +45,32 @@ const StudentState = () => {
     { id: "6", name: "강민수", state: "box4" },
   ]);
 
+  useEffect(() => {
+    // 백엔드의 학생 명단 가져오는 부분
+    axios.post('/getStudentInfo')
+        .then(function(response){
+          setStudent(response.data.map(function(el, idx){
+
+            // 서버에서 주는 데이터 형식
+            // {[id : Long, student_id : Long, name : String, state : Long]}
+
+
+            console.log(el);
+            var returnObj = {}
+            returnObj["id"] = el.id;
+            returnObj["student_id"] = el.student_id;
+            returnObj["name"] = el.name;
+            returnObj["state"] = "box" + el.state;
+            console.log(returnObj);
+            return returnObj;
+
+          }));
+        }).catch(function(reason){
+      console.log(reason);
+    });
+  }, []);
+
+
 
   // 드래그 끝난 후의 박스 위치 파악 -> state 변경 -> student 변경
   const handleDrag = useCallback((event, ui, ns) => {
@@ -62,7 +80,16 @@ const StudentState = () => {
       const dt = [...student];
       const idx = dt.findIndex(i => i.id === ns.id);
       dt[idx].state = ret.id;
+      console.log(dt[idx].student_id, dt[idx].state[3] - 0)
       // 서버에 dt 보내는 코드 작성 위치
+      axios.post('/changeStudentState', { id : dt[idx].id, student_id : dt[idx].student_id,name : dt[idx].name, state : dt[idx].state[3] - 0})
+          .then(function(response){
+            console.log(response);
+          }).catch(function(reason) {
+        console.log(reason);
+      });
+
+      console.log(dt[idx])
       setStudent(dt);
     }
   }, [student]);
