@@ -1,0 +1,33 @@
+p.titletag {
+    font-size: 36px;
+    font-weight: bold;
+	width: 1250px;
+    margin: 20px;
+}
+
+div.formtag {
+    display: flex;
+	flex-direction: row;
+	width: 1250px;
+    margin-top: 70px;
+    margin-left: 20px;
+}
+
+input.inputtag {
+    width: 500px;
+    height: 40px;
+    border: 1px solid grey;
+    border-radius: 5px;
+    margin: 5px;
+    vertical-align: middle;
+}
+
+button.filesubmitbutton {
+    color: #1e6b7b;
+    background: aliceblue;
+    border-radius: 15px;
+    font-family: "paybooc-Light", sans-serif;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    font-weight: 600;
+}

@@ -80,7 +80,7 @@ function CustomTimeline() {
   useEffect( () => {
     axios.post('/student_time')
         .then(function(response){
-          setStudent_time(student_time.map(function(el, idx){
+          setStudent_time(response.data.map(function(el, idx){
             console.log(el);
 
             var returnObj = {}
@@ -117,7 +117,7 @@ function CustomTimeline() {
   useEffect( () => {
     axios.post('/after_school_class')
         .then(function(response){
-          setAfter_school_class(after_school_class.data.filter(function(el, idx){
+          setAfter_school_class(response.data.filter(function(el, idx){
             console.log(el);
 
             if(moment().day() === el.day) {
@@ -133,7 +133,7 @@ function CustomTimeline() {
   useEffect( () => {
     axios.post('/student_schedule')
         .then(function(response){
-          setStudent_schedule(student_schedule.map(function(el, idx){
+          setStudent_schedule(response.data.map(function(el, idx){
             console.log(el);
   
             var returnObj = {}
@@ -183,6 +183,8 @@ function allItems(){
       seed: student_time[i].seed,
       start_time: student_time[i].start_time,
       end_time: student_time[i].end_time
+      // start_time: moment(defaultTimeStart).add(student_time[i].entry5, 'h'),
+      // end_time: moment(defaultTimeStart).add(student_time[i].off5, 'h'),
     })
   }
   for (let i=0; i<setAfterSchoolItems.length; i++) {

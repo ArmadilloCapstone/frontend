@@ -1,6 +1,6 @@
 import React from "react";
 
-function SidebarItem({ menu }) {
+function AdminSidebarItem({ menu }) {
   return (
     <div className="sidebar-item">
       <p>{menu.name}</p>
@@ -8,4 +8,4 @@ function SidebarItem({ menu }) {
   );
 }
 
-export default SidebarItem;
+export default AdminSidebarItem;
