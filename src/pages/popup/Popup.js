@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+// const alarmSound = new Audio('./alarm.wav');
 
 function PopupContainer({ children }) {
   const [popups, setPopups] = useState([]);
@@ -6,22 +7,32 @@ function PopupContainer({ children }) {
   useEffect(() => {
     let index = 0;
     const timeoutIds = [];
-
+  
     const addPopup = (popup) => {
       setPopups((popups) => [...popups, popup]);
     };
-
+  
     const removePopup = () => {
       setPopups((popups) => popups.slice(1));
     };
-
-    // gathered popup appears with short time term
-    // timeout to remove all popups after 5 seconds(초기화 for next session)
+  
+    const audio = new Audio('./alarm.wav');
+    audio.load();
+  
     const showPopup = () => {
       const timeoutId = setTimeout(() => {
         addPopup(children[index]);
         index++;
-    
+  
+        // play audio file when first popup appears
+        // popups appear every 1 second, clears out after 5 seconds of end
+        audio.muted = true;
+        audio.play();
+        audio.muted = false;
+        if (index === 1) {
+          audio.play();
+        }
+  
         if (index < children.length) {
           showPopup();
         } else {
@@ -30,7 +41,7 @@ function PopupContainer({ children }) {
           }, 5000); 
         }
       }, 1000);
-    
+  
       timeoutIds.push(timeoutId);
     };
     
@@ -38,7 +49,7 @@ function PopupContainer({ children }) {
     // delay initial popup load
     const initialTimeoutId = setTimeout(() => {
       showPopup();
-    }, 5000);
+    }, 3000);
 
     timeoutIds.push(initialTimeoutId);
 
