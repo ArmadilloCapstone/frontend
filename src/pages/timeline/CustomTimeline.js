@@ -78,8 +78,9 @@ function CustomTimeline() {
 
   // 백엔드에서 데이터 가져오기 & 오늘의 요일에 맞는 학생들의 입실/퇴실 시간 설정 => todaylist === student_time
   useEffect( () => {
-    axios.post('/student_time')
+    axios.post('/studentTimeFindAll')
         .then(function(response){
+          console.log(response.data);
           setStudent_time(response.data.map(function(el, idx){
             console.log(el);
 
@@ -115,8 +116,9 @@ function CustomTimeline() {
 
   // 백엔드에서 데이터 가져오기 & 오늘의 요일에 맞는 방과후교실 목록 추출 => todayAfterSchoolList === after_school_class
   useEffect( () => {
-    axios.post('/after_school_class')
+    axios.post('/AfterSchoolClassFindAll')
         .then(function(response){
+          console.log(response.data);
           setAfter_school_class(response.data.filter(function(el, idx){
             console.log(el);
 
@@ -131,8 +133,9 @@ function CustomTimeline() {
 
   // 백엔드에서 데이터 가져오기 & student_schedule 가져오기
   useEffect( () => {
-    axios.post('/student_schedule')
+    axios.post('/studentScheduleFindAll')
         .then(function(response){
+          console.log(response.data);
           setStudent_schedule(response.data.map(function(el, idx){
             console.log(el);
   
@@ -223,8 +226,9 @@ const setGroup = (el, i, ary, student_id) =>
   });
 
   useEffect( () => {
-    axios.post('/student')
+    axios.post('/studentFindAll')
         .then(function(response){
+          console.log(response.data);
           setStudent(response.data.map(function(el, idx){
             console.log(el);
 

@@ -1,7 +1,6 @@
 import React from 'react';
 // import React, { useState, useCallback } from 'react';
 // import axios from 'axios';
-import { useHistory } from 'react-router-dom';
 import checkImg from './check.png';
 import parentImg from './parent.png';
 import ReactDOM from 'react-dom';
@@ -12,37 +11,14 @@ parent_id로 로그인 됐으며, 픽업 버튼 클릭 시 자동으로 parent_i
 */
 
 function Pickup() {
-
-  const handleClick = async () => {
+  const handleClick = () => {
     // 학부모 계정과 연결된 학생의 이름을 픽업 서비스에 전달하는 코드
-    try {
-      const response = await fetch('/getStudentId', {
-        method: 'POST',
-        body: JSON.stringify({ parent_id: parentId }),
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
-  
-      if (!response.ok) {
-        throw new Error('Failed to get student ID');
-      }
-  
-      const data = await response.json();
-      const studentId = data.student_id;
-  
-      setPickup(prevPickup => [...prevPickup, studentId]);
-    } catch (error) {
-      console.error(error);
-    }
+
 
     //호출 완료 알리는 페이지로 연결되는 코드
-
-  };
-  
+  }
 
   return (
-    
     <div style={{ position: "fixed", flexDirection: 'column', height: '100vh' }}>
       <div style={{ flex: 1, border: '1px solid black', align: "center" }}></div>
         <img src={parentImg} style={{ padding: '30px 385px', width: "400px", height: "400px" }} />
@@ -50,14 +26,12 @@ function Pickup() {
         아이를 마중 나왔어요
       </div>
 
-      {/* 학생 호출버튼으로 클릭 시 parent과 연결된 student_id를 pickup 배열에 저장함 */}
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100px' }}>
         <button onClick={handleClick} style={{ width: "500px", height: "100px", backgroundColor: 'blue', color: 'white', padding: '10px 20px', border: 'none', borderRadius: '20px', fontSize: '30px', fontWeight: 'bold' }}>
           선생님, 저희 아이 데리고 갈게요.   
         </button>
       </div>
-   
-      {/* 픽업 안내 메시지 */}
+
       <div>
         <table style={{ padding: "0px 0px 0px 240px", border: "none" }}>
           <tr>
