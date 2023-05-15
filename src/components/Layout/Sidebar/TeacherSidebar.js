@@ -40,8 +40,12 @@ const Menu = styled.div`
       { name: "돌봄학급 관리", path: "/ClassManagementPage" },
       { name: "돌봄교사 관리", path: "/TeacherManagementPage" },
       { name: "돌봄학생 관리", path: "/StudentManagementPage" },
-      { name: "학부모 관리", path: "/ParentManagementPage" }
+      { name: "학부모 관리", path: "/ParentManagementPage" },
       // { name: "재무 관리", path: "/budget" }
+
+
+      // pickup
+      { name: "학부모 픽업", path: "/Pickup" }
     ];
     return (
       <Side>

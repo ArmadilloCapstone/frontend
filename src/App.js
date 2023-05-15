@@ -13,6 +13,7 @@ import TeacherManagementPage from './pages/admin/teacher/TeacherManagementPage';
 import StudentManagementPage from './pages/admin/student/StudentManagementPage';
 import ParentManagementPage from './pages/admin/parent/ParentManagementPage';
 import ClassManagementPage from './pages/admin/class/ClassManagementPage';
+import Pickup from './pages/pickup/Pickup';
 
 import Footer from './components/Layout/Footer/Footer';
 
@@ -37,6 +38,7 @@ export default function App() {
             <Route path="/TeacherManagementPage" element={<TeacherManagementPage />} />
             <Route path="/StudentManagementPage" element={<StudentManagementPage />} />
             <Route path="/ParentManagementPage" element={<ParentManagementPage />} />
+            <Route path="/Pickup" element={<Pickup />} />
           </Routes>
         </Center>
         {/* <Footer /> */}
