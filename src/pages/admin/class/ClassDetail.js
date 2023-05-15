@@ -41,6 +41,7 @@ function ClassDetail() {
         setRecord(response.data.map(function (el, idx) {
           console.log(el);
 
+
           var returnObj = {}
           returnObj['id'] = el.id;
           returnObj['class_name'] = el.class_name;
@@ -52,6 +53,7 @@ function ClassDetail() {
       }).catch(function (reason) {
         console.log(reason);
       });
+
   }
 
   useEffect(() => {
@@ -62,7 +64,7 @@ function ClassDetail() {
   const submitClassRecord = async (e) => {
     e.preventDefault();
     e.target.reset();
-    await axios.post('/dolbom_class', user);
+    await axios.post('/dolbom_class_submit', user);
     alert('추가되었습니다!');
 
     loadClassDetail();
@@ -99,7 +101,6 @@ function ClassDetail() {
                   </tr>
                 </thead>
                 <tbody>
-
                   {record.map((name) =>
                     <tr>
                       <td>{name.class_name}</td>

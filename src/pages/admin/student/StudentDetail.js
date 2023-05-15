@@ -63,6 +63,7 @@ function StudentDetail() {
       }).catch(function (reason) {
         console.log(reason);
       });
+
   }
   useEffect(() => {
     loadStudentDetail();

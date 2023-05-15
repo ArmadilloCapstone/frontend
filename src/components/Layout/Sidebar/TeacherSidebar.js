@@ -43,8 +43,12 @@ const Menu = styled.div`
       { name: "돌봄학생 관리", path: "/StudentManagementPage" },
       { name: "학부모 관리", path: "/ParentManagementPage" },
       { name: "방과후수업 관리", path: "/AfterClassManagementPage" },
-      { name: "학생 시간표 관리", path: "/StudentScheduleManagementPage" }
+      { name: "학생 시간표 관리", path: "/StudentScheduleManagementPage" },
       // { name: "재무 관리", path: "/budget" }
+
+
+      // pickup
+      { name: "학부모 픽업", path: "/Pickup" }
     ];
     return (
       <Side>

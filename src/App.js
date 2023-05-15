@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import {BrowserRouter as Router, HashRouter, Route, Routes} from 'react-router-dom';
 
 import Header from './components/Layout/Header/Header';
 import TeacherSidebar from './components/Layout/Sidebar/TeacherSidebar';
@@ -16,6 +16,7 @@ import ParentManagementPage from './pages/admin/parent/ParentManagementPage';
 import ClassManagementPage from './pages/admin/class/ClassManagementPage';
 import AfterClassManagementPage from './pages/admin/afterClass/AfterClassManagement';
 import StudentScheduleManagementPage from './pages/admin/studentSchedule/StudentScheduleManagement';
+import Pickup from './pages/pickup/Pickup';
 
 import Footer from './components/Layout/Footer/Footer';
 
@@ -27,7 +28,7 @@ const Center = styled.div`
 
 export default function App() {
   return (
-    <Router>
+    <HashRouter>
         <Header/>
         <Center>
           <TeacherSidebar/>
@@ -43,9 +44,10 @@ export default function App() {
             <Route path="/ParentManagementPage" element={<ParentManagementPage />} />
             <Route path="/AfterClassManagementPage" element={<AfterClassManagementPage />} />
             <Route path="/StudentScheduleManagementPage" element={<StudentScheduleManagementPage />} />
+            <Route path="/Pickup" element={<Pickup />} />
           </Routes>
         </Center>
         {/* <Footer /> */}
-      </Router>
+      </HashRouter>
   );
 }
