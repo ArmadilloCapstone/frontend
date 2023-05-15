@@ -24,7 +24,7 @@ const Center = styled.div`
 
 export default function App() {
   return (
-    <Router>
+    <HashRouter>
         <Header/>
         <Center>
           <TeacherSidebar/>
@@ -40,6 +40,6 @@ export default function App() {
           </Routes>
         </Center>
         {/* <Footer /> */}
-      </Router>
+      </HashRouter>
   );
 }
