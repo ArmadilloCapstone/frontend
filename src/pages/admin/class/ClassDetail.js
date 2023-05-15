@@ -22,6 +22,7 @@ function ClassDetail() {
   ]);
 
   const [user, setUser] = useState({
+    id: 0,
     class_name: "",
     class_num: "",
     year_seme: ""
@@ -41,6 +42,7 @@ function ClassDetail() {
             console.log(el);
 
             var returnObj = {}
+            returnObj['id'] = el.id;
             returnObj['class_name'] = el.class_name;
             returnObj['class_num'] = el.class_num;
             returnObj['year_seme'] = el.year_seme;
@@ -70,7 +72,7 @@ function ClassDetail() {
   const submitClassRecord = async (e) => {
     e.preventDefault();
     e.target.reset();
-    await axios.post('/dolbom_class', user);
+    await axios.post('/dolbom_class_submit', user);
     alert('추가되었습니다!');
 
     loadClassDetail();
@@ -119,6 +121,7 @@ function ClassDetail() {
                             "'" + name.class_name + "'" + " 학급을 정말 삭제하시겠습니까?"
                           )
                           if (confirmBox === true) {
+                            console.log("받는 id정보 "+name.id);
                             deleteRecord(name.id)
                           }
                         }}> <i class="far fa-trash-alt" style={{ fontSize: "18px", marginRight: "5px" }}></i>삭제 </a>

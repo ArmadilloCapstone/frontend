@@ -4,6 +4,10 @@ import checkImg from './check.png';
 import parentImg from './parent.png';
 import checkedImg from './checked.png';
 
+// 버튼 클릭 시 호출 완료를 알리는 checkedImg가 뜨는 페이지
+
+// 필요 내용 : 버튼 클릭 시 백엔드에 현재 로그인된 학부모의 아이 정보를 학생 픽업 정보(구현해야함)로 전달
+
 const Pickup = () => {
   const [showContent, setShowContent] = useState(false);
 
@@ -24,6 +28,7 @@ const Pickup = () => {
             아이를 마중 나왔어요
           </div>
 
+          /* 학생 호출 버튼 */
           <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100px' }}>
             <button
               onClick={handleClick}
@@ -37,7 +42,7 @@ const Pickup = () => {
                 borderRadius: '20px',
                 fontSize: '30px',
                 fontWeight: 'bold',
-                display: 'block' // Add this line to control the button's visibility
+                display: 'block' 
               }}
             >
               선생님, 저희 아이 데리고 갈게요.

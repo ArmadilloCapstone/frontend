@@ -29,6 +29,7 @@ function StudentDetail() {
   ]);
 
   const [user, setUser] = useState({
+    id: 0,
     name: "",
     gender: "",
     grade: "",
@@ -48,8 +49,9 @@ function StudentDetail() {
         .then(function(response){
           setRecord(response.data.map(function(el, idx){
             console.log(el);
-
+            
             var returnObj = {}
+            returnObj['id'] = el.id;
             returnObj['name'] = el.name;
             returnObj['gender'] = el.gender;
             returnObj['grade'] = el.grade;
