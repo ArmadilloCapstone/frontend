@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import {BrowserRouter as Router, HashRouter, Route, Routes} from 'react-router-dom';
 
 import Header from './components/Layout/Header/Header';
 import TeacherSidebar from './components/Layout/Sidebar/TeacherSidebar';
