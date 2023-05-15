@@ -4,13 +4,16 @@ import checkImg from './check.png';
 import parentImg from './parent.png';
 import checkedImg from './checked.png';
 
+
 // 필요 내용 : 버튼 클릭 시 백엔드에 현재 로그인된 학부모의 parentId(여기서 더미 데이터로 구현)를 전달
 
-// parentid 넘겨주면 백엔드에서 해강 학부모의 학생 정보 모아서 하나의 객체로 만들어서 백에 저장함 
+// Pickup.js와 Popup.js의 연결할 내용 : 
+// parentid 여기서 넘겨주면 백엔드에서 팝업창에 필요한 정보 모아서 하나의 객체로 만들어서 백에 저장함 
+// 객체에 담길 정보 : pickupManName, StudentName, StudentGender, StudentGrade
 // 20초마다 팝업이 요청을 하면 쌓인 내용을 팝업창이 가져옴
 
-// 더미 parentId
-const parentId = 1111;
+
+const parentId = 1111;        // 더미 parentId
 
 
 const Pickup = () => {
@@ -42,14 +45,14 @@ const Pickup = () => {
               style={{
                 width: '500px',
                 height: '100px',
-                backgroundColor: 'blue',
+                backgroundColor: '#007AFF',
                 color: 'white',
                 border: 'none',
                 borderRadius: '20px',
                 fontSize: '30px',
                 fontWeight: 'bold',
                 display: 'block',
-                boxShadow: '4px 4px 20px #333333'
+                boxShadow: '4px 4px 20px #8C92AC'
               }}
             >
               선생님, 저희 아이 데리고 갈게요.
@@ -61,7 +64,27 @@ const Pickup = () => {
       {showContent && (
         <div style={{ textAlign: 'center' }}>
           <div style={{ marginTop: '30px', marginLeft: '25px', fontSize: '30px' }}>호출 완료되었습니다.</div>
+            <button
+            onClick={handleClick}       // 추후 메인 페이지로 돌아가는 handleClick2 구현 필요 (메인 페이지 구현 시)
+            style={{
+              marginLeft: '100px',
+              marginTop: '20px',
+              width: '300px',
+              height: '80px',
+              backgroundColor: '#00A3FF',
+              color: 'white',
+              border: 'none',
+              borderRadius: '13px',
+              fontSize: '24px',
+              fontWeight: 'bold',
+              display: 'block',
+              boxShadow: '3px 4px 10px #8C92AC'
+            }}
+            >
+            메인 페이지로 이동
+            </button>
         </div>
+
       )}
 
       <div>
@@ -86,6 +109,7 @@ const Pickup = () => {
 }
 
 export default Pickup;
+
 
 
 
