@@ -36,6 +36,7 @@ function TeacherDetail() {
   ]);
 
   const [user, setUser] = useState({
+    id: 0,
     name: "",
     phone_num: "",
     gender: "",
@@ -51,21 +52,22 @@ function TeacherDetail() {
   // On Page load display all records 
   const loadTeacherDetail = async () => {
     await axios.post('/teacher')
-        .then(function(response){
-          setRecord(response.data.map(function(el, idx){
-            console.log(el);
+      .then(function (response) {
+        setRecord(response.data.map(function (el, idx) {
+          console.log(el);
 
-            var returnObj = {}
-            returnObj['name'] = el.name;
-            returnObj['phone_num'] = el.phone_num;
-            returnObj['gender'] = el.gender;
-            returnObj['birth_date'] = el.birth_date;
-            
-            return returnObj;
-          }));
-        }).catch(function(reason){
-          console.log(reason);
-        });
+          var returnObj = {}
+          returnObj['id'] = el.id;
+          returnObj['name'] = el.name;
+          returnObj['phone_num'] = el.phone_num;
+          returnObj['gender'] = el.gender;
+          returnObj['birth_date'] = el.birth_date;
+
+          return returnObj;
+        }));
+      }).catch(function (reason) {
+        console.log(reason);
+      });
   }
 
   // const loadStudentDetail = async () => {
@@ -106,54 +108,57 @@ function TeacherDetail() {
   return (
     <section>
 
-      <div class="container">
-        <h2 className="mb-10 mt-3">돌봄교사 관리</h2>
-        <div class="row mt-3">
-          <div class="col-sm-8">
-            <h4 class="text-center mt-4 mb-4" style={{width: "1200px"}}>돌봄교사 리스트</h4>
+      {/* <div class="container"> */}
+      {/* <h2 className="mb-10 mt-3">돌봄교사 관리</h2> */}
+      <div className="container" style={{ width: "1200px" }}>
+        <div className="my-3">
+          <p className="titletag">돌봄교사 관리</p>
+          <div class="row mt-3" style={{ width: "100%", textAlign: "center" }}>
+            <div class="col-sm-8">
+              {/* <h4 class="text-center mt-4 mb-4" style={{ width: "1200px" }}>돌봄교사 리스트</h4> */}
 
-            <table class="table table-hover table-striped table-bordered" style={{width: "1200px"}}>
-              <thead>
-                <tr>
-                  <th>이름</th>
-                  <th>연락처</th>
-                  <th>성별</th>
-                  <th>생년월일</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-
-                {record.map((name) =>
+              <table class="table table-hover table-striped table-bordered" style={{ width: "1200px" }}>
+                <thead>
                   <tr>
-                    <td>{name.name}</td>
-                    <td>{name.phone_num}</td>
-                    <td>{name.gender}</td>
-                    <td>{name.birth_date}</td>
-                    <td>
-                      <a className="text-danger mr-2"
-                        onClick={() => {
-                          const confirmBox = window.confirm(
-                            "'" + name.name + "'" + " 돌봄교사를 정말 삭제하시겠습니까?"
-                          )
-                          if (confirmBox === true) {
-                            deleteRecord(name.id)
-                          }
-                        }}> <i class="far fa-trash-alt" style={{ fontSize: "18px", marginRight: "5px" }}></i>삭제 </a>
+                    <th>이름</th>
+                    <th>연락처</th>
+                    <th>성별</th>
+                    <th>생년월일</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
 
-                      {/* <Link class=" mr-2" to={`/EditEmployee/editID/${name.id}`}>
+                  {record.map((name) =>
+                    <tr>
+                      <td>{name.name}</td>
+                      <td>{name.phone_num}</td>
+                      <td>{name.gender}</td>
+                      <td>{name.birth_date}</td>
+                      <td>
+                        <a className="text-danger mr-2"
+                          onClick={() => {
+                            const confirmBox = window.confirm(
+                              "'" + name.name + "'" + " 돌봄교사를 정말 삭제하시겠습니까?"
+                            )
+                            if (confirmBox === true) {
+                              deleteRecord(name.id)
+                            }
+                          }}> <i class="far fa-trash-alt" style={{ fontSize: "18px", marginRight: "5px" }}></i>삭제 </a>
+
+                        {/* <Link class=" mr-2" to={`/EditEmployee/editID/${name.id}`}>
                         <i class="fa fa-edit" aria-hidden="true"></i>
                       </Link> */}
-                    </td>
-                  </tr>
-                )}
-              </tbody>
-            </table>
+                      </td>
+                    </tr>
+                  )}
+                </tbody>
+              </table>
+            </div>
           </div>
-        </div>
 
-        <div class="col-sm-4">
-            <div className="box p-3 mb-3 mt-3" style={{ border: "1px solid #d0d0d0", height: "100%", width: "1200px", margin: "auto" }}>
+          <div class="col-sm-4" style={{ width: "100%", textAlign: "center" }}>
+            <div className="box p-3 mb-3 mt-3" style={{ border: "1px solid #d0d0d0", height: "100%", width: "700px", margin: "auto" }}>
               <form onSubmit={submitTeacherRecord}>
                 <h5 className="mb-3 ">추가할 돌봄교사의 정보를 입력하세요.</h5>
                 <div class="form-group">
@@ -171,14 +176,17 @@ function TeacherDetail() {
                 <div class="form-group">
                   <input type="text" class="form-control mb-4" name="birth_date" value={birth_date} onChange={e => onInputChange(e)} placeholder="생년월일을 입력하세요." required="" />
                 </div>
-                <div style={{width: "100%", textAlign: "center"}}>
-                <button type="submit" class="btn btn-primary btn-block mt-2">추가</button>
+                <div style={{ width: "100%", textAlign: "center" }}>
+                  <button type="submit" class="btn btn-primary btn-block mt-2">추가</button>
                 </div>
               </form>
             </div>
           </div>
 
+        </div>
       </div>
+
+      {/* </div> */}
     </section>
   )
 }

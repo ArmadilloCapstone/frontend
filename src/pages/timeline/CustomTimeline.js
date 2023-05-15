@@ -26,7 +26,7 @@ var keys = {
 
 function CustomTimeline() {
   // 초기 타임라인 시간 범위 설정
-  const defaultTimeStart = moment().startOf('day'); 
+  const defaultTimeStart = moment().startOf('day');
   const defaultTimeEnd = moment().endOf('day');
 
   const defaultTimeRange = defaultTimeEnd - defaultTimeStart;
@@ -88,25 +88,26 @@ function CustomTimeline() {
             returnObj['student_id'] = el.student_id;
             returnObj['seed'] = 0;
             if(moment().day() === 1) {
-              returnObj['start_time'] = moment(defaultTimeStart).add(el.entry1, 'h');
-              returnObj['end_time'] = moment(defaultTimeStart).add(el.off1, 'h');
+              returnObj['start_time'] = moment(defaultTimeStart).add(el.entry_1, 'h');
+              returnObj['end_time'] = moment(defaultTimeStart).add(el.off_1, 'h');
             }
             else if(moment().day() === 2) {
-              returnObj['start_time'] = moment(defaultTimeStart).add(el.entry2, 'h');
-              returnObj['end_time'] = moment(defaultTimeStart).add(el.off2, 'h');
+              returnObj['start_time'] = moment(defaultTimeStart).add(el.entry_2, 'h');
+              returnObj['end_time'] = moment(defaultTimeStart).add(el.off_2, 'h');
             }
             else if(moment().day() === 3) {
-              returnObj['start_time'] = moment(defaultTimeStart).add(el.entry3, 'h');
-              returnObj['end_time'] = moment(defaultTimeStart).add(el.off3, 'h');
+              returnObj['start_time'] = moment(defaultTimeStart).add(el.entry_3, 'h');
+              returnObj['end_time'] = moment(defaultTimeStart).add(el.off_3, 'h');
             }
             else if(moment().day() === 4) {
-              returnObj['start_time'] = moment(defaultTimeStart).add(el.entry4, 'h');
-              returnObj['end_time'] = moment(defaultTimeStart).add(el.off4, 'h');
+              returnObj['start_time'] = moment(defaultTimeStart).add(el.entry_4, 'h');
+              returnObj['end_time'] = moment(defaultTimeStart).add(el.off_4, 'h');
             }
             else {
-              returnObj['start_time'] = moment(defaultTimeStart).add(el.entry5, 'h');
-              returnObj['end_time'] = moment(defaultTimeStart).add(el.off5, 'h');
+              returnObj['start_time'] = moment(defaultTimeStart).add(el.entry_5, 'h');
+              returnObj['end_time'] = moment(defaultTimeStart).add(el.off_5, 'h');
             }
+            console.log(returnObj)
             return returnObj;
           }));
         }).catch(function(reason){
@@ -199,6 +200,7 @@ function allItems(){
     })
   }
   allItemList.sort((a,b) => a.student_id - b.student_id);
+  console.log(allItemList)
   return allItemList;
 }
 
@@ -233,9 +235,10 @@ const setGroup = (el, i, ary, student_id) =>
             console.log(el);
 
             var returnObj = {}
-            returnObj['id'] = el.student_id;
+            returnObj['id'] = el.id;
             returnObj['name'] = el.name
             returnObj['class_id'] = el.class_id;
+            returnObj['title'] = el.name;
             
             return returnObj;
           }));
@@ -245,6 +248,7 @@ const setGroup = (el, i, ary, student_id) =>
   }, []);
 
   const groups = student.map(obj => {
+    console.log(obj)
     let newList = {};
     newList['id'] = obj.id;
     newList['title'] = obj.name;
@@ -256,13 +260,13 @@ function individualItems() {
   let items = []
   for(let index=0; index<student_time.length; index++) {
     const isNowStudent = sortedAllItem.filter(obj => {
-      if(index+1 === obj.student_id) {
+      if(student_time[index].student_id === obj.student_id) {
         return obj;
       }
     })
     items = [
       ...items,
-      ...isNowStudent.map((el, i, ary) => setGroup(el, i, ary, student[index].id))
+      ...isNowStudent.map((el, i, ary) => setGroup(el, i, ary, student_time[index].student_id))
     ]
   }
   items = items.sort((a, b) => b - a)
