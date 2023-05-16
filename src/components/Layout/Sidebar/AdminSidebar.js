@@ -10,7 +10,6 @@ const Side = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 15%;
 `
 const Logo = styled.img`
   width: 150px;
