@@ -63,7 +63,13 @@ function StudentDetail() {
           returnObj['name'] = el.name;
           returnObj['grade'] = el.grade;
           returnObj['phone_num'] = el.phone_num;
-          returnObj['gender'] = el.gender;
+          if(el.gender === 1) {
+            returnObj['gender'] = "남자";
+          }
+          else if(el.gender === 2) {
+            returnObj['gender'] = "여자";
+          }
+          // returnObj['gender'] = el.gender;
           returnObj['class_id'] = el.class_id;
           returnObj['original_class_num'] = el.original_class_num;
           returnObj['birth_date'] = el.birth_date;
@@ -105,7 +111,7 @@ function StudentDetail() {
 
       <div className="container" style={{ width: "1200px" }}>
         <div className="my-3">
-          <p className="titletag">돌봄학생 관리</p>
+          <p class="mb-5"style={{ fontSize: "40px", fontWeight: "bold" }}>돌봄학생 관리</p>
           <div class="row mt-3" style={{ width: "100%", textAlign: "center" }}>
             <div class="col-sm-8">
               {/* <h4 class="text-center mt-4 mb-4" style={{ width: "1200px" }}>돌봄학생 리스트</h4> */}

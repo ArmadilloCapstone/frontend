@@ -57,7 +57,13 @@ function ParentDetail() {
           returnObj['id'] = el.id;
           returnObj['name'] = el.name;
           returnObj['phone_num'] = el.phone_num;
-          returnObj['gender'] = el.gender;
+          if(el.gender === 1) {
+            returnObj['gender'] = "남자";
+          }
+          else if(el.gender === 2) {
+            returnObj['gender'] = "여자";
+          }
+          // returnObj['gender'] = el.gender;
           returnObj['birth_date'] = el.birth_date;
           returnObj['child_name'] = el.child_name;
           returnObj['child_id'] = el.child_id;
@@ -109,7 +115,7 @@ function ParentDetail() {
 
       <div className="container" style={{ width: "1200px" }}>
         <div className="my-3">
-          <p className="titletag">학부모 관리</p>
+          <p class="mb-5"style={{ fontSize: "40px", fontWeight: "bold" }}>학부모 관리</p>
           <div class="row mt-3" style={{ width: "100%", textAlign: "center" }}>
             <div class="col-sm-8">
               {/* <h4 class="text-center mt-4 mb-4" style={{ width: "1200px" }}>학부모 리스트</h4> */}

@@ -32,7 +32,7 @@ const handleSubmit = (e) => {
 
   return (
       <div>
-        <p className="titletag">사용자 추가</p>
+        <p class="mb-5"style={{ fontSize: "40px", fontWeight: "bold" }}>사용자 추가</p>
         <ul class="nav nav-tabs">
           <li class="nav-item">
             <p class="nav-link active">전체 추가</p>

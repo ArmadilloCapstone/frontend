@@ -95,7 +95,7 @@ function StudentScheduleDetail() {
 
             <div className="container" style={{ width: "1200px" }}>
                 <div className="my-3">
-                    <p className="titletag">학생 시간표 관리</p>
+                    <p class="mb-5"style={{ fontSize: "40px", fontWeight: "bold" }}>학생 시간표 관리</p>
                     <div class="row mt-3" style={{ width: "100%", textAlign: "center" }}>
                         <div class="col-sm-8">
                             {/* <h4 class="text-center mt-4 mb-4" style={{ width: "1200px" }}>학생 시간표 리스트</h4> */}
