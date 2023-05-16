@@ -30,12 +30,9 @@ const Menu = styled.div`
       { name: "출결 관리", path: "/TimelinePage" },
       { name: "학생 관리", path: "/StudentState" },
       { name: "보호자 관리", path: "/guardian" },
-      // { name: "메신저", path: "/messanger" },
       { name: "안내장", path: "/invitation" },
       { name: "사진첩", path: "/gallery" },
       { name: "간식 관리", path: "/snack" },
-      // { name: "예산 관리", path: "/budget" },
-      // { name: "재무 관리", path: "/budget" }
 
 
       // pickup

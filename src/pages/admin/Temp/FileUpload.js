@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import UploadService from "./FileUploadService";
 
-const UploadFiles = () => {
+const FileUpload = () => {
   const [selectedFiles, setSelectedFiles] = useState(undefined);
   const [progressInfos, setProgressInfos] = useState({ val: [] });
   const [message, setMessage] = useState([]);
@@ -19,7 +19,7 @@ const UploadFiles = () => {
     setProgressInfos({ val: [] });
   };
 
-  const upload = (idx, file) => {
+  const Individualupload = (idx, file) => {
     let _progressInfos = [...progressInfosRef.current.val];
     return UploadService.upload(file, (event) => {
       _progressInfos[idx].percentage = Math.round(
@@ -53,10 +53,10 @@ const UploadFiles = () => {
       val: _progressInfos,
     }
 
-    const uploadPromises = files.map((file, i) => upload(i, file));
+    const uploadPromises = files.map((file, i) => Individualupload(i, file));
 
     Promise.all(uploadPromises)
-      .then(() => UploadService.getFiles())
+      // .then(() => UploadService.getFiles())
       .then((files) => {
         setFileInfos(files.data);
       });
@@ -113,7 +113,7 @@ const UploadFiles = () => {
         </div>
       )}
 
-      <div className="card">
+      {/* <div className="card">
         <div className="card-header">추가된 파일 리스트</div>
         <ul className="list-group list-group-flush">
           {fileInfos &&
@@ -123,9 +123,9 @@ const UploadFiles = () => {
               </li>
             ))}
         </ul>
-      </div>
+      </div> */}
     </div>
   );
 };
 
-export default UploadFiles;
+export default FileUpload;
