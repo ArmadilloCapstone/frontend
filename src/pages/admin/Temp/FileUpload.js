@@ -19,7 +19,7 @@ const FileUpload = () => {
     setProgressInfos({ val: [] });
   };
 
-  const Individualupload = (idx, file) => {
+  const IndividualUpload = (idx, file) => {
     let _progressInfos = [...progressInfosRef.current.val];
     return UploadService.upload(file, (event) => {
       _progressInfos[idx].percentage = Math.round(
@@ -53,10 +53,10 @@ const FileUpload = () => {
       val: _progressInfos,
     }
 
-    const uploadPromises = files.map((file, i) => Individualupload(i, file));
+    const uploadPromises = files.map((file, i) => IndividualUpload(i, file));
 
     Promise.all(uploadPromises)
-      // .then(() => UploadService.getFiles())
+      .then(() => UploadService.getFiles())
       .then((files) => {
         setFileInfos(files.data);
       });
@@ -113,7 +113,7 @@ const FileUpload = () => {
         </div>
       )}
 
-      {/* <div className="card">
+      <div className="card">
         <div className="card-header">추가된 파일 리스트</div>
         <ul className="list-group list-group-flush">
           {fileInfos &&
@@ -123,7 +123,7 @@ const FileUpload = () => {
               </li>
             ))}
         </ul>
-      </div> */}
+      </div>
     </div>
   );
 };
