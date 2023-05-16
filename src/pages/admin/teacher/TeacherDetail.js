@@ -10,28 +10,32 @@ function TeacherDetail() {
       name: "황수빈",
       phone_num: "010-2532-7535",
       gender: "여자",
-      birth_date: "981211"
+      birth_date: "981211",
+      class_name: "돌봄A반"
     },
     {
       id: 2,
       name: "김정우",
       phone_num: "010-1234-5678",
       gender: "남자",
-      birth_date: "980219"
+      birth_date: "980219",
+      class_name: "돌봄A반"
     },
     {
       id: 3,
       name: "이태영",
       phone_num: "010-1111-2222",
       gender: "남자",
-      birth_date: "800512"
+      birth_date: "800512",
+      class_name: "돌봄A반"
     },
     {
       id: 4,
       name: "박영인",
       phone_num: "010-3333-4444",
       gender: "여자",
-      birth_date: "760115"
+      birth_date: "760115",
+      class_name: "돌봄A반"
     }
   ]);
 
@@ -40,11 +44,12 @@ function TeacherDetail() {
     name: "",
     phone_num: "",
     gender: "",
-    birth_date: ""
+    birth_date: "",
+    class_name: ""
   });
 
   //  Object Destructuring 
-  const { name, phone_num, gender, birth_date } = user;
+  const { name, phone_num, gender, birth_date, class_name } = user;
   const onInputChange = e => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
@@ -62,6 +67,7 @@ function TeacherDetail() {
           returnObj['phone_num'] = el.phone_num;
           returnObj['gender'] = el.gender;
           returnObj['birth_date'] = el.birth_date;
+          returnObj['class_name'] = el.class_name;
 
           return returnObj;
         }));
@@ -124,6 +130,7 @@ function TeacherDetail() {
                     <th>연락처</th>
                     <th>성별</th>
                     <th>생년월일</th>
+                    <th>돌봄 반</th>
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -135,6 +142,7 @@ function TeacherDetail() {
                       <td>{name.phone_num}</td>
                       <td>{name.gender}</td>
                       <td>{name.birth_date}</td>
+                      <td>{name.class_name}</td>
                       <td>
                         <a className="text-danger mr-2"
                           onClick={() => {
@@ -176,6 +184,11 @@ function TeacherDetail() {
                 <div class="form-group">
                   <input type="text" class="form-control mb-4" name="birth_date" value={birth_date} onChange={e => onInputChange(e)} placeholder="생년월일을 입력하세요." required="" />
                 </div>
+
+                <div class="form-group">
+                  <input type="text" class="form-control mb-4" name="class_name" value={class_name} onChange={e => onInputChange(e)} placeholder="담당 돌봄 반을 입력하세요." required="" />
+                </div>
+
                 <div style={{ width: "100%", textAlign: "center" }}>
                   <button type="submit" class="btn btn-primary btn-block mt-2">추가</button>
                 </div>
