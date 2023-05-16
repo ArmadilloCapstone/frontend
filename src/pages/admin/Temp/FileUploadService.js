@@ -13,13 +13,13 @@ const upload = (file, onUploadProgress) => {
   });
 };
 
-const getFiles = () => {
-  return http.get("/files");
-};
+// const getFiles = () => {
+//   return http.get("/files");
+// };
 
 const FileUploadService = {
   upload,
-  getFiles,
+  // getFiles,
 };
 
 export default FileUploadService; 
