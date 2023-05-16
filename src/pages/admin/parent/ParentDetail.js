@@ -22,6 +22,7 @@ function ParentDetail() {
   ]);
 
   const [user, setUser] = useState({
+    id: 0,
     name: "",
     phone_num: "",
     child_id: ""
@@ -41,6 +42,7 @@ function ParentDetail() {
             console.log(el);
 
             var returnObj = {}
+            returnObj['id'] = el.id;
             returnObj['name'] = el.name;
             returnObj['phone_num'] = el.phone_num;
             returnObj['child_id'] = el.child_id;
@@ -70,7 +72,7 @@ function ParentDetail() {
   const submitParentRecord = async (e) => {
     e.preventDefault();
     e.target.reset();
-    await axios.post('/parent', user);
+    await axios.post('/parent_submit', user);
     alert('추가되었습니다!');
 
     loadParentDetail();

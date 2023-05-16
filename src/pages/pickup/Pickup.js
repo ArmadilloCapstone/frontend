@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import Pickup_done from './Pickup_done.js';
 import checkImg from './check.png';
 import parentImg from './parent.png';
 import checkedImg from './checked.png';
+import axios from 'axios';
 
 // 버튼 클릭 시 호출 완료를 알리는 checkedImg가 뜨는 페이지
 
@@ -13,7 +13,11 @@ const Pickup = () => {
 
   const handleClick = () => {
     setShowContent(true);
+    axios.post("/requestParent", {pickupManId : 12007050}).then(function(response){
+      console.log(response.data);
+    })
   };
+
 
   const imageSource = showContent ? checkedImg : parentImg;
 
@@ -51,7 +55,7 @@ const Pickup = () => {
         </>
       )}
 
-      {showContent && <pre>{Pickup_done}</pre>}
+      {showContent && <pre></pre>}
 
       <div>
         <table style={{ padding: "0px 0px 0px 240px", border: "none" }}>

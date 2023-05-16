@@ -36,6 +36,7 @@ function TeacherDetail() {
   ]);
 
   const [user, setUser] = useState({
+    id: 0,
     name: "",
     phone_num: "",
     gender: "",
@@ -56,6 +57,7 @@ function TeacherDetail() {
             console.log(el);
 
             var returnObj = {}
+            returnObj['id'] = el.id;
             returnObj['name'] = el.name;
             returnObj['phone_num'] = el.phone_num;
             returnObj['gender'] = el.gender;
@@ -86,7 +88,7 @@ function TeacherDetail() {
   const submitTeacherRecord = async (e) => {
     e.preventDefault();
     e.target.reset();
-    await axios.post('/teacher', user);
+    await axios.post('/teacher_submit', user);
     alert('추가되었습니다!');
 
     loadTeacherDetail();

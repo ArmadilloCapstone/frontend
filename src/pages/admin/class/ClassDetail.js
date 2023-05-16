@@ -121,7 +121,6 @@ function ClassDetail() {
                             "'" + name.class_name + "'" + " 학급을 정말 삭제하시겠습니까?"
                           )
                           if (confirmBox === true) {
-                            console.log("받는 id정보 "+name.id);
                             deleteRecord(name.id)
                           }
                         }}> <i class="far fa-trash-alt" style={{ fontSize: "18px", marginRight: "5px" }}></i>삭제 </a>

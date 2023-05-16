@@ -72,7 +72,7 @@ function StudentDetail() {
   const submitStudentRecord = async (e) => {
     e.preventDefault();
     e.target.reset();
-    await axios.post("/student", user);
+    await axios.post("/student_submit", user);
     alert('추가되었습니다!');
 
     loadStudentDetail();
