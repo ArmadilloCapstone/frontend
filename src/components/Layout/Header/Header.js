@@ -1,8 +1,18 @@
 //import DropdownMenu from "../Header/DropdownMenu"
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import { useEffect } from "react";
+import { useDispatch } from 'react-redux';
+import { setUserId, setUserName, setUserOption } from '../../../redux/actions';
 import 'bootstrap/dist/css/bootstrap.css';
 
 const Header = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setUserId(localStorage.getItem('userid') || ""));
+    dispatch(setUserName(localStorage.getItem('username') || ""));
+    dispatch(setUserOption(localStorage.getItem('useroption') || ""));
+  }, []);
     return (
         <header className="header">
             <Navbar bg="light" expand="lg">
