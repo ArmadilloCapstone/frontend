@@ -1,6 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { async } from 'q';
 
 function StudentScheduleDetail() {
     const [record, setRecord] = useState([
@@ -37,6 +38,7 @@ function StudentScheduleDetail() {
         class_name: "",
         class_id: null
     });
+    const [deleteMessage, setDeleteMessage] = useState("");
 
     //  Object Destructuring 
     const { name, student_id, class_name, class_id } = user;
@@ -73,7 +75,7 @@ function StudentScheduleDetail() {
     const submitStudentScheduleRecord = async (e) => {
         e.preventDefault();
         e.target.reset();
-        await axios.post('/student_schedule', user);
+        await axios.post('/student_schedule_submit', user);
         alert('추가되었습니다!');
 
         loadStudentScheduleDetail();
@@ -82,8 +84,11 @@ function StudentScheduleDetail() {
     // Delete Parent Record
     const deleteRecord = (productId) => {
         axios.delete(`/student_schedule/${productId}`)
-            .then((result) => {
+            .then((res) => {
+                console.log(res);
                 loadStudentScheduleDetail();
+                setDeleteMessage(res.data);
+                alert(deleteMessage);
             })
             .catch(() => {
                 alert('오류가 발생했습니다!');

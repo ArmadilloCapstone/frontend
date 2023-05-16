@@ -103,7 +103,7 @@ function AfterClassDetail() {
     e.preventDefault();
     e.target.reset();
     
-    await axios.post('/after_school_class', user);
+    await axios.post('/after_school_class_submit', user);
     alert('추가되었습니다!');
 
     loadAfterClassDetail();
@@ -111,7 +111,7 @@ function AfterClassDetail() {
 
   // Delete After Class Record
   const deleteRecord = (productId) => {
-    axios.delete(`/parent/${productId}`)
+    axios.delete(`/after_school_class/${productId}`)
       .then((result) => {
         loadAfterClassDetail();
       })
@@ -152,7 +152,7 @@ function AfterClassDetail() {
                       <a className="text-danger mr-2"
                         onClick={() => {
                           const confirmBox = window.confirm(
-                            "'" + name.name + "'" + " 방과후수업을 정말 삭제하시겠습니까?"
+                            "'" + name.class_name + "'" + " 방과후수업을 정말 삭제하시겠습니까?"
                           )
                           if (confirmBox === true) {
                             deleteRecord(name.id)
