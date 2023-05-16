@@ -25,21 +25,15 @@ const Menu = styled.div`
   align-items: center;
   `
 
-  function AdminSidebar() {
+  function GuardianSidebar() {
     const menus = [
-      { name: "돌봄학급 관리", path: "/ClassManagementPage" },
-      { name: "돌봄교사 관리", path: "/TeacherManagementPage" },
-      { name: "돌봄학생 관리", path: "/StudentManagementPage" },
-      { name: "학부모 관리", path: "/ParentManagementPage" },
-      { name: "방과후수업 관리", path: "/AfterClassManagementPage" },
-      { name: "학생 시간표 관리", path: "/StudentScheduleManagementPage" },
-      { name: "사용자 추가", path: "/Temp" }
+        { name: "학부모 픽업", path: "/Pickup" }
     ];
     const user_name = useSelector((state => state.user_name))
     return (
       <Side>
         <Logo src={logo}></Logo>
-        <h6>관리자 {user_name}님</h6>
+        <h6>보호자 {user_name}님</h6>
         <Menu>
           {menus.map((menu, index) => {
             return (
@@ -61,4 +55,4 @@ const Menu = styled.div`
     );
   }
 
-  export default AdminSidebar;
+  export default GuardianSidebar;

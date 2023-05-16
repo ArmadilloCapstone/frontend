@@ -1,6 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useState, useEffect } from "react";
-import Select from "react-select"
 import axios from "axios";
 // import { Link } from 'react-router-dom';
 

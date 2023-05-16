@@ -1,12 +1,14 @@
 import './style.css';
 import React, { useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { setShowSignup } from '../../redux/actions';
+import { setShowSignup, setUserId, setUserName, setUserOption } from '../../redux/actions';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 
 export const LoginForm = (props) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
 
   const showSignup = useSelector((state => state.showSignup))
@@ -31,7 +33,7 @@ export const LoginForm = (props) => {
   };
 
   const clickLogin = () => {
-    if(props.option !== "3"){
+    if(props.option != "3"){
 
       axios.post("/login", {
         "user_id" : id,
@@ -40,18 +42,37 @@ export const LoginForm = (props) => {
       }).then((res) => {
         console.log(res.data)
         if(res.data.name !== "Error"){
-          dispatch(setShowSignup(!showSignup));
+
           alert('로그인!');
           console.log(res.data)
-          if(props.option === "4"){
+          if(props.option == "4"){
             console.log("admin")
             localStorage.setItem('userid', res.data.user_id);
+            dispatch(setUserId(res.data.user_id));
           }
           else{
             localStorage.setItem('userid', res.data.id);
+            dispatch(setUserId(res.data.id));
           }
           localStorage.setItem('username', res.data.name);
+          dispatch(setUserName(res.data.name));
           localStorage.setItem('useroption', (props.option - 0));
+          dispatch(setUserOption((props.option - 0)));
+
+          if(props.option == "1"){
+            console.log("hi");
+            navigate('/TimelinePage');
+          }
+          if(props.option == "2"){
+            console.log("hi");
+            navigate('/Pickup');
+          }
+          if(props.option == "4"){
+            console.log("hi");
+            navigate('/ClassManagementPage');
+          }
+
+
         }
         else{
           alert('실패')
@@ -70,6 +91,10 @@ export const LoginForm = (props) => {
           localStorage.setItem('userid', res.data.user_id);
           localStorage.setItem('username', res.data.user_name);
           localStorage.setItem('useroption', (props.option - 0));
+          dispatch(setUserId(res.data.user_id));
+          dispatch(setUserName(res.data.name));
+          dispatch(setUserOption((props.option - 0)));
+          navigate('/Pickup');
         }
         else{
           alert('실패')

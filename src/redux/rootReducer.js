@@ -1,7 +1,7 @@
 const initialState = {
-    user_id: "",
-    user_name: "",
-    user_option: "",
+    user_id: (localStorage.getItem('userid') || ""),
+    user_name: (localStorage.getItem('username') || ""),
+    user_option: (localStorage.getItem('useroption') || ""),
     showSignup: false
   };
   

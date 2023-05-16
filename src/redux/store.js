@@ -10,3 +10,5 @@ const listener = () => {
     const state = store.getState();
     console.log(state);
 };
+
+store.subscribe(listener);

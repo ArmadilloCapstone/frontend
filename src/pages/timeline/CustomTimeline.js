@@ -156,7 +156,7 @@ function CustomTimeline() {
     for (let i=0; i < afterSchool.length; i++) {
       for (let j=0; j < studentSchedule.length; j++) {
         if (afterSchool[i].id === studentSchedule[j].class_id) {
-          arr.push( [j]);
+          arr.push( studentSchedule[j]);
         }
       }
     }
@@ -172,8 +172,8 @@ const setAfterSchoolItems = itemsForAfterSchool.map(obj => {
   newList['seed'] = obj.class_id;
   console.log(obj);
   console.log(after_school_class);
-  newList['start_time'] = moment(defaultTimeStart).add(after_school_class.find((el) => el.class_id == obj.class_id).start_time, 'h');
-  newList['end_time'] = moment(defaultTimeStart).add(after_school_class.find((el) => el.class_id == obj.class_id).end_time, 'h');
+  newList['start_time'] = moment(defaultTimeStart).add(after_school_class.find((el) => el.class_id == obj.id).start_time, 'h');
+  newList['end_time'] = moment(defaultTimeStart).add(after_school_class.find((el) => el.class_id == obj.id).end_time, 'h');
 
   return newList;
 });
@@ -313,7 +313,7 @@ return (
     <TimelineMarkers>
       <TodayMarker>
         {({ styles }) => {
-            const newStyles = { ...styles, backgroundColor: "red" };
+            const newStyles = { ...styles, backgroundColor: "red", "z-index" : "100" };
             return <div style={newStyles} />;
         }}
       </TodayMarker>
