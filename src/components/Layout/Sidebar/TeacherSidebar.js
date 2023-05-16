@@ -36,12 +36,19 @@ const Menu = styled.div`
       { name: "사진첩", path: "/gallery" },
       { name: "간식 관리", path: "/snack" },
       // { name: "예산 관리", path: "/budget" },
-      { name: "사용자 추가(임시)", path: "/EntireUserAddPage" },
+      { name: "사용자 추가", path: "/Temp" },
+      // { name: "사용자 추가", path: "/EntireUserAddPage" },
       { name: "돌봄학급 관리", path: "/ClassManagementPage" },
       { name: "돌봄교사 관리", path: "/TeacherManagementPage" },
       { name: "돌봄학생 관리", path: "/StudentManagementPage" },
-      { name: "학부모 관리", path: "/ParentManagementPage" }
+      { name: "학부모 관리", path: "/ParentManagementPage" },
+      { name: "방과후수업 관리", path: "/AfterClassManagementPage" },
+      { name: "학생 시간표 관리", path: "/StudentScheduleManagementPage" },
       // { name: "재무 관리", path: "/budget" }
+
+
+      // pickup
+      { name: "학부모 픽업", path: "/Pickup" }
     ];
     return (
       <Side>
