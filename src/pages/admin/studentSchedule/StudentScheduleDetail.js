@@ -38,7 +38,6 @@ function StudentScheduleDetail() {
         class_name: "",
         class_id: null
     });
-    const [deleteMessage, setDeleteMessage] = useState("");
 
     //  Object Destructuring 
     const { name, student_id, class_name, class_id } = user;
@@ -87,8 +86,6 @@ function StudentScheduleDetail() {
             .then((res) => {
                 console.log(res);
                 loadStudentScheduleDetail();
-                setDeleteMessage(res.data);
-                alert(deleteMessage);
             })
             .catch(() => {
                 alert('오류가 발생했습니다!');
