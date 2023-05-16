@@ -8,8 +8,8 @@ import Sidebar from './components/Layout/Sidebar/Sidebar';
 import { LoginPage } from './pages/login/LoginPage';
 import {TimelinePage} from './pages/timeline/TimelinePage';
 import StudentState from './pages/studentstate/StudentState';
-import { EntireUserAddPage } from './pages/admin/entrire/EntireUserAddPage';
-// import Temp from './pages/admin/Temp/Temp';
+// import { EntireUserAddPage } from './pages/admin/entrire/EntireUserAddPage';
+import Temp from './pages/admin/Temp/Temp';
 import TeacherManagementPage from './pages/admin/teacher/TeacherManagementPage';
 import StudentManagementPage from './pages/admin/student/StudentManagementPage';
 import ParentManagementPage from './pages/admin/parent/ParentManagementPage';
@@ -36,8 +36,8 @@ export default function App() {
             <Route exact path="/" element={<LoginPage />} />
             <Route path="/TimelinePage" element={<TimelinePage />} />
             <Route path="/StudentState" element={<StudentState />} />
-            <Route path="/EntireUserAddPage" element={<EntireUserAddPage />} />
-            {/* <Route path="/Temp" element={<Temp />} /> */}
+            {/* <Route path="/EntireUserAddPage" element={<EntireUserAddPage />} /> */}
+            <Route path="/Temp" element={<Temp />} />
             <Route path="/ClassManagementPage" element={<ClassManagementPage />} />
             <Route path="/TeacherManagementPage" element={<TeacherManagementPage />} />
             <Route path="/StudentManagementPage" element={<StudentManagementPage />} />

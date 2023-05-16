@@ -35,7 +35,7 @@ const Menu = styled.div`
       { name: "사진첩", path: "/gallery" },
       { name: "간식 관리", path: "/snack" },
       // { name: "예산 관리", path: "/budget" },
-      { name: "사용자 추가", path: "/EntireUserAddPage" },
+      // { name: "사용자 추가", path: "/EntireUserAddPage" },
       // { name: "재무 관리", path: "/budget" }
 
 
