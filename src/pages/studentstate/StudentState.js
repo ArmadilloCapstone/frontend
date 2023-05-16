@@ -37,12 +37,6 @@ const StudentState = () => {
 
   // 더미데이터 -> 추후에 백엔드에서 학생 명단 받아오면 대체할 부분
   const [student, setStudent] = useState([
-    { id: "1", name: "김민수", state: "box1" },
-    { id: "2", name: "이민수", state: "box2" },
-    { id: "3", name: "박민수", state: "box1" },
-    { id: "4", name: "최민수", state: "box3" },
-    { id: "5", name: "정민수", state: "box1" },
-    { id: "6", name: "강민수", state: "box4" },
   ]);
 
   useEffect(() => {

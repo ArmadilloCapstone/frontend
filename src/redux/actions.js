@@ -7,7 +7,7 @@
     payload: data,
   });
   export const setUserOption = data => ({
-    type: "SET_USER_NAME",
+    type: "SET_USER_OPTION",
     payload: data,
   });
   export const setShowSignup = data => ({

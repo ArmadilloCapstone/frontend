@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
-import AdminSidebarItem from "./AdminSidebarItem";
+import SidebarItem from "./SidebarItem";
 import logo from "./logo.jpg"
 
 const Side = styled.div`
@@ -10,7 +10,6 @@ const Side = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 15%;
 `
 const Logo = styled.img`
   width: 150px;
@@ -27,11 +26,13 @@ const Menu = styled.div`
 
   function AdminSidebar() {
     const menus = [
-      { name: "사용자 추가", path: "/UserManagementPage" },
-      { name: "돌봄학급 관리", path: "/ClassManagement" },
-      { name: "돌봄교사 관리", path: "/TeacherManagement" },
-      { name: "학생 관리", path: "/StudentManagement" },
-      { name: "재무 관리", path: "/BudgetManagement" }
+      { name: "돌봄학급 관리", path: "/ClassManagementPage" },
+      { name: "돌봄교사 관리", path: "/TeacherManagementPage" },
+      { name: "돌봄학생 관리", path: "/StudentManagementPage" },
+      { name: "학부모 관리", path: "/ParentManagementPage" },
+      { name: "방과후수업 관리", path: "/AfterClassManagementPage" },
+      { name: "학생 시간표 관리", path: "/StudentScheduleManagementPage" },
+      { name: "사용자 추가", path: "/Temp" }
     ];
     return (
       <Side>
@@ -47,7 +48,7 @@ const Menu = styled.div`
                 to={menu.path}
                 key={index}
               >
-                <AdminSidebarItem
+                <SidebarItem
                   menu={menu}
                 />
               </NavLink>

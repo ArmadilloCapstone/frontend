@@ -24,26 +24,14 @@ const Menu = styled.div`
   align-items: center;
   `
 
-  function TeacherSidebar() {
+  function GuardianSidebar() {
     const menus = [
-      { name: "출결 관리", path: "/TimelinePage" },
-      { name: "학생 관리", path: "/StudentState" },
-      { name: "보호자 관리", path: "/guardian" },
-      // { name: "메신저", path: "/messanger" },
-      { name: "안내장", path: "/invitation" },
-      { name: "사진첩", path: "/gallery" },
-      { name: "간식 관리", path: "/snack" },
-      // { name: "예산 관리", path: "/budget" },
-      { name: "사용자 추가", path: "/EntireUserAddPage" },
-      // { name: "재무 관리", path: "/budget" }
-
-
-      // pickup
+        { name: "학부모 픽업", path: "/Pickup" }
     ];
     return (
       <Side>
         <Logo src={logo}></Logo>
-        <h6>교사 OOO님</h6>
+        <h6>관리자 OOO님</h6>
         <Menu>
           {menus.map((menu, index) => {
             return (
@@ -65,4 +53,4 @@ const Menu = styled.div`
     );
   }
 
-  export default TeacherSidebar;
+  export default GuardianSidebar;

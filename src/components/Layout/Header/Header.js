@@ -1,17 +1,33 @@
 //import DropdownMenu from "../Header/DropdownMenu"
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import { useEffect } from "react";
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { setUserId, setUserName, setUserOption } from '../../../redux/actions';
 import 'bootstrap/dist/css/bootstrap.css';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  
+  const user_id = useSelector((state => state.user_id))
+  const user_option = useSelector((state => state.user_option))
+
+  
+  const logoutClickHandler = () => {
+    dispatch(setUserId(""));
+    dispatch(setUserName(""));
+    dispatch(setUserOption(""));
+    localStorage.clear()
+    navigate('/');
+  };
 
   useEffect(() => {
-    dispatch(setUserId(localStorage.getItem('userid') || ""));
-    dispatch(setUserName(localStorage.getItem('username') || ""));
-    dispatch(setUserOption(localStorage.getItem('useroption') || ""));
+    // dispatch(setUserId(localStorage.getItem('userid') || ""));
+    // dispatch(setUserName(localStorage.getItem('username') || ""));
+    // dispatch(setUserOption(localStorage.getItem('useroption') || ""));
+    console.log(user_option)
+    console.log(localStorage.getItem('useroption') || "")
   }, []);
     return (
         <header className="header">
@@ -19,12 +35,18 @@ const Header = () => {
               <Navbar.Brand href="#home">DOLBOMEE</Navbar.Brand>
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav" className="ml-auto">
+                {
+                  user_id !== ""
+                  ?
                 <Nav className="ms-auto">
                   <NavDropdown title="내 정보" id="basic-nav-dropdown">
                     <NavDropdown.Item href="#action/1.1">비밀번호 변경</NavDropdown.Item>
                   </NavDropdown>
-                  <Nav.Link href="#home">로그아웃</Nav.Link>
+                  <Nav.Link onClick={logoutClickHandler}>로그아웃</Nav.Link>
                 </Nav>
+                :
+                null
+                }
               </Navbar.Collapse>
             </Navbar>
 

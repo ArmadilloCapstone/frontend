@@ -22,7 +22,7 @@ const handleSubmit = (e) => {
 
  async function fetchData() {
  const res = await axios.post(
-   '/entireUserFile',
+   '/student_submit_csv',
    formData,
    );
    console.log(res.data);
