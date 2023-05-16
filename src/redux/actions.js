@@ -6,6 +6,10 @@
     type: "SET_USER_NAME",
     payload: data,
   });
+  export const setUserOption = data => ({
+    type: "SET_USER_NAME",
+    payload: data,
+  });
   export const setShowSignup = data => ({
     type: "SET_SHOW_SIGNUP",
     payload: data,

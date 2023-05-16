@@ -21,9 +21,9 @@
     width: 22%;
 }
 .login_title{
-    margin-top: 300px;
+    margin-top: 50px;
     margin-bottom: 50px;
-    font-size: 50px;
+    font-size: 30px;
     text-align: center;
 }
 .login_box{
@@ -82,7 +82,9 @@ input{
     background-color: black;
     color: white;
 }
-
+.empty{
+    height: 181px;
+}
 
 
 
@@ -90,7 +92,7 @@ input{
 
 .signupClose{
     position: absolute;
-    top:270px;
+    top:70px;
     margin-left:50%;
     left: 470px;
     font-size: 30px;
@@ -108,7 +110,7 @@ input{
 .signup{
     width: 800px;
     position: absolute;
-    margin-top: 200px;
+    margin-top: 00px;
     background-color: white;
     margin-left:50%;
     left: -285px;
