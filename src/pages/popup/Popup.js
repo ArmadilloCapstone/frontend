@@ -1,6 +1,6 @@
-
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 const PopupContainer = ({ children }) => {
   const [popup, setPopup] = useState(null);
@@ -8,6 +8,7 @@ const PopupContainer = ({ children }) => {
   useEffect(() => {
       setPopup(children);
   }, []);
+
 
   return (
     <div style={{ position: 'fixed', bottom: 20, right: 20 }}>
@@ -38,35 +39,58 @@ const Popup = () => {
     // { id: "5", name: "강민수", grade: "1", gender: "M", pickupManName: "강미영" },
   ]);
   const [showPopup, setShowPopup] = useState(false);
+  const user_option = useSelector((state => state.user_option))
 
   const clickPopup = () =>{
     setShowPopup(false);
   }
 
   useEffect(() => {
-    var now = new Date();
-    const period = 1; // 1분주기
-    var lastsec = 60 - now.getSeconds(); // 남은 시간
-    setTimeout(() => {
-      setShowPopup(true);
-      axios.post("/sendPickupFormToTeacher").then((res)=>{
-        setShowPopup(res.data.map(function(el){
-          console.log(el);
-          var returnObj = {}
-          returnObj['id'] = el.studentId;
-          returnObj['name'] = el.studentName;
-          returnObj['grade'] = el.studentGrade;
-          returnObj['gender'] = (el.studentGender==1)?'M':'F';
-          returnObj['pickupManName'] = el.pickupManName;
-          return returnObj;
-        }));
-        
-      })
-      setInterval(() => {
-        setShowPopup(true);
-      }, period * 60 * 1000);
-    }, lastsec* 1000);
-      console.log(showPopup)
+    console.log(user_option);
+    if(user_option == 1){
+      var now = new Date();
+      const period = 1; // 1분주기
+      var lastsec = 60 - now.getSeconds(); // 남은 시간
+      setTimeout(() => {
+        axios.post("/sendPickupFormToTeacher").then((res)=>{
+          setStudents(res.data.map(function(el){
+            console.log(el);
+            var returnObj = {}
+            returnObj['id'] = el.studentId;
+            returnObj['name'] = el.studentName;
+            returnObj['grade'] = el.studentGrade;
+            returnObj['gender'] = (el.studentGender==1)?'M':'F';
+            returnObj['pickupManName'] = el.pickupManName;
+            return returnObj;
+          }));
+          if(res.data != null){
+            setShowPopup(true);
+            console.log("showPopup is true")
+          }
+
+        })
+        setInterval(() => {
+          axios.post("/sendPickupFormToTeacher").then((res)=>{
+            setStudents(res.data.map(function(el){
+              console.log(el);
+              var returnObj = {}
+              returnObj['id'] = el.studentId;
+              returnObj['name'] = el.studentName;
+              returnObj['grade'] = el.studentGrade;
+              returnObj['gender'] = (el.studentGender==1)?'M':'F';
+              returnObj['pickupManName'] = el.pickupManName;
+              return returnObj;
+            }));
+            if(res.data != null){
+              setShowPopup(true);
+              console.log("showPopup is true")
+            }
+
+          })
+        }, period * 60 * 1000);
+      }, lastsec* 1000);
+        console.log(showPopup)
+  }
   }, []);
 
 
@@ -83,7 +107,7 @@ const Popup = () => {
 
   return (
     <div className="Popup" onClick={clickPopup}>
-      {(students.length != 0 && showPopup)?<PopupContainer>{popupMessage}</PopupContainer>:null}
+      {(showPopup)?<PopupContainer>{popupMessage}</PopupContainer>:null}
     </div>
   );
 };
