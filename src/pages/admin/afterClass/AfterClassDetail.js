@@ -125,7 +125,7 @@ function AfterClassDetail() {
 
 <div className="container" style={{ width: "1200px" }}>
         <div className="my-3">
-          <p className="titletag">방과후수업 관리</p>
+          <p class="mb-5"style={{ fontSize: "40px", fontWeight: "bold" }}>방과후수업 관리</p>
           <div class="row mt-3" style={{ width: "100%", textAlign: "center" }}>
           <div class="col-sm-8">
             {/* <h4 class="text-center mt-4 mb-4" style={{width: "1200px"}}>방과후수업 리스트</h4> */}

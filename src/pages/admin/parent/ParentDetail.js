@@ -7,16 +7,25 @@ function ParentDetail() {
     {
       name: "김부모",
       phone_num: "010-2532-7535",
+      gender: "여자",
+      birth_date: "980101",
+      child_name: "김학생",
       child_id: "1"
     },
     {
       name: "이부모",
       phone_num: "010-2532-7535",
+      gender: "여자",
+      birth_date: "980101",
+      child_name: "이학생",
       child_id: "2"
     },
     {
       name: "하부모",
       phone_num: "010-1111-2222",
+      gender: "남자",
+      birth_date: "980101",
+      child_name: "하학생",
       child_id: "3"
     }
   ]);
@@ -25,11 +34,14 @@ function ParentDetail() {
     id: 0,
     name: "",
     phone_num: "",
-    child_id: ""
+    gender: "",
+    birth_date: "",
+    child_name: "",
+    child_id: null
   });
 
   //  Object Destructuring 
-  const { name, phone_num, child_id } = user;
+  const { name, phone_num, gender, birth_date, child_name, child_id } = user;
   const onInputChange = e => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
@@ -45,6 +57,15 @@ function ParentDetail() {
           returnObj['id'] = el.id;
           returnObj['name'] = el.name;
           returnObj['phone_num'] = el.phone_num;
+          if(el.gender === 1) {
+            returnObj['gender'] = "남자";
+          }
+          else if(el.gender === 2) {
+            returnObj['gender'] = "여자";
+          }
+          // returnObj['gender'] = el.gender;
+          returnObj['birth_date'] = el.birth_date;
+          returnObj['child_name'] = el.child_name;
           returnObj['child_id'] = el.child_id;
 
           return returnObj;
@@ -94,7 +115,7 @@ function ParentDetail() {
 
       <div className="container" style={{ width: "1200px" }}>
         <div className="my-3">
-          <p className="titletag">학부모 관리</p>
+          <p class="mb-5"style={{ fontSize: "40px", fontWeight: "bold" }}>학부모 관리</p>
           <div class="row mt-3" style={{ width: "100%", textAlign: "center" }}>
             <div class="col-sm-8">
               {/* <h4 class="text-center mt-4 mb-4" style={{ width: "1200px" }}>학부모 리스트</h4> */}
@@ -104,7 +125,10 @@ function ParentDetail() {
                   <tr>
                     <th>이름</th>
                     <th>연락처</th>
-                    <th>학생</th>
+                    <th>성별</th>
+                    <th>생년월일</th>
+                    <th>학생 이름</th>
+                    <th>학생 ID</th>
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -114,6 +138,9 @@ function ParentDetail() {
                     <tr>
                       <td>{name.name}</td>
                       <td>{name.phone_num}</td>
+                      <td>{name.gender}</td>
+                      <td>{name.birth_date}</td>
+                      <td>{name.child_name}</td>
                       <td>{name.child_id}</td>
                       <td>
                         <a className="text-danger mr-2"
@@ -142,17 +169,29 @@ function ParentDetail() {
               <form onSubmit={submitParentRecord}>
                 <h5 className="mb-3 ">추가할 학부모의 정보를 입력하세요.</h5>
                 <div class="form-group">
-                  <input type="text" class="form-control  mb-4" name="name" value={name} onChange={e => onInputChange(e)} placeholder="학부모 이름을 입력하세요." required="" />
+                  <input type="text" class="form-control  mb-4" name="name" value={name} onChange={e => onInputChange(e)} placeholder="이름을 입력하세요." required="" />
                 </div>
 
                 <div class="form-group">
-                  <input type="text" class="form-control mb-4" name="phone_num" value={phone_num} onChange={e => onInputChange(e)} placeholder="학부모 연락처를 입력하세요." required="" />
+                  <input type="text" class="form-control mb-4" name="phone_num" value={phone_num} onChange={e => onInputChange(e)} placeholder="연락처를 입력하세요." required="" />
                 </div>
 
                 <div class="form-group">
-                  <input type="text" class="form-control mb-4" name="child_id" value={child_id} onChange={e => onInputChange(e)} placeholder="학생을 입력하세요." required="" />
+                  <input type="text" class="form-control mb-4" name="gender" value={gender} onChange={e => onInputChange(e)} placeholder="성별을 입력하세요." required="" />
                 </div>
 
+                <div class="form-group">
+                  <input type="text" class="form-control  mb-4" name="birth_date" value={birth_date} onChange={e => onInputChange(e)} placeholder="생년월일을 입력하세요." required="" />
+                </div>
+
+                <div class="form-group">
+                  <input type="text" class="form-control mb-4" name="child_name" value={child_name} onChange={e => onInputChange(e)} placeholder="학생 이름을 입력하세요." required="" />
+                </div>
+
+                <div class="form-group">
+                  <input type="text" class="form-control mb-4" name="child_id" value={child_id} onChange={e => onInputChange(e)} placeholder="학생 ID를 입력하세요." required="" />
+                </div>
+                
                 <div style={{ width: "100%", textAlign: "center" }}>
                   <button type="submit" class="btn btn-primary btn-block mt-2">추가</button>
                 </div>
