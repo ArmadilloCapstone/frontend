@@ -5,7 +5,7 @@ import {BrowserRouter as Router, HashRouter, Route, Routes} from 'react-router-d
 import Header from './components/Layout/Header/Header';
 import TeacherSidebar from './components/Layout/Sidebar/TeacherSidebar';
 
-import { MainPage } from './pages/main/MainPage';
+import { LoginPage } from './pages/login/LoginPage';
 import {TimelinePage} from './pages/timeline/TimelinePage';
 import StudentState from './pages/studentstate/StudentState';
 // import { EntireUserAddPage } from './pages/admin/entrire/EntireUserAddPage';
@@ -33,7 +33,7 @@ export default function App() {
         <Center>
           <TeacherSidebar/>
           <Routes>
-            <Route exact path="/" element={<MainPage />} />
+            <Route exact path="/" element={<LoginPage />} />
             <Route path="/TimelinePage" element={<TimelinePage />} />
             <Route path="/StudentState" element={<StudentState />} />
             {/* <Route path="/EntireUserAddPage" element={<EntireUserAddPage />} /> */}
