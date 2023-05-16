@@ -7,38 +7,46 @@ function StudentDetail() {
   const [record, setRecord] = useState([
     {
       name: "김예지",
-      gender: "여자",
       grade: "1",
+      phone_num: "010-1111-2222",
+      gender: "여자",
+      class_id: "1",
       original_class_num: "2",
-      class_id: "1"
+      birth_date: "080101"
     },
     {
       name: "이아름",
+      grade: "1",
+      phone_num: "010-1111-2222",
       gender: "여자",
-      grade: "2",
-      original_class_num: "1",
-      class_id: "1"
+      class_id: "1",
+      original_class_num: "2",
+      birth_date: "080101"
     },
     {
       name: "하현우",
+      grade: "1",
+      phone_num: "010-1111-2222",
       gender: "남자",
-      grade: "3",
-      original_class_num: "3",
-      class_id: "1"
+      class_id: "1",
+      original_class_num: "2",
+      birth_date: "080101"
     }
   ]);
 
   const [user, setUser] = useState({
     id: 0,
     name: "",
+    grade: null,
+    phone_num: "",
     gender: "",
-    grade: "",
-    original_class_num: "",
-    class_id: ""
+    class_id: null,
+    original_class_num: null,
+    birth_date: ""
   });
 
   //  Object Destructuring 
-  const { name, gender, grade, original_class_num, class_id } = user;
+  const { name, grade, phone_num, gender, class_id, original_class_num, birth_date } = user;
   const onInputChange = e => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
@@ -53,10 +61,12 @@ function StudentDetail() {
           var returnObj = {}
           returnObj['id'] = el.id;
           returnObj['name'] = el.name;
-          returnObj['gender'] = el.gender;
           returnObj['grade'] = el.grade;
-          returnObj['original_class_num'] = el.original_class_num;
+          returnObj['phone_num'] = el.phone_num;
+          returnObj['gender'] = el.gender;
           returnObj['class_id'] = el.class_id;
+          returnObj['original_class_num'] = el.original_class_num;
+          returnObj['birth_date'] = el.birth_date;
 
           return returnObj;
         }));
@@ -104,10 +114,12 @@ function StudentDetail() {
                 <thead>
                   <tr>
                     <th>이름</th>
-                    <th>성별</th>
                     <th>학년</th>
-                    <th>기존 반</th>
+                    <th>연락처</th>
+                    <th>성별</th>
                     <th>돌봄 반</th>
+                    <th>기존 반</th>
+                    <th>생년월일</th>
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -116,10 +128,12 @@ function StudentDetail() {
                   {record.map((name) =>
                     <tr>
                       <td>{name.name}</td>
-                      <td>{name.gender}</td>
                       <td>{name.grade}</td>
-                      <td>{name.original_class_num}</td>
+                      <td>{name.phone_num}</td>
+                      <td>{name.gender}</td>
                       <td>{name.class_id}</td>
+                      <td>{name.original_class_num}</td>
+                      <td>{name.birth_date}</td>
                       <td>
                         <a className="text-danger mr-2"
                           onClick={() => {
@@ -151,19 +165,27 @@ function StudentDetail() {
                 </div>
 
                 <div class="form-group">
+                  <input type="text" class="form-control mb-4" name="grade" value={grade} onChange={e => onInputChange(e)} placeholder="학년을 입력하세요." required="" />
+                </div>
+
+                <div class="form-group">
+                  <input type="text" class="form-control mb-4" name="phone_num" value={phone_num} onChange={e => onInputChange(e)} placeholder="연락처를 입력하세요." required="" />
+                </div>
+
+                <div class="form-group">
                   <input type="text" class="form-control mb-4" name="gender" value={gender} onChange={e => onInputChange(e)} placeholder="성별을 입력하세요." required="" />
                 </div>
 
                 <div class="form-group">
-                  <input type="text" class="form-control mb-4" name="grade" value={grade} onChange={e => onInputChange(e)} placeholder="학년을 입력하세요." required="" />
+                  <input type="text" class="form-control  mb-4" name="class_id" value={class_id} onChange={e => onInputChange(e)} placeholder="돌봄 반을 입력하세요." required="" />
                 </div>
-
+                
                 <div class="form-group">
                   <input type="text" class="form-control mb-4" name="original_class_num" value={original_class_num} onChange={e => onInputChange(e)} placeholder="기존 반을 입력하세요." required="" />
                 </div>
 
                 <div class="form-group">
-                  <input type="text" class="form-control  mb-4" name="class_id" value={class_id} onChange={e => onInputChange(e)} placeholder="돌봄 반을 입력하세요." required="" />
+                  <input type="text" class="form-control  mb-4" name="birth_date" value={birth_date} onChange={e => onInputChange(e)} placeholder="생년월일을 입력하세요." required="" />
                 </div>
 
                 <div style={{ width: "100%", textAlign: "center" }}>
