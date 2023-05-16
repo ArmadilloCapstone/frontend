@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import SidebarItem from "./SidebarItem";
 import logo from "./logo.jpg"
+import { useSelector } from 'react-redux';
 
 const Side = styled.div`
   display: flex;
@@ -34,10 +35,11 @@ const Menu = styled.div`
       { name: "학생 시간표 관리", path: "/StudentScheduleManagementPage" },
       { name: "사용자 추가", path: "/Temp" }
     ];
+    const user_name = useSelector((state => state.user_name))
     return (
       <Side>
         <Logo src={logo}></Logo>
-        <h6>관리자 OOO님</h6>
+        <h6>관리자 {user_name}님</h6>
         <Menu>
           {menus.map((menu, index) => {
             return (
