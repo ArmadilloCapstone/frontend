@@ -1,9 +1,12 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useState, useEffect } from "react";
+import Select from "react-select"
 import axios from "axios";
 // import { Link } from 'react-router-dom';
 
 function TeacherDetail() {
+  // let genderList = [{ value: "남자" }, { value: "여자" }];
+  // const [selectedValue, setSelectedValue] = useState("남자");
   const [record, setRecord] = useState([
     {
       id: 1,
@@ -11,7 +14,8 @@ function TeacherDetail() {
       phone_num: "010-2532-7535",
       gender: "여자",
       birth_date: "981211",
-      class_name: "돌봄A반"
+      class_name: "돌봄A반",
+      class_id: "1"
     },
     {
       id: 2,
@@ -19,7 +23,8 @@ function TeacherDetail() {
       phone_num: "010-1234-5678",
       gender: "남자",
       birth_date: "980219",
-      class_name: "돌봄A반"
+      class_name: "돌봄A반",
+      class_id: "1"
     },
     {
       id: 3,
@@ -27,7 +32,8 @@ function TeacherDetail() {
       phone_num: "010-1111-2222",
       gender: "남자",
       birth_date: "800512",
-      class_name: "돌봄A반"
+      class_name: "돌봄A반",
+      class_id: "1"
     },
     {
       id: 4,
@@ -35,7 +41,8 @@ function TeacherDetail() {
       phone_num: "010-3333-4444",
       gender: "여자",
       birth_date: "760115",
-      class_name: "돌봄A반"
+      class_name: "돌봄A반",
+      class_id: "1"
     }
   ]);
 
@@ -45,11 +52,12 @@ function TeacherDetail() {
     phone_num: "",
     gender: "",
     birth_date: "",
-    class_name: ""
+    class_name: "",
+    class_id: null
   });
 
   //  Object Destructuring 
-  const { name, phone_num, gender, birth_date, class_name } = user;
+  const { name, phone_num, gender, birth_date, class_name, class_id } = user;
   const onInputChange = e => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
@@ -65,9 +73,16 @@ function TeacherDetail() {
           returnObj['id'] = el.id;
           returnObj['name'] = el.name;
           returnObj['phone_num'] = el.phone_num;
-          returnObj['gender'] = el.gender;
+          if(el.gender === 1) {
+            returnObj['gender'] = "남자";
+          }
+          else if(el.gender === 2) {
+            returnObj['gender'] = "여자";
+          }
+          // returnObj['gender'] = el.gender;
           returnObj['birth_date'] = el.birth_date;
           returnObj['class_name'] = el.class_name;
+          returnObj['class_id'] = el.class_id;
 
           return returnObj;
         }));
@@ -118,7 +133,7 @@ function TeacherDetail() {
       {/* <h2 className="mb-10 mt-3">돌봄교사 관리</h2> */}
       <div className="container" style={{ width: "1200px" }}>
         <div className="my-3">
-          <p className="titletag">돌봄교사 관리</p>
+          <p class="mb-5" style={{ fontSize: "40px", fontWeight: "bold" }}>돌봄교사 관리</p>
           <div class="row mt-3" style={{ width: "100%", textAlign: "center" }}>
             <div class="col-sm-8">
               {/* <h4 class="text-center mt-4 mb-4" style={{ width: "1200px" }}>돌봄교사 리스트</h4> */}
@@ -130,7 +145,8 @@ function TeacherDetail() {
                     <th>연락처</th>
                     <th>성별</th>
                     <th>생년월일</th>
-                    <th>돌봄 반</th>
+                    <th>돌봄 반 이름</th>
+                    <th>돌봄 반 ID</th>
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -143,6 +159,7 @@ function TeacherDetail() {
                       <td>{name.gender}</td>
                       <td>{name.birth_date}</td>
                       <td>{name.class_name}</td>
+                      <td>{name.class_id}</td>
                       <td>
                         <a className="text-danger mr-2"
                           onClick={() => {
@@ -186,7 +203,11 @@ function TeacherDetail() {
                 </div>
 
                 <div class="form-group">
-                  <input type="text" class="form-control mb-4" name="class_name" value={class_name} onChange={e => onInputChange(e)} placeholder="담당 돌봄 반을 입력하세요." required="" />
+                  <input type="text" class="form-control mb-4" name="class_name" value={class_name} onChange={e => onInputChange(e)} placeholder="담당 돌봄 반 이름을 입력하세요." required="" />
+                </div>
+
+                <div class="form-group">
+                  <input type="text" class="form-control mb-4" name="class_id" value={class_id} onChange={e => onInputChange(e)} placeholder="담당 돌봄 반 ID를 입력하세요." required="" />
                 </div>
 
                 <div style={{ width: "100%", textAlign: "center" }}>
