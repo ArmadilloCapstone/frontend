@@ -3,7 +3,7 @@ import axios from 'axios';
 import checkImg from './check.png';
 import parentImg from './parent.png';
 import checkedImg from './checked.png';
-
+import { useSelector } from 'react-redux';
 
 // 필요 내용 : 버튼 클릭 시 백엔드에 현재 로그인된 학부모의 parentId(여기서 더미 데이터로 구현)를 전달
 
@@ -13,17 +13,26 @@ import checkedImg from './checked.png';
 // 20초마다 팝업이 요청을 하면 쌓인 내용을 팝업창이 가져옴
 
 
-const parentId = 1111;        // 더미 parentId
 
 
 const Pickup = () => {
   const [showContent, setShowContent] = useState(false);
+  const user_id = useSelector((state => state.user_id))
 
   const handleClick = () => {
 
     // 백엔드로 parentId 보내는 코드
+    axios.post("/requestParent", {
+      pickupManId : user_id
+    }).then((res)=>{
+      if(res.data == "success"){
+        setShowContent(true);    // 버튼 클릭 시 호출 완료를 보여줌
+      }
+      else{
+        alert("error")
+      }
+    })
 
-    setShowContent(true);    // 버튼 클릭 시 호출 완료를 보여줌
   };
 
   const imageSource = showContent ? checkedImg : parentImg;
@@ -64,7 +73,7 @@ const Pickup = () => {
       {showContent && (
         <div style={{ textAlign: 'center' }}>
           <div style={{ marginTop: '30px', marginLeft: '25px', fontSize: '30px' }}>호출 완료되었습니다.</div>
-            <button
+            {/* <button
             onClick={handleClick}       // 추후 메인 페이지로 돌아가는 handleClick2 구현 필요 (메인 페이지 구현 시)
             style={{
               marginLeft: '100px',
@@ -82,7 +91,7 @@ const Pickup = () => {
             }}
             >
             메인 페이지로 이동
-            </button>
+            </button> */}
         </div>
 
       )}

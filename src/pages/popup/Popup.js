@@ -1,18 +1,13 @@
 
+import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 
 const PopupContainer = ({ children }) => {
   const [popup, setPopup] = useState(null);
 
   useEffect(() => {
-    const timeoutId = setTimeout(() => {
       setPopup(children);
-    }, 3000);
-
-    return () => {
-      clearTimeout(timeoutId);
-    };
-  }, [children]);
+  }, []);
 
   return (
     <div style={{ position: 'fixed', bottom: 20, right: 20 }}>
@@ -36,12 +31,44 @@ const PopupContainer = ({ children }) => {
 
 const Popup = () => {
   const [students, setStudents] = useState([
-    { id: "1", name: "김민수", grade: "1", gender: "M", pickupManName: "김미영" },
-    { id: "2", name: "이민수", grade: "2", gender: "F", pickupManName: "이미영" },
-    { id: "3", name: "박민수", grade: "1", gender: "M", pickupManName: "박미영" },
-    { id: "4", name: "최민수", grade: "2", gender: "F", pickupManName: "최미영" },
-    { id: "5", name: "강민수", grade: "1", gender: "M", pickupManName: "강미영" },
+    // { id: "1", name: "김민수", grade: "1", gender: "M", pickupManName: "김미영" },
+    // { id: "2", name: "이민수", grade: "2", gender: "F", pickupManName: "이미영" },
+    // { id: "3", name: "박민수", grade: "1", gender: "M", pickupManName: "박미영" },
+    // { id: "4", name: "최민수", grade: "2", gender: "F", pickupManName: "최미영" },
+    // { id: "5", name: "강민수", grade: "1", gender: "M", pickupManName: "강미영" },
   ]);
+  const [showPopup, setShowPopup] = useState(false);
+
+  const clickPopup = () =>{
+    setShowPopup(false);
+  }
+
+  useEffect(() => {
+    var now = new Date();
+    const period = 1; // 1분주기
+    var lastsec = 60 - now.getSeconds(); // 남은 시간
+    setTimeout(() => {
+      setShowPopup(true);
+      axios.post("/sendPickupFormToTeacher").then((res)=>{
+        setShowPopup(res.data.map(function(el){
+          console.log(el);
+          var returnObj = {}
+          returnObj['id'] = el.studentId;
+          returnObj['name'] = el.studentName;
+          returnObj['grade'] = el.studentGrade;
+          returnObj['gender'] = (el.studentGender==1)?'M':'F';
+          returnObj['pickupManName'] = el.pickupManName;
+          return returnObj;
+        }));
+        
+      })
+      setInterval(() => {
+        setShowPopup(true);
+      }, period * 60 * 1000);
+    }, lastsec* 1000);
+      console.log(showPopup)
+  }, []);
+
 
   const popupMessage = students.map((student, index) => (
     <React.Fragment key={student.id}>
@@ -49,36 +76,14 @@ const Popup = () => {
         {student.name} 학생 <br />
         {student.grade}학년 / {student.gender} / 픽업자: {student.pickupManName}
       </div>
-      {index !== students.length - 1 && <hr />} {/* Add line if not the last student */}
+      {index !== students.length - 1 && <hr/>} {/* Add line if not the last student */}
     </React.Fragment>
   ));
   
 
   return (
-    <div className="Popup">
-      <PopupContainer>{popupMessage}</PopupContainer>
-
-      <button
-        onClick={() => {
-          const audio = new Audio('./sound.wav');
-          audio.load();
-          audio.play();
-        }}
-        style={{
-          position: 'fixed',
-          top: '95%',
-          left: '5%',
-          transform: 'translate(-50%, -50%)',
-          padding: '10px 20px',
-          backgroundColor: '#b5bfc1',
-          border: 'none',
-          borderRadius: '5px',
-          fontSize: '16px',
-          cursor: 'pointer',
-        }}
-      >
-        Alarm
-      </button>
+    <div className="Popup" onClick={clickPopup}>
+      {(students.length != 0 && showPopup)?<PopupContainer>{popupMessage}</PopupContainer>:null}
     </div>
   );
 };

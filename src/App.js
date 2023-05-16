@@ -17,6 +17,7 @@ import ClassManagementPage from './pages/admin/class/ClassManagementPage';
 import AfterClassManagementPage from './pages/admin/afterClass/AfterClassManagement';
 import StudentScheduleManagementPage from './pages/admin/studentSchedule/StudentScheduleManagement';
 import Pickup from './pages/pickup/Pickup';
+import Popup from './pages/popup/Popup';
 
 import Footer from './components/Layout/Footer/Footer';
 
@@ -48,6 +49,7 @@ export default function App() {
           </Routes>
         </Center>
         {/* <Footer /> */}
+        <Popup/>
       </HashRouter>
   );
 }

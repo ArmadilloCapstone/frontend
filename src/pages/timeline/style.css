@@ -90,7 +90,3 @@
   width: 1280px;
   margin: 0 auto;
 }
-
-#root > div > div:nth-child(2) > div.react-calendar-timeline.timeline > div.rct-header-root.sticky > div.rct-calendar-header > div:nth-child(1) > div:nth-child(1){
-  width: 3200px;
-}

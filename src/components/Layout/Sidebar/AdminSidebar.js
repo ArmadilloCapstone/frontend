@@ -33,7 +33,7 @@ const Menu = styled.div`
       { name: "학부모 관리", path: "/ParentManagementPage" },
       { name: "방과후수업 관리", path: "/AfterClassManagementPage" },
       { name: "학생 시간표 관리", path: "/StudentScheduleManagementPage" },
-      { name: "사용자 추가", path: "/Temp" }
+      { name: "사용자 추가", path: "/EntireUserAddPage" }
     ];
     const user_name = useSelector((state => state.user_name))
     return (
