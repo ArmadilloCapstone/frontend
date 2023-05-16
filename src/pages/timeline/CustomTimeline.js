@@ -156,7 +156,7 @@ function CustomTimeline() {
     for (let i=0; i < afterSchool.length; i++) {
       for (let j=0; j < studentSchedule.length; j++) {
         if (afterSchool[i].id === studentSchedule[j].class_id) {
-          arr.push(studentSchedule[j]);
+          arr.push( [j]);
         }
       }
     }
@@ -170,8 +170,10 @@ const setAfterSchoolItems = itemsForAfterSchool.map(obj => {
   let newList = {};
   newList['student_id'] = obj.student_id;
   newList['seed'] = obj.class_id;
-  newList['start_time'] = moment(defaultTimeStart).add(after_school_class[obj.class_id-1].start_time, 'h');
-  newList['end_time'] = moment(defaultTimeStart).add(after_school_class[obj.class_id-1].end_time, 'h');
+  console.log(obj);
+  console.log(after_school_class);
+  newList['start_time'] = moment(defaultTimeStart).add(after_school_class.find((el) => el.class_id == obj.class_id).start_time, 'h');
+  newList['end_time'] = moment(defaultTimeStart).add(after_school_class.find((el) => el.class_id == obj.class_id).end_time, 'h');
 
   return newList;
 });

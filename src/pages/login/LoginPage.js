@@ -14,10 +14,10 @@ export const LoginPage = () => {
   return (
     <div className='login_page'>
       {showSignup?<div class="blur"></div> : null}
-      <LoginForm title="돌봄교사"/>
-      <LoginForm title="학부모" />
-      <LoginForm title="보호자" />
-      <LoginForm title="관리자" />
+      <LoginForm option="1" title="돌봄교사"/>
+      <LoginForm option="2" title="학부모" />
+      <LoginForm option="3" title="보호자" />
+      <LoginForm option="4" title="관리자" />
       {showSignup?<span class="signupClose" onClick={clickClose}>X</span> : null}
       {showSignup?<SignupForm/> : null}
     </div>
