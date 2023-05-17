@@ -16,6 +16,12 @@ function Temp() {
                 </ul>
             </div>
             <FileUpload />
+            {/* <FileUpload />
+            <FileUpload />
+            <FileUpload />
+            <FileUpload />
+            <FileUpload />
+            <FileUpload /> */}
         </div>
     );
 }

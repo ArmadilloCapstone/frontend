@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import UploadService from "./FileUploadService";
 
-const UploadFiles = () => {
+const FileUpload = () => {
   const [selectedFiles, setSelectedFiles] = useState(undefined);
   const [progressInfos, setProgressInfos] = useState({ val: [] });
   const [message, setMessage] = useState([]);
@@ -19,7 +19,7 @@ const UploadFiles = () => {
     setProgressInfos({ val: [] });
   };
 
-  const upload = (idx, file) => {
+  const IndividualUpload = (idx, file) => {
     let _progressInfos = [...progressInfosRef.current.val];
     return UploadService.upload(file, (event) => {
       _progressInfos[idx].percentage = Math.round(
@@ -53,7 +53,7 @@ const UploadFiles = () => {
       val: _progressInfos,
     }
 
-    const uploadPromises = files.map((file, i) => upload(i, file));
+    const uploadPromises = files.map((file, i) => IndividualUpload(i, file));
 
     Promise.all(uploadPromises)
       .then(() => UploadService.getFiles())
@@ -128,4 +128,4 @@ const UploadFiles = () => {
   );
 };
 
-export default UploadFiles;
+export default FileUpload;
