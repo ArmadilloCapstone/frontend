@@ -220,6 +220,7 @@ function allItems(){
 }
 
 let sortedAllItem = allItems();// student_id 기준으로 정렬
+console.log(sortedAllItem);
 
 /* 타임라인에 나타내기 위한 형태로 설정 */
 let id = 1;
