@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import moment from "moment";
 import 'moment/locale/ko';
+import randomColor from "randomcolor";
 
 import Timeline, {
   TimelineHeaders,
@@ -26,8 +27,8 @@ var keys = {
 
 function CustomTimeline() {
   // 초기 타임라인 시간 범위 설정
-  const defaultTimeStart = moment().startOf('day');
-  const defaultTimeEnd = moment().endOf('day');
+  const defaultTimeStart = moment().startOf("day").toDate();
+  const defaultTimeEnd = moment().startOf("day").add(1, "day").toDate();
 
   const defaultTimeRange = defaultTimeEnd - defaultTimeStart;
 
@@ -86,7 +87,7 @@ function CustomTimeline() {
 
             var returnObj = {}
             returnObj['student_id'] = el.student_id;
-            returnObj['seed'] = 0;
+            returnObj['seed'] = '돌봄';
             if(moment().day() === 1) {
               returnObj['start_time'] = moment(defaultTimeStart).add(el.entry_1, 'h');
               returnObj['end_time'] = moment(defaultTimeStart).add(el.off_1, 'h');
@@ -123,7 +124,14 @@ function CustomTimeline() {
           setAfter_school_class(response.data.filter(function(el, idx){
 
             if(moment().day() === el.day) {
-              return el;
+              var returnObj = {}
+              returnObj['id'] = el.id;
+              returnObj['seed'] = el.class_name;
+              returnObj['class_name'] = el.class_name;
+              returnObj['start_time'] = el.start_time;
+              returnObj['end_time'] = el.end_time;
+              returnObj['end_time'] = el.day;
+              // return el;
             }
           }));
         }).catch(function(reason){
@@ -156,7 +164,11 @@ function CustomTimeline() {
     for (let i=0; i < afterSchool.length; i++) {
       for (let j=0; j < studentSchedule.length; j++) {
         if (afterSchool[i].id === studentSchedule[j].class_id) {
-          arr.push( studentSchedule[j]);
+          // var returnObj = {}
+          // returnObj['student_id'] = studentSchedule.student_id;
+          // returnObj['class_name'] = afterSchool.class_name;
+          arr.push({student_id: studentSchedule.student_id, class_name: afterSchool.class_name});
+          // arr.push( studentSchedule[j]);
         }
       }
     }
@@ -169,7 +181,8 @@ const itemsForAfterSchool = afterSchoolStudentsList(after_school_class, student_
 const setAfterSchoolItems = itemsForAfterSchool.map(obj => {
   let newList = {};
   newList['student_id'] = obj.student_id;
-  newList['seed'] = obj.class_id;
+  newList['seed'] = obj.class_name;
+  newList['class_name'] = obj.class_name;
   console.log(obj);
   console.log(after_school_class);
   newList['start_time'] = moment(defaultTimeStart).add(after_school_class.find((el) => el.class_id === obj.id).start_time, 'h');
@@ -219,10 +232,16 @@ const setGroup = (el, i, ary, student_id) =>
     itemProps: {
       style: {
         color: "black",
-        background: ary[i].seed === 0 ? "rgb(251, 103, 128)"
-          : (ary[i].seed === 1 || ary[i].seed === 2) ? "rgba(46, 133, 248, 0.932)"
-          : (ary[i].seed === 3 || ary[i].seed === 4) ? " rgb(91, 227, 67)"
-          : "rgb(243, 252, 0)",
+        backgroundColor: randomColor({
+          luminosity: "light",
+          seed: ary[i].seed,
+          format: "rgba",
+          // alpha: 0.6
+        }),
+        // background: ary[i].seed === 0 ? "rgb(251, 103, 128)"
+        //   : (ary[i].seed === 1 || ary[i].seed === 2) ? "rgba(46, 133, 248, 0.932)"
+        //   : (ary[i].seed === 3 || ary[i].seed === 4) ? " rgb(91, 227, 67)"
+        //   : "rgb(243, 252, 0)",
         textAlign: "center"
         },
     },
@@ -277,6 +296,27 @@ function individualItems() {
 
 let items = individualItems();
 
+function makeButtons() {
+  <div>
+    {setAfterSchoolItems.map((el) =>
+    <button id = "subjectButtons" style= {{
+      color: "black",
+      backgroundColor: randomColor({
+        luminosity: "light",
+        seed: el.seed,
+        format: "rgba",
+        // alpha: 0.6
+      }),
+      // background: ary[i].seed === 0 ? "rgb(251, 103, 128)"
+      //   : (ary[i].seed === 1 || ary[i].seed === 2) ? "rgba(46, 133, 248, 0.932)"
+      //   : (ary[i].seed === 3 || ary[i].seed === 4) ? " rgb(91, 227, 67)"
+      //   : "rgb(243, 252, 0)",
+      textAlign: "center"
+    }}>{el.seed}</button>
+    )}
+  </div>
+}
+
 return (
   <div>
   {/* <Detail></Detail>   */}
@@ -320,12 +360,13 @@ return (
     </TimelineMarkers>
   </Timeline>
 
-  <div>
+  <makeButtons />
+  {/* <div>
   <button id = "subjectButtons" class="dolbom">돌봄교실</button>
   <button id = "subjectButtons" class="art">미술</button>
   <button id = "subjectButtons" class="music">음악</button>
   <button id = "subjectButtons" class="sport">운동</button>
-  </div>
+  </div> */}
 
   </div>
 
