@@ -51,7 +51,7 @@ const Popup = () => {
       var now = new Date();
       //const period = 1; // 1분주기
       //var lastsec = 60 - now.getSeconds(); // 남은 시간
-      const period = 0.1;
+      const period = 0.333;
       var lastsec = 1;
       setTimeout(() => {
         axios.post("/sendPickupFormToTeacher").then((res)=>{
