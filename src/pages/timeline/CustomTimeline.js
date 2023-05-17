@@ -80,9 +80,9 @@ function CustomTimeline() {
   useEffect( () => {
     axios.post('/studentTimeFindAll')
         .then(function(response){
+          console.log("학생 입퇴실 데이터");
           console.log(response.data);
           setStudent_time(response.data.map(function(el, idx){
-            console.log(el);
 
             var returnObj = {}
             returnObj['student_id'] = el.student_id;
@@ -107,7 +107,6 @@ function CustomTimeline() {
               returnObj['start_time'] = moment(defaultTimeStart).add(el.entry_5, 'h');
               returnObj['end_time'] = moment(defaultTimeStart).add(el.off_5, 'h');
             }
-            console.log(returnObj)
             return returnObj;
           }));
         }).catch(function(reason){
@@ -119,9 +118,9 @@ function CustomTimeline() {
   useEffect( () => {
     axios.post('/AfterSchoolClassFindAll')
         .then(function(response){
+          console.log("방과후교실 목록 데이터");
           console.log(response.data);
           setAfter_school_class(response.data.filter(function(el, idx){
-            console.log(el);
 
             if(moment().day() === el.day) {
               return el;
@@ -136,6 +135,7 @@ function CustomTimeline() {
   useEffect( () => {
     axios.post('/studentScheduleFindAll')
         .then(function(response){
+          console.log("학생 방과후교실 시간표 데이터");
           console.log(response.data);
           setStudent_schedule(response.data.map(function(el, idx){
             console.log(el);

@@ -16,6 +16,7 @@ import ParentManagementPage from './pages/admin/parent/ParentManagementPage';
 import ClassManagementPage from './pages/admin/class/ClassManagementPage';
 import AfterClassManagementPage from './pages/admin/afterClass/AfterClassManagement';
 import StudentScheduleManagementPage from './pages/admin/studentSchedule/StudentScheduleManagement';
+import StudentTimeManagementPage from './pages/admin/studentTime/studentTimeManagementPage';
 import Pickup from './pages/pickup/Pickup';
 import Popup from './pages/popup/Popup';
 
@@ -45,6 +46,7 @@ export default function App() {
             <Route path="/ParentManagementPage" element={<ParentManagementPage />} />
             <Route path="/AfterClassManagementPage" element={<AfterClassManagementPage />} />
             <Route path="/StudentScheduleManagementPage" element={<StudentScheduleManagementPage />} />
+            <Route path="/StudentTimeManagementPage" element={<StudentTimeManagementPage />} />
             <Route path="/Pickup" element={<Pickup />} />
           </Routes>
         </Center>

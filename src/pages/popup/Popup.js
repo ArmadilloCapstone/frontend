@@ -49,8 +49,10 @@ const Popup = () => {
     console.log(user_option);
     if(user_option == 1){
       var now = new Date();
-      const period = 1; // 1분주기
-      var lastsec = 60 - now.getSeconds(); // 남은 시간
+      //const period = 1; // 1분주기
+      //var lastsec = 60 - now.getSeconds(); // 남은 시간
+      const period = 0.1;
+      var lastsec = 1;
       setTimeout(() => {
         axios.post("/sendPickupFormToTeacher").then((res)=>{
           setStudents(res.data.map(function(el){
@@ -107,7 +109,7 @@ const Popup = () => {
 
   return (
     <div className="Popup" onClick={clickPopup}>
-      {(showPopup)?<PopupContainer>{popupMessage}</PopupContainer>:null}
+      {(showPopup && (students.length != 0))?<PopupContainer>{popupMessage}</PopupContainer>:null}
     </div>
   );
 };

@@ -30,6 +30,7 @@ export const LoginForm = (props) => {
 
   const clickSignup = () => {
     dispatch(setShowSignup(!showSignup));
+    props.setUserOption(props.option);
   };
 
   const clickLogin = () => {
