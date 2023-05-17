@@ -3,32 +3,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 function ParentDetail() {
-  const [record, setRecord] = useState([
-    {
-      name: "김부모",
-      phone_num: "010-2532-7535",
-      gender: "여자",
-      birth_date: "980101",
-      child_name: "김학생",
-      child_id: "1"
-    },
-    {
-      name: "이부모",
-      phone_num: "010-2532-7535",
-      gender: "여자",
-      birth_date: "980101",
-      child_name: "이학생",
-      child_id: "2"
-    },
-    {
-      name: "하부모",
-      phone_num: "010-1111-2222",
-      gender: "남자",
-      birth_date: "980101",
-      child_name: "하학생",
-      child_id: "3"
-    }
-  ]);
+  const [record, setRecord] = useState([]);
 
   const [user, setUser] = useState({
     id: 0,

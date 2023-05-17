@@ -6,44 +6,7 @@ import axios from "axios";
 function TeacherDetail() {
   // let genderList = [{ value: "남자" }, { value: "여자" }];
   // const [selectedValue, setSelectedValue] = useState("남자");
-  const [record, setRecord] = useState([
-    {
-      id: 1,
-      name: "황수빈",
-      phone_num: "010-2532-7535",
-      gender: "여자",
-      birth_date: "981211",
-      class_name: "돌봄A반",
-      class_id: "1"
-    },
-    {
-      id: 2,
-      name: "김정우",
-      phone_num: "010-1234-5678",
-      gender: "남자",
-      birth_date: "980219",
-      class_name: "돌봄A반",
-      class_id: "1"
-    },
-    {
-      id: 3,
-      name: "이태영",
-      phone_num: "010-1111-2222",
-      gender: "남자",
-      birth_date: "800512",
-      class_name: "돌봄A반",
-      class_id: "1"
-    },
-    {
-      id: 4,
-      name: "박영인",
-      phone_num: "010-3333-4444",
-      gender: "여자",
-      birth_date: "760115",
-      class_name: "돌봄A반",
-      class_id: "1"
-    }
-  ]);
+  const [record, setRecord] = useState([]);
 
   const [user, setUser] = useState({
     id: 0,

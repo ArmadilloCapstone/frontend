@@ -3,32 +3,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 function AfterClassDetail() {
-  const [record, setRecord] = useState([
-    {
-      class_name: "종이접기A",
-      start_time: "14:00",
-      end_time: "16:00",
-      day: "1(월)"
-    },
-    {
-        class_name: "종이접기B",
-        start_time: "14:00",
-        end_time: "16:00",
-        day: "3(수)"
-    },
-    {
-        class_name: "중국어A",
-        start_time: "13:00",
-        end_time: "15:00",
-        day: "2(화)"
-      },
-      {
-          class_name: "중국어B",
-          start_time: "13:00",
-          end_time: "15:00",
-          day: "5(금)"
-      },
-  ]);
+  const [record, setRecord] = useState([]);
 
   const [user, setUser] = useState({
     id: 0,

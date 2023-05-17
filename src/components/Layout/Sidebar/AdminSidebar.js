@@ -38,7 +38,7 @@ const Menu = styled.div`
     return (
       <Side>
         <Logo src={logo}></Logo>
-        <h6>관리자 OOO님</h6>
+        <h6>관리자님</h6>
         <Menu>
           {menus.map((menu, index) => {
             return (

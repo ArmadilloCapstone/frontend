@@ -3,23 +3,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 function ClassDetail() {
-  const [record, setRecord] = useState([
-    {
-      class_name: "돌봄1반",
-      class_num: 1,
-      year_seme: "2023-1"
-    },
-    {
-      class_name: "돌봄2반",
-      class_num: 2,
-      year_seme: "2023-1"
-    },
-    {
-      class_name: "돌봄3반",
-      class_num: 3,
-      year_seme: "2023-1"
-    }
-  ]);
+  const [record, setRecord] = useState([]);
 
   const [user, setUser] = useState({
     id: 0,

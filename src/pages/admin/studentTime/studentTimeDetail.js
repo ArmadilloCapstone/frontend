@@ -3,47 +3,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 function StudentTimeDetail() {
-    const [record, setRecord] = useState([
-        {
-            student_id: "20230001",
-            entry_1: "12:00:00",
-            off_1: "18:00:00",
-            entry_2: "12:00:00",
-            off_2: "18:00:00",
-            entry_3: "12:00:00",
-            off_3: "18:00:00",
-            entry_4: "12:00:00",
-            off_4: "18:00:00",
-            entry_5: "12:00:00",
-            off_5: "18:00:00"
-        },
-        {
-            student_id: "20230002",
-            entry_1: "12:00:00",
-            off_1: "18:00:00",
-            entry_2: "12:00:00",
-            off_2: "18:00:00",
-            entry_3: "12:00:00",
-            off_3: "18:00:00",
-            entry_4: "12:00:00",
-            off_4: "18:00:00",
-            entry_5: "12:00:00",
-            off_5: "18:00:00"
-        },
-        {
-            student_id: "20230003",
-            entry_1: "12:00:00",
-            off_1: "18:00:00",
-            entry_2: "12:00:00",
-            off_2: "18:00:00",
-            entry_3: "12:00:00",
-            off_3: "18:00:00",
-            entry_4: "12:00:00",
-            off_4: "18:00:00",
-            entry_5: "12:00:00",
-            off_5: "18:00:00"
-        }
-    ]);
+    const [record, setRecord] = useState([]);
 
     const [user, setUser] = useState({
         id: 0,
