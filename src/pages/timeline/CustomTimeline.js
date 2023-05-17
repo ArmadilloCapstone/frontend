@@ -161,13 +161,16 @@ function CustomTimeline() {
   /* 학생들 중 오늘의 방과후수업 목록 포함되어 있는 학생 목록 추출  */
   function afterSchoolStudentsList(afterSchool, studentSchedule) {
     let arr = [];
+    const returnObj = {};
     for (let i=0; i < afterSchool.length; i++) {
       for (let j=0; j < studentSchedule.length; j++) {
         if (afterSchool[i].id === studentSchedule[j].class_id) {
-          // var returnObj = {}
+          // const returnObj = {}
+          returnObj['student_id'] = studentSchedule.student_id;
+          returnObj['class_name'] = afterSchool.class_name;
           // returnObj['student_id'] = studentSchedule.student_id;
           // returnObj['class_name'] = afterSchool.class_name;
-          arr.push({student_id: studentSchedule.student_id, class_name: afterSchool.class_name});
+          arr.push({...returnObj});
           // arr.push( studentSchedule[j]);
         }
       }
@@ -176,7 +179,7 @@ function CustomTimeline() {
   }
 
 const itemsForAfterSchool = afterSchoolStudentsList(after_school_class, student_schedule);
-
+console.log(itemsForAfterSchool);
 /* 학생의 id를 포함한 방과후수업 목록을 item 형태로 설정 */
 const setAfterSchoolItems = itemsForAfterSchool.map(obj => {
   let newList = {};
