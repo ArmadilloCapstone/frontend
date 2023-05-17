@@ -236,12 +236,12 @@ const setGroup = (el, i, ary, student_id) =>
           // : (ary[i].seed === 1 || ary[i].seed === 2) ? "rgba(46, 133, 248, 0.932)"
           // : (ary[i].seed === 3 || ary[i].seed === 4) ? " rgb(91, 227, 67)"
           : "rgb(243, 252, 0)",
-        backgroundColor: randomColor({
-          luminosity: "light",
-          seed: ary[i].seed,
-          format: "rgba",
-          // alpha: 0.6
-        }),
+        // backgroundColor: randomColor({
+        //   luminosity: "light",
+        //   seed: ary[i].seed,
+        //   format: "rgba",
+        //   // alpha: 0.6
+        // }),
         // background: ary[i].seed === 0 ? "rgb(251, 103, 128)"
         //   : (ary[i].seed === 1 || ary[i].seed === 2) ? "rgba(46, 133, 248, 0.932)"
         //   : (ary[i].seed === 3 || ary[i].seed === 4) ? " rgb(91, 227, 67)"
