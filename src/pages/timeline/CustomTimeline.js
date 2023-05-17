@@ -135,7 +135,7 @@ const setAfterSchoolItems = itemsForAfterSchool.map(obj => {
   let newList = {};
   newList['student_id'] = obj.student_id;
   newList['seed'] = obj.class_id;
-  newList['class_name'] = obj.class_name;
+  // newList['class_name'] = obj.class_name;
   console.log(obj);
   console.log(after_school_class);
   newList['start_time'] = moment(defaultTimeStart).add(after_school_class.find((el) => el.class_id === obj.id).start_time, 'h');
