@@ -113,7 +113,7 @@ const FileUpload = () => {
         </div>
       )}
 
-      <div className="card">
+      {/* <div className="card">
         <div className="card-header">추가된 파일 리스트</div>
         <ul className="list-group list-group-flush">
           {fileInfos &&
@@ -123,7 +123,7 @@ const FileUpload = () => {
               </li>
             ))}
         </ul>
-      </div>
+      </div> */}
     </div>
   );
 };

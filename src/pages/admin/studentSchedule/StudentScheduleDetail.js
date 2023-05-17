@@ -4,32 +4,7 @@ import axios from "axios";
 import { async } from 'q';
 
 function StudentScheduleDetail() {
-    const [record, setRecord] = useState([
-        {
-            name: "가가가",
-            student_id: "20230001",
-            class_name: "종이접기A",
-            class_id: "1"
-        },
-        {
-            name: "가가가",
-            student_id: "20230001",
-            class_name: "종이접기B",
-            class_id: "2"
-        },
-        {
-            name: "나나나",
-            student_id: "20230002",
-            class_name: "중국어A",
-            class_id: "3"
-        },
-        {
-            name: "나나나",
-            student_id: "20230002",
-            class_name: "중국어B",
-            class_id: "4"
-        }
-    ]);
+    const [record, setRecord] = useState([]);
 
     const [user, setUser] = useState({
         id: 0,

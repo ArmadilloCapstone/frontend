@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import moment from "moment";
 import 'moment/locale/ko';
+// import randomColor from "randomcolor";
 
 import Timeline, {
   TimelineHeaders,
@@ -26,49 +27,10 @@ var keys = {
 
 function CustomTimeline() {
   // 초기 타임라인 시간 범위 설정
-  const defaultTimeStart = moment().startOf('day');
-  const defaultTimeEnd = moment().endOf('day');
+  const defaultTimeStart = moment().startOf("day").toDate();
+  const defaultTimeEnd = moment().startOf("day").add(1, "day").toDate();
 
   const defaultTimeRange = defaultTimeEnd - defaultTimeStart;
-
-  // // 더미데이터 -> 추후에 백엔드에서 학생 명단 받아오면 대체할 부분
-  // const [student, setStudent] = useState([
-  //   {id: 1, name: "김예지", class_id: 1},
-  //   {id: 2, name: "이아름", class_id: 1},
-  //   {id: 3, name: "하현우", class_id: 1}
-  // ]);
-
-  // const [student_time, setStudent_time] = useState([
-  //   {student_id: 1,
-  //   entry1: "12:00", entry2: "12:00", entry3: "12:00", entry4: "12:00", entry5: "12:00",
-  //   off1: "18:00", off2: "18:00", off3: "18:00", off4: "18:00", off5: "18:00"},
-  //   {student_id: 2,
-  //   entry1: "13:00", entry2: "13:00", entry3: "13:00", entry4: "13:00", entry5: "13:00",
-  //   off1: "18:00", off2: "18:00", off3: "18:00", off4: "18:00", off5: "18:00"},
-  //   {student_id: 3,
-  //   entry1: "12:00", entry2: "12:00", entry3: "12:00", entry4: "12:00", entry5: "12:00",
-  //   off1: "17:00", off2: "17:00", off3: "17:00", off4: "17:00", off5: "17:00"}
-  // ]);
-
-  // const [after_school_class, setAfter_school_class] = useState([
-  //   {id: 1, class_name: "미술A", start_time: "14:00", end_time: "15:00", day: 1},
-  //   {id: 2, class_name: "미술B", start_time: "14:00", end_time: "15:00", day: 3},
-  //   {id: 3, class_name: "음악A", start_time: "13:00", end_time: "14:00", day: 2},
-  //   {id: 4, class_name: "음악B", start_time: "13:00", end_time: "14:00", day: 4},
-  //   {id: 5, class_name: "운동A", start_time: "15:00", end_time: "16:00", day: 1},
-  //   {id: 6, class_name: "운동B", start_time: "15:00", end_time: "16:00", day: 5}
-  // ]);
-
-  // const [student_schedule, setStudent_schedule] = useState([
-  //   {student_id: 1, class_id: 1},
-  //   {student_id: 1, class_id: 2},
-  //   {student_id: 1, class_id: 5},
-  //   {student_id: 1, class_id: 6}, // 1번 학생 스케줄
-  //   {student_id: 2, class_id: 3},
-  //   {student_id: 2, class_id: 4}, // 2번 학생 스케줄
-  //   {student_id: 3, class_id: 1},
-  //   {student_id: 3, class_id: 2}  // 3번 학생 스케줄
-  // ]);
 
   const [student, setStudent] = useState([]);
   const [student_time, setStudent_time] = useState([]);
@@ -123,6 +85,7 @@ function CustomTimeline() {
           setAfter_school_class(response.data.filter(function(el, idx){
 
             if(moment().day() === el.day) {
+              
               return el;
             }
           }));
@@ -153,10 +116,12 @@ function CustomTimeline() {
   /* 학생들 중 오늘의 방과후수업 목록 포함되어 있는 학생 목록 추출  */
   function afterSchoolStudentsList(afterSchool, studentSchedule) {
     let arr = [];
+    
     for (let i=0; i < afterSchool.length; i++) {
       for (let j=0; j < studentSchedule.length; j++) {
         if (afterSchool[i].id === studentSchedule[j].class_id) {
-          arr.push( studentSchedule[j]);
+          arr.push(studentSchedule[j]);
+          // arr.push( {student_id: studentSchedule[j].student_id, class_name: afterSchool[i].class_name});
         }
       }
     }
@@ -164,12 +129,13 @@ function CustomTimeline() {
   }
 
 const itemsForAfterSchool = afterSchoolStudentsList(after_school_class, student_schedule);
-
+console.log(itemsForAfterSchool);
 /* 학생의 id를 포함한 방과후수업 목록을 item 형태로 설정 */
 const setAfterSchoolItems = itemsForAfterSchool.map(obj => {
   let newList = {};
   newList['student_id'] = obj.student_id;
   newList['seed'] = obj.class_id;
+  // newList['class_name'] = obj.class_name;
   console.log(obj);
   console.log(after_school_class);
   newList['start_time'] = moment(defaultTimeStart).add(after_school_class.find((el) => el.class_id === obj.id).start_time, 'h');
@@ -207,6 +173,7 @@ function allItems(){
 }
 
 let sortedAllItem = allItems();// student_id 기준으로 정렬
+console.log(sortedAllItem);
 
 /* 타임라인에 나타내기 위한 형태로 설정 */
 let id = 1;
@@ -219,10 +186,21 @@ const setGroup = (el, i, ary, student_id) =>
     itemProps: {
       style: {
         color: "black",
-        background: ary[i].seed === 0 ? "rgb(251, 103, 128)"
-          : (ary[i].seed === 1 || ary[i].seed === 2) ? "rgba(46, 133, 248, 0.932)"
-          : (ary[i].seed === 3 || ary[i].seed === 4) ? " rgb(91, 227, 67)"
-          : "rgb(243, 252, 0)",
+        background: ary[i].seed === 0 ? "rgb(251, 103, 128)" : "rgb(243, 252, 0)",
+        
+          // : (ary[i].seed === 1 || ary[i].seed === 2) ? "rgba(46, 133, 248, 0.932)"
+          // : (ary[i].seed === 3 || ary[i].seed === 4) ? " rgb(91, 227, 67)"
+          // : "rgb(243, 252, 0)",
+        // backgroundColor: randomColor({
+        //   luminosity: "light",
+        //   seed: ary[i].seed,
+        //   format: "rgba",
+        //   // alpha: 0.6
+        // }),
+        // background: ary[i].seed === 0 ? "rgb(251, 103, 128)"
+        //   : (ary[i].seed === 1 || ary[i].seed === 2) ? "rgba(46, 133, 248, 0.932)"
+        //   : (ary[i].seed === 3 || ary[i].seed === 4) ? " rgb(91, 227, 67)"
+        //   : "rgb(243, 252, 0)",
         textAlign: "center"
         },
     },
@@ -322,9 +300,7 @@ return (
 
   <div>
   <button id = "subjectButtons" class="dolbom">돌봄교실</button>
-  <button id = "subjectButtons" class="art">미술</button>
-  <button id = "subjectButtons" class="music">음악</button>
-  <button id = "subjectButtons" class="sport">운동</button>
+  <button id = "subjectButtons" class="art">종이접기반B</button>
   </div>
 
   </div>

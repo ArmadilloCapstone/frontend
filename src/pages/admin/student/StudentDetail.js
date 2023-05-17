@@ -4,35 +4,7 @@ import axios from "axios";
 import { Link } from 'react-router-dom';
 
 function StudentDetail() {
-  const [record, setRecord] = useState([
-    {
-      name: "김예지",
-      grade: "1",
-      phone_num: "010-1111-2222",
-      gender: "여자",
-      class_id: "1",
-      original_class_num: "2",
-      birth_date: "080101"
-    },
-    {
-      name: "이아름",
-      grade: "1",
-      phone_num: "010-1111-2222",
-      gender: "여자",
-      class_id: "1",
-      original_class_num: "2",
-      birth_date: "080101"
-    },
-    {
-      name: "하현우",
-      grade: "1",
-      phone_num: "010-1111-2222",
-      gender: "남자",
-      class_id: "1",
-      original_class_num: "2",
-      birth_date: "080101"
-    }
-  ]);
+  const [record, setRecord] = useState([]);
 
   const [user, setUser] = useState({
     id: 0,

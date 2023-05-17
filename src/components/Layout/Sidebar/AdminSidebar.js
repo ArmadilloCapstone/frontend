@@ -32,13 +32,13 @@ const Menu = styled.div`
       { name: "돌봄학생 관리", path: "/StudentManagementPage" },
       { name: "학부모 관리", path: "/ParentManagementPage" },
       { name: "방과후수업 관리", path: "/AfterClassManagementPage" },
-      { name: "학생 입퇴실시간 관리", path: "/AfterClassManagementPage" },
+      { name: "학생 입퇴실시간 관리", path: "/StudentTimeManagementPage" },
       { name: "학생 시간표 관리", path: "/StudentScheduleManagementPage" }
     ];
     return (
       <Side>
         <Logo src={logo}></Logo>
-        <h6>관리자 OOO님</h6>
+        <h6>관리자님</h6>
         <Menu>
           {menus.map((menu, index) => {
             return (
