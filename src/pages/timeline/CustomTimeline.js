@@ -302,10 +302,10 @@ function makeButtons() {
     <button id = "subjectButtons" style= {{
       color: "black",
       backgroundColor: randomColor({
-        luminosity: "light",
-        seed: el.seed,
-        format: "rgba",
-        // alpha: 0.6
+      luminosity: "light",
+      seed: el.seed,
+      format: "rgba",
+      // alpha: 0.6
       }),
       // background: ary[i].seed === 0 ? "rgb(251, 103, 128)"
       //   : (ary[i].seed === 1 || ary[i].seed === 2) ? "rgba(46, 133, 248, 0.932)"
@@ -360,7 +360,25 @@ return (
     </TimelineMarkers>
   </Timeline>
 
-  <makeButtons />
+  <div>
+    {setAfterSchoolItems.map((el) =>
+    <button id = "subjectButtons" style= {{
+      color: "black",
+      backgroundColor: randomColor({
+      luminosity: "light",
+      seed: el.seed,
+      format: "rgba",
+      alpha: 0.6
+      }),
+      // background: ary[i].seed === 0 ? "rgb(251, 103, 128)"
+      //   : (ary[i].seed === 1 || ary[i].seed === 2) ? "rgba(46, 133, 248, 0.932)"
+      //   : (ary[i].seed === 3 || ary[i].seed === 4) ? " rgb(91, 227, 67)"
+      //   : "rgb(243, 252, 0)",
+      textAlign: "center"
+    }}>{el.seed}</button>
+    )}
+  </div>
+  {/* <makeButtons /> */}
   {/* <div>
   <button id = "subjectButtons" class="dolbom">돌봄교실</button>
   <button id = "subjectButtons" class="art">미술</button>
