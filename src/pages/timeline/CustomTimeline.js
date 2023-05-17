@@ -166,8 +166,8 @@ function CustomTimeline() {
       for (let j=0; j < studentSchedule.length; j++) {
         if (afterSchool[i].id === studentSchedule[j].class_id) {
           // const returnObj = {}
-          returnObj['student_id'] = studentSchedule.student_id;
-          returnObj['class_name'] = afterSchool.class_name;
+          returnObj['student_id'] = studentSchedule[j].student_id;
+          returnObj['class_name'] = afterSchool[i].class_name;
           // returnObj['student_id'] = studentSchedule.student_id;
           // returnObj['class_name'] = afterSchool.class_name;
           arr.push({...returnObj});
