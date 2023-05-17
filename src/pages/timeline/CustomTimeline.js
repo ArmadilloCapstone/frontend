@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import moment from "moment";
 import 'moment/locale/ko';
-import randomColor from "randomcolor";
+// import randomColor from "randomcolor";
 
 import Timeline, {
   TimelineHeaders,
@@ -32,45 +32,6 @@ function CustomTimeline() {
 
   const defaultTimeRange = defaultTimeEnd - defaultTimeStart;
 
-  // // 더미데이터 -> 추후에 백엔드에서 학생 명단 받아오면 대체할 부분
-  // const [student, setStudent] = useState([
-  //   {id: 1, name: "김예지", class_id: 1},
-  //   {id: 2, name: "이아름", class_id: 1},
-  //   {id: 3, name: "하현우", class_id: 1}
-  // ]);
-
-  // const [student_time, setStudent_time] = useState([
-  //   {student_id: 1,
-  //   entry1: "12:00", entry2: "12:00", entry3: "12:00", entry4: "12:00", entry5: "12:00",
-  //   off1: "18:00", off2: "18:00", off3: "18:00", off4: "18:00", off5: "18:00"},
-  //   {student_id: 2,
-  //   entry1: "13:00", entry2: "13:00", entry3: "13:00", entry4: "13:00", entry5: "13:00",
-  //   off1: "18:00", off2: "18:00", off3: "18:00", off4: "18:00", off5: "18:00"},
-  //   {student_id: 3,
-  //   entry1: "12:00", entry2: "12:00", entry3: "12:00", entry4: "12:00", entry5: "12:00",
-  //   off1: "17:00", off2: "17:00", off3: "17:00", off4: "17:00", off5: "17:00"}
-  // ]);
-
-  // const [after_school_class, setAfter_school_class] = useState([
-  //   {id: 1, class_name: "미술A", start_time: "14:00", end_time: "15:00", day: 1},
-  //   {id: 2, class_name: "미술B", start_time: "14:00", end_time: "15:00", day: 3},
-  //   {id: 3, class_name: "음악A", start_time: "13:00", end_time: "14:00", day: 2},
-  //   {id: 4, class_name: "음악B", start_time: "13:00", end_time: "14:00", day: 4},
-  //   {id: 5, class_name: "운동A", start_time: "15:00", end_time: "16:00", day: 1},
-  //   {id: 6, class_name: "운동B", start_time: "15:00", end_time: "16:00", day: 5}
-  // ]);
-
-  // const [student_schedule, setStudent_schedule] = useState([
-  //   {student_id: 1, class_id: 1},
-  //   {student_id: 1, class_id: 2},
-  //   {student_id: 1, class_id: 5},
-  //   {student_id: 1, class_id: 6}, // 1번 학생 스케줄
-  //   {student_id: 2, class_id: 3},
-  //   {student_id: 2, class_id: 4}, // 2번 학생 스케줄
-  //   {student_id: 3, class_id: 1},
-  //   {student_id: 3, class_id: 2}  // 3번 학생 스케줄
-  // ]);
-
   const [student, setStudent] = useState([]);
   const [student_time, setStudent_time] = useState([]);
   const [after_school_class, setAfter_school_class] = useState([]);
@@ -87,7 +48,7 @@ function CustomTimeline() {
 
             var returnObj = {}
             returnObj['student_id'] = el.student_id;
-            returnObj['seed'] = '돌봄';
+            returnObj['seed'] = 0;
             if(moment().day() === 1) {
               returnObj['start_time'] = moment(defaultTimeStart).add(el.entry_1, 'h');
               returnObj['end_time'] = moment(defaultTimeStart).add(el.off_1, 'h');
@@ -126,7 +87,7 @@ function CustomTimeline() {
             if(moment().day() === el.day) {
               var returnObj = {}
               returnObj['id'] = el.id;
-              returnObj['seed'] = el.class_name;
+              returnObj['seed'] = el.class_id;
               returnObj['class_name'] = el.class_name;
               returnObj['start_time'] = el.start_time;
               returnObj['end_time'] = el.end_time;
@@ -161,17 +122,12 @@ function CustomTimeline() {
   /* 학생들 중 오늘의 방과후수업 목록 포함되어 있는 학생 목록 추출  */
   function afterSchoolStudentsList(afterSchool, studentSchedule) {
     let arr = [];
-    const returnObj = {};
+    
     for (let i=0; i < afterSchool.length; i++) {
       for (let j=0; j < studentSchedule.length; j++) {
         if (afterSchool[i].id === studentSchedule[j].class_id) {
-          // const returnObj = {}
-          returnObj['student_id'] = studentSchedule[j].student_id;
-          returnObj['class_name'] = afterSchool[i].class_name;
-          // returnObj['student_id'] = studentSchedule.student_id;
-          // returnObj['class_name'] = afterSchool.class_name;
-          arr.push({...returnObj});
-          // arr.push( studentSchedule[j]);
+          arr.push(studentSchedule[j]);
+          // arr.push( {student_id: studentSchedule[j].student_id, class_name: afterSchool[i].class_name});
         }
       }
     }
@@ -184,7 +140,7 @@ console.log(itemsForAfterSchool);
 const setAfterSchoolItems = itemsForAfterSchool.map(obj => {
   let newList = {};
   newList['student_id'] = obj.student_id;
-  newList['seed'] = obj.class_name;
+  newList['seed'] = obj.class_id;
   newList['class_name'] = obj.class_name;
   console.log(obj);
   console.log(after_school_class);
@@ -236,7 +192,7 @@ const setGroup = (el, i, ary, student_id) =>
     itemProps: {
       style: {
         color: "black",
-        background: ary[i].seed === "돌봄" ? "rgb(251, 103, 128)" : "rgb(243, 252, 0)",
+        background: ary[i].seed === 0 ? "rgb(251, 103, 128)" : "rgb(243, 252, 0)",
         
           // : (ary[i].seed === 1 || ary[i].seed === 2) ? "rgba(46, 133, 248, 0.932)"
           // : (ary[i].seed === 3 || ary[i].seed === 4) ? " rgb(91, 227, 67)"
@@ -305,27 +261,6 @@ function individualItems() {
 
 let items = individualItems();
 
-function makeButtons() {
-  <div>
-    {setAfterSchoolItems.map((el) =>
-    <button id = "subjectButtons" style= {{
-      color: "black",
-      backgroundColor: randomColor({
-      luminosity: "light",
-      seed: el.seed,
-      format: "rgba",
-      // alpha: 0.6
-      }),
-      // background: ary[i].seed === 0 ? "rgb(251, 103, 128)"
-      //   : (ary[i].seed === 1 || ary[i].seed === 2) ? "rgba(46, 133, 248, 0.932)"
-      //   : (ary[i].seed === 3 || ary[i].seed === 4) ? " rgb(91, 227, 67)"
-      //   : "rgb(243, 252, 0)",
-      textAlign: "center"
-    }}>{el.seed}</button>
-    )}
-  </div>
-}
-
 return (
   <div>
   {/* <Detail></Detail>   */}
@@ -370,30 +305,9 @@ return (
   </Timeline>
 
   <div>
-    {setAfterSchoolItems.map((el) =>
-    <button id = "subjectButtons" style= {{
-      color: "black",
-      backgroundColor: randomColor({
-      luminosity: "light",
-      seed: el.seed,
-      format: "rgba",
-      alpha: 0.6
-      }),
-      // background: ary[i].seed === 0 ? "rgb(251, 103, 128)"
-      //   : (ary[i].seed === 1 || ary[i].seed === 2) ? "rgba(46, 133, 248, 0.932)"
-      //   : (ary[i].seed === 3 || ary[i].seed === 4) ? " rgb(91, 227, 67)"
-      //   : "rgb(243, 252, 0)",
-      textAlign: "center"
-    }}>{el.seed}</button>
-    )}
-  </div>
-  {/* <makeButtons /> */}
-  {/* <div>
   <button id = "subjectButtons" class="dolbom">돌봄교실</button>
-  <button id = "subjectButtons" class="art">미술</button>
-  <button id = "subjectButtons" class="music">음악</button>
-  <button id = "subjectButtons" class="sport">운동</button>
-  </div> */}
+  <button id = "subjectButtons" class="art">종이접기반B</button>
+  </div>
 
   </div>
 
