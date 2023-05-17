@@ -73,7 +73,7 @@ function StudentScheduleDetail() {
     const submitStudentScheduleRecord = async (e) => {
         e.preventDefault();
         e.target.reset();
-        await axios.post('/student_schedule', user);
+        await axios.post('/student_schedule_submit', user);
         alert('추가되었습니다!');
 
         loadStudentScheduleDetail();

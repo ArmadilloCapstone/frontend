@@ -34,7 +34,7 @@ export const SignupForm = (props) => {
       "phone_num" : phone_num,
       "user_id" : id,
       "user_pw" : pw,
-      "option" : props.option
+      "option" : (props.option - 0)
     }).then((res) => {
       console.log(res.data)
       if(res.data == "success"){

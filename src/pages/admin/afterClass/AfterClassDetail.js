@@ -103,7 +103,7 @@ function AfterClassDetail() {
     e.preventDefault();
     e.target.reset();
     
-    await axios.post('/after_school_class', user);
+    await axios.post('/after_school_class_submit', user);
     alert('추가되었습니다!');
 
     loadAfterClassDetail();

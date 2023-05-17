@@ -93,7 +93,7 @@ function ParentDetail() {
   const submitParentRecord = async (e) => {
     e.preventDefault();
     e.target.reset();
-    await axios.post('/parent', user);
+    await axios.post('/parent_submit', user);
     alert('추가되었습니다!');
 
     loadParentDetail();

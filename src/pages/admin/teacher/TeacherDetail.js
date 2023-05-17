@@ -108,7 +108,7 @@ function TeacherDetail() {
   const submitTeacherRecord = async (e) => {
     e.preventDefault();
     e.target.reset();
-    await axios.post('/teacher', user);
+    await axios.post('/teacher_submit', user);
     alert('추가되었습니다!');
 
     loadTeacherDetail();
