@@ -85,14 +85,8 @@ function CustomTimeline() {
           setAfter_school_class(response.data.filter(function(el, idx){
 
             if(moment().day() === el.day) {
-              var returnObj = {}
-              returnObj['id'] = el.id;
-              returnObj['seed'] = el.class_id;
-              returnObj['class_name'] = el.class_name;
-              returnObj['start_time'] = el.start_time;
-              returnObj['end_time'] = el.end_time;
-              returnObj['end_time'] = el.day;
-              // return el;
+              
+              return el;
             }
           }));
         }).catch(function(reason){
