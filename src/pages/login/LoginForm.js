@@ -5,21 +5,21 @@ import { setShowSignup, setUserId, setUserName, setUserOption } from '../../redu
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-
 export const LoginForm = (props) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
 
   const showSignup = useSelector((state => state.showSignup))
 
   const [serial, setSerial] = useState([]);
   const [id, setId] = useState([]);
   const [pw, setPw] = useState([]);
+  const [hovered, setHovered] = useState(false); // New state for hover
 
   const saveSerial = event => {
     setSerial(event.target.value);
   };
+
   const saveUserId = event => {
     setId(event.target.value);
   };
@@ -105,16 +105,29 @@ export const LoginForm = (props) => {
     }
   };
 
+  const loginTitleStyle = {
+    color: hovered ? "white" : "black", // Text color based on hover state
+    transition: "color 0.3s",
+  };
+
   return (
-      <div className='login_form'>
-        <div className='login_title'>{props.title}</div>
-        { (props.option === "3")
+    <div className='login_form'>
+      <div
+        className='login_title'
+        style={loginTitleStyle}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+      >
+        {props.title}
+      </div>
+      { (props.option === "3")
             ?
             <div className="login_box login_sid">
               <div className="login_name">일련번호</div>
               <input type="text" value ={serial} onChange={saveSerial}/>
             </div>
             :
+
             <div className="login_box login_sid">
               <div className="login_name">ID</div>
               <input type="text" value ={id} onChange={saveUserId}/>
@@ -136,4 +149,9 @@ export const LoginForm = (props) => {
         <div className="login_button" onClick={clickLogin}>로그인</div>
       </div>
   );
-}
+};
+
+
+
+
+

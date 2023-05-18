@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import SidebarItem from "./SidebarItem";
-import logo from "./logo.jpg"
+import logo from "./logo.png"
 
 const Side = styled.div`
   display: flex;
@@ -14,7 +14,6 @@ const Side = styled.div`
 const Logo = styled.img`
   width: 150px;
   height: 150px;
-  border-radius: 100%;
 `
 const Menu = styled.div`
   margin-top: 30px;

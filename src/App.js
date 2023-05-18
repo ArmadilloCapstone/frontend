@@ -20,7 +20,7 @@ import StudentTimeManagementPage from './pages/admin/studentTime/studentTimeMana
 import Pickup from './pages/pickup/Pickup';
 import Popup from './pages/popup/Popup';
 
-import Footer from './components/Layout/Footer/Footer';
+// import Footer from './components/Layout/Footer/Footer';
 
 const Center = styled.div`
   height: 92vh;
