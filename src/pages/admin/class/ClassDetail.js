@@ -69,12 +69,12 @@ function ClassDetail() {
   return (
     <section>
 
-      <div className="container" >
-        <div className="my-3">
-          <p class="mb-5">돌봄학급 관리</p>
-          <div class="row mt-3">
-              <table class="table">
-                <thead class="thead">
+      <div className="Ccontainer" >
+        <div className="Cmy-3">
+          <p className="Cmb-5">돌봄학급 관리</p>
+          <div className="Cmt-3">
+              <table className="Ctable">
+                <thead className="Cthead">
                     <th>학급 이름</th>
                     <th>학급 번호</th>
                     <th>연도-학기</th>
@@ -86,7 +86,7 @@ function ClassDetail() {
                       <td>{name.class_num}</td>
                       <td>{name.year_seme}</td>
                       <td>
-                        <a className="text-danger mr-2"
+                        <a className="text-danger Cmr-2"
                           onClick={() => {
                             const confirmBox = window.confirm(
                               "'" + name.class_name + "'" + " 학급을 정말 삭제하시겠습니까?"
@@ -105,24 +105,24 @@ function ClassDetail() {
               </table>
           </div>
 
-          <div class="col-sm-4">
-            <div className="mainbox mt-3">
+          <div class="Csm-4">
+            <div className="Cmainbox Cmt-3">
               <form onSubmit={submitClassRecord}>
-                <h5 className="mb-3 ">추가하실 돌봄학급의 정보를 입력하세요.</h5>
-                <div class="form-group">
-                  <input type="text" class="form-control  mb-4" name="class_name" value={class_name} onChange={e => onInputChange(e)} placeholder="학급 이름을 입력하세요." required="" />
+                <h5 className="Cmb-3 ">추가하실 돌봄학급의 정보를 입력하세요.</h5>
+                <div>
+                  <input type="text" class="Cmb-4" name="class_name" value={class_name} onChange={e => onInputChange(e)} placeholder="학급 이름을 입력하세요." required="" />
                 </div>
 
-                <div class="form-group">
-                  <input type="text" class="form-control mb-4" name="class_num" value={class_num} onChange={e => onInputChange(e)} placeholder="학급 번호를 입력하세요." required="" />
+                <div>
+                  <input type="text" class="Cmb-4" name="class_num" value={class_num} onChange={e => onInputChange(e)} placeholder="학급 번호를 입력하세요." required="" />
                 </div>
 
-                <div class="form-group">
-                  <input type="text" class="form-control mb-4" name="year_seme" value={year_seme} onChange={e => onInputChange(e)} placeholder="연도-학기를 입력하세요." required="" />
+                <div>
+                  <input type="text" class="Cmb-4" name="year_seme" value={year_seme} onChange={e => onInputChange(e)} placeholder="연도-학기를 입력하세요." required="" />
                 </div>
 
-                <div style={{ width: "100%", textAlign: "center", marginLeft: "-40px", marginTop: "80px"}}>
-                  <button type="submit" class="btn btn-primary btn-block mt-2">돌봄학급 추가</button>
+                <div style={{ width: "100%", textAlign: "center", marginLeft: "-40px", marginTop: "60px"}}>
+                  <button type="submit" class="btn Cbtn-primary Cmt-2">돌봄학급 추가</button>
                 </div>
               </form>
             </div>

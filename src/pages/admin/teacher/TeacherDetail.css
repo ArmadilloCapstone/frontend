@@ -1,64 +1,108 @@
 /* TeacherDetail.css */
 
-.container {
-    width: 1200px;
+.Tcontainer {
+  background-color: white;
+  padding: 25px;
+  width: 1200px;
+  margin-top: 70px;
+  margin-left: 25px;
+  border-radius: 20px;
+  border-color: white;
+  }
+
+.Tp-3 {
+  width: 800px;
+}
+
+  .Tmb-3 {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-size: 25px;
+    color: #7d7d7d;
+    padding-left: 180px;
+    width: 800px;
+    border-color: white;
   }
   
-  .mb-5 {
+  .Tmb-5 {
+    margin-bottom: 40px;
+    margin-left: 50px;
     font-size: 40px;
-    font-weight: bold;
+    border-color: white;
+  }
+
+  .Tmb-4 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    border-radius: 15px;
+    border-color: white;
+    text-align: center;
   }
   
-  .row {
+  .Trow {
     width: 100%;
     text-align: center;
   }
   
-  .col-sm-8 {
-    /* Adjust styles as needed */
-  }
-  
-  .table {
+  .Ttable {
     width: 1200px;
   }
   
-  .table th {
-    /* Adjust styles as needed */
+  .Ttable th {
+    background-color: white;
+    color: #12B560;
+    font-size: 30px;
+    margin-top: -30px;
+    margin-left: 0px;
+    border-color: white;
+
   }
   
-  .table td {
-    /* Adjust styles as needed */
+  .Tsm-4 {
+    width: 1200px;
+    height: 80%;
+    text-align: center;;
+    margin-left: 10px; 
+    margin-top: 50px;
+    border-color: white;
+    
   }
   
-  .col-sm-4 {
-    width: 100%;
-    text-align: center;
+  .Tbox {
+    background-color: #f2f2f2;
+    border-color: white;
+    border-radius: 20px;
+    height: 800px;
+    width: 1000px;
+    padding: 15px;
+    margin-left: 100px; 
   }
   
-  .box {
-    border: 1px solid #d0d0d0;
-    height: 100%;
-    width: 700px;
-    margin: auto;
+
+  .Tbtn-primary {
+    background-color: #12B560;
+    border: white;
+    border-radius: 15px;
+    width: 800px;
+    height: 60px;
+    font-size: 30px;
+    margin-top: 50px;
+    color: #555555;
   }
   
-  .form-group {
-    /* Adjust styles as needed */
+  .Tbtn-primary:hover {
+    background-color: #0f9443;
+    border: none;
+    border-radius: 15px;
+    width: 800px;
+    height: 60px;
+    font-size: 30px;
+    margin-top: 50px;
+    color: white
   }
   
-  .form-control {
-    /* Adjust styles as needed */
-  }
-  
-  .btn-primary {
-    /* Adjust styles as needed */
-  }
-  
-  .btn-block {
-    /* Adjust styles as needed */
-  }
-  
-  .mt-2 {
-    /* Adjust styles as needed */
+  .Tbtn-primary:focus {
+    box-shadow: 0 0 0 0.2rem rgba(18, 181, 96, 0.5);
   }
   
