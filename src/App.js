@@ -20,6 +20,7 @@ import AfterClassManagementPage from './pages/admin/afterClass/AfterClassManagem
 import StudentScheduleManagementPage from './pages/admin/studentSchedule/StudentScheduleManagement';
 import StudentTimeManagementPage from './pages/admin/studentTime/studentTimeManagementPage';
 import Pickup from './pages/pickup/Pickup';
+import GuardianPickup from './pages/pickup/GuardianPickup';
 import Popup from './pages/popup/Popup';
 
 // import Footer from './components/Layout/Footer/Footer';
@@ -76,16 +77,22 @@ export default function App() {
               <Route path="/StudentState" element={<LoginPage />} />
             }
             {/* <Route path="/EntireUserAddPage" element={<EntireUserAddPage />} /> */}
-            {/* 학부모/관리자 페이지 */}
+            {/* 학부모 페이지 */}
             {
               (user_option == "2")?
               <Route path="/ParentMain" element={<ParentMain />} />:
               <Route path="/ParentMain" element={<LoginPage />} />
             }
             {
-              (user_option == "2" | user_option == "3")?
+              (user_option == "2")?
               <Route path="/Pickup" element={<Pickup />} />:
               <Route path="/Pickup" element={<LoginPage />} />
+            }
+            {/* 보호자 페이지 */}
+            {
+              (user_option == "3")?
+              <Route path="/GuardianPickup" element={<GuardianPickup />} />:
+              <Route path="/GuardianPickup" element={<LoginPage />} />
             }
             {/* 관리자 페이지 */}
             {

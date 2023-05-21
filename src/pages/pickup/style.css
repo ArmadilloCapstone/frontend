@@ -1,0 +1,14 @@
+.studentList .student{
+    border : 3px solid #12B560;
+    border-radius: 5px;
+    margin-top: 20px;
+    height: 50px;
+    text-align: center;
+    font-size: 25px;
+    color : black;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.studentList .student.checked{
+    background-color: #12B560;
+}

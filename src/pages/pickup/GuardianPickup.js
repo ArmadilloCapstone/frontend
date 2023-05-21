@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import './style.css';
+import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import checkImg from './check.png';
 import parentImg from './parent.png';
@@ -15,15 +16,79 @@ import { useSelector } from 'react-redux';
 
 
 
-const Pickup = () => {
+const GuardianPickup = () => {
   const [showContent, setShowContent] = useState(false);
   const user_id = useSelector((state => state.user_id))
+  const [studentList, setStudentList] = useState([]);
+  const [dummy, setDummy] = useState([
+    {id : "1", name : "정재윤1", grade : 1, gender : 1},
+    {id : "2", name : "정재윤2", grade : 1, gender : 1},
+    {id : "3", name : "정재윤3", grade : 1, gender : 1},
+    {id : "4", name : "정재윤4", grade : 1, gender : 1}
+]);
+
+  useEffect(() => {
+    axios.post("/guardian", {
+      pickupManId : user_id
+    }).then((res)=>{
+      if(res.data == null){
+        setStudentList(res.data.map(function(el, idx){
+          var returnObj = {}
+          returnObj['id'] = el.id;
+          returnObj['name'] = el.name;
+          returnObj['grade'] = el.grade;
+          returnObj['gender'] = el.gender;
+          returnObj['checked'] = true;
+          return returnObj;
+        }));
+      }
+      else{
+        setStudentList(dummy.map(function(el, idx){
+        var returnObj = {}
+        returnObj['id'] = el.id;
+        returnObj['name'] = el.name;
+        returnObj['grade'] = el.grade;
+        returnObj['gender'] = el.gender;
+        returnObj['checked'] = true;
+        return returnObj;
+        }))
+      }
+    })
+  }, []);
+  
+  const clickButton = (idx) => {
+    console.log("hi")
+    setStudentList((prev) =>
+    prev.map((el, i) => {
+      if (i !== idx) {
+        return el;
+      }
+      el.checked = !el.checked;
+      return el;
+    })
+  );
+    console.log(studentList)
+  }
 
   const handleClick = () => {
 
+    var list = [];
+    studentList.map((el) => {
+        var returnObj = {}
+        if(el.checked == true){
+            returnObj['id'] = el.id;
+            returnObj['name'] = el.name;
+            returnObj['grade'] = el.grade;
+            returnObj['gender'] = el.gender;
+            list.push(returnObj)
+        }
+    })
+    
     // 백엔드로 parentId 보내는 코드
-    axios.post("/requestParent", {
-      pickupManId : user_id
+    axios.post("/requestGuardian", {
+        pickupManId : localStorage.getItem('userid'),
+        pickupManName : localStorage.getItem('username'),
+        studentPickupFormList : list
     }).then((res)=>{
       if(res.data == "success"){
         setShowContent(true);    // 버튼 클릭 시 호출 완료를 보여줌
@@ -40,8 +105,11 @@ const Pickup = () => {
   return (
     <div style={{ padding: '45px 0px 0px 350px', flexDirection: 'column', height: '100vh' }}>
       <div style={{ flex: 1, align: 'center' }}></div>
-      <img src={imageSource} style={{ marginLeft: '100px', width: '300px', height: '300px' }} />
-
+      <div className="studentList">
+        {studentList.map((student, idx) => (
+            <div onClick={() => clickButton(idx)} className={!!(studentList[idx].checked) ? "student checked" : "student"} key = {idx} >{student.name}</div>
+        ))}
+      </div>
       {!showContent && (
         <>
           <div style={{ marginTop: '20px', marginBottom: '50px', textAlign: 'center', fontSize: '30px' }}>
@@ -73,25 +141,6 @@ const Pickup = () => {
       {showContent && (
         <div style={{ textAlign: 'center' }}>
           <div style={{ marginTop: '30px', marginLeft: '25px', fontSize: '30px' }}>호출 완료되었습니다.</div>
-            {/* <button
-            onClick={handleClick}       // 추후 메인 페이지로 돌아가는 handleClick2 구현 필요 (메인 페이지 구현 시)
-            style={{
-              marginLeft: '100px',
-              marginTop: '20px',
-              width: '300px',
-              height: '80px',
-              backgroundColor: '#00A3FF',
-              color: 'white',
-              border: 'none',
-              borderRadius: '13px',
-              fontSize: '24px',
-              fontWeight: 'bold',
-              display: 'block',
-              boxShadow: '3px 4px 10px #8C92AC'
-            }}
-            >
-            메인 페이지로 이동
-            </button> */}
         </div>
 
       )}
@@ -117,7 +166,7 @@ const Pickup = () => {
   );
 }
 
-export default Pickup;
+export default GuardianPickup;
 
 
 
