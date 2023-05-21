@@ -29,9 +29,9 @@ const GuardianPickup = () => {
 
   useEffect(() => {
     axios.post("/guardian", {
-      pickupManId : user_id
+      id : user_id
     }).then((res)=>{
-      if(res.data == null){
+      if(res.data != null){
         setStudentList(res.data.map(function(el, idx){
           var returnObj = {}
           returnObj['id'] = el.id;
@@ -86,7 +86,7 @@ const GuardianPickup = () => {
     
     // 백엔드로 parentId 보내는 코드
     axios.post("/requestGuardian", {
-        pickupManId : localStorage.getItem('userid'),
+        id : localStorage.getItem('userid'),
         pickupManName : localStorage.getItem('username'),
         studentPickupFormList : list
     }).then((res)=>{
