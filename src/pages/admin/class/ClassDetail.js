@@ -1,6 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import './ClassDetail.css';
 
 function ClassDetail() {
   const [record, setRecord] = useState([]);
@@ -68,30 +69,24 @@ function ClassDetail() {
   return (
     <section>
 
-      <div className="container" style={{ width: "1200px" }}>
-        <div className="my-3">
-          <p class="mb-5"style={{ fontSize: "40px", fontWeight: "bold" }}>돌봄학급 관리</p>
-          <div class="row mt-3" style={{ width: "100%", textAlign: "center" }}>
-            <div class="col-sm-8">
-              {/* <h4 class="text-center mt-4 mb-4" style={{ width: "1200px", fontFamily: "Nanum Gothic" }}>돌봄학급 리스트</h4> */}
-
-              <table class="table table-hover table-striped table-bordered" style={{ width: "1200px" }}>
-                <thead>
-                  <tr>
+      <div className="Ccontainer" >
+        <div className="Cmy-3">
+          <p className="Cmb-5">돌봄학급 관리</p>
+          <div className="Cmt-3">
+              <table className="Ctable">
+                <thead className="Cthead">
                     <th>학급 이름</th>
                     <th>학급 번호</th>
-                    <th>년도-학기</th>
+                    <th>연도-학기</th>
                     <th>Action</th>
-                  </tr>
                 </thead>
-                <tbody>
                   {record.map((name) =>
                     <tr>
                       <td>{name.class_name}</td>
                       <td>{name.class_num}</td>
                       <td>{name.year_seme}</td>
                       <td>
-                        <a className="text-danger mr-2"
+                        <a className="text-danger Cmr-2"
                           onClick={() => {
                             const confirmBox = window.confirm(
                               "'" + name.class_name + "'" + " 학급을 정말 삭제하시겠습니까?"
@@ -107,29 +102,27 @@ function ClassDetail() {
                       </td>
                     </tr>
                   )}
-                </tbody>
               </table>
-            </div>
           </div>
 
-          <div class="col-sm-4" style={{ width: "100%", textAlign: "center" }}>
-            <div className="box p-3 mb-3 mt-3" style={{ border: "1px solid #d0d0d0", height: "100%", width: "700px", margin: "auto" }}>
+          <div class="Csm-4">
+            <div className="Cmainbox Cmt-3">
               <form onSubmit={submitClassRecord}>
-                <h5 className="mb-3 ">추가할 돌봄학급의 정보를 입력하세요.</h5>
-                <div class="form-group">
-                  <input type="text" class="form-control  mb-4" name="class_name" value={class_name} onChange={e => onInputChange(e)} placeholder="학급 이름을 입력하세요." required="" />
+                <h5 className="Cmb-3 ">추가하실 돌봄학급의 정보를 입력하세요.</h5>
+                <div>
+                  <input type="text" class="Cmb-4" name="class_name" value={class_name} onChange={e => onInputChange(e)} placeholder="학급 이름을 입력하세요." required="" />
                 </div>
 
-                <div class="form-group">
-                  <input type="text" class="form-control mb-4" name="class_num" value={class_num} onChange={e => onInputChange(e)} placeholder="학급 번호를 입력하세요." required="" />
+                <div>
+                  <input type="text" class="Cmb-4" name="class_num" value={class_num} onChange={e => onInputChange(e)} placeholder="학급 번호를 입력하세요." required="" />
                 </div>
 
-                <div class="form-group">
-                  <input type="text" class="form-control mb-4" name="year_seme" value={year_seme} onChange={e => onInputChange(e)} placeholder="년도-학기를 입력하세요." required="" />
+                <div>
+                  <input type="text" class="Cmb-4" name="year_seme" value={year_seme} onChange={e => onInputChange(e)} placeholder="연도-학기를 입력하세요." required="" />
                 </div>
 
-                <div style={{ width: "100%", textAlign: "center" }}>
-                  <button type="submit" class="btn btn-primary btn-block mt-2">추가</button>
+                <div style={{ width: "100%", textAlign: "center", marginLeft: "-40px", marginTop: "60px"}}>
+                  <button type="submit" class="btn Cbtn-primary Cmt-2">돌봄학급 추가</button>
                 </div>
               </form>
             </div>

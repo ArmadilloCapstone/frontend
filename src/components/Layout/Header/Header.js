@@ -32,7 +32,7 @@ const Header = () => {
     return (
         <header className="header">
             <Navbar bg="light" expand="lg">
-              <Navbar.Brand href="#home">DOLBOMEE</Navbar.Brand>
+              <Navbar.Brand href="#home">  </Navbar.Brand>
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav" className="ml-auto">
                 {
