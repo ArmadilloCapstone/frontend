@@ -15,6 +15,7 @@ const Side = styled.div`
 const Logo = styled.img`
   width: 150px;
   height: 150px;
+  margin-bottom: 30px;
 `
 const Menu = styled.div`
   margin-top: 30px;

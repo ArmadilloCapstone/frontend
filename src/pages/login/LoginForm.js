@@ -66,7 +66,7 @@ export const LoginForm = (props) => {
           }
           if(props.option == "2"){
             console.log("hi");
-            navigate('/Pickup');
+            navigate('/ParentMain');
           }
           if(props.option == "4"){
             console.log("hi");
@@ -105,18 +105,11 @@ export const LoginForm = (props) => {
     }
   };
 
-  const loginTitleStyle = {
-    color: hovered ? "white" : "black", // Text color based on hover state
-    transition: "color 0.3s",
-  };
 
   return (
     <div className='login_form'>
       <div
         className='login_title'
-        style={loginTitleStyle}
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
       >
         {props.title}
       </div>
