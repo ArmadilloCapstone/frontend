@@ -44,7 +44,7 @@ export const LoginForm = (props) => {
         console.log(res.data)
         if(res.data.name !== "Error"){
 
-          alert('로그인!');
+          //alert('로그인!');
           console.log(res.data)
           if(props.option == "4"){
             console.log("admin")
@@ -88,7 +88,7 @@ export const LoginForm = (props) => {
         console.log(res.data)
         if(res.data.name !== "Error"){
           dispatch(setShowSignup(!showSignup));
-          alert('로그인!');
+          //alert('로그인!');
           localStorage.setItem('userid', res.data.user_id);
           localStorage.setItem('username', res.data.user_name);
           localStorage.setItem('useroption', (props.option - 0));

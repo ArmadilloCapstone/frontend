@@ -28,15 +28,54 @@
     color: #555555;
 }
 .login_box{
+    margin:auto;
     margin-top: 30px;
     padding-bottom: 10px;
-    width: 100%;
+    width: 60%;
     color: #555555;
 }
 .login_box .login_name{
     text-align: left;
     font-size: 20px;
     color: #555555;
+}
+.radioGroup{
+    color: '#e8e8e8';
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+    padding-left: 20%;
+    padding-right: 20%;
+}
+.radioGroup input{
+    position:inherit;
+
+    vertical-align: middle;
+    appearance: none;
+
+    border: max(2px, 0.1em) solid gray;
+    border-radius: 50%;
+    width: 1.25em;
+    height: 1.25em;
+    transition: border 0.2s ease-in-out;
+
+    font-size: 10px;
+    height: 30px;
+    width: 30px;
+}
+.radioGroup input:checked{
+    border: 0.4em solid #12B560;
+}
+.radioGroup input:focus-visible{
+    outline-offset: max(2px, 0.1em);
+    outline: max(2px, 0.1em) dotted #12B560;
+}
+.radioGroup input:hover {
+    box-shadow: 0 0 0 max(4px, 0.2em) lightgray;
+    cursor: pointer;
+}
+.radioGroup label{
+    cursor: pointer;
 }
 input{
     position:relative;
@@ -69,7 +108,7 @@ input{
 .login_button{
 
     height: 80px;
-    width: 90%;
+    width: 70%;
     text-align: center;
 
     padding-top: 15px;
@@ -83,8 +122,9 @@ input{
 }
 .login_button:hover{
     cursor: pointer;
-    background-color: cornsilk;
-    color: #555555;
+    background-color: #12B560;
+    color: #FFFFFF;
+    transition: 0.3s ease-in-out;
 }
 .empty{
     height: 140px;
