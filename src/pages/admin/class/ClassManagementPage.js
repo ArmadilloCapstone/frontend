@@ -4,7 +4,7 @@ function ClassManagementPage(props) {
   return (
  
      
-      <div className="ClassManagementPage">
+      <div className="ClassManagementPage" style={{ fontFamily: "Eorinai" }}>
         <Routes>
           <Route exact path="/" element={<ClassDetail />} />
         </Routes>

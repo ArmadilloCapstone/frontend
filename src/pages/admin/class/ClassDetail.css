@@ -1,0 +1,120 @@
+/* ClassDetail.css */
+
+.Ccontainer {
+    background-color: white;
+    padding: 25px;
+    width: 1200px;
+    margin: 25px;
+    border-radius: 20px;
+    border-color: white;
+  }
+  
+  .Cmy-3 {
+    margin-top: 3rem;
+
+    margin-bottom: 1rem;
+    border-radius: 20px;
+    border-color: white;
+  }
+
+  .Cmb-3 {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-size: 25px;
+    padding-left: 20px;
+    border-color: white;
+    color: #7d7d7d;
+  }
+ 
+  .Cmb-4 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    border-radius: 15px;
+    border-color: white;
+    text-align: center;
+  }
+
+  
+  .Cmb-5 {
+    margin-bottom: 40px;
+    margin-left: 50px;
+    font-size: 40px;
+    border-color: white;
+    color: #555555;
+  }
+
+  .Cmt-2 {
+    margin-left: 30px; 
+    border-color: white;
+  }
+
+  .Cmt-3 {
+    margin-top: -10px;
+    margin-bottom: 60px;
+    border-color: white;
+    margin-left: 50px; 
+  }
+  
+  .Ctable {
+    width: 1200px;
+    border:white !important;
+  }
+  
+  .Csm-4 {
+    width: 100%;
+    height: 80%;
+    text-align: center;;
+    margin-left: 10px; 
+    border-color: white;
+  }
+
+  .Ctext-danger {
+    color: #dc3545 !important;
+  }
+  
+  .Cmainbox {
+    background-color: #f2f2f2;
+    border-color: white;
+    border-radius: 20px;
+    height: 600px;
+    width: 900px;
+    padding: 15px;
+    margin-left: 50px; 
+  }
+  
+  .Cbtn-primary {
+    background-color: #12B560;
+    border: white;
+    border-radius: 15px;
+    width: 650px;
+    height: 60px;
+    font-size: 30px;
+    border-top: 30px;
+    color: #555555;
+  }
+  
+  .Cbtn-primary:hover {
+    background-color: #0f9443;
+    border: none;
+    border-radius: 15px;
+    width: 650px;
+    height: 60px;
+    font-size: 30px;
+    border-top: 30px;
+    color: white;
+  }
+  
+  .Cbtn-primary:focus {
+    box-shadow: 0 0 0 0.2rem rgba(18, 181, 96, 0.5);
+  }
+
+
+  .Cthead {
+    background-color: white;
+    color: #12B560;
+    font-size: 30px;
+    margin-top: -30px;
+    border-color: white;
+  }
+  

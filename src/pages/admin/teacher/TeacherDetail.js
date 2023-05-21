@@ -1,6 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import './TeacherDetail.css';
 // import { Link } from 'react-router-dom';
 
 function TeacherDetail() {
@@ -93,22 +94,22 @@ function TeacherDetail() {
 
       {/* <div class="container"> */}
       {/* <h2 className="mb-10 mt-3">돌봄교사 관리</h2> */}
-      <div className="container" style={{ width: "1200px" }}>
-        <div className="my-3">
-          <p class="mb-5" style={{ fontSize: "40px", fontWeight: "bold" }}>돌봄교사 관리</p>
-          <div class="row mt-3" style={{ width: "100%", textAlign: "center" }}>
-            <div class="col-sm-8">
+      <div className="Tcontainer" style={{fontFamily: "Eorinai" }}>
+        <div className="Tmy-3">
+          <p class="Tmb-5">돌봄교사 관리</p>
+          <div class="Trow mt-3">
+            <div class="Tsm-8">
               {/* <h4 class="text-center mt-4 mb-4" style={{ width: "1200px" }}>돌봄교사 리스트</h4> */}
 
-              <table class="table table-hover table-striped table-bordered" style={{ width: "1200px" }}>
+              <table class="Ttable">
                 <thead>
                   <tr>
                     <th>이름</th>
                     <th>연락처</th>
                     <th>성별</th>
                     <th>생년월일</th>
-                    <th>돌봄 반 이름</th>
-                    <th>돌봄 반 ID</th>
+                    <th>돌봄반 이름</th>
+                    <th>돌봄반 ID</th>
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -123,7 +124,7 @@ function TeacherDetail() {
                       <td>{name.class_name}</td>
                       <td>{name.class_id}</td>
                       <td>
-                        <a className="text-danger mr-2"
+                        <a className="text-danger Tmr-2"
                           onClick={() => {
                             const confirmBox = window.confirm(
                               "'" + name.name + "'" + " 돌봄교사를 정말 삭제하시겠습니까?"
@@ -144,36 +145,36 @@ function TeacherDetail() {
             </div>
           </div>
 
-          <div class="col-sm-4" style={{ width: "100%", textAlign: "center" }}>
-            <div className="box p-3 mb-3 mt-3" style={{ border: "1px solid #d0d0d0", height: "100%", width: "700px", margin: "auto" }}>
+          <div class="Tsm-4" style={{ textAlign: "center" }}>
+            <div className="Tbox Tp-3 Tmb-3">
               <form onSubmit={submitTeacherRecord}>
-                <h5 className="mb-3 ">추가할 돌봄교사의 정보를 입력하세요.</h5>
-                <div class="form-group">
-                  <input type="text" class="form-control  mb-4" name="name" value={name} onChange={e => onInputChange(e)} placeholder="이름을 입력하세요." required="" />
+                <h5 className="Tmb-3 ">추가하실 돌봄교사의 정보를 입력하세요.</h5>
+                <div class="Tform-group">
+                  <input type="text" class="form-control  Tmb-4" name="name" value={name} onChange={e => onInputChange(e)} placeholder="이름을 입력하세요." required="" />
                 </div>
 
-                <div class="form-group">
-                  <input type="text" class="form-control mb-4" name="phone_num" value={phone_num} onChange={e => onInputChange(e)} placeholder="연락처를 입력하세요." required="" />
+                <div class="Tform-group">
+                  <input type="text" class="form-control Tmb-4" name="phone_num" value={phone_num} onChange={e => onInputChange(e)} placeholder="연락처를 입력하세요." required="" />
                 </div>
 
-                <div class="form-group">
-                  <input type="text" class="form-control mb-4" name="gender" value={gender} onChange={e => onInputChange(e)} placeholder="성별을 입력하세요." required="" />
+                <div class="Tform-group">
+                  <input type="text" class="form-control Tmb-4" name="gender" value={gender} onChange={e => onInputChange(e)} placeholder="성별을 입력하세요." required="" />
                 </div>
 
-                <div class="form-group">
-                  <input type="text" class="form-control mb-4" name="birth_date" value={birth_date} onChange={e => onInputChange(e)} placeholder="생년월일을 입력하세요." required="" />
+                <div class="Tform-group">
+                  <input type="text" class="form-control Tmb-4" name="birth_date" value={birth_date} onChange={e => onInputChange(e)} placeholder="생년월일을 입력하세요." required="" />
                 </div>
 
-                <div class="form-group">
-                  <input type="text" class="form-control mb-4" name="class_name" value={class_name} onChange={e => onInputChange(e)} placeholder="담당 돌봄 반 이름을 입력하세요." required="" />
+                <div class="Tform-group">
+                  <input type="text" class="form-control Tmb-4" name="class_name" value={class_name} onChange={e => onInputChange(e)} placeholder="담당 돌봄반 이름을 입력하세요." required="" />
                 </div>
 
-                <div class="form-group">
-                  <input type="text" class="form-control mb-4" name="class_id" value={class_id} onChange={e => onInputChange(e)} placeholder="담당 돌봄 반 ID를 입력하세요." required="" />
+                <div class="Tform-group">
+                  <input type="text" class="form-control Tmb-4" name="class_id" value={class_id} onChange={e => onInputChange(e)} placeholder="담당 돌봄반 ID를 입력하세요." required="" />
                 </div>
 
-                <div style={{ width: "100%", textAlign: "center" }}>
-                  <button type="submit" class="btn btn-primary btn-block mt-2">추가</button>
+                <div>
+                  <button type="submit" class="btn Tbtn-primary Tmt-2">돌봄교사 추가</button>
                 </div>
               </form>
             </div>
