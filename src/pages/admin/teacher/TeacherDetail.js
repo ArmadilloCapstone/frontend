@@ -1,6 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import './TeacherDetail.css';
 // import { Link } from 'react-router-dom';
 
 function TeacherDetail() {
@@ -93,7 +94,7 @@ function TeacherDetail() {
 
       {/* <div class="container"> */}
       {/* <h2 className="mb-10 mt-3">돌봄교사 관리</h2> */}
-      <div className="container" style={{ width: "1200px" }}>
+      <div className="container" style={{fontFamily: "Eorinai", width: "1200px" }}>
         <div className="my-3">
           <p class="mb-5" style={{ fontSize: "40px", fontWeight: "bold" }}>돌봄교사 관리</p>
           <div class="row mt-3" style={{ width: "100%", textAlign: "center" }}>
@@ -147,7 +148,7 @@ function TeacherDetail() {
           <div class="col-sm-4" style={{ width: "100%", textAlign: "center" }}>
             <div className="box p-3 mb-3 mt-3" style={{ border: "1px solid #d0d0d0", height: "100%", width: "700px", margin: "auto" }}>
               <form onSubmit={submitTeacherRecord}>
-                <h5 className="mb-3 ">추가할 돌봄교사의 정보를 입력하세요.</h5>
+                <h5 className="mb-3 ">추가하실 돌봄교사의 정보를 입력하세요.</h5>
                 <div class="form-group">
                   <input type="text" class="form-control  mb-4" name="name" value={name} onChange={e => onInputChange(e)} placeholder="이름을 입력하세요." required="" />
                 </div>
@@ -173,7 +174,7 @@ function TeacherDetail() {
                 </div>
 
                 <div style={{ width: "100%", textAlign: "center" }}>
-                  <button type="submit" class="btn btn-primary btn-block mt-2">추가</button>
+                  <button type="submit" class="btn btn-primary btn-block mt-2">돌봄교사 추가</button>
                 </div>
               </form>
             </div>

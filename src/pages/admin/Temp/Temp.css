@@ -1,5 +1,5 @@
 .container {
-    background-color: #f2f2f2;
+    background-color: #f1f1f1;
     padding: 25px;
     width: 1200px;
     margin: 25px;
@@ -7,8 +7,7 @@
   }
   
   .my-3 {
-    margin-top: 3rem;
-    margin-bottom: 3rem;
+    border-radius: "20px"
   }
   
   .mb-5 {
@@ -17,8 +16,8 @@
   
   .nav-tabs {
     margin-bottom: 1rem;
-    background-color: #45ee4e;
-  
+    background-color: #ffffff;
+    color : #555555;
   }
   
   .nav-item {
@@ -40,11 +39,7 @@
   
   .nav-link.active {
     color: #ffffff;
-    background-color: #12b560;
-  }
-  
-  .nav-link:hover {
-    background-color: #12b560;
+    background-color: #ffffff;
   }
   
   ul {
@@ -56,6 +51,15 @@
   .nav-tabs .nav-link.active:focus,
   .nav-tabs .nav-link.active:hover,
   .nav-tabs .nav-link.clicked {
-    color: pink;
+    color: #555555 !important;
   }
   
+  .nav-tabs .nav-link.custom {
+    color: #555555 !important;
+  }
+  
+  .nav-tabs .nav-link.custom.active,
+  .nav-tabs .nav-link.custom.active:focus,
+  .nav-tabs .nav-link.custom.active:hover {
+    color: #555555 !important;
+  }

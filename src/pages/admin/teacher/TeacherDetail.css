@@ -1,0 +1,64 @@
+/* TeacherDetail.css */
+
+.container {
+    width: 1200px;
+  }
+  
+  .mb-5 {
+    font-size: 40px;
+    font-weight: bold;
+  }
+  
+  .row {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .col-sm-8 {
+    /* Adjust styles as needed */
+  }
+  
+  .table {
+    width: 1200px;
+  }
+  
+  .table th {
+    /* Adjust styles as needed */
+  }
+  
+  .table td {
+    /* Adjust styles as needed */
+  }
+  
+  .col-sm-4 {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .box {
+    border: 1px solid #d0d0d0;
+    height: 100%;
+    width: 700px;
+    margin: auto;
+  }
+  
+  .form-group {
+    /* Adjust styles as needed */
+  }
+  
+  .form-control {
+    /* Adjust styles as needed */
+  }
+  
+  .btn-primary {
+    /* Adjust styles as needed */
+  }
+  
+  .btn-block {
+    /* Adjust styles as needed */
+  }
+  
+  .mt-2 {
+    /* Adjust styles as needed */
+  }
+  

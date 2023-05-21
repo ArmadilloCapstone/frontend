@@ -1,6 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import './ClassDetail.css';
 
 function ClassDetail() {
   const [record, setRecord] = useState([]);
@@ -68,23 +69,17 @@ function ClassDetail() {
   return (
     <section>
 
-      <div className="container" style={{ width: "1200px" }}>
+      <div className="container" >
         <div className="my-3">
-          <p class="mb-5"style={{ fontSize: "40px", fontWeight: "bold" }}>돌봄학급 관리</p>
-          <div class="row mt-3" style={{ width: "100%", textAlign: "center" }}>
-            <div class="col-sm-8">
-              {/* <h4 class="text-center mt-4 mb-4" style={{ width: "1200px", fontFamily: "Nanum Gothic" }}>돌봄학급 리스트</h4> */}
-
-              <table class="table table-hover table-striped table-bordered" style={{ width: "1200px" }}>
-                <thead>
-                  <tr>
+          <p class="mb-5">돌봄학급 관리</p>
+          <div class="row mt-3">
+              <table class="table">
+                <thead class="thead">
                     <th>학급 이름</th>
                     <th>학급 번호</th>
-                    <th>년도-학기</th>
+                    <th>연도-학기</th>
                     <th>Action</th>
-                  </tr>
                 </thead>
-                <tbody>
                   {record.map((name) =>
                     <tr>
                       <td>{name.class_name}</td>
@@ -107,15 +102,13 @@ function ClassDetail() {
                       </td>
                     </tr>
                   )}
-                </tbody>
               </table>
-            </div>
           </div>
 
-          <div class="col-sm-4" style={{ width: "100%", textAlign: "center" }}>
-            <div className="box p-3 mb-3 mt-3" style={{ border: "1px solid #d0d0d0", height: "100%", width: "700px", margin: "auto" }}>
+          <div class="col-sm-4">
+            <div className="mainbox mt-3">
               <form onSubmit={submitClassRecord}>
-                <h5 className="mb-3 ">추가할 돌봄학급의 정보를 입력하세요.</h5>
+                <h5 className="mb-3 ">추가하실 돌봄학급의 정보를 입력하세요.</h5>
                 <div class="form-group">
                   <input type="text" class="form-control  mb-4" name="class_name" value={class_name} onChange={e => onInputChange(e)} placeholder="학급 이름을 입력하세요." required="" />
                 </div>
@@ -125,11 +118,11 @@ function ClassDetail() {
                 </div>
 
                 <div class="form-group">
-                  <input type="text" class="form-control mb-4" name="year_seme" value={year_seme} onChange={e => onInputChange(e)} placeholder="년도-학기를 입력하세요." required="" />
+                  <input type="text" class="form-control mb-4" name="year_seme" value={year_seme} onChange={e => onInputChange(e)} placeholder="연도-학기를 입력하세요." required="" />
                 </div>
 
-                <div style={{ width: "100%", textAlign: "center" }}>
-                  <button type="submit" class="btn btn-primary btn-block mt-2">추가</button>
+                <div style={{ width: "100%", textAlign: "center", marginLeft: "-40px", marginTop: "80px"}}>
+                  <button type="submit" class="btn btn-primary btn-block mt-2">돌봄학급 추가</button>
                 </div>
               </form>
             </div>
