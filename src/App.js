@@ -7,7 +7,7 @@ import Header from './components/Layout/Header/Header';
 import Sidebar from './components/Layout/Sidebar/Sidebar';
 
 import { LoginPage } from './pages/login/LoginPage';
-import {TimelinePage} from './pages/timeline/TimelinePage';
+import { TimelinePage } from './pages/timeline/TimelinePage';
 import StudentState from './pages/studentstate/StudentState';
 import {ParentMain} from './pages/parentMain/ParentMain';
 // import { EntireUserAddPage } from './pages/admin/entrire/EntireUserAddPage';
@@ -23,7 +23,13 @@ import Pickup from './pages/pickup/Pickup';
 import GuardianPickup from './pages/pickup/GuardianPickup';
 import Popup from './pages/popup/Popup';
 
-// import Footer from './components/Layout/Footer/Footer';
+
+import BbsDetail from './pages/bbs/BbsDetail';
+import BbsList from './pages/bbs/BbsList';
+import BbsUpdate from './pages/bbs/BbsUpdate';
+import BbsWrite from './pages/bbs/BbsWrite';
+
+import Footer from './components/Layout/Footer/Footer';
 
 const Center = styled.div`
   height: 92vh;
@@ -76,6 +82,7 @@ export default function App() {
               <Route path="/StudentState" element={<StudentState />} />:
               <Route path="/StudentState" element={<LoginPage />} />
             }
+            
             {/* <Route path="/EntireUserAddPage" element={<EntireUserAddPage />} /> */}
             {/* 학부모 페이지 */}
             {

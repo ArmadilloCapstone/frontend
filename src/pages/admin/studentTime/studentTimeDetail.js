@@ -1,4 +1,4 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
+import '../adminPages.css';
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -7,7 +7,7 @@ function StudentTimeDetail() {
 
     const [user, setUser] = useState({
         id: 0,
-        student_id: "",
+        name: "",
         entry_1: "",
         off_1: "",
         entry_2: "",
@@ -28,13 +28,13 @@ function StudentTimeDetail() {
 
     // On Page load display all records 
     const loadStudentTimeDetail = async () => {
-        await axios.post('/student_time') // student와 parent를 연결해서 어떻게 데이터를 가져오는 거지? db 쿼리로 처리하는 건가?
+        await axios.post('http://13.209.104.24:8080/student_time') // student와 parent를 연결해서 어떻게 데이터를 가져오는 거지? db 쿼리로 처리하는 건가?
             .then(function (response) {
                 setRecord(response.data.map(function (el, idx) {
                     console.log(el);
 
                     var returnObj = {}
-                    returnObj['id'] = el.id;
+                    returnObj['name'] = el.name;
                     returnObj['student_id'] = el.student_id;
                     returnObj['entry_1'] = el.entry_1;
                     returnObj['off_1'] = el.off_1;
@@ -62,7 +62,7 @@ function StudentTimeDetail() {
     const submitStudentTimeRecord = async (e) => {
         e.preventDefault();
         e.target.reset();
-        await axios.post("/student_time_submit", user);
+        await axios.post("http://13.209.104.24:8080/student_time_submit", user);
         alert('추가되었습니다!');
 
         loadStudentTimeDetail();
@@ -80,70 +80,70 @@ function StudentTimeDetail() {
     };
 
     return (
-        <section>
+        <section class="tableSection">
+            <table class="admin">
+                <thead class="admin">
+                    <tr class="admin">
+                        <th class="admin">이름</th>
+                        <th class="admin">월(입)</th>
+                        <th class="admin">월(퇴)</th>
+                        <th class="admin">화(입)</th>
+                        <th class="admin">화(퇴)</th>
+                        <th class="admin">수(입)</th>
+                        <th class="admin">수(퇴)</th>
+                        <th class="admin">목(입)</th>
+                        <th class="admin">목(퇴)</th>
+                        <th class="admin">금(입)</th>
+                        <th class="admin">금(퇴)</th>
+                        <th class="admin">Action</th>
+                    </tr>
+                </thead>
+                <tbody class="admin">
 
-            <div className="container" style={{ width: "1200px" }}>
-                <div className="my-3">
-                    <p class="mb-5" style={{ fontSize: "40px", fontWeight: "bold" }}>학생 입퇴실 시간 관리</p>
-                    <div class="row mt-3" style={{ width: "100%", textAlign: "center" }}>
-                        <div class="col-sm-8">
-                            {/* <h4 class="text-center mt-4 mb-4" style={{ width: "1200px" }}>돌봄학생 리스트</h4> */}
+                    {record.map((name) =>
+                        <tr class="admin">
+                            <td class="admin">{name.name}</td>
+                            <td class="admin">{name.entry_1}</td>
+                            <td class="admin">{name.off_1}</td>
+                            <td class="admin">{name.entry_2}</td>
+                            <td class="admin">{name.off_2}</td>
+                            <td class="admin">{name.entry_3}</td>
+                            <td class="admin">{name.off_3}</td>
+                            <td class="admin">{name.entry_4}</td>
+                            <td class="admin">{name.off_4}</td>
+                            <td class="admin">{name.entry_5}</td>
+                            <td class="admin">{name.off_5}</td>
+                            <td class="admin">
+                                <button class="delete"
+                                    onClick={() => {
+                                        const confirmBox = window.confirm(
+                                            "'" + name.class_name + "'" + " 학급을 정말 삭제하시겠습니까?"
+                                        )
+                                        if (confirmBox === true) {
+                                            deleteRecord(name.id)
+                                        }
+                                    }}>삭제</button>
+                                {/* <a className="text-danger mr-2"
+                                    onClick={() => {
+                                        const confirmBox = window.confirm(
+                                            "'" + name.name + "'" + "의 입퇴실 시간을 정말 삭제하시겠습니까?"
+                                        )
+                                        if (confirmBox === true) {
+                                            deleteRecord(name.id)
+                                        }
+                                    }}> <i class="far fa-trash-alt" style={{ fontSize: "18px", marginRight: "5px" }}></i>삭제 </a> */}
 
-                            <table class="table table-hover table-striped table-bordered" style={{ width: "1200px" }}>
-                                <thead>
-                                    <tr>
-                                        <th>학생 ID</th>
-                                        <th>월(입)</th>
-                                        <th>월(퇴)</th>
-                                        <th>화(입)</th>
-                                        <th>화(퇴)</th>
-                                        <th>수(입)</th>
-                                        <th>수(퇴)</th>
-                                        <th>목(입)</th>
-                                        <th>목(퇴)</th>
-                                        <th>금(입)</th>
-                                        <th>금(퇴)</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-
-                                    {record.map((name) =>
-                                        <tr>
-                                            <td>{name.student_id}</td>
-                                            <td>{name.entry_1}</td>
-                                            <td>{name.off_1}</td>
-                                            <td>{name.entry_2}</td>
-                                            <td>{name.off_2}</td>
-                                            <td>{name.entry_3}</td>
-                                            <td>{name.off_3}</td>
-                                            <td>{name.entry_4}</td>
-                                            <td>{name.off_4}</td>
-                                            <td>{name.entry_5}</td>
-                                            <td>{name.off_5}</td>
-                                            <td>
-                                                <a className="text-danger mr-2"
-                                                    onClick={() => {
-                                                        const confirmBox = window.confirm(
-                                                            "'" + name.name + "'" + "의 입퇴실 시간을 정말 삭제하시겠습니까?"
-                                                        )
-                                                        if (confirmBox === true) {
-                                                            deleteRecord(name.id)
-                                                        }
-                                                    }}> <i class="far fa-trash-alt" style={{ fontSize: "18px", marginRight: "5px" }}></i>삭제 </a>
-
-                                                {/* <Link class=" mr-2" to={`/EditEmployee/editID/${name.id}`}>
+                                {/* <Link class=" mr-2" to={`/EditEmployee/editID/${name.id}`}>
                         <i class="fa fa-edit" aria-hidden="true"></i>
                       </Link> */}
-                                            </td>
-                                        </tr>
-                                    )}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                            </td>
+                        </tr>
+                    )}
+                </tbody>
+            </table>
 
-                    <div class="col-sm-4" style={{ width: "100%", textAlign: "center" }}>
+
+            {/* <div class="col-sm-4" style={{ width: "100%", textAlign: "center" }}>
                         <div className="box p-3 mb-3 mt-3" style={{ border: "1px solid #d0d0d0", height: "100%", width: "700px", margin: "auto" }}>
                             <form onSubmit={submitStudentTimeRecord}>
                                 <h5 className="mb-3 ">추가할 학생 입퇴실 시간 정보를 입력하세요.</h5>
@@ -196,10 +196,8 @@ function StudentTimeDetail() {
                                 </div>
                             </form>
                         </div>
-                    </div>
+                    </div> */}
 
-                </div>
-            </div>
         </section>
     )
 }
