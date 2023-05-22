@@ -4,3 +4,7 @@
     font-weight: 500;
     src: url("./Eorinai.woff") format("woff");
   }
+
+  body #root{
+    font-family: "Eorinai";
+  }

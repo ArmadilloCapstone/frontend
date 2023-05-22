@@ -12,27 +12,29 @@
 	width: 1250px;
 	height: 400px;
 }
-.box {
+.StudentState .box {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	width: 600px;
 	height: 1000px;
-	border: 2px solid gray;
-	border-radius: '50px';
+	border: 2px solid #12B560;
+	border-radius: 50px;
 	margin: 10px;
 	padding: 10px;
 }
-.item {
+.StudentState .item {
 	width: 80%;
 	height: 30px;
-	background-color: lightblue;
+	background-color: #12B560;
+	color : white;
+	border: 2px solid lightgray;
 	margin: 5px 0;
 	text-align: center;
-	border-radius: '20px';
+	border-radius: 20px;
 	font-size: '10px';
 	cursor: pointer;
 }
-.highlight {
+.StudentState .highlight {
 	background-color: yellow;
 }

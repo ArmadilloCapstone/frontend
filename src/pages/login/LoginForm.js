@@ -66,7 +66,7 @@ export const LoginForm = (props) => {
           }
           if(props.option == "2"){
             console.log("hi");
-            navigate('/Pickup');
+            navigate('/ParentMain');
           }
           if(props.option == "4"){
             console.log("hi");
@@ -89,13 +89,13 @@ export const LoginForm = (props) => {
         if(res.data.name !== "Error"){
           dispatch(setShowSignup(!showSignup));
           //alert('로그인!');
-          localStorage.setItem('userid', res.data.user_id);
-          localStorage.setItem('username', res.data.user_name);
+          localStorage.setItem('userid', res.data.serial_num);
+          localStorage.setItem('username', res.data.name);
           localStorage.setItem('useroption', (props.option - 0));
           dispatch(setUserId(res.data.user_id));
           dispatch(setUserName(res.data.name));
           dispatch(setUserOption((props.option - 0)));
-          navigate('/Pickup');
+          navigate('/GuardianPickup');
         }
         else{
           alert('실패')
@@ -105,18 +105,11 @@ export const LoginForm = (props) => {
     }
   };
 
-  const loginTitleStyle = {
-    color: hovered ? "white" : "black", // Text color based on hover state
-    transition: "color 0.3s",
-  };
 
   return (
     <div className='login_form'>
       <div
         className='login_title'
-        style={loginTitleStyle}
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
       >
         {props.title}
       </div>

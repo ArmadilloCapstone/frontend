@@ -15,6 +15,7 @@ const Side = styled.div`
 const Logo = styled.img`
   width: 150px;
   height: 150px;
+  margin-bottom: 30px;
 `
 const Menu = styled.div`
   margin-top: 30px;
@@ -26,6 +27,7 @@ const Menu = styled.div`
 
   function AdminSidebar() {
     const menus = [
+        { name: "메인 페이지", path: "/ParentMain" },
         { name: "학부모 픽업", path: "/Pickup" }
     ];
     const user_name = useSelector((state => state.user_name))
