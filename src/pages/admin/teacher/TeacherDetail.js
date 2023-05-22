@@ -1,6 +1,7 @@
 import '../adminPages.css';
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import './TeacherDetail.css';
 // import { Link } from 'react-router-dom';
 
 function TeacherDetail() {
@@ -148,64 +149,40 @@ function TeacherDetail() {
         </tbody>
       </table>
 
-      {/* <div class="col-sm-4" style={{ width: "100%", textAlign: "center" }}>
-            <div className="box p-3 mb-3 mt-3" style={{ border: "1px solid #d0d0d0", height: "100%", width: "700px", margin: "auto" }}>
+          {/* <div class="Tsm-4" style={{ textAlign: "center" }}>
+            <div className="Tbox Tp-3 Tmb-3">
               <form onSubmit={submitTeacherRecord}>
-                <h5 className="mb-3 ">추가할 돌봄교사의 정보를 입력하세요.</h5>
-                <div class="form-group">
-                  <input type="text" class="form-control  mb-4" name="name" value={name} onChange={e => onInputChange(e)} placeholder="이름을 입력하세요." required="" />
+                <h5 className="Tmb-3 ">추가하실 돌봄교사의 정보를 입력하세요.</h5>
+                <div class="Tform-group">
+                  <input type="text" class="form-control  Tmb-4" name="name" value={name} onChange={e => onInputChange(e)} placeholder="이름을 입력하세요." required="" />
                 </div>
 
-                <div class="form-group">
-                  <input type="text" class="form-control mb-4" name="phone_num" value={phone_num} onChange={e => onInputChange(e)} placeholder="연락처를 입력하세요." required="" />
+                <div class="Tform-group">
+                  <input type="text" class="form-control Tmb-4" name="phone_num" value={phone_num} onChange={e => onInputChange(e)} placeholder="연락처를 입력하세요." required="" />
                 </div>
 
-                <div class="form-group">
-                  <input type="text" class="form-control mb-4" name="gender" value={gender} onChange={e => onInputChange(e)} placeholder="성별을 입력하세요." required="" />
-                </div> select_ty1
-
-                <select name="gender" className="custom-select d-block w-100" >
-                  <option value="">▼ 돌봄 반을 선택하세요.</option>
-                  {record.map((option) => (
-                    <option
-                      key={option.class_name}
-                      value={option.class_name}
-                    >
-                      {option.class_name}
-                    </option>
-                  ))}
-                </select>
-                {/* <div class="form-group">
-                  <select id="phone1_val" name="gender" className="form-control mb-4">
-                    <option value="">선택</option>
-                    <option value="남">남</option>
-                    <option value="여">여</option>
-                  </select>
-                </div> */}
-
-
-
-
-
-
-      {/* <div class="form-group">
-                  <input type="text" class="form-control mb-4" name="birth_date" value={birth_date} onChange={e => onInputChange(e)} placeholder="생년월일을 입력하세요." required="" />
+                <div class="Tform-group">
+                  <input type="text" class="form-control Tmb-4" name="gender" value={gender} onChange={e => onInputChange(e)} placeholder="성별을 입력하세요." required="" />
                 </div>
 
-                <div class="form-group">
-                  <input type="text" class="form-control mb-4" name="class_name" value={class_name} onChange={e => onInputChange(e)} placeholder="담당 돌봄 반 이름을 입력하세요." required="" />
+                <div class="Tform-group">
+                  <input type="text" class="form-control Tmb-4" name="birth_date" value={birth_date} onChange={e => onInputChange(e)} placeholder="생년월일을 입력하세요." required="" />
                 </div>
 
-                <div class="form-group">
-                  <input type="text" class="form-control mb-4" name="class_id" value={class_id} onChange={e => onInputChange(e)} placeholder="담당 돌봄 반 ID를 입력하세요." required="" />
+                <div class="Tform-group">
+                  <input type="text" class="form-control Tmb-4" name="class_name" value={class_name} onChange={e => onInputChange(e)} placeholder="담당 돌봄반 이름을 입력하세요." required="" />
                 </div>
 
-                <div style={{ width: "100%", textAlign: "center" }}>
-                  <button type="submit" class="btn btn-primary btn-block mt-2">추가</button>
+                <div class="Tform-group">
+                  <input type="text" class="form-control Tmb-4" name="class_id" value={class_id} onChange={e => onInputChange(e)} placeholder="담당 돌봄반 ID를 입력하세요." required="" />
+                </div>
+
+                <div>
+                  <button type="submit" class="btn Tbtn-primary Tmt-2">돌봄교사 추가</button>
                 </div>
               </form>
             </div>
-          </div> */}
+          </div>  */}
       {/* </div> */}
     </section>
   )

@@ -1,0 +1,10 @@
+@font-face {
+    font-family: "Eorinai";
+    font-style: normal;
+    font-weight: 500;
+    src: url("./Eorinai.woff") format("woff");
+  }
+
+  body #root{
+    font-family: "Eorinai";
+  }

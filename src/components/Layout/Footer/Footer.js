@@ -8,7 +8,7 @@ const Foot = styled.p`
 const Footer = () => {
     return (
         <Foot>
-            Dolbomee
+          
         </Foot>
     )
 }

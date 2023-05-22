@@ -65,7 +65,7 @@ const FileUpload = () => {
   };
 
   return (
-    <div>
+    <div className="my-3" style={{ fontSize: "40px", fontWeight: "bold",  backgroundColor: "#ffffff", paddingLeft: "20px", paddingTop: "40px" }}>
       {progressInfos && progressInfos.val.length > 0 &&
         progressInfos.val.map((progressInfo, index) => (
           <div className="mb-2" key={index}>
@@ -85,9 +85,9 @@ const FileUpload = () => {
           </div>
         ))}
 
-      <div className="row my-3">
-        <div className="col-8">
-          <label className="btn btn-default p-0">
+      <div className="row my-3" style={{ borderRadius: "0px"}}>
+        <div className="col-8" >
+          <label className="btn btn-default p-0">     
             <input type="file" accept=".csv" multiple onChange={selectFiles} />
           </label>
         </div>
@@ -98,7 +98,7 @@ const FileUpload = () => {
             disabled={!selectedFiles}
             onClick={uploadFiles}
           >
-            추가하기
+            파일추가
           </button>
         </div>
       </div>
