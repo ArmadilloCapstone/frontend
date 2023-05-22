@@ -31,7 +31,7 @@ const GuardianPickup = () => {
     axios.post("http://localhost:8080/guardian", {
       id : user_id
     }).then((res)=>{
-      if(res.data != null){
+      if(res.data == null){
         setStudentList(res.data.map(function(el, idx){
           var returnObj = {}
           returnObj['id'] = el.id;
