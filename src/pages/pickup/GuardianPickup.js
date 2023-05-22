@@ -28,7 +28,7 @@ const GuardianPickup = () => {
 ]);
 
   useEffect(() => {
-    axios.post("/guardian", {
+    axios.post("http://13.209.104.24:8080/guardian", {
       id : user_id
     }).then((res)=>{
       if(res.data != null){
@@ -85,7 +85,7 @@ const GuardianPickup = () => {
     })
     
     // 백엔드로 parentId 보내는 코드
-    axios.post("/requestGuardian", {
+    axios.post("http://13.209.104.24:8080/requestGuardian", {
         id : localStorage.getItem('userid'),
         pickupManName : localStorage.getItem('username'),
         studentPickupFormList : list

@@ -28,7 +28,7 @@ function StudentTimeDetail() {
 
     // On Page load display all records 
     const loadStudentTimeDetail = async () => {
-        await axios.post('/student_time') // student와 parent를 연결해서 어떻게 데이터를 가져오는 거지? db 쿼리로 처리하는 건가?
+        await axios.post('http://13.209.104.24:8080/student_time') // student와 parent를 연결해서 어떻게 데이터를 가져오는 거지? db 쿼리로 처리하는 건가?
             .then(function (response) {
                 setRecord(response.data.map(function (el, idx) {
                     console.log(el);
@@ -62,7 +62,7 @@ function StudentTimeDetail() {
     const submitStudentTimeRecord = async (e) => {
         e.preventDefault();
         e.target.reset();
-        await axios.post("/student_time_submit", user);
+        await axios.post("http://13.209.104.24:8080/student_time_submit", user);
         alert('추가되었습니다!');
 
         loadStudentTimeDetail();

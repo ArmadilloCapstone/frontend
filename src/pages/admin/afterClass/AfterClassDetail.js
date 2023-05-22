@@ -36,10 +36,10 @@ function AfterClassDetail() {
 
   // On Page load display all records 
   const loadAfterClassDetail = async () => {
-    await axios.post('/after_school_class')
-      .then(function (response) {
-        setRecord(response.data.map(function (el, idx) {
-          console.log(el);
+    await axios.post('http://13.209.104.24:8080/after_school_class')
+        .then(function(response){
+          setRecord(response.data.map(function(el, idx){
+            console.log(el);
 
           var returnObj = {}
           returnObj['id'] = el.id;
@@ -78,8 +78,8 @@ function AfterClassDetail() {
   const submitAfterClassRecord = async (e) => {
     e.preventDefault();
     e.target.reset();
-
-    await axios.post('/after_school_class_submit', user);
+    
+    await axios.post('http://13.209.104.24:8080/after_school_class_submit', user);
     alert('추가되었습니다!');
 
     loadAfterClassDetail();

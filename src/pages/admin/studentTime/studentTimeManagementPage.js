@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import StudentTimeAdd from './StudentTimeAdd';
-import StudentTimeDetail from './StudentTimeDetail';
+import StudentTimeDetail from './studentTimeDetail';
 import { Route, Routes } from "react-router-dom";
 
 export default function StudentTimeManagementPage() {
