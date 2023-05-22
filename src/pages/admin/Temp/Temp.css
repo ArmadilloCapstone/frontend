@@ -1,23 +1,20 @@
 .container {
-    background-color: #f1f1f1;
+    background-color: white;
     padding: 25px;
-    width: 1200px;
+    width: 1000px;
     margin: 25px;
     border-radius: 20px;
   }
-  
-  .my-3 {
-    border-radius: "20px"
-  }
+
   
   .mb-5 {
     margin-bottom: 5rem;
   }
   
   .nav-tabs {
-    margin-bottom: 1rem;
     background-color: #ffffff;
     color : #555555;
+    border-bottom: #333;
   }
   
   .nav-item {

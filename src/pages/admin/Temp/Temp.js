@@ -31,6 +31,7 @@ function Temp() {
               width: "150px",
               height: "60px",
               fontSize: "18px", 
+              borderRadius: "20px"
             }}
           >
             파일 추가
@@ -47,6 +48,7 @@ function Temp() {
               width: "150px", 
               height: "60px", 
               fontSize: "18px", 
+              borderRadius: "20px"
             }}
           >
             파일추가2

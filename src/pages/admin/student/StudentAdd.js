@@ -92,9 +92,6 @@ function StudentAdd() {
     <div class="wrapper">
       <div class="form_container">
         <form name="form" onSubmit={submitStudentRecord}>
-          <div class="heading">
-            <h2>돌봄학생 추가</h2>
-          </div>
 
           {/* <div class="form_wrap onlyone"> */}
           <div class="form_item">
@@ -195,7 +192,7 @@ function StudentAdd() {
 
         </form>
         <div style={{ width: "100%", textAlign: "center" }}>
-          <button type="submit" class="add">추가</button>
+          <button type="submit" class="add">추가하기</button>
         </div>
       </div >
     </div >
