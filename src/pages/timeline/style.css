@@ -52,11 +52,11 @@
 
   #subjectButtons {
     height: 25px; 
-    width: 150px; 
+    width: 130px; 
     margin: 2px; 
     position: relative;
     top:100%; 
-    left:80%;
+    left:78%;
     border-radius: 5px;
     border: 1px dashed rgba(0, 0, 0, 0.426);
   }

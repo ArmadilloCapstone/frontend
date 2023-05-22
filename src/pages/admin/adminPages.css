@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+
+li {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+button.delete {
+    background: #c82333;
+    color: #ffffff;
+    
+    margin: 0;
+    padding: 0.5rem 1rem;
+    
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: .9em;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    
+    border: none;
+    border-radius: 4px;
+    
+    display: inline-block;
+    width: auto;
+    
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    
+    cursor: pointer;
+    
+    transition: 0.5s;
+  }
+
+/* body {
+    padding:1.5em;
+  } */
+  
+  section.tableSection {
+    margin: 20px auto 0;
+    padding: 10px;
+  }
+
+  table.admin {
+    border: 1px #a39485 solid;
+    /* font-family: 'Noto Sans KR', sans-serif; */
+    font-size: .9em;
+    box-shadow: 0 2px 5px rgba(0,0,0,.25);
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  
+  th.admin {
+    text-align: left;
+    font-family: 'Noto Sans KR', sans-serif;
+  }
+    
+  thead.admin {
+    font-weight: bold;
+    color: #fff;
+    background: #12B560;
+  }
+    
+  td.admin, th.admin {
+    padding: 1em .5em;
+    vertical-align: middle;
+  }
+    
+  td.admin {
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    background: #fff;
+  }
+  
+  a.admin {
+    color: #73685d;
+  }
+    
+   @media all and (max-width: 768px) {
+      
+    table.admin, thead.admin, tbody.admin, th.admin, td.admin, tr.admin {
+      display: block;
+    }
+    
+    th.admin {
+      text-align: right;
+    }
+    
+    table.admin {
+      position: relative; 
+      padding-bottom: 0;
+      border: none;
+      box-shadow: 0 0 10px rgba(0,0,0,.2);
+    }
+    
+    thead.admin {
+      float: left;
+      white-space: nowrap;
+    }
+    
+    tbody.admin {
+      overflow-x: auto;
+      overflow-y: hidden;
+      position: relative;
+      white-space: nowrap;
+    }
+    
+    tr.admin {
+      display: inline-block;
+      vertical-align: top;
+    }
+    
+    th.admin {
+      border-bottom: 1px solid #a39485;
+    }
+    
+    td.admin {
+      border-bottom: 1px solid #e5e5e5;
+    }
+    
+    
+    }
+  

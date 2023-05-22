@@ -1,4 +1,4 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
+import '../adminPages.css';
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -29,9 +29,9 @@ function StudentScheduleDetail() {
                     var returnObj = {}
                     returnObj['id'] = el.id;
                     returnObj['name'] = el.name;
-                    returnObj['student_id'] = el.student_id;
+                    // returnObj['student_id'] = el.student_id;
                     returnObj['class_name'] = el.class_name;
-                    returnObj['class_id'] = el.class_id;
+                    // returnObj['class_id'] = el.class_id;
 
                     return returnObj;
                 }));
@@ -66,56 +66,55 @@ function StudentScheduleDetail() {
     };
 
     return (
-        <section>
+        <section class="tableSection">
+            <table class="admin">
+                <thead class="admin">
+                    <tr class="admin">
+                        <th class="admin">학생 이름</th>
+                        {/* <th>학생 ID</th> */}
+                        <th class="admin">방과후수업 이름</th>
+                        {/* <th>방과후수업 ID</th> */}
+                        <th class="admin">Action</th>
+                    </tr>
+                </thead>
+                <tbody class="admin">
 
-            <div className="container" style={{ width: "1200px" }}>
-                <div className="my-3">
-                    <p class="mb-5"style={{ fontSize: "40px", fontWeight: "bold" }}>학생 시간표 관리</p>
-                    <div class="row mt-3" style={{ width: "100%", textAlign: "center" }}>
-                        <div class="col-sm-8">
-                            {/* <h4 class="text-center mt-4 mb-4" style={{ width: "1200px" }}>학생 시간표 리스트</h4> */}
+                    {record.map((name) =>
+                        <tr class="admin">
+                            <td class="admin">{name.name}</td>
+                            {/* <td>{name.student_id}</td> */}
+                            <td class="admin">{name.class_name}</td>
+                            {/* <td>{name.class_id}</td> */}
+                            <td class="admin">
+                                <button class="delete"
+                                    onClick={() => {
+                                        const confirmBox = window.confirm(
+                                            "'" + name.class_name + "'" + " 학급을 정말 삭제하시겠습니까?"
+                                        )
+                                        if (confirmBox === true) {
+                                            deleteRecord(name.id)
+                                        }
+                                    }}>삭제</button>
+                                {/* <button
+                                    onClick={() => {
+                                        const confirmBox = window.confirm(
+                                            "'" + name.name + "'" + " 학생의 시간표를 정말 삭제하시겠습니까?"
+                                        )
+                                        if (confirmBox === true) {
+                                            deleteRecord(name.id)
+                                        }
+                                    }}> 삭제 </button> */}
 
-                            <table class="table table-hover table-striped table-bordered" style={{ width: "1200px" }}>
-                                <thead>
-                                    <tr>
-                                        <th>학생 이름</th>
-                                        <th>학생 ID</th>
-                                        <th>방과후수업 이름</th>
-                                        <th>방과후수업 ID</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-
-                                    {record.map((name) =>
-                                        <tr>
-                                            <td>{name.name}</td>
-                                            <td>{name.student_id}</td>
-                                            <td>{name.class_name}</td>
-                                            <td>{name.class_id}</td>
-                                            <td>
-                                                <a className="text-danger mr-2"
-                                                    onClick={() => {
-                                                        const confirmBox = window.confirm(
-                                                            "'" + name.name + "'" + " 학생의 시간표를 정말 삭제하시겠습니까?"
-                                                        )
-                                                        if (confirmBox === true) {
-                                                            deleteRecord(name.id)
-                                                        }
-                                                    }}> <i class="far fa-trash-alt" style={{ fontSize: "18px", marginRight: "5px" }}></i>삭제 </a>
-
-                                                {/* <Link class=" mr-2" to={`/EditEmployee/editID/${name.id}`}>
+                                {/* <Link class=" mr-2" to={`/EditEmployee/editID/${name.id}`}>
                         <i class="fa fa-edit" aria-hidden="true"></i>
                       </Link> */}
-                                            </td>
-                                        </tr>
-                                    )}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                            </td>
+                        </tr>
+                    )}
+                </tbody>
+            </table>
 
-                    <div class="col-sm-4" style={{ width: "100%", textAlign: "center" }}>
+            {/* <div class="col-sm-4" style={{ width: "100%", textAlign: "center" }}>
                         <div className="box p-3 mb-3 mt-3" style={{ border: "1px solid #d0d0d0", height: "100%", width: "700px", margin: "auto" }}>
                             <form onSubmit={submitStudentScheduleRecord}>
                                 <h5 className="mb-3 ">추가할 학생 시간표의 정보를 입력하세요.</h5>
@@ -140,10 +139,9 @@ function StudentScheduleDetail() {
                                 </div>
                             </form>
                         </div>
-                    </div>
+                    </div> */}
 
-                </div>
-            </div>
+
         </section>
     )
 }
