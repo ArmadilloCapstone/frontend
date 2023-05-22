@@ -29,7 +29,7 @@ export const SignupForm = (props) => {
   };
 
   const register = () => {
-    axios.post("/signup", {
+    axios.post("http://13.209.104.24:8080/signup", {
       "name" : name,
       "phone_num" : phone_num,
       "user_id" : id,
