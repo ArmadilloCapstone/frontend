@@ -34,7 +34,7 @@ function ClassDetail() {
 
   // On Page load display all records 
   const loadClassDetail = async () => {
-    await axios.post('http://13.209.104.24:8080/dolbom_class')
+    await axios.post('http://localhost:8080/dolbom_class')
       .then(function (response) {
         setRecord(response.data.map(function (el, idx) {
           console.log(el);
@@ -64,7 +64,7 @@ function ClassDetail() {
     e.target.reset();
     const postUser = changeUserForm(user);
     // await axios.post('/dolbom_class_submit', user);
-    await axios.post('http://13.209.104.24:8080/dolbom_class_submit', postUser);
+    await axios.post('http://localhost:8080/dolbom_class_submit', postUser);
     alert('추가되었습니다!');
 
     loadClassDetail();
