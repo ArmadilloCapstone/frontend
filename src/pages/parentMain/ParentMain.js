@@ -18,7 +18,7 @@ const user_name = useSelector((state => state.user_name))
 
 useEffect(() => {
     // 백엔드의 학생 명단 가져오는 부분
-    axios.post('http://13.209.104.24:8080/getStudent', {
+    axios.post('http://localhost:8080/getStudent', {
         "id" : localStorage.getItem('userid')
     })
         .then(function(res){
@@ -36,7 +36,7 @@ useEffect(() => {
         console.log(reason);
     });
     
-    axios.post('http://13.209.104.24:8080/getStudentState', {
+    axios.post('http://localhost:8080/getStudentState', {
         "id" : localStorage.getItem('userid')
     })
         .then(function(res){

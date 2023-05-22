@@ -41,7 +41,7 @@ const StudentState = () => {
 
   useEffect(() => {
     // 백엔드의 학생 명단 가져오는 부분
-    axios.post('http://13.209.104.24:8080/getStudentInfo')
+    axios.post('http://localhost:8080/getStudentInfo')
         .then(function(response){
           setStudent(response.data.map(function(el, idx){
 
@@ -76,7 +76,7 @@ const StudentState = () => {
       dt[idx].state = ret.id;
       console.log(dt[idx].student_id, dt[idx].state[3] - 0)
       // 서버에 dt 보내는 코드 작성 위치
-      axios.post('http://13.209.104.24:8080/changeStudentState', { id : dt[idx].id, student_id : dt[idx].student_id,name : dt[idx].name, state : dt[idx].state[3] - 0})
+      axios.post('http://localhost:8080/changeStudentState', { id : dt[idx].id, student_id : dt[idx].student_id,name : dt[idx].name, state : dt[idx].state[3] - 0})
           .then(function(response){
             console.log(response);
           }).catch(function(reason) {
