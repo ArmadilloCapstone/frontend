@@ -6,8 +6,6 @@ import { Route, Routes } from "react-router-dom";
 export default function TeacherManagementPage() {
   const [activeIndex, setActiveIndex] = useState(0);
 
-
-
   const tabClickHandler = (index) => {
     setActiveIndex(index);
   };
@@ -15,42 +13,44 @@ export default function TeacherManagementPage() {
   const tabContArr = [
     {
       tabTitle: (
-        <li className={(activeIndex === 0 ? "is-active" : "")} onClick={() => tabClickHandler(0)}>
-          <p class="nav-link active" style={{ backgroundColor: activeIndex === 0 ? "#12B560" : "white",
-            color: activeIndex === 0 ? "white" : "gray"}}>돌봄교사 목록</p>
-        </li>
+        <button
+          className={`tab-button ${activeIndex === 0 ? "active" : ""}`}
+          onClick={() => tabClickHandler(0)}
+        >
+          돌봄교사 목록
+        </button>
       ),
       tabCont: (
         <div className="TeacherManagementPage">
-
           <Routes>
             <Route exact path="/" element={<TeacherDetail />} />
           </Routes>
         </div>
       )
-    },
+      },
     {
       tabTitle: (
-        <li className={activeIndex === 1 ? "is-active" : ""} onClick={() => tabClickHandler(1)}>
-          <p class="nav-link active" style={{ backgroundColor: activeIndex === 1 ? "#12B560" : "white",
-            color: activeIndex === 1 ? "white" : "gray"}}>돌봄교사 추가</p>
-        </li>
-      ),
-      tabCont: (
-        <div className="TeacherManagementPage">
-
-          <Routes>
-            <Route exact path="/" element={<TeacherAdd />} />
-          </Routes>
-        </div>
-      )
+      <button
+      className={`tab-button ${activeIndex === 1 ? "active" : ""}`}
+      onClick={() => tabClickHandler(1)}
+    >
+      돌봄교사 추가
+    </button>
+  ),
+  tabCont: (
+    <div className="TeacherManagementPage">
+      <Routes>
+        <Route exact path="/" element={<TeacherAdd />} />
+      </Routes>
+    </div>
+  )
     }
   ];
 
   return (
-    <div className="container" style={{ width: "1200px", cursor: "pointer" }}>
+    <div className="container" style={{cursor: "pointer" }}>
       <div className="my-3">
-        <ul class="nav nav-tabs">
+        <ul>
           {tabContArr.map((section, index) => {
             return section.tabTitle
           })}

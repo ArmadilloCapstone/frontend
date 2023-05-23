@@ -2,6 +2,24 @@ import './StudentState.css';
 import Draggable from "react-draggable";
 import axios from 'axios';
 import React, { useState, useCallback, useEffect } from 'react';
+import soon from "./soon.png";
+import arrived from "./arrived.png";
+import art from "./art.png";
+import house from "./house.png";
+
+const iconMap = {
+  box1: soon,
+  box2: arrived,
+  box3: art,
+  box4: house
+};
+
+const iconStyles = {
+  width: '70px', 
+  height: '70px', 
+};
+
+
 
 function drop(event, student, setStudent) {
   event.preventDefault();
@@ -92,7 +110,10 @@ const StudentState = () => {
     <div className='statebody'>
     <div className="StudentState">
       <div className="box" id="box1">
-        <h5>도착하지 않았어요</h5>
+        <div className="icon">
+         <img src={iconMap.box1} alt="Icon" style={iconStyles} />
+        </div>
+        <h5 style={{ padding: "15px 0px 15px 0px", fontSize: "25px", fontWeight: "bolder"}}>도착하지 않았어요</h5>
         {student.filter((item) => item.state === "box1").map(student => (
           <Draggable position={{ x: 0, y: 0 }} key={student.id} onStop={(event, ui) => handleDrag(event, ui, student)}>
             <div className="item" id={student.id}>{student.name}</div>
@@ -101,7 +122,10 @@ const StudentState = () => {
       </div>
 
       <div className="box" id="box2">
-        <h5>돌봄교실에 도착했어요</h5>
+          <div className="icon">
+            <img src={iconMap.box2} alt="Icon" style={iconStyles}/>
+          </div>
+        <h5 style={{ padding: "15px 0px 15px 0px", fontSize: "25px", fontWeight: "bolder"}}>돌봄교실에 도착했어요</h5>
         {student.filter((item) => item.state === "box2").map(student => (
           <Draggable position={{ x: 0, y: 0 }} key={student.id} onStop={(event, ui) => handleDrag(event, ui, student)}>
             <div className="item" id={student.id}>{student.name}</div>
@@ -110,7 +134,10 @@ const StudentState = () => {
       </div>
 
       <div className="box" id="box3">
-        <h5>방과후수업에 다녀올게요</h5>
+          <div className="icon">
+            <img src={iconMap.box3} alt="Icon" style={iconStyles}/>
+          </div>
+        <h5 style={{ padding: "15px 0px 15px 0px", fontSize: "25px", fontWeight: "bolder"}}>방과후수업에 다녀올게요</h5>
         {student.filter((item) => item.state === "box3").map(student => (
           <Draggable position={{ x: 0, y: 0 }} key={student.id} onStop={(event, ui) => handleDrag(event, ui, student)}>
             <div className="item" id={student.id}>{student.name}</div>
@@ -119,7 +146,10 @@ const StudentState = () => {
       </div>
 
       <div className="box" id="box4">
-        <h5>오늘은 떠날게요</h5>
+          <div className="icon">
+            <img src={iconMap.box4} alt="Icon" style={iconStyles}/>
+          </div>
+        <h5 style={{ padding: "15px 0px 15px 0px", fontSize: "25px", fontWeight: "bolder"}}>오늘은 떠날게요</h5>
         {student.filter((item) => item.state === "box4").map(student => (
           <Draggable position={{ x: 0, y: 0 }} key={student.id} onStop={(event, ui) => handleDrag(event, ui, student)}>
             <div className="item" id={student.id}>{student.name}</div>

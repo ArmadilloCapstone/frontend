@@ -84,7 +84,7 @@ function AfterClassAdd() {
                         </div>
                     </div>
                     <div style={{ width: "100%", textAlign: "center" }}>
-                        <button type="submit" class="add">추가</button>
+                        <button type="submit" class="add">추가하기</button>
                     </div>
                 </form>
 
