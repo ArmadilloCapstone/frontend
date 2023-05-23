@@ -18,9 +18,7 @@ const user_name = useSelector((state => state.user_name))
 
 useEffect(() => {
     // 백엔드의 학생 명단 가져오는 부분
-    axios.post('http://dolbomi.site/getStudent', {
-        "id" : localStorage.getItem('userid')
-    })
+    axios.post('http://dolbomi.site/getStudent/' + localStorage.getItem('userid'))
         .then(function(res){
             console.log(res);
             setStudent(res.data.name);
@@ -36,9 +34,7 @@ useEffect(() => {
         console.log(reason);
     });
     
-    axios.post('http://dolbomi.site/getStudentState', {
-        "id" : localStorage.getItem('userid')
-    })
+    axios.post('http://dolbomi.site/sendStudentStateToParent/' + localStorage.getItem('userid'))
         .then(function(res){
             console.log(res);
             setStudent_state(res.data.state);

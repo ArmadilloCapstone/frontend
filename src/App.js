@@ -28,6 +28,7 @@ import BbsDetail from './pages/bbs/BbsDetail';
 import BbsList from './pages/bbs/BbsList';
 import BbsUpdate from './pages/bbs/BbsUpdate';
 import BbsWrite from './pages/bbs/BbsWrite';
+import GuardianManagementPage from './pages/guardian/GuardianManagementPage';
 
 import Footer from './components/Layout/Footer/Footer';
 
@@ -102,6 +103,12 @@ export default function App() {
               <Route path="/BbsDetail" element={<BbsDetail />} /> :
               <Route path="/BbsDetail" element={<LoginPage />} />
           }
+          {
+            (user_option == "1") ?
+              <Route path="/GuardianManagementPage" element={<GuardianManagementPage />} /> :
+              <Route path="/GuardianManagementPage" element={<LoginPage />} />
+          }
+
 
           {/* <Route path="/EntireUserAddPage" element={<EntireUserAddPage />} /> */}
           {/* 학부모 페이지 */}
