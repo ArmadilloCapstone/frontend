@@ -2,8 +2,6 @@ import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-
-import BbsUpdate from "./BbsUpdate";
 // import CommentWrite from "../comment/CommentWrite";
 // import CommentList from "../comment/CommentList";
 // import { AuthContext } from "../context/AuthProvider";
@@ -15,13 +13,13 @@ function BbsDetail() {
     // const { auth, setAuth } = useContext(AuthContext)
 
     const [bbs, setBbs] = useState({});
-    const { seq } = useParams(); // 파라미터 가져오기
+    const { id } = useParams(); // 파라미터 가져오기
 
     const navigate = useNavigate();
 
     const getBbsDetail = async () => {
-
-        await axios.post(`/news/${bbs.id}`)
+        console.log("hi")
+        await axios.post(`http://localhost/news/${id}`)
             .then((resp) => {
                 console.log("[BbsDetail.js] getBbsDetail() success :D");
                 console.log(resp.data);
@@ -37,7 +35,7 @@ function BbsDetail() {
 
     const deleteBbs = async () => {
 
-        await axios.delete(`/news/${bbs.id}`)
+        await axios.delete(`http://localhost/news/${id}`)
             .then((resp) => {
                 console.log("[BbsDetail.js] deleteBbs() success :D");
                 console.log(resp.data);
@@ -54,6 +52,7 @@ function BbsDetail() {
 
     useEffect(() => {
         getBbsDetail();
+        console.log(id)
     }, []);
 
     // const updateBbs = {
@@ -75,8 +74,10 @@ function BbsDetail() {
 
                 {
                     /* 자신이 작성한 게시글인 경우에만 수정 삭제 가능 */
-                        <>
-                            <button className="btn btn-outline-secondary" onClick={BbsUpdate(bbs.id)}><i className="fas fa-edit"></i> 수정</button> &nbsp;
+                        <>                            
+                            <Link to={{ pathname: `/BbsUpdate/${id}` }}> { /* 게시글 상세 링크 */}
+                                <span className="underline bbs-title" >수정 </span> { /* 게시글 제목 */}
+                            </Link>
                             <button className="btn btn-outline-danger" onClick={deleteBbs}><i className="fas fa-trash-alt"></i> 삭제</button>
                         </>
                         
@@ -127,7 +128,7 @@ function BbsDetail() {
             </table>
 
             <div className="my-3 d-flex justify-content-center">
-                <Link className="btn btn-outline-secondary" to="/Bbslist"><i className="fas fa-list"></i> 글목록</Link>
+                <Link className="btn btn-outline-secondary" to="/BbsList"><i className="fas fa-list"></i> 글목록</Link>
             </div><br /><br />
 
         </div>

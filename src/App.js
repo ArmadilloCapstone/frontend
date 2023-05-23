@@ -95,13 +95,13 @@ export default function App() {
           }
           {
             (user_option == "1") ?
-              <Route path="/BbsUpdate" element={<BbsUpdate />} /> :
-              <Route path="/BbsUpdate" element={<LoginPage />} />
+              <Route path="/BbsUpdate/:bbs_id" element={<BbsUpdate />} /> :
+              <Route path="/BbsUpdate/:bbs_id" element={<LoginPage />} />
           }
           {
             (user_option == "1") ?
-              <Route path="/BbsDetail" element={<BbsDetail />} /> :
-              <Route path="/BbsDetail" element={<LoginPage />} />
+              <Route path="/BbsDetail/:id" element={<BbsDetail />} /> :
+              <Route path="/BbsDetail/:id" element={<LoginPage />} />
           }
           {
             (user_option == "1") ?
