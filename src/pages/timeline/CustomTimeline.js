@@ -267,35 +267,35 @@ return (
     className="timeline"
     groups= {groups}
     items={items}
-    // keys={keys}
-    sidebarContent={<div>Above The Left</div>}
-    itemsSorted
+    //keys={keys}
+    //sidebarContent={<div>Above The Left</div>}
+    //itemsSorted
     itemTouchSendsClick={false}
-    // stackItems
+    //stackItems
     itemHeightRatio={0.8}
     showCursorLine
     canMove={false}
     canResize={false}
-    // defaultTimeStart={defaultTimeStart}
-    // defaultTimeEnd={defaultTimeEnd}
+    defaultTimeStart={defaultTimeStart}
+    defaultTimeEnd={defaultTimeEnd}
   >
-    <TimelineHeaders className="sticky">
-      <SidebarHeader>
+    {/* <TimelineHeaders> */}
+      {/* <SidebarHeader>
         {({ getRootProps}) => {
           return <div {...getRootProps()}></div>;
         }}
-      </SidebarHeader>
+      </SidebarHeader> */}
       <DateHeader unit="primaryHeader" />
-      <DateHeader />
-    </TimelineHeaders>
-    <TimelineMarkers>
+      {/* <DateHeader /> */}
+    {/* </TimelineHeaders> */}
+    {/* <TimelineMarkers> */}
       <TodayMarker>
         {({ styles }) => {
             const newStyles = { ...styles, backgroundColor: "red", "z-index" : "100" };
             return <div style={newStyles} />;
         }}
       </TodayMarker>
-    </TimelineMarkers>
+    {/* </TimelineMarkers> */}
   </Timeline>
 
   <div>

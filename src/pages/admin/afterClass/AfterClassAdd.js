@@ -35,7 +35,7 @@ function AfterClassAdd() {
         e.preventDefault();
         e.target.reset();
 
-        await axios.post('/after_school_class_submit', user);
+        await axios.post('http://13.209.104.24:8080/after_school_class_submit', user);
         alert('추가되었습니다!');
 
         // loadAfterClassDetail();
@@ -84,7 +84,7 @@ function AfterClassAdd() {
                         </div>
                     </div>
                     <div style={{ width: "100%", textAlign: "center" }}>
-                    <button type="submit" class="add">추가</button>
+                        <button type="submit" class="add">추가하기</button>
                     </div>
                 </form>
 

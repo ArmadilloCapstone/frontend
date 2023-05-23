@@ -67,7 +67,7 @@ function BbsList() {
     const search = () => {
         console.log("[BbsList.js searchBtn()] choiceVal=" + choiceVal + ", searchVal=" + searchVal);
 
-        navigate("/bbslist");
+        navigate("/Bbslist");
         loadBbsList(choiceVal, searchVal);
     }
 
@@ -133,7 +133,7 @@ function BbsList() {
                 onChange={changePage} />
 
             <div className="my-5 d-flex justify-content-center">
-                <Link className="btn btn-outline-secondary" to="/bbswrite"><i className="fas fa-pen"></i>글쓰기</Link>
+                <Link className="btn btn-outline-secondary" to="/Bbswrite"><i className="fas fa-pen"></i>글쓰기</Link>
             </div>
 
         </section>

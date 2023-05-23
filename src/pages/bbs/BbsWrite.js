@@ -1,8 +1,7 @@
 import axios from "axios";
 import "./bbswrite.css";
 
-import BbsEditor from "./BbsEditor";
-import { useContext, useEffect, useState } from "react";
+import { useRef, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 // import { AuthContext } from "../context/AuthProvider";
 // import { HttpHeadersContext } from "../context/HttpHeadersProvider";
@@ -16,7 +15,9 @@ function BbsWrite() {
 
 	const [title, setTitle] = useState("");
 	const [text, setText] = useState("");
-	const [file, setFile] = useState([]);
+	const [imageUrl, setImageUrl] = useState(null);
+	const imgRef = useRef();
+
 
 	const changeTitle = (e) => {
 		e.preventDefault();
@@ -30,14 +31,23 @@ function BbsWrite() {
 
 	const changeFile = (e) => {
 		e.preventDefault();
+		const reader = new FileReader();
+		const file = imgRef.current.files[0];
+		console.log(file);
 
-		const formData = new FormData();
-		if (e.target.files) {
-			const uploadFile = e.target.files[0]
-			formData.append('file', uploadFile)
-			setFile(uploadFile)
-		}
+		// const formData = new FormData();
+		// formData.append('file', e.target.files[0]);
+
+		reader.readAsDataURL(file);
+		reader.onloadend = () => {
+			setImageUrl(reader.result);
+			console.log("이미지주소", reader.result);
+		};
 	}
+
+	const onClickFileBtn = (e) => {
+		imgRef.current.click();
+	};
 
 	/* [POST /bbs]: 게시글 작성 */
 	const createBbs = async (e) => {
@@ -45,7 +55,7 @@ function BbsWrite() {
 		const formData = new FormData();
 		formData.append('title', title)
 		formData.append('text', text)
-		formData.append('file', file)
+		formData.append('file', imageUrl)
 
 		await axios.post("/news", formData)
 			.then((resp) => {
@@ -97,7 +107,21 @@ function BbsWrite() {
 							<tr>
 								<th className="table-primary">첨부파일</th>
 								<td>
-									<input type="file" class="bbsWrite" accept="image/*" multiple onChange={changeFile} />
+								<img src={imageUrl ? imageUrl : "/img/profile.png"} style={{width:"500px", height:"500px", margin:"20px"}}></img>
+									<input
+										type="file"
+										accept="image/*"
+										ref={imgRef}
+										onChange={changeFile}
+										style={{ display: "none" }}
+									></input>
+									<button class="add"
+										onClick={() => {
+											onClickFileBtn();
+										}}
+									>
+										추가
+									</button>
 								</td>
 
 							</tr>

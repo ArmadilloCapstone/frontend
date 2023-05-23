@@ -2,6 +2,8 @@ import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+
+import BbsUpdate from "./BbsUpdate";
 // import CommentWrite from "../comment/CommentWrite";
 // import CommentList from "../comment/CommentList";
 // import { AuthContext } from "../context/AuthProvider";
@@ -24,7 +26,7 @@ function BbsDetail() {
                 console.log("[BbsDetail.js] getBbsDetail() success :D");
                 console.log(resp.data);
 
-                setBbs(resp.data.bbs);
+                setBbs(resp.data);
             })
             .catch((err) => {
                 console.log("[BbsDetail.js] getBbsDetail() error :<");
@@ -54,16 +56,17 @@ function BbsDetail() {
         getBbsDetail();
     }, []);
 
-    const updateBbs = {
-        id: bbs.id,
-        title: bbs.title,
-        text: bbs.text
-    }
+    // const updateBbs = {
+    //     id: bbs.id,
+    //     title: bbs.title,
+    //     text: bbs.text,
+    //     file_url: bbs.file_url
+    // }
 
-    const parentBbs = {
-        id: bbs.id,
-        title: bbs.title
-    }
+    // const parentBbs = {
+    //     id: bbs.id,
+    //     title: bbs.title
+    // }
 
     return (
         <div>
@@ -73,7 +76,7 @@ function BbsDetail() {
                 {
                     /* 자신이 작성한 게시글인 경우에만 수정 삭제 가능 */
                         <>
-                            <Link className="btn btn-outline-secondary" to="/bbsupdate" state={{ bbs: updateBbs }}><i className="fas fa-edit"></i> 수정</Link> &nbsp;
+                            <button className="btn btn-outline-secondary" onClick={BbsUpdate(bbs.id)}><i className="fas fa-edit"></i> 수정</button> &nbsp;
                             <button className="btn btn-outline-danger" onClick={deleteBbs}><i className="fas fa-trash-alt"></i> 삭제</button>
                         </>
                         
@@ -112,11 +115,19 @@ function BbsDetail() {
                             </div>
                         </td>
                     </tr>
+
+                    <tr>
+                        <th className="col-3">첨부파일</th>
+                        <td>
+                        <img src={bbs.file_url} style={{width:"500px", height:"500px", margin:"20px"}}></img>
+                        </td>
+                    </tr>
+
                 </tbody>
             </table>
 
             <div className="my-3 d-flex justify-content-center">
-                <Link className="btn btn-outline-secondary" to="/bbslist"><i className="fas fa-list"></i> 글목록</Link>
+                <Link className="btn btn-outline-secondary" to="/Bbslist"><i className="fas fa-list"></i> 글목록</Link>
             </div><br /><br />
 
         </div>
