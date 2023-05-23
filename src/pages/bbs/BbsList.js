@@ -25,7 +25,7 @@ function BbsList() {
     /* [POST /bbs]: 게시글 목록 가져오기 */
     const loadBbsList = async (choice, search) => {
         if (choice === "all" && search === "all") {
-            await axios.post('/news')
+            await axios.post('http://dolbomi.site/BbsList')
                 .then((res) => {
                     console.log("[BbsList.js] useEffect() 성공");
                     console.log(res.data);
