@@ -33,7 +33,7 @@ function ClassAdd() {
         e.preventDefault();
         e.target.reset();
         const postUser = changeUserForm(user);
-        await axios.post('/dolbom_class_submit', postUser);
+        await axios.post('http://13.209.104.24:8080/dolbom_class_submit', postUser);
         // await axios.post('/dolbom_class_submit', user);
         alert('추가되었습니다!');
 
@@ -71,11 +71,11 @@ function ClassAdd() {
                             <input type="text" name="seme" value={seme} onChange={e => onInputChange(e)} placeholder="학기를 입력하세요." required="" />
                         </div>
                     </div>
-
-                </form>
-                <div style={{ width: "100%", textAlign: "center" }}>
+                    <div style={{ width: "100%", textAlign: "center" }}>
                     <button type="submit" class="add">추가</button>
-                </div>
+                    </div>
+                </form>
+               
             </div >
         </div >
 

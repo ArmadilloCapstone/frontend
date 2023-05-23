@@ -25,7 +25,7 @@ function StudentDetail() {
 
   // On Page load display all records 
   const loadStudentDetail = async () => {
-    await axios.post('http://localhost:8080/student') // student와 parent를 연결해서 어떻게 데이터를 가져오는 거지? db 쿼리로 처리하는 건가?
+    await axios.post('http://13.209.104.24:8080/student') // student와 parent를 연결해서 어떻게 데이터를 가져오는 거지? db 쿼리로 처리하는 건가?
       .then(function (response) {
         setRecord(response.data.map(function (el, idx) {
           console.log(el);
@@ -56,7 +56,7 @@ function StudentDetail() {
   const submitStudentRecord = async (e) => {
     e.preventDefault();
     e.target.reset();
-    await axios.post("http://localhost:8080/student_submit", user);
+    await axios.post("http://13.209.104.24:8080/student_submit", user);
     alert('추가되었습니다!');
 
     loadStudentDetail();
@@ -64,7 +64,7 @@ function StudentDetail() {
 
   // Delete Student Record
   const deleteRecord = (productId) => {
-    axios.delete(`/student/${productId}`)
+    axios.delete(`http://13.209.104.24:8080/student/${productId}`)
       .then((result) => {
         loadStudentDetail();
       })

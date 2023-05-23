@@ -6,7 +6,7 @@ function StudentTimeAdd() {
     const [student, setStudent] = useState([]);
 
     useEffect(() => {
-        axios.post('/studentFindAll') // url 모름.. 변경 필요할듯
+        axios.post('http://13.209.104.24:8080/studentFindAll') // url 모름.. 변경 필요할듯
             .then(function (response) {
                 console.log(response.data);
                 setStudent(response.data.map(function (el, idx) {
@@ -49,7 +49,7 @@ function StudentTimeAdd() {
     const submitStudentTimeRecord = async (e) => {
         e.preventDefault();
         e.target.reset();
-        await axios.post("/student_time_submit", user);
+        await axios.post("http://13.209.104.24:8080/student_time_submit", user);
         alert('추가되었습니다!');
 
         // loadStudentTimeDetail();

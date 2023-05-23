@@ -8,7 +8,7 @@ function TeacherAdd() {
     const [dolbom, setDolbom] = useState([]);
 
     useEffect(() => {
-        axios.post('/dolbom_class') // url 모름.. 변경 필요할듯
+        axios.post('http://13.209.104.24:8080/teacher/dolbom_classList') // url 모름.. 변경 필요할듯
             .then(function (response) {
                 console.log(response.data);
                 setDolbom(response.data.map(function (el, idx) {
@@ -62,7 +62,7 @@ function TeacherAdd() {
         e.preventDefault();
         e.target.reset();
         const postUser = changeUserForm(user);
-        await axios.post('/teacher_submit', postUser);
+        await axios.post('http://13.209.104.24:8080/teacher_submit', postUser);
         // await axios.post('/teacher_submit', user);
         alert('추가되었습니다!');
 

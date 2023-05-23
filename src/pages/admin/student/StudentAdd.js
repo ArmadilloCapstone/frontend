@@ -10,7 +10,7 @@ function StudentAdd() {
   const [original, setOriginal] = useState([]);
 
   useEffect(() => {
-    axios.post('/dolbom_class') // url 모름.. 변경 필요할듯
+    axios.post('http://13.209.104.24:8080/student/dolbom_classList') // url 모름.. 변경 필요할듯
       .then(function (response) {
         console.log(response.data);
         setDolbom(response.data.map(function (el, idx) {
@@ -24,7 +24,7 @@ function StudentAdd() {
   }, []);
 
   useEffect(() => {
-    axios.post('/student_original_class') // url 모름.. 변경 필요할듯
+    axios.post('http://13.209.104.24:8080/student_original_class') // url 모름.. 변경 필요할듯
       .then(function (response) {
         console.log(response.data);
         setOriginal(response.data.map(function (el, idx) {
@@ -81,7 +81,7 @@ function StudentAdd() {
     e.preventDefault();
     e.target.reset();
     const postUser = changeUserForm(user);
-    await axios.post('/student_submit', postUser);
+    await axios.post('http://13.209.104.24:8080/student_submit', postUser);
     // await axios.post("/student_submit", user);
     alert('추가되었습니다!');
 
