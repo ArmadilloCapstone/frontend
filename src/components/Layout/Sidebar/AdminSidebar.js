@@ -33,10 +33,7 @@ const Menu = styled.div`
       { name: "학부모 관리", path: "/ParentManagementPage" },
       { name: "방과후수업 관리", path: "/AfterClassManagementPage" },
       { name: "학생 입퇴실시간 관리", path: "/StudentTimeManagementPage" },
-      { name: "학생 시간표 관리", path: "/StudentScheduleManagementPage" },
-
-
-      { name: "안내장", path: "/bbslist" }
+      { name: "학생 시간표 관리", path: "/StudentScheduleManagementPage" }
 
     ];
     return (

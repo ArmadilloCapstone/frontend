@@ -45,7 +45,7 @@ export default function ClassManagementPage() {
         <div className="ClassManagementPage">
 
           <Routes>
-            <Route exact path="/" element={<ClassDetail />} />
+            <Route path="/" element={<ClassDetail />} />
           </Routes>
         </div>
       )
@@ -61,7 +61,7 @@ export default function ClassManagementPage() {
         <div className="ClassManagementPage">
 
           <Routes>
-            <Route exact path="/" element={<ClassAdd />} />
+            <Route path="/" element={<ClassAdd />} />
           </Routes>
         </div>
       )

@@ -102,11 +102,11 @@ function StudentScheduleAdd() {
                             </select>
                         </div>
                     </div>
-
+                    <div style={{ width: "100%", textAlign: "center" }}>
+                        <button type="submit" class="add">추가</button>
+                    </div>
                 </form>
-                <div style={{ width: "100%", textAlign: "center" }}>
-                    <button type="submit" class="add">추가</button>
-                </div>
+
             </div >
         </div >
 

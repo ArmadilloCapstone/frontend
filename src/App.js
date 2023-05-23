@@ -82,6 +82,16 @@ export default function App() {
               <Route path="/StudentState" element={<StudentState />} />:
               <Route path="/StudentState" element={<LoginPage />} />
             }
+            {
+              (user_option == "1")?
+              <Route path="/BbsList" element={<BbsList />} />:
+              <Route path="/BbsList" element={<LoginPage />} />
+            }
+            {
+              (user_option == "1")?
+              <Route path="/BbsWrite" element={<BbsWrite />} />:
+              <Route path="/BbsWrite" element={<LoginPage />} />
+            }
             
             {/* <Route path="/EntireUserAddPage" element={<EntireUserAddPage />} /> */}
             {/* 학부모 페이지 */}

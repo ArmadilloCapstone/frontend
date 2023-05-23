@@ -134,11 +134,11 @@ function StudentTimeAdd() {
                             <input type="time" name="off_5" value={off_5} onChange={e => onInputChange(e)} placeholder="금요일 퇴실 시간을 입력하세요." required="" />
                         </div>
                     </div>
-
+                    <div style={{ width: "100%", textAlign: "center" }}>
+                        <button type="submit" class="add">추가</button>
+                    </div>
                 </form>
-                <div style={{ width: "100%", textAlign: "center" }}>
-                    <button type="submit" class="add">추가</button>
-                </div>
+
             </div >
         </div >
 

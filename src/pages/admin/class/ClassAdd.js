@@ -33,7 +33,8 @@ function ClassAdd() {
         e.preventDefault();
         e.target.reset();
         const postUser = changeUserForm(user);
-        await axios.post('/dolbom_class_submit', postUser);
+        console.log(postUser);
+        await axios.post('http://13.209.104.24:8080/dolbom_class_submit', postUser);
         // await axios.post('/dolbom_class_submit', user);
         alert('추가되었습니다!');
 
@@ -72,10 +73,12 @@ function ClassAdd() {
                         </div>
                     </div>
 
+                    <div style={{ width: "100%", textAlign: "center" }}>
+                        <button type="submit" class="add">추가</button>
+                    </div>
+
                 </form>
-                <div style={{ width: "100%", textAlign: "center" }}>
-                    <button type="submit" class="add">추가</button>
-                </div>
+
             </div >
         </div >
 

@@ -6,23 +6,32 @@
     z-index: 2000;
   } */
 
-  .timeline {
-    font-family: "Eorinai";
-    font-style: normal;
-    text-align: center;
-  }
+.timeline {
+  font-family: "Eorinai";
+  font-style: normal;
+  text-align: center;
+}
 
-  .sticky {
-    text-align: center;
-    vertical-align: middle;
-  }
+#root>div>div:nth-child(2)>div.react-calendar-timeline.timeline {
+  max-width: 1280px;
+  width: 100%;
+  margin: 20px 20px 0;
+}
 
-  .date {
-    background-color: aqua;
-  }
+#root>div.sc-cNGgOM.edjEWX>div:nth-child(2)>div.react-calendar-timeline.timeline>div.rct-header-root>div:nth-child(1) {
+  background-color: #12B560;
+}
+
+#root>div.sc-cNGgOM.edjEWX>div:nth-child(2)>div.react-calendar-timeline.timeline>div.rct-header-root>div.rct-calendar-header>div:nth-child(1)>div:nth-child(2) {
+  background-color: #12B560;
+}
+
+#root>div.sc-cNGgOM.edjEWX>div:nth-child(2)>div.react-calendar-timeline.timeline>div.rct-outer>div.rct-scroll>div>div:nth-child(5)>div:nth-child(2)>span {
+  opacity: 0;
+}
 
 
-  /* .timeline_sort {
+/* .timeline_sort {
     width: 50px;
     height: 50px;
     background-color: red;
@@ -30,7 +39,7 @@
     margin: 0 auto;
   } */
 
-  /* button{
+/* button{
     height: 25px; 
     width: 85px; 
     margin: 2px; 
@@ -38,56 +47,51 @@
     top:100%; 
     left:73%;
   } */
-  #sortingButtons {
-    height: 25px; 
-    width: 85px; 
-    margin: 2px; 
-    position: relative;
-    top: 100%; 
-    left: 1%;
-    background-color: aliceblue;
-    color: black;
-    font-family: "paybooc-Light", sans-serif;
-    border-radius: 15px;
-  }
+#sortingButtons {
+  height: 25px;
+  width: 85px;
+  margin: 2px;
+  position: relative;
+  top: 100%;
+  left: 1%;
+  background-color: aliceblue;
+  color: black;
+  font-family: "paybooc-Light", sans-serif;
+  border-radius: 15px;
+}
 
-  #subjectButtons {
-    height: 25px; 
-    width: 120px; 
-    margin: 2px; 
-    position: relative;
-    top:100%; 
-    left:78%;
-    border-radius: 5px;
-    border: 1px dashed rgba(0, 0, 0, 0.426);
-  }
+#subjectButtons {
+  height: 25px;
+  width: 120px;
+  margin: 2px;
+  position: relative;
+  top: 100%;
+  left: 78%;
+  border-radius: 5px;
+  border: 1px dashed rgba(0, 0, 0, 0.426);
+}
 
-  .dolbom {
-    background-color: rgb(251, 103, 128);
-  }
+.dolbom {
+  background-color: rgb(251, 103, 128);
+}
 
-  .art {
-    background-color: rgb(243, 252, 0);
-  }
+.art {
+  background-color: rgb(243, 252, 0);
+}
 
-  .music {
-    background-color: rgb(91, 227, 67);
-  }
+.music {
+  background-color: rgb(91, 227, 67);
+}
 
-  .sport {
-    background-color: rgba(46, 133, 248, 0.932);
-  }
+.sport {
+  background-color: rgba(46, 133, 248, 0.932);
+}
 
-  .react-calendar-timeline .rct-sidebar-header {
+/* .react-calendar-timeline .rct-sidebar-header {
     background: #eee;
     color: #000;
     text-align: center;
     padding-top: 1rem;
     border: none;
     border-right: solid 2px #ccc !important;
-}
-
-#root > div > div:nth-child(2) > div.react-calendar-timeline.timeline {
-  width: 1280px;
-  margin: 0 auto;
-}
+} */
