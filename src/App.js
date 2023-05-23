@@ -99,8 +99,8 @@ export default function App() {
           }
           {
             (user_option == "1") ?
-              <Route path="/BbsDelete" element={<BbsDelete />} /> :
-              <Route path="/BbsDelete" element={<LoginPage />} />
+              <Route path="/BbsDetail" element={<BbsDetail />} /> :
+              <Route path="/BbsDetail" element={<LoginPage />} />
           }
 
           {/* <Route path="/EntireUserAddPage" element={<EntireUserAddPage />} /> */}
