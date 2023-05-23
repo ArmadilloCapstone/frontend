@@ -32,8 +32,8 @@ const Pickup = () => {
         alert("error")
       }
     })
-
   };
+
 
   const imageSource = showContent ? checkedImg : parentImg;
 
@@ -69,7 +69,6 @@ const Pickup = () => {
           </div>
         </>
       )}
-
       {showContent && (
         <div style={{ textAlign: 'center' }}>
           <div style={{ marginTop: '30px', marginLeft: '25px', fontSize: '30px' }}>호출 완료되었습니다.</div>

@@ -87,7 +87,7 @@ function AfterClassDetail() {
 
   // Delete After Class Record
   const deleteRecord = (productId) => {
-    axios.delete(`/parent/${productId}`)
+    axios.delete(`/after_school_class/${productId}`)
       .then((result) => {
         loadAfterClassDetail();
       })

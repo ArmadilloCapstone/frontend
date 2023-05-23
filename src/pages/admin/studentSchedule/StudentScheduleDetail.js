@@ -1,6 +1,7 @@
 import '../adminPages.css';
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { async } from 'q';
 
 function StudentScheduleDetail() {
     const [record, setRecord] = useState([]);
@@ -56,8 +57,9 @@ function StudentScheduleDetail() {
 
     // Delete Parent Record
     const deleteRecord = (productId) => {
-        axios.delete(`/student_schedule/${productId}`)
-            .then((result) => {
+        axios.delete(`http://13.209.104.24:8080/student_schedule/${productId}`)
+            .then((res) => {
+                console.log(res);
                 loadStudentScheduleDetail();
             })
             .catch(() => {

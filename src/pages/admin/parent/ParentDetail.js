@@ -70,7 +70,7 @@ function ParentDetail() {
 
   // Delete Parent Record
   const deleteRecord = (productId) => {
-    axios.delete(`/parent/${productId}`)
+    axios.delete(`http://13.209.104.24:8080/parent/${productId}`)
       .then((result) => {
         loadParentDetail();
       })

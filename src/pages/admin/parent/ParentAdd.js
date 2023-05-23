@@ -8,7 +8,7 @@ function ParentAdd() {
   const [student, setStudent] = useState([]);
 
   useEffect(() => {
-    axios.post('/studentFindAll') // url 모름.. 변경 필요할듯
+    axios.post('http://13.209.104.24:8080/parent/studentList') // url 모름.. 변경 필요할듯
       .then(function (response) {
         console.log(response.data);
         setStudent(response.data.map(function (el, idx) {
@@ -61,7 +61,7 @@ function ParentAdd() {
     e.preventDefault();
     e.target.reset();
     const postUser = changeUserForm(user);
-    await axios.post('/parent_submit', postUser);
+    await axios.post('http://13.209.104.24:8080/parent_submit', postUser);
     // await axios.post('/parent_submit', user);
     alert('추가되었습니다!');
 

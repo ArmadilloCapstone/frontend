@@ -64,7 +64,7 @@ function StudentDetail() {
 
   // Delete Student Record
   const deleteRecord = (productId) => {
-    axios.delete(`/student/${productId}`)
+    axios.delete(`http://13.209.104.24:8080/student/${productId}`)
       .then((result) => {
         loadStudentDetail();
       })
