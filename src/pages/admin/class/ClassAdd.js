@@ -68,19 +68,11 @@ function ClassAdd() {
                             <input type="text" name="seme" value={seme} onChange={e => onInputChange(e)} placeholder="학기를 입력하세요." required="" />
                         </div>
                     </div>
-<<<<<<< HEAD
-                    <div style={{ width: "100%", textAlign: "center" }}>
-                    <button type="submit" class="add">추가</button>
+                    <div style={{textAlign: "center" }}>
+                    <button type="submit" class="add">추가하기</button>
                     </div>
                 </form>
-               
-=======
-
-                </form>
-                <div style={{textAlign: "center" }}>
-                    <button type="submit" class="add">추가하기</button>
-                </div>
->>>>>>> 2b0e0fd4b29d5f0ffd104d958e91acf6054fb3c1
+                
             </div >
         </div >
 

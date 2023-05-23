@@ -136,11 +136,11 @@ function TeacherAdd() {
                             </select>
                         </div>
                     </div>
-
-                </form>
-                <div style={{ width: "100%", textAlign: "center" }}>
+                    <div style={{ width: "100%", textAlign: "center" }}>
                     <button type="submit" class="add">추가하기</button>
-                </div>
+                    </div>
+                </form>
+
             </div >
         </div >
 

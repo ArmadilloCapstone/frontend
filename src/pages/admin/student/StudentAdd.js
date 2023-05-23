@@ -189,11 +189,10 @@ function StudentAdd() {
               <input type="date" max="9999-12-31" name="birth_date" value={birth_date} onChange={e => onInputChange(e)} placeholder="생년월일을 입력하세요." required="" />
             </div>
           </div>
-
-        </form>
-        <div style={{ width: "100%", textAlign: "center" }}>
+          <div style={{ width: "100%", textAlign: "center" }}>
           <button type="submit" class="add">추가하기</button>
-        </div>
+          </div>
+        </form>
       </div >
     </div >
 
