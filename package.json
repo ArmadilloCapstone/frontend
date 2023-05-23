@@ -2,7 +2,7 @@
   "name": "react-test",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:8080",
+  "proxy": "http://13.209.104.24:8080",
   "dependencies": {
     "@ant-design/icons": "^5.1.0",
     "@fullcalendar/core": "^6.1.6",

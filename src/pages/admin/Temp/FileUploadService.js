@@ -5,7 +5,7 @@ const upload = (file, onUploadProgress) => {
 
   formData.append("file", file);
 
-  return http.post("/student_submit_csv", formData, {
+  return http.post("http://13.209.104.24:8080/student_submit_csv", formData, {
     headers: {
       "Content-Type": "multipart/form-data",
     },
@@ -14,7 +14,7 @@ const upload = (file, onUploadProgress) => {
 };
 
 const getFiles = () => {
-  return http.post("/files");
+  return http.post("http://13.209.104.24:8080/files");
 };
 
 const FileUploadService = {

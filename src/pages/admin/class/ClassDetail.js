@@ -92,8 +92,8 @@ function ClassDetail() {
           </tr>
         </thead>
         <tbody class="admin">
-          {record.map((name) =>
-            <tr class="admin">
+          {record.map((name, idx) =>
+            <tr class="admin" key = {idx}>
               <td class="admin">{name.class_name}</td>
               <td class="admin">{name.class_num}</td>
               <td class="admin">{name.year_seme}</td>
