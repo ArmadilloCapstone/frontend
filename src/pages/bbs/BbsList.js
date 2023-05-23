@@ -67,7 +67,7 @@ function BbsList() {
     const search = () => {
         console.log("[BbsList.js searchBtn()] choiceVal=" + choiceVal + ", searchVal=" + searchVal);
 
-        navigate("/bbslist");
+        navigate("/Bbslist");
         loadBbsList(choiceVal, searchVal);
     }
 
