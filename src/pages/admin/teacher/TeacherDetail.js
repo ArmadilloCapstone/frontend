@@ -24,7 +24,7 @@ function TeacherDetail() {
 
   // On Page load display all records 
   const loadTeacherDetail = async () => {
-    await axios.post('http://13.209.104.24:8080/teacher')
+    await axios.post('http://dolbomi.site/teacher')
       .then(function (response) {
         setRecord(response.data.map(function (el, idx) {
           console.log(el);
@@ -69,7 +69,7 @@ function TeacherDetail() {
   const submitTeacherRecord = async (e) => {
     e.preventDefault();
     e.target.reset();
-    await axios.post('http://13.209.104.24:8080/teacher_submit', user);
+    await axios.post('http://dolbomi.site/teacher_submit', user);
     alert('추가되었습니다!');
 
     loadTeacherDetail();
@@ -77,7 +77,7 @@ function TeacherDetail() {
 
   // Delete Teacher Record
   const deleteRecord = (productId) => {
-    axios.delete(`http://13.209.104.24:8080/teacher/${productId}`)
+    axios.delete(`http://dolbomi.site/teacher/${productId}`)
       .then((result) => {
         loadTeacherDetail();
       })

@@ -22,7 +22,7 @@ function StudentScheduleDetail() {
 
     // On Page load display all records 
     const loadStudentScheduleDetail = async () => {
-        await axios.post('http://13.209.104.24:8080/student_schedule')
+        await axios.post('http://dolbomi.site/student_schedule')
             .then(function (response) {
                 setRecord(response.data.map(function (el, idx) {
                     console.log(el);
@@ -49,7 +49,7 @@ function StudentScheduleDetail() {
     const submitStudentScheduleRecord = async (e) => {
         e.preventDefault();
         e.target.reset();
-        await axios.post('http://13.209.104.24:8080/student_schedule_submit', user);
+        await axios.post('http://dolbomi.site/student_schedule_submit', user);
         alert('추가되었습니다!');
 
         loadStudentScheduleDetail();
@@ -57,7 +57,7 @@ function StudentScheduleDetail() {
 
     // Delete Parent Record
     const deleteRecord = (productId) => {
-        axios.delete(`http://13.209.104.24:8080/student_schedule/${productId}`)
+        axios.delete(`http://dolbomi.site/student_schedule/${productId}`)
             .then((res) => {
                 console.log(res);
                 loadStudentScheduleDetail();

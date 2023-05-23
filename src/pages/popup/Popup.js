@@ -54,7 +54,7 @@ const Popup = () => {
       const period = 0.333;
       var lastsec = 1;
       setTimeout(() => {
-        axios.post("http://13.209.104.24:8080/sendPickupFormToTeacher").then((res)=>{
+        axios.post("http://dolbomi.site/sendPickupFormToTeacher").then((res)=>{
           setStudents(res.data.map(function(el){
             console.log(el);
             var returnObj = {}
@@ -72,7 +72,7 @@ const Popup = () => {
 
         })
         setInterval(() => {
-          axios.post("http://13.209.104.24:8080/sendPickupFormToTeacher").then((res)=>{
+          axios.post("http://dolbomi.site/sendPickupFormToTeacher").then((res)=>{
             setStudents(res.data.map(function(el){
               console.log(el);
               var returnObj = {}
