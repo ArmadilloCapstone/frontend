@@ -41,12 +41,9 @@ function ClassAdd() {
     };
 
     return (
-        <div class="wrapper">
-            <div class="form_container">
+        <div class="wrapper" style={{ fontFamily: "Eorinai" }}>
+            <div class="form_container CM">
                 <form name="form" onSubmit={submitClassRecord}>
-                    <div class="heading">
-                        <h2>돌봄학급 추가</h2>
-                    </div>
 
                     {/* <div class="form_wrap onlyone"> */}
                     <div class="form_item">
@@ -71,11 +68,19 @@ function ClassAdd() {
                             <input type="text" name="seme" value={seme} onChange={e => onInputChange(e)} placeholder="학기를 입력하세요." required="" />
                         </div>
                     </div>
+<<<<<<< HEAD
                     <div style={{ width: "100%", textAlign: "center" }}>
                     <button type="submit" class="add">추가</button>
                     </div>
                 </form>
                
+=======
+
+                </form>
+                <div style={{textAlign: "center" }}>
+                    <button type="submit" class="add">추가하기</button>
+                </div>
+>>>>>>> 2b0e0fd4b29d5f0ffd104d958e91acf6054fb3c1
             </div >
         </div >
 

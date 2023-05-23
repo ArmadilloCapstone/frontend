@@ -71,13 +71,9 @@ function TeacherAdd() {
 
     return (
         <div class="wrapper">
-            <div class="form_container">
+            <div class="form_container TM">
                 <form name="form" onSubmit={submitTeacherRecord}>
-                    <div class="heading">
-                        <h2>돌봄교사 추가</h2>
-                    </div>
 
-                    {/* <div class="form_wrap onlyone"> */}
                     <div class="form_item">
                         <label>이름</label>
                         <input type="text" name="name" value={name} onChange={e => onInputChange(e)} placeholder="이름을 입력하세요." required="" />
@@ -87,15 +83,15 @@ function TeacherAdd() {
                     <label>연락처</label>
                     <div class="form_wrap full">
                         <div class="form_item">
-                            <label></label>
+                            <label> </label>
                             <input type="text" name="phone_num1" value={phone_num1} onChange={e => onInputChange(e)} placeholder="연락처를 입력하세요." required="" />
                         </div>
                         <div class="form_item">
-                            <label></label>
+                            <label> </label>
                             <input type="text" name="phone_num2" value={phone_num2} onChange={e => onInputChange(e)} placeholder="연락처를 입력하세요." required="" />
                         </div>
                         <div class="form_item">
-                            <label></label>
+                            <label> </label>
                             <input type="text" name="phone_num3" value={phone_num3} onChange={e => onInputChange(e)} placeholder="연락처를 입력하세요." required="" />
                         </div>
                     </div>
@@ -143,7 +139,7 @@ function TeacherAdd() {
 
                 </form>
                 <div style={{ width: "100%", textAlign: "center" }}>
-                    <button type="submit" class="add">추가</button>
+                    <button type="submit" class="add">추가하기</button>
                 </div>
             </div >
         </div >

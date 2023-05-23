@@ -35,9 +35,9 @@ export const LoginPage = () => {
   };
 
   const loginFormWrapperStyle = {
-    backgroundColor: '#e8e8e8',
+    backgroundColor: '#fffafa',
     padding: '25px',
-    width: '70%',
+    width: '60%',
     margin: '25px',
     display: 'inline-block',
     borderRadius: '20px',
