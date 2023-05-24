@@ -1,12 +1,22 @@
 import React, { useState } from 'react';
 import AfterClassDetail from './AfterClassDetail';
 import AfterClassAdd from './AfterClassAdd';
-import { Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, withRouter } from "react-router-dom";
+import styled from "styled-components";
+
+const Container = styled.div`
+  cursor: pointer;
+`;
+
+const TabButton = styled.button`
+  &.active {
+    background-color: #12B560;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+`;
 
 export default function AfterClassManagementPage() {
   const [activeIndex, setActiveIndex] = useState(0);
-
-
 
   const tabClickHandler = (index) => {
     setActiveIndex(index);
@@ -15,32 +25,36 @@ export default function AfterClassManagementPage() {
   const tabContArr = [
     {
       tabTitle: (
-        <li className={(activeIndex === 0 ? "is-active" : "")} onClick={() => tabClickHandler(0)}>
-          <p class="nav-link active" style={{ backgroundColor: activeIndex === 0 ? "#12B560" : "white",
-            color: activeIndex === 0 ? "white" : "gray"}}>방과후수업 목록</p>
-        </li>
+        <TabButton
+          className={`tab-button ${activeIndex === 0 ? "active" : ""}`}
+          onClick={() => tabClickHandler(0)}
+          style={{ width: '170px'}}
+          >
+          방과후수업 목록
+        </TabButton>
       ),
       tabCont: (
         <div className="AfterClassManagementPage">
-
           <Routes>
-            <Route exact path="/" element={<AfterClassDetail />} />
+            <Route path="/" element={<AfterClassDetail />} />
           </Routes>
         </div>
       )
     },
     {
       tabTitle: (
-        <li className={activeIndex === 1 ? "is-active" : ""} onClick={() => tabClickHandler(1)}>
-          <p class="nav-link active" style={{ backgroundColor: activeIndex === 1 ? "#12B560" : "white",
-            color: activeIndex === 1 ? "white" : "gray"}}>방과후수업 추가</p>
-        </li>
+        <TabButton
+          className={`tab-button ${activeIndex === 1 ? "active" : ""}`}
+          onClick={() => tabClickHandler(1)}
+          style={{ width: '170px'}}
+        >
+          방과후수업 추가
+        </TabButton>
       ),
       tabCont: (
         <div className="AfterClassManagementPage">
-
           <Routes>
-            <Route exact path="/" element={<AfterClassAdd />} />
+            <Route path="/" element={<AfterClassAdd />} />
           </Routes>
         </div>
       )
@@ -48,35 +62,15 @@ export default function AfterClassManagementPage() {
   ];
 
   return (
-    <div className="container" style={{ width: "1200px", cursor: "pointer" }}>
+    <Container className="container">
       <div className="my-3">
-        <ul class="nav nav-tabs">
+        <ul>
           {tabContArr.map((section, index) => {
-            return section.tabTitle
+            return section.tabTitle;
           })}
         </ul>
-
       </div>
       {tabContArr[activeIndex].tabCont}
-    </div>
+    </Container>
   );
 }
-
-
-
-// import AfterClassDetail from "./AfterClassDetail";
-// import { BrowserRouter as Router, Route,Routes,withRouter} from "react-router-dom";
-// function AfterClassManagementPage(props) {
-//   return (
- 
-     
-//       <div className="AfterClassManagementPage">
-//         <Routes>
-//           <Route exact path="/" element={<AfterClassDetail />} />
-//         </Routes>
-//       </div>
- 
-//   );
-// }
- 
-// export default AfterClassManagementPage;

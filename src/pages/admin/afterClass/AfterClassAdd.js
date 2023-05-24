@@ -45,9 +45,6 @@ function AfterClassAdd() {
         <div class="wrapper">
             <div class="form_container">
                 <form name="form" onSubmit={submitAfterClassRecord}>
-                    <div class="heading">
-                        <h2>방과후수업 추가</h2>
-                    </div>
 
                     {/* <div class="form_wrap onlyone"> */}
                     <div class="form_item">

@@ -72,10 +72,6 @@ function ParentAdd() {
     <div class="wrapper">
       <div class="form_container">
         <form name="form" onSubmit={submitParentRecord}>
-          <div class="heading">
-            <h2>학부모 추가</h2>
-          </div>
-
           {/* <div class="form_wrap onlyone"> */}
           <div class="form_item">
             <label>학부모 이름</label>
