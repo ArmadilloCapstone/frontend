@@ -3,11 +3,11 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import SidebarItem from "./SidebarItem";
 import logo from "./logo.png"
+import block from "./block.png"
 import { useSelector } from 'react-redux';
 
 const Side = styled.div`
   display: flex;
-  border-right: 1px solid #e0e0e0;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -33,7 +33,7 @@ const Menu = styled.div`
     return (
       <Side>
         <Logo src={logo}></Logo>
-        <h6>보호자 {user_name}님</h6>
+        <h6 style={{fontSize: "25px", paddingLeft: "15px", paddingTop:"10px"}}>보호자 {user_name}님</h6>
         <Menu>
           {menus.map((menu, index) => {
             return (

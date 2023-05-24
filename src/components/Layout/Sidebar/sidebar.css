@@ -1,0 +1,25 @@
+
+.sidebar-container {
+    border-radius: 27px;
+    padding: 15px;
+    margin: 15px;
+    background-color: #12B560;
+    color: white;
+
+  }
+
+.sidebar-item {
+    color: white;
+}
+  
+.sidebar-content {
+    padding-top: 2px;
+}
+
+.sidebar-line{
+    width: 170px;
+    height: 1px;
+    background-color: #EBECF0;
+    margin-left: 15px;
+    margin-bottom: 30px;
+}
