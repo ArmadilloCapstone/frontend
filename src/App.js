@@ -32,6 +32,10 @@ import GuardianManagementPage from './pages/guardian/GuardianManagementPage';
 
 import Footer from './components/Layout/Footer/Footer';
 
+
+import {Button, Badge} from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 const Center = styled.div`
   height: 92vh;
   display: flex;
