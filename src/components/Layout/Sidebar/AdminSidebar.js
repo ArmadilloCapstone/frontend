@@ -33,6 +33,8 @@ const Menu = styled.div`
   flex-direction: column;
 `;
 
+
+
 const MenuItem = styled.div`
   display: flex;
   align-items: center;
@@ -125,7 +127,7 @@ function AdminSidebar() {
                   </TabButton>
                 </MenuItem>
                 {menu.name === "방과후수업 관리" && (
-                  <Line  className="sidebar-line"/>
+                  <Line className="sidebar-line"/>
                 )}
               </StyledNavLink>
             );
