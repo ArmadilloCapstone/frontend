@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useRef, useState } from "react";
+import FileUpload from "./FileUpload";
 // import { AuthContext } from "../context/AuthProvider";
 // import { HttpHeadersContext } from "../context/HttpHeadersProvider";
 
@@ -12,6 +13,7 @@ function BbsUpdate() {
 	const navigate = useNavigate();
 
 	const [title, setTitle] = useState("");
+	const [selectedFiles, setSelectedFiles] = useState([]);
 	const [text, setText] = useState("");
 	const [imageUrl, setImageUrl] = useState(null);
 	const imgRef = useRef();
@@ -45,6 +47,24 @@ function BbsUpdate() {
 
 	const changeFile = (e) => {
 		e.preventDefault();
+		let obj = e.target.files;
+		let arr = [];
+
+		for (let key in obj) {
+		  if(obj.hasOwnProperty(key)) {
+		    arr.push(obj[key]);
+		  }
+		}
+		console.log(arr)
+		setSelectedFiles([]);
+		for(let i = 0; i < arr.length; i++){
+			console.log("'" + arr[i].name + "' 업로드가 완료되었습니다!")
+			setSelectedFiles((prevMessage) => ([
+				...prevMessage,
+				"'" + arr[i].name + "' 업로드가 완료되었습니다!",
+			]));
+
+		}
 		const reader = new FileReader();
 		const file = imgRef.current.files[0];
 		console.log(file);
@@ -115,21 +135,7 @@ function BbsUpdate() {
 							<tr>
 								<th className="table-primary">첨부파일</th>
 								<td>
-								<img src={imageUrl ? imageUrl : "/img/profile.png"} style={{width:"500px", height:"500px", margin:"20px"}}></img>
-									<input
-										type="file"
-										accept="image/*"
-										ref={imgRef}
-										onChange={changeFile}
-										style={{ display: "none" }}
-									></input>
-									<button class="add"
-										onClick={() => {
-											onClickFileBtn();
-										}}
-									>
-										추가
-									</button>
+									<FileUpload />
 								</td>
 
 							</tr>

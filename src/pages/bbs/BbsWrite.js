@@ -3,6 +3,7 @@ import "./bbswrite.css";
 
 import { useRef, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import FileUpload from "./FileUpload";
 // import { AuthContext } from "../context/AuthProvider";
 // import { HttpHeadersContext } from "../context/HttpHeadersProvider";
 
@@ -57,7 +58,7 @@ function BbsWrite() {
 		formData.append('text', text)
 		formData.append('file', imageUrl)
 
-		await axios.post("/news", formData)
+		await axios.post("http://localhost/BbsList/create", formData)
 			.then((resp) => {
 				console.log("[BbsWrite.js] createBbs() success :D");
 				console.log(resp.data);
@@ -107,31 +108,17 @@ function BbsWrite() {
 							<tr>
 								<th className="table-primary">첨부파일</th>
 								<td>
-								<img src={imageUrl ? imageUrl : "/img/profile.png"} style={{width:"500px", height:"500px", margin:"20px"}}></img>
-									<input
-										type="file"
-										accept="image/*"
-										ref={imgRef}
-										onChange={changeFile}
-										style={{ display: "none" }}
-									></input>
-									<button class="add"
-										onClick={() => {
-											onClickFileBtn();
-										}}
-									>
-										추가
-									</button>
+									<FileUpload />
 								</td>
 
 							</tr>
 						</tbody>
 					</table>
+					<div className="my-5 d-flex justify-content-center">
+						<button type="submit" className="btn btn-outline-secondary"><i className="fas fa-pen"></i> 등록하기</button>
+					</div>
 				</form>
 
-				<div className="my-5 d-flex justify-content-center">
-					<button type="submit" className="btn btn-outline-secondary"><i className="fas fa-pen"></i> 등록하기</button>
-				</div>
 			</div>
 		</div>
 

@@ -34,12 +34,6 @@ import { useSelector } from 'react-redux';
             null
         }
         {
-            (user_option == 3)?
-            <GuardianSidebar/>
-            :
-            null
-        }
-        {
             (user_option == 4)?
             <AdminSidebar/>
             :
