@@ -34,7 +34,7 @@ function ClassAdd() {
         e.target.reset();
         const postUser = changeUserForm(user);
         console.log(postUser);
-        await axios.post('http://dolbomi.site/dolbom_class_submit', postUser);
+        await axios.post('http://localhost:80/dolbom_class_submit', postUser);
         // await axios.post('/dolbom_class_submit', user);
         alert('추가되었습니다!');
 

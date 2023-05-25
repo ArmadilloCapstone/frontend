@@ -22,7 +22,7 @@ const Pickup = () => {
   const handleClick = () => {
 
     // 백엔드로 parentId 보내는 코드
-    axios.post("http://dolbomi.site/requestParent", {
+    axios.post("http://localhost:80/requestParent", {
       pickupManId : user_id
     }).then((res)=>{
       if(res.data == "success"){

@@ -33,7 +33,7 @@ function ClassDetail() {
 
   // On Page load display all records 
   const loadClassDetail = async () => {
-    await axios.post('http://dolbomi.site/dolbom_class')
+    await axios.post('http://localhost:80/dolbom_class')
       .then(function (response) {
         setRecord(response.data.map(function (el, idx) {
           console.log(el);
@@ -63,7 +63,7 @@ function ClassDetail() {
     e.target.reset();
     const postUser = changeUserForm(user);
     // await axios.post('/dolbom_class_submit', user);
-    await axios.post('http://dolbomi.site/dolbom_class_submit', postUser);
+    await axios.post('http://localhost:80/dolbom_class_submit', postUser);
     alert('추가되었습니다!');
 
     loadClassDetail();
@@ -71,7 +71,7 @@ function ClassDetail() {
 
   // Delete Class Record
   const deleteRecord = (productId) => {
-    axios.delete(`http://dolbomi.site/dolbom_class/${productId}`)
+    axios.delete(`http://localhost:80/dolbom_class/${productId}`)
       .then((result) => {
         loadClassDetail();
       })

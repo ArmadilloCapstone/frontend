@@ -13,7 +13,7 @@ export const ChangePw = (props) => {
     setUser_new_pw(event.target.value);
   };
   const register = () => {
-    axios.post("http://dolbomi.site/changepw", {
+    axios.post("http://localhost:80/changepw", {
         "user_id" : localStorage.getItem('userid'),
         "user_pw" : user_pw,
         "user_new_pw" : user_new_pw,
