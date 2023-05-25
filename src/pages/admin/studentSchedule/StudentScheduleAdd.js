@@ -7,7 +7,7 @@ function StudentScheduleAdd() {
     const [afterClass, setAfterClass] = useState([]);
 
     useEffect(() => {
-        axios.post('http://dolbomi.site/studentFindAll') // url 모름.. 변경 필요할듯
+        axios.post('http://dolbomi.site/student_schedule/studentList') // url 모름.. 변경 필요할듯
             .then(function (response) {
                 console.log(response.data);
                 setStudent(response.data.map(function (el, idx) {
@@ -21,7 +21,7 @@ function StudentScheduleAdd() {
     }, []);
 
     useEffect(() => {
-        axios.post('http://dolbomi.site/after_school_class_name') // url 모름.. 변경 필요할듯
+        axios.post('http://dolbomi.site/student_schedule/AfterSchoolClassList') // url 모름.. 변경 필요할듯
             .then(function (response) {
                 console.log(response.data);
                 setAfterClass(response.data.map(function (el, idx) {

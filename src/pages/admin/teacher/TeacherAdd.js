@@ -63,6 +63,7 @@ function TeacherAdd() {
         e.target.reset();
         const postUser = changeUserForm(user);
         await axios.post('http://dolbomi.site/teacher_submit', postUser);
+        console.log(postUser);
         // await axios.post('/teacher_submit', user);
         alert('추가되었습니다!');
 

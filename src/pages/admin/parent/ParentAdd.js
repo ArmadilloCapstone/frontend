@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 function ParentAdd() {
-  let genderKind = [{ value: "남자" }, { value: "여자" }];
+  let genderKind = [{ value: "남" }, { value: "여" }];
 
   const [student, setStudent] = useState([]);
 
