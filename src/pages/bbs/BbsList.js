@@ -25,7 +25,9 @@ function BbsList() {
     /* [POST /bbs]: 게시글 목록 가져오기 */
     const loadBbsList = async (choice, search) => {
         if (choice === "all" && search === "all") {
-            await axios.post('/news')
+            await axios.post('http://localhost/BbsList', {
+                id : localStorage.getItem('userid')
+            })
                 .then((res) => {
                     console.log("[BbsList.js] useEffect() 성공");
                     console.log(res.data);
@@ -41,7 +43,7 @@ function BbsList() {
         }
 
         else {
-            await axios.post(`/news/${choice}/${search}`)
+            await axios.post(`http://localhost:8080/news/${choice}/${search}`)
                 .then((res) => {
                     console.log("[BbsList.js] useEffect() 성공");
                     console.log(res.data);
@@ -152,7 +154,7 @@ function TableRow(props) {
                     <>
                         <td class="BbList" >
 
-                            <Link to={{ pathname: `/bbsdetail/${bbs.id}` }}> { /* 게시글 상세 링크 */}
+                            <Link to={{ pathname: `/BbsDetail/${bbs.id}` }}> { /* 게시글 상세 링크 */}
                                 <span className="underline bbs-title" >{bbs.title} </span> { /* 게시글 제목 */}
                             </Link>
                         </td>

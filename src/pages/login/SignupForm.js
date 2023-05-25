@@ -29,7 +29,7 @@ export const SignupForm = (props) => {
   };
 
   const register = () => {
-    axios.post("http://localhost:80/signup", {
+    axios.post("http://dolbomi.site/signup", {
       "name" : name,
       "phone_num" : phone_num,
       "user_id" : id,
@@ -49,7 +49,6 @@ export const SignupForm = (props) => {
 
   return (
     <div className="signup">
-      <div className="title">회원가입</div>
       <div className="box name">
         <div className="name">이름</div>
         <input type="text" value ={name} onChange={saveName}/>
@@ -66,7 +65,7 @@ export const SignupForm = (props) => {
         <div className="name">비밀번호</div>
         <input type="password" value ={pw} onChange={saveUserPw}/>
       </div>
-      <div className="loginButton" onClick={register}>회원가입</div>
+      <div className="loginButton" onClick={register}>회원가입하기</div>
     </div>
   );
 }

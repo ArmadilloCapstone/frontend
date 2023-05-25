@@ -97,7 +97,7 @@ const handleSubmit = (e) => {
 //     if (csvFile.csv_file) {
 //       const formData = new FormData()
 //       formData.append('path_to_csv', csvFile.csv_file);
-//       await axios.post('http://localhost:80/entireUserFile', formData);
+//       await axios.post('http://dolbomi.site/entireUserFile', formData);
 //       alert("서버에 등록이 완료되었습니다!");
 //       setCsvFile({
 //         csv_file: "",

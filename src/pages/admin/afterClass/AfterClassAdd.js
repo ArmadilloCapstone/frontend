@@ -35,7 +35,7 @@ function AfterClassAdd() {
         e.preventDefault();
         e.target.reset();
 
-        await axios.post('http://localhost:80/after_school_class_submit', user);
+        await axios.post('http://dolbomi.site/after_school_class_submit', user);
         alert('추가되었습니다!');
 
         // loadAfterClassDetail();
@@ -45,9 +45,6 @@ function AfterClassAdd() {
         <div class="wrapper">
             <div class="form_container">
                 <form name="form" onSubmit={submitAfterClassRecord}>
-                    <div class="heading">
-                        <h2>방과후수업 추가</h2>
-                    </div>
 
                     {/* <div class="form_wrap onlyone"> */}
                     <div class="form_item">

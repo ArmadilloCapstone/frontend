@@ -47,32 +47,14 @@ const Popup = () => {
 
   useEffect(() => {
     console.log(user_option);
-    if(user_option == 1){
       var now = new Date();
       //const period = 1; // 1분주기
       //var lastsec = 60 - now.getSeconds(); // 남은 시간
       const period = 0.333;
       var lastsec = 1;
       setTimeout(() => {
-        axios.post("http://localhost:80/sendPickupFormToTeacher").then((res)=>{
-          setStudents(res.data.map(function(el){
-            console.log(el);
-            var returnObj = {}
-            returnObj['id'] = el.studentId;
-            returnObj['name'] = el.studentName;
-            returnObj['grade'] = el.studentGrade;
-            returnObj['gender'] = (el.studentGender==1)?'M':'F';
-            returnObj['pickupManName'] = el.pickupManName;
-            return returnObj;
-          }));
-          if(res.data != null){
-            setShowPopup(true);
-            console.log("showPopup is true")
-          }
-
-        })
-        setInterval(() => {
-          axios.post("http://localhost:80/sendPickupFormToTeacher").then((res)=>{
+        if(user_option == 1){
+          axios.post("http://dolbomi.site/sendPickupFormToTeacher/" + localStorage.getItem('userid')).then((res)=>{
             setStudents(res.data.map(function(el){
               console.log(el);
               var returnObj = {}
@@ -87,12 +69,32 @@ const Popup = () => {
               setShowPopup(true);
               console.log("showPopup is true")
             }
-
+          
           })
+        }
+        setInterval(() => {
+          if(user_option == 1){
+            axios.post("http://dolbomi.site/sendPickupFormToTeacher").then((res)=>{
+              setStudents(res.data.map(function(el){
+                console.log(el);
+                var returnObj = {}
+                returnObj['id'] = el.studentId;
+                returnObj['name'] = el.studentName;
+                returnObj['grade'] = el.studentGrade;
+                returnObj['gender'] = (el.studentGender==1)?'M':'F';
+                returnObj['pickupManName'] = el.pickupManName;
+                return returnObj;
+              }));
+              if(res.data != null){
+                setShowPopup(true);
+                console.log("showPopup is true")
+              }
+            
+            })
+          }
         }, period * 60 * 1000);
       }, lastsec* 1000);
         console.log(showPopup)
-  }
   }, []);
 
 

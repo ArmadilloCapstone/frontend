@@ -1,10 +1,10 @@
 import axios from "axios";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useRef, useState } from "react";
 // import { AuthContext } from "../context/AuthProvider";
 // import { HttpHeadersContext } from "../context/HttpHeadersProvider";
 
-function BbsUpdate(bbs_id) {
+function BbsUpdate() {
 
 	// const { headers, setHeaders } = useContext(HttpHeadersContext);
 	// const { auth, setAuth } = useContext(AuthContext);
@@ -15,18 +15,20 @@ function BbsUpdate(bbs_id) {
 	const [text, setText] = useState("");
 	const [imageUrl, setImageUrl] = useState(null);
 	const imgRef = useRef();
+	const param =  useParams(); // 파라미터 가져오기
 
 	useEffect(() => {
+		console.log(param.bbs_id);
 		const getBoard = async () => {
-		  const {data} = await axios.post(`/news/${bbs_id}`);
+		  const {data} = await axios.post(`http://localhost/news/${param.bbs_id}`);
 		  return data;
 		}
 		getBoard().then((result) => {
 		  setTitle(result.title);
-		  setText(result.content);
+		  setText(result.text);
 		  // 이미지는 파일을 불러올 필요가 없이 미리보기 url만 가져온다.
 		  // 이미지를 선택하지 않고 올리면 db에 저장되어 있는 이미지를 그대로 사용!
-		  setImageUrl({...imageUrl, preview_URL: `/image/${bbs_id}`})
+		  setImageUrl({...imageUrl, preview_URL: `http://localhost/news/image/${param.bbs_id}`})
 		});
 	  }, [])
 
@@ -70,7 +72,7 @@ function BbsUpdate(bbs_id) {
 		formData.append('file', imageUrl)
 
 		// await axios.patch(`/news/${bbs.id}`, formData)
-		await axios.post(`/news/${bbs_id}`, formData)
+		await axios.post(`http://localhost/modifyNews/${param.bbs_id}`, formData)
 		.then((resp) => {
 			console.log("[BbsUpdate.js] updateBbs() success");
 			console.log(resp.data);
@@ -133,11 +135,11 @@ function BbsUpdate(bbs_id) {
 							</tr>
 						</tbody>
 					</table>
+					<div className="my-5 d-flex justify-content-center">
+						<button type="submit" className="btn btn-outline-secondary"><i className="fas fa-pen"></i> 등록하기</button>
+					</div>
 				</form>
 
-				<div className="my-5 d-flex justify-content-center">
-					<button type="submit" className="btn btn-outline-secondary"><i className="fas fa-pen"></i> 등록하기</button>
-				</div>
 			</div>
 		</div>
 	);

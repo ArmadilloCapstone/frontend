@@ -1,8 +1,7 @@
-import '../addPages.css'
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-function StudentAdd() {
+function GuardianAdd() {
   let genderKind = [{ value: "남" }, { value: "여" }];
   let gradeKind = [{ value: 1 }, { value: 2 }, { value: 3 }, { value: 4 }, { value: 5 }, { value: 6 }];
 
@@ -276,4 +275,4 @@ function StudentAdd() {
   )
 }
 
-export default StudentAdd;
+export default GuardianAdd;
