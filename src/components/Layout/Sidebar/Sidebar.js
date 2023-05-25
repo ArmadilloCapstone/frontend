@@ -14,13 +14,6 @@ import { useSelector } from 'react-redux';
     return (
         <div>
         {
-            (user_option == "")
-            ?
-            <LoginSidebar/>
-            :
-            null
-        }
-        {
             (user_option == 1)
             ?
             <TeacherSidebar/>
