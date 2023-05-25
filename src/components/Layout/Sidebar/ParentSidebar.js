@@ -12,9 +12,10 @@ const Container = styled.div`
   left: 0;
   width: 100%;
   height: 70px;
-  background-color: #12B560;
+  background-color: #f9f9f7;
   display: flex;
   justify-content: center;
+  color: #666666;
 `;
 
 const Box = styled.div`
@@ -29,19 +30,21 @@ const Button = styled(NavLink)`
   text-decoration: none;
   color: #ffffff;
   font-size: 20px;
-  padding: 10px 10px;
+  padding: 5px 5px;
   margin-top: 5px;
   text-align: center;
+  color: #666666;
+  border-top: 1px #666666;
 
   &.active {
-    color: #EBECF0;
+    color: #6666666;
   }
 `;
 
 const Icon = styled.img`
   width: 30px;
   height: 30px;
-  margin-right: 10px;
+  margin-right: 5px;
 `;
 
 const SidebarItem = ({ menu }) => {
@@ -63,12 +66,12 @@ function AdminBottomNav() {
 
   return (
     <Container>
-      <Box>
+      <Box className="bottom-button">
         <Button exact to={menus[0].path}>
           <SidebarItem menu={menus[0]} />
         </Button>
       </Box>
-      <Box>
+      <Box className="bottom-button">
         <Button exact to={menus[1].path}>
           <SidebarItem menu={menus[1]} />
         </Button>

@@ -54,7 +54,7 @@
   width: 100%;
   text-align: center;
   margin: auto;
-  background-color: #EBECF0;
+  background-color: #f9f9f7 ;
   color: #555555;
   border-radius: 30px;
   margin-top: 10px;
@@ -64,7 +64,7 @@
 }
 
 .ParentMainPage .student_state_info_box.checked {
-  background-color: #0f9443;
+  background-color: #12B560;
   color: white;
 }
 
@@ -128,19 +128,15 @@
     width: 100%;
     text-align: center;
     margin: auto;
-    background-color: #EBECF0;
-    color: #555555;
+    background-color: #f9f9f7;
+    color: #e5e3d9;
     border-radius: 30px;
     margin-top: 10px;
     padding-top: 30px;
     padding-left: 10px;
     font-size: 13px;
   }
-  
-  .ParentMainPage .student_state_info_box.checked {
-    background-color: #0f9443;
-    color: white;
-  }
+
 
 
 
