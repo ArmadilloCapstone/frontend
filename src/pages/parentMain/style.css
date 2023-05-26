@@ -1,8 +1,8 @@
 .ParentMainPage {
-  height: 150%;
-  width: 100%;   
-  }
-
+    height: 150%;
+    width: 100%;
+}
+  
 
 .ParentMainPage .student_info {
   height: 80px;
@@ -72,20 +72,13 @@
 
 @media (max-width: 600px) {
   .ParentMainPage .student_info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    height: 80px;
+    width: 100%;
+    text-align: center;
+    margin: auto;
+    margin-top: 30px;
+    padding-top: 10px;
   }
-
-  .ParentMainPage .student_info_box,
-  .ParentMainPage .student_state_info_box {
-    width: 90%;
-  }
-
-  .ParentMainPage .student_state_info_box {
-    font-size: 25px;
-  }
-}
   
   .ParentMainPage .student_info .name {
     font-size: 40px;
@@ -162,3 +155,4 @@
     width: 80px;
     height: 80px;
   }
+}

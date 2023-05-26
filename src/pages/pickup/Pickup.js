@@ -27,7 +27,7 @@ const Pickup = () => {
   const imageSource = showContent ? checkedImg : parentImg;
 
   return (
-    <div style={{ padding: '20px 10px 0px 20px', flexDirection: 'column', height: '100vh' }}>
+    <div style={{ padding: '10px 0px 0px 10px', flexDirection: 'column', height: '100vh' }}>
       <div style={{ flex: 1, align: 'center' }}></div>
       <img src={imageSource} style={{ marginLeft: '90px', width: '200px', height: '200px' }} />
 

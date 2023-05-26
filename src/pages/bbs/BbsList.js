@@ -43,7 +43,7 @@ function BbsList() {
         }
 
         else {
-            await axios.post(`http://localhost:8080/news/${choice}/${search}`)
+            await axios.post(`http://localhost/news/${choice}/${search}`)
                 .then((res) => {
                     console.log("[BbsList.js] useEffect() 성공");
                     console.log(res.data);
