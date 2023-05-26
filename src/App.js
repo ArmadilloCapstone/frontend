@@ -28,6 +28,12 @@ import BbsDetail from './pages/bbs/BbsDetail';
 import BbsList from './pages/bbs/BbsList';
 import BbsUpdate from './pages/bbs/BbsUpdate';
 import BbsWrite from './pages/bbs/BbsWrite';
+
+import GalleryDetail from './pages/gallery/GalleryDetail';
+import GalleryList from './pages/gallery/GalleryList';
+import GalleryUpdate from './pages/gallery/GalleryUpdate';
+import GalleryWrite from './pages/gallery/GalleryWrite';
+
 import GuardianManagementPage from './pages/guardian/GuardianManagementPage';
 
 import Footer from './components/Layout/Footer/Footer';
@@ -106,6 +112,26 @@ export default function App() {
             (user_option == "1") ?
               <Route path="/BbsDetail/:id" element={<BbsDetail />} /> :
               <Route path="/BbsDetail/:id" element={<LoginPage />} />
+          }
+          {
+            (user_option == "1") ?
+              <Route path="/GalleryList" element={<GalleryList />} /> :
+              <Route path="/GalleryList" element={<LoginPage />} />
+          }
+          {
+            (user_option == "1") ?
+              <Route path="/GalleryWrite" element={<GalleryWrite />} /> :
+              <Route path="/GalleryWrite" element={<LoginPage />} />
+          }
+          {
+            (user_option == "1") ?
+              <Route path="/GalleryUpdate/:gallery_id" element={<GalleryUpdate />} /> :
+              <Route path="/GalleryUpdate/:gallery_id" element={<LoginPage />} />
+          }
+          {
+            (user_option == "1") ?
+              <Route path="/GalleryDetail/:id" element={<GalleryDetail />} /> :
+              <Route path="/GalleryDetail/:id" element={<LoginPage />} />
           }
           {
             (user_option == "1") ?

@@ -4,7 +4,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 // import { AuthContext } from "../context/AuthProvider";
 // import { HttpHeadersContext } from "../context/HttpHeadersProvider";
 
-function BbsUpdate() {
+function GalleryUpdate() {
 
 	// const { headers, setHeaders } = useContext(HttpHeadersContext);
 	// const { auth, setAuth } = useContext(AuthContext);
@@ -20,22 +20,21 @@ function BbsUpdate() {
 	const param =  useParams(); // 파라미터 가져오기
 
 	useEffect(() => {
-		console.log(param.bbs_id);
+		console.log(param.gallery_id);
 		const getBoard = async () => {
-		  const {data} = await axios.post(`http://localhost/news/${param.bbs_id}`);
+		  const {data} = await axios.post(`http://localhost/album/${param.gallery_id}`);
 		  return data;
 		}
 		getBoard().then((result) => {
 		  setTitle(result.title);
-		  setText(result.text);
+		  setText(result.contents);
 		  // 이미지는 파일을 불러올 필요가 없이 미리보기 url만 가져온다.
 		  // 이미지를 선택하지 않고 올리면 db에 저장되어 있는 이미지를 그대로 사용!
-		  setImageUrl({...imageUrl, preview_URL: `http://localhost/news/image/${param.bbs_id}`})
 		});
 		
-        axios.post(`http://localhost/news/files/${param.bbs_id}`)
+        axios.post(`http://localhost/album/files/${param.gallery_id}`)
             .then((res) => {
-                console.log("[BbsDetail.js] getBbsDetail() success :D");
+                console.log("[GalleryDetail.js] getGalleryDetail() success :D");
                 console.log(res.data);
                 let arr = Array.from(res.data.map((el) =>{
 					var returnObj = {}
@@ -53,7 +52,7 @@ function BbsUpdate() {
                 }
             })
             .catch((err) => {
-                console.log("[BbsDetail.js] getBbsDetail() error :<");
+                console.log("[GalleryDetail.js] getGalleryDetail() error :<");
                 console.log(err);
             });
 	  }, [])
@@ -69,6 +68,18 @@ function BbsUpdate() {
 				arr[i]
 			]));
 		}
+		const reader = new FileReader();
+		const file = event.target.files[0];
+		console.log(file);
+
+		// const formData = new FormData();
+		// formData.append('file', e.target.files[0]);
+
+		reader.readAsDataURL(file);
+		reader.onloadend = () => {
+			setImageUrl(reader.result);
+			console.log("이미지주소", reader.result);
+		};
 	};
 
 	const changeTitle = (e) => {
@@ -81,48 +92,10 @@ function BbsUpdate() {
 		setText(e.target.value);
 	}
 
-	const changeFile = (e) => {
-		e.preventDefault();
-		let obj = e.target.files;
-		let arr = [];
-
-		for (let key in obj) {
-		  if(obj.hasOwnProperty(key)) {
-		    arr.push(obj[key]);
-		  }
-		}
-		console.log(arr)
-		setSelectedFiles([]);
-		for(let i = 0; i < arr.length; i++){
-			console.log("'" + arr[i].name + "' 업로드가 완료되었습니다!")
-			setSelectedFiles((prevMessage) => ([
-				...prevMessage,
-				"'" + arr[i].name + "' 업로드가 완료되었습니다!",
-			]));
-
-		}
-		const reader = new FileReader();
-		const file = imgRef.current.files[0];
-		console.log(file);
-
-		// const formData = new FormData();
-		// formData.append('file', e.target.files[0]);
-
-		reader.readAsDataURL(file);
-		reader.onloadend = () => {
-			setImageUrl(reader.result);
-			console.log("이미지주소", reader.result);
-		};
-	}
-
-	const onClickFileBtn = (e) => {
-		imgRef.current.click();
-	};
-
-	const updateBbs = async (e) => {
+	const updateGallery = async (e) => {
 		e.preventDefault();
 		let formData = new FormData();
-		formData.append("news_id", param.bbs_id);
+		formData.append("album_id", param.gallery_id);
 		formData.append("title", title);
 		formData.append("text", text);
 		if(fileChange){
@@ -131,36 +104,36 @@ function BbsUpdate() {
 				console.log(selectedFiles[i]);
 				formData.append("files", selectedFiles[i]);
 			}
-			axios.post("http://localhost/BbsList/update/file", formData, {
+			axios.post("http://localhost/GalleryList/update/file", formData, {
 			  headers: {
 				"Content-Type": "multipart/form-data",
 			  }
 			})
 			.then((resp) => {
-				console.log("[BbsWrite.js] createBbs() success :D");
+				console.log("[GalleryWrite.js] createGallery() success :D");
 				console.log(resp.data);
 				alert("새로운 게시글을 성공적으로 수정했습니다 :D");
-				navigate(`/bbsdetail/${param.bbs_id}`); // 새롭게 등록한 글 상세로 이동
+				navigate(`/gallerydetail/${param.gallery_id}`); // 새롭게 등록한 글 상세로 이동
 			})
 			.catch((err) => {
-				console.log("[BbsWrite.js] createBbs() error :<");
+				console.log("[GalleryWrite.js] createGallery() error :<");
 				console.log(err);
 			});
 		}
 		else{
-			axios.post("http://localhost/BbsList/update/nofile", formData, {
+			axios.post("http://localhost/GalleryList/update/nofile", formData, {
 			  headers: {
 				"Content-Type": "multipart/form-data",
 			  }
 			})
 			.then((resp) => {
-				console.log("[BbsWrite.js] createBbs() success :D");
+				console.log("[GalleryWrite.js] createGallery() success :D");
 				console.log(resp.data);
 				alert("새로운 게시글을 성공적으로 수정했습니다 :D");
-				navigate(`/bbsdetail/${param.bbs_id}`); // 새롭게 등록한 글 상세로 이동
+				navigate(`/gallerydetail/${param.gallery_id}`); // 새롭게 등록한 글 상세로 이동
 			})
 			.catch((err) => {
-				console.log("[BbsWrite.js] createBbs() error :<");
+				console.log("[GalleryWrite.js] createGallery() error :<");
 				console.log(err);
 			});
 		}
@@ -169,30 +142,36 @@ function BbsUpdate() {
 
 
 	return (
-		<div class="bbswrapper">
+		<div class="gallerywrapper">
 			<div class="form_container">
-				<form onSubmit={updateBbs}>
+				<form onSubmit={updateGallery}>
 					<table>
 						<tbody>
 
 							<tr>
 								<th>제목</th>
 								<td class="input_container">
-									<input type="text" class="bbsWrite" value={title} onChange={changeTitle} size="50px" />
+									<input type="text" class="galleryWrite" value={title} onChange={changeTitle} size="50px" />
 								</td>
 							</tr>
 
 							<tr>
 								<th className="table-primary">내용</th>
 								<td>
-									<textarea class="bbsWrite" value={text} onChange={changeText} rows="10"></textarea>
+									<textarea class="galleryWrite" value={text} onChange={changeText} rows="10"></textarea>
 								</td>
 							</tr>
 
 							<tr>
 								<th className="table-primary">첨부파일</th>
 								<td>
-            						<input type="file" multiple onChange={selectFiles} />
+									{
+										selectedFiles.map((el, idx) => {
+											return <img src={imageUrl? imageUrl : "http://localhost/download/album/" + el.name}/>
+										})
+									}
+									<br></br>
+            						<input type="file" onChange={selectFiles} />
 									{
 										selectedFiles.map((el, idx) => {
 											return <div key={idx}> {el.name} </div>
@@ -214,4 +193,4 @@ function BbsUpdate() {
 
 }
 
-export default BbsUpdate;
+export default GalleryUpdate;
