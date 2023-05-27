@@ -30,11 +30,8 @@ const Menu = styled.div`
     const menus = [
       { name: "출결 관리", path: "/TimelinePage" },
       { name: "학생 관리", path: "/StudentState" },
-<<<<<<< HEAD
       { name: "보호자 관리", path: "/GuardianManagement" },
-=======
-      { name: "보호자 관리", path: "/GuardianManagementPage" },
->>>>>>> 1dc2339ee7104924ac3a1891a7be352544c7d223
+      // { name: "보호자 관리", path: "/GuardianManagementPage" },
       { name: "안내장", path: "/BbsList" },
       { name: "사진첩", path: "/GalleryList" }
 

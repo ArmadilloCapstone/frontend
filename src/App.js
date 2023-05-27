@@ -136,7 +136,7 @@ export default function App() {
           }
           {
             (user_option == "1") ?
-              <Route path="/GuardianManagementPage" element={<GuardianManagementPage />} /> :
+              <Route path="/GuardianManagement" element={<GuardianManagement />} /> :
               <Route path="/GuardianManagementPage" element={<LoginPage />} />
           }
 

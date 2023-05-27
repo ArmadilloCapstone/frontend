@@ -18,17 +18,17 @@
   margin: 20px 20px 0;
 }
 
-#root>div.sc-cNGgOM.edjEWX>div:nth-child(2)>div.react-calendar-timeline.timeline>div.rct-header-root>div:nth-child(1) {
+#root>div.sc-cLuaVy.eQVwos>div:nth-child(2)>div.react-calendar-timeline.timeline>div.rct-header-root {
   background-color: #12B560;
 }
 
-#root>div.sc-cNGgOM.edjEWX>div:nth-child(2)>div.react-calendar-timeline.timeline>div.rct-header-root>div.rct-calendar-header>div:nth-child(1)>div:nth-child(2) {
-  background-color: #12B560;
-}
+#root>div.sc-cLuaVy.eQVwos>div:nth-child(2)>div.react-calendar-timeline.timeline>div.rct-outer>div.rct-scroll>div>div:nth-child(5)>div:nth-child(2) {
 
-#root>div.sc-cNGgOM.edjEWX>div:nth-child(2)>div.react-calendar-timeline.timeline>div.rct-outer>div.rct-scroll>div>div:nth-child(5)>div:nth-child(2)>span {
   opacity: 0;
+
 }
+
+
 
 
 /* .timeline_sort {

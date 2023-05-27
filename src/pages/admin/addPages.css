@@ -95,10 +95,7 @@ button.add {
     width: 95%;
     height: 80px;
     margin: 0;
-    /* font-size: 22px; */
-    padding: 0.5rem 1rem;
-
-    font-size: 2px;
+    font-size: 22px;
     font-weight: bold;
     text-align: center;
     text-decoration: none;
