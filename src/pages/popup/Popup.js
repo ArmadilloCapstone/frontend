@@ -48,7 +48,7 @@ const Popup = () => {
       setTimeout(() => {
         if(user_option == 1){
           axios.post("http://dolbomi.site/sendPickupFormToTeacher/" + localStorage.getItem('userid')).then((res)=>{
-            setStudents(res.data.map(function(el){
+            setStudents(res.data.map((el) => {
               console.log(el);
               var returnObj = {}
               returnObj['id'] = el.studentId;

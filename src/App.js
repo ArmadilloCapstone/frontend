@@ -207,7 +207,11 @@ export default function App() {
       </Center>
       {/* <Footer /> */}
       <Popup />
-      <Message/>
+      {
+        (user_option == "1" || user_option == "2") ?
+          <Message/> :
+          null
+      }
     </HashRouter>
   );
 }
