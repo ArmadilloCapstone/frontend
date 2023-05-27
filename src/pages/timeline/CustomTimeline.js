@@ -318,7 +318,7 @@ function CustomTimeline() {
 
       <div>
         {subjectButtons.map((el) => (
-          <button id="subjectButtons"
+          <button className="subjectButtons"
             key={el.id}
             style={{
               background: randomColor({
@@ -329,8 +329,8 @@ function CustomTimeline() {
             {el.class_name}
           </button>
         ))}
-        {/* <button id="subjectButtons" class="dolbom">돌봄교실</button>
-        <button id="subjectButtons" class="art">종이접기반B</button> */}
+        {/* <button className="subjectButtons">돌봄교실</button>
+        <button className="subjectButtons">종이접기반B</button> */}
       </div>
 
     </div>

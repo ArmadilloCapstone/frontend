@@ -36,13 +36,13 @@ export default function AddGuardian() {
     function createSerialNum() {
         // 100,000 ~ 999,999 사이의 정수 1개 랜덤으로 생성
         let randomNumber = Math.floor(Math.random() * 900000 + 100000);
-        return randomNumber;
-        // if (isValid(randomNumber)) {
-        //     return randomNumber;
-        // }
-        // else {
-        //     return createSerialNum();
-        // } // 맞겠지?
+        // return randomNumber;
+        if (isValid(randomNumber)) {
+            return randomNumber;
+        }
+        else {
+            return createSerialNum();
+        } // 맞겠지?
     }
 
     function isValid(n) {
