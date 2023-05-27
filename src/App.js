@@ -35,6 +35,8 @@ import GalleryList from './pages/gallery/GalleryList';
 import GalleryUpdate from './pages/gallery/GalleryUpdate';
 import GalleryWrite from './pages/gallery/GalleryWrite';
 
+import Message from './pages/message/Message';
+
 import GuardianManagementPage from './pages/guardian/GuardianManagementPage';
 
 import Footer from './components/Layout/Footer/Footer';
@@ -204,6 +206,7 @@ export default function App() {
       </Center>
       {/* <Footer /> */}
       <Popup />
+      <Message/>
     </HashRouter>
   );
 }
