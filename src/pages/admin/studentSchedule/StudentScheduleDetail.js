@@ -91,7 +91,7 @@ function StudentScheduleDetail() {
                                 <button class="delete"
                                     onClick={() => {
                                         const confirmBox = window.confirm(
-                                            "'" + name.class_name + "'" + " 학급을 정말 삭제하시겠습니까?"
+                                            "'" + name.name + "'" + " 학생의 시간표를 정말 삭제하시겠습니까?"
                                         )
                                         if (confirmBox === true) {
                                             deleteRecord(name.id)
