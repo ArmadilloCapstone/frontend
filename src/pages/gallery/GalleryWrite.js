@@ -1,12 +1,12 @@
 import axios from "axios";
-import "./bbswrite.css";
+import "./gallerywrite.css";
 
 import { useRef, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 // import { AuthContext } from "../context/AuthProvider";
 // import { HttpHeadersContext } from "../context/HttpHeadersProvider";
 
-function BbsWrite() {
+function GalleryWrite() {
 
 	// const { auth, setAuth } = useContext(AuthContext)
 	// const { headers, setHeaders } = useContext(HttpHeadersContext);
@@ -29,6 +29,18 @@ function BbsWrite() {
 				arr[i]
 			]));
 		}
+		const reader = new FileReader();
+		const file = event.target.files[0];
+		console.log(file);
+
+		// const formData = new FormData();
+		// formData.append('file', e.target.files[0]);
+
+		reader.readAsDataURL(file);
+		reader.onloadend = () => {
+			setImageUrl(reader.result);
+			console.log("이미지주소", reader.result);
+		};
 	};
 
 	const changeTitle = (e) => {
@@ -41,28 +53,8 @@ function BbsWrite() {
 		setText(e.target.value);
 	}
 
-	const changeFile = (e) => {
-		e.preventDefault();
-		const reader = new FileReader();
-		const file = imgRef.current.files[0];
-		console.log(file);
-
-		// const formData = new FormData();
-		// formData.append('file', e.target.files[0]);
-
-		reader.readAsDataURL(file);
-		reader.onloadend = () => {
-			setImageUrl(reader.result);
-			console.log("이미지주소", reader.result);
-		};
-	}
-
-	const onClickFileBtn = (e) => {
-		imgRef.current.click();
-	};
-
-	/* [POST /bbs]: 게시글 작성 */
-	const createBbs = async (e) => {
+	/* [POST /gallery]: 게시글 작성 */
+	const createGallery = async (e) => {
 		e.preventDefault();
 		let formData = new FormData();
 		formData.append("teacher_id", localStorage.getItem('userid'));
@@ -74,37 +66,22 @@ function BbsWrite() {
 		  formData.append("files", selectedFiles[i]);
 		}
 		if(selectedFiles.length == 0){
-			axios.post("http://localhost/BbsList/create/nofile", formData, {
-			  headers: {
-				"Content-Type": "multipart/form-data",
-			  }
-			})
-			.then((resp) => {
-				console.log("[BbsWrite.js] createBbs() success :D");
-				console.log(resp.data);
-				alert("새로운 게시글을 성공적으로 등록했습니다 :D");
-				navigate(`/bbsdetail/${resp.data.id}`); // 새롭게 등록한 글 상세로 이동
-			})
-			.catch((err) => {
-				console.log("[BbsWrite.js] createBbs() error :<");
-				console.log(err);
-			});
-
+			alert("사진이 없습니다.")
 		}
 		else{
-			axios.post("http://localhost/BbsList/create/file", formData, {
+			axios.post("http://localhost/GalleryList/create/file", formData, {
 			  headers: {
 				"Content-Type": "multipart/form-data",
 			  }
 			})
 			.then((resp) => {
-				console.log("[BbsWrite.js] createBbs() success :D");
+				console.log("[GalleryWrite.js] createGallery() success :D");
 				console.log(resp.data);
 				alert("새로운 게시글을 성공적으로 등록했습니다 :D");
-				navigate(`/bbsdetail/${resp.data.id}`); // 새롭게 등록한 글 상세로 이동
+				navigate(`/gallerydetail/${resp.data.id}`); // 새롭게 등록한 글 상세로 이동
 			})
 			.catch((err) => {
-				console.log("[BbsWrite.js] createBbs() error :<");
+				console.log("[GalleryWrite.js] createGallery() error :<");
 				console.log(err);
 			});
 
@@ -121,33 +98,35 @@ function BbsWrite() {
 
 	return (
 		// <div style={{ padding: "20px" }}>
-		// 	<BbsEditor />
+		// 	<GalleryEditor />
 		// </div>onSubmit={submitTeacherRecord}
 
-		<div class="bbswrapper">
+		<div class="gallerywrapper">
 			<div class="form_container">
-				<form onSubmit={createBbs}>
+				<form onSubmit={createGallery}>
 					<table>
 						<tbody>
 
 							<tr>
 								<th>제목</th>
 								<td class="input_container">
-									<input type="text" class="bbsWrite" value={title} onChange={changeTitle} size="50px" />
+									<input type="text" class="galleryWrite" value={title} onChange={changeTitle} size="50px" />
 								</td>
 							</tr>
 
 							<tr>
 								<th className="table-primary">내용</th>
 								<td>
-									<textarea class="bbsWrite" value={text} onChange={changeText} rows="10"></textarea>
+									<textarea class="galleryWrite" value={text} onChange={changeText} rows="10"></textarea>
 								</td>
 							</tr>
 
 							<tr>
 								<th className="table-primary">첨부파일</th>
 								<td>
-            						<input type="file" multiple onChange={selectFiles} />
+									<img src={imageUrl}/>
+									<br></br>
+            						<input type="file" onChange={selectFiles} />
 									{
 										selectedFiles.map((el, idx) => {
 											return <div key={idx}> {el.name} </div>
@@ -200,10 +179,10 @@ function BbsWrite() {
 		// 	</form>
 
 		// 	<div className="my-5 d-flex justify-content-center">
-		// 		<button className="btn btn-outline-secondary" onClick={createBbs}><i className="fas fa-pen"></i> 등록하기</button>
+		// 		<button className="btn btn-outline-secondary" onClick={createGallery}><i className="fas fa-pen"></i> 등록하기</button>
 		// 	</div>
 		// </div>
 	);
 }
 
-export default BbsWrite;
+export default GalleryWrite;

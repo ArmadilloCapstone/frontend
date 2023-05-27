@@ -5,8 +5,9 @@ import axios from "axios";
 function StudentTimeAdd() {
     const [student, setStudent] = useState([]);
 
+
     useEffect(() => {
-        axios.post('http://localhost:80/ student_time/studentList') // url 모름.. 변경 필요할듯
+        axios.post('http://dolbomi.site/student_time/studentList') // url 모름.. 변경 필요할듯
             .then(function (response) {
                 console.log(response.data);
                 setStudent(response.data.map(function (el, idx) {
@@ -49,10 +50,20 @@ function StudentTimeAdd() {
     const submitStudentTimeRecord = async (e) => {
         e.preventDefault();
         e.target.reset();
-        await axios.post("http://localhost:80/ student_time_submit", user);
-        alert('추가되었습니다!');
-
-        // loadStudentTimeDetail();
+        await axios.post("http://dolbomi.site/student_time_submit", user)
+        .then(function (response) {
+            console.log(response.data);
+            if(response.data === "success") {
+                alert('추가되었습니다!');
+            }
+            else {
+                alert('잘못 입력된 값이 존재합니다!');
+            }
+    
+        }).catch(function (reason) {
+            console.log(reason.data);
+        });
+            
     };
 
     return (

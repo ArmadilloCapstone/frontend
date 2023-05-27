@@ -11,7 +11,7 @@ const Pickup = () => {
 
   const handleClick = () => {
 
-    axios.post("http://localhost:80/ requestParent", {
+    axios.post("http://dolbomi.site/requestParent", {
       pickupManId : user_id
     }).then((res)=>{
       if(res.data == "success"){
@@ -27,7 +27,7 @@ const Pickup = () => {
   const imageSource = showContent ? checkedImg : parentImg;
 
   return (
-    <div style={{ padding: '20px 10px 0px 20px', flexDirection: 'column', height: '100vh' }}>
+    <div style={{ padding: '10px 0px 0px 10px', flexDirection: 'column', height: '100vh' }}>
       <div style={{ flex: 1, align: 'center' }}></div>
       <img src={imageSource} style={{ marginLeft: '90px', width: '200px', height: '200px' }} />
 

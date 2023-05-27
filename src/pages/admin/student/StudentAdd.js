@@ -10,7 +10,7 @@ function StudentAdd() {
   const [original, setOriginal] = useState([]);
 
   useEffect(() => {
-    axios.post('http://localhost:80/ student/dolbom_classList') // url 모름.. 변경 필요할듯
+    axios.post('http://dolbomi.site/student/dolbom_classList') // url 모름.. 변경 필요할듯
       .then(function (response) {
         console.log(response.data);
         setDolbom(response.data.map(function (el, idx) {
@@ -24,7 +24,7 @@ function StudentAdd() {
   }, []);
 
   useEffect(() => {
-    axios.post('http://localhost:80/ student_original_class') // url 모름.. 변경 필요할듯
+    axios.post('http://dolbomi.site/student_original_class') // url 모름.. 변경 필요할듯
       .then(function (response) {
         console.log(response.data);
         setOriginal(response.data.map(function (el, idx) {
@@ -81,11 +81,19 @@ function StudentAdd() {
     e.preventDefault();
     e.target.reset();
     const postUser = changeUserForm(user);
-    await axios.post('http://localhost:80/ student_submit', postUser);
-    // await axios.post("/student_submit", user);
-    alert('추가되었습니다!');
+    await axios.post('http://dolbomi.site/student_submit', postUser)
+      .then(function (response) {
+        console.log(response.data);
+        if(response.data === "success") {
+            alert('추가되었습니다!');
+        }
+        else {
+            alert('잘못 입력된 값이 존재합니다!');
+        }
 
-    // loadStudentDetail();
+      }).catch(function (reason) {
+        console.log(reason.data);
+      });
   };
 
   return (
