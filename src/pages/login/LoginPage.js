@@ -1,4 +1,5 @@
 import './style.css';
+import logo from './logo.png';
 import React, { useState } from "react";
 import { LoginForm } from "./LoginForm";
 import { SignupForm } from './SignupForm';
@@ -34,36 +35,42 @@ export const LoginPage = () => {
     }
   };
 
+  const logoStyle = {
+    width: '150px', 
+    height: '150px', 
+
+  };
+
   const loginFormWrapperStyle = {
-    backgroundColor: '#F2EFEE',
+    backgroundColor: '#F5FFFA',
     padding: '25px',
     width: '60%',
-    margin: '25px',
-    display: 'inline-block',
-    borderRadius: '40px',
-    transition: 'background-color 0.3s',
+
+    display: 'center',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    minHeight: '120vh',
+
   };
 
   return (
-    <div style={{ fontFamily: "Eorinai" }} className='login_page'>
+    <div style={{ ...loginFormWrapperStyle, fontFamily: "Eorinai" }} className='login_page'>
       {showSignup ? <div className="blur"></div> : null}
 
-      <div
-        style={{
-          ...loginFormWrapperStyle
-        }}
-      >
         <div className='radioGroup'>
           <input type='radio' value="1" id="1" checked={userOption == "1"} onChange={clickradio}/> <label for="1">돌봄교사</label>
           <input type='radio' value="2" id="2" checked={userOption == "2"} onChange={clickradio}/> <label for="2">학부모</label>
           <input type='radio' value="3" id="3" checked={userOption == "3"} onChange={clickradio}/> <label for="3">보호자</label>
           <input type='radio' value="4" id="4" checked={userOption == "4"} onChange={clickradio}/> <label for="4">관리자</label>
         </div>
-        <LoginForm option={userOption} setUserOption={setUserOption} title={option2name(userOption)} />
-      </div>
 
-      {showSignup ? <span className="signupClose" onClick={clickClose}>X</span> : null}
-      {showSignup ? <SignupForm option={userOption} /> : null}
+        <img src={logo} alt="Logo" style={logoStyle} />
+        <h1 className="login_title">돌봄 교실, 자녀의 안전과 행복을 위한 파트너</h1> {/* Add the login_title element */}
+
+        <LoginForm option={userOption} setUserOption={setUserOption} title={option2name(userOption)} />
+          {showSignup ? <span className="signupClose" onClick={clickClose}>X</span> : null}
+          {showSignup ? <SignupForm option={userOption} /> : null}
     </div>
   );
 };
