@@ -12,7 +12,7 @@ export const Student = () => {
     const [student, setStudent] = useState([]);
 
     useEffect(async () => {
-        await axios.post("http://dolbomi.site/student")
+        await axios.post("http://localhost:80/ student")
             .then((response) => {
            //console.log(response.data);
            setStudent(response.data);
@@ -30,7 +30,7 @@ export const Student_time = () => {
     const [student_time, setStudent_time] = useState([]);
 
     useEffect(async () => {
-        await axios.post("http://dolbomi.site/student_time")
+        await axios.post("http://localhost:80/ student_time")
             .then((response) => {
            //console.log(response.data);
            setStudent_time(response.data);
@@ -70,7 +70,7 @@ export const After_school_class = () => {
     const [after_school_class, setAfter_school_class] = useState([]);
 
     useEffect(async () => {
-        await axios.post("http://dolbomi.site/after_school_class")
+        await axios.post("http://localhost:80/ after_school_class")
             .then((response) => {
            //console.log(response.data);
            setAfter_school_class(response.data);
@@ -91,7 +91,7 @@ export const Student_schedule = () => {
     const [student_schedule, setStudent_schedule] = useState([]);
 
     useEffect(async () => {
-        await axios.post("http://dolbomi.site/student")
+        await axios.post("http://localhost:80/ student")
             .then((response) => {
            //console.log(response.data);
            setStudent_schedule(response.data);

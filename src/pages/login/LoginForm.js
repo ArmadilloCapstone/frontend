@@ -36,7 +36,7 @@ export const LoginForm = (props) => {
   const clickLogin = () => {
     if(props.option != "3"){
 
-      axios.post("http://dolbomi.site/login", {
+      axios.post("http://localhost:80/ login", {
         "user_id" : id,
         "user_pw" : pw,
         "option" : (props.option - 0)
@@ -81,7 +81,7 @@ export const LoginForm = (props) => {
       })
     }
     else{
-      axios.post("http://dolbomi.site/login", {
+      axios.post("http://localhost:80/ login", {
         "serial_num" : serial,
         "option" : (props.option - 0)
       }).then((res) => {

@@ -9,7 +9,7 @@ function GuardianAdd() {
   const [original, setOriginal] = useState([]);
 
   useEffect(() => {
-    axios.post('http://dolbomi.site/student/dolbom_classList') // url 모름.. 변경 필요할듯
+    axios.post('http://localhost:80/ student/dolbom_classList') // url 모름.. 변경 필요할듯
       .then(function (response) {
         console.log(response.data);
         setDolbom(response.data.map(function (el, idx) {
@@ -23,7 +23,7 @@ function GuardianAdd() {
   }, []);
 
   useEffect(() => {
-    axios.post('http://dolbomi.site/student_original_class') // url 모름.. 변경 필요할듯
+    axios.post('http://localhost:80/ student_original_class') // url 모름.. 변경 필요할듯
       .then(function (response) {
         console.log(response.data);
         setOriginal(response.data.map(function (el, idx) {
@@ -80,7 +80,7 @@ function GuardianAdd() {
     e.preventDefault();
     e.target.reset();
     const postUser = changeUserForm(user);
-    await axios.post('http://dolbomi.site/student_submit', postUser);
+    await axios.post('http://localhost:80/ student_submit', postUser);
     // await axios.post("/student_submit", user);
     alert('추가되었습니다!');
 

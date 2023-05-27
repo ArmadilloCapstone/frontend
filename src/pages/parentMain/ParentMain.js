@@ -18,34 +18,7 @@ export const ParentMain = () => {
 
   useEffect(() => {
     // 백엔드의 학생 명단 가져오는 부분
-<<<<<<< HEAD
-    axios.post('http://dolbomi.site/getStudent', {
-        "id" : localStorage.getItem('userid')
-    })
-        .then(function(res){
-            console.log(res);
-            setStudent(res.data.name);
-            setGrade(res.data.grade);
-            setOrigin_class(res.data.origin_class);
-            setDol_class(res.data.dol_class);
-            setBirth_date(res.data.birth_date);
-            var data = res.data.phone_num;
-            console.log(data)
-            console.log(data.substring(9, 13))
-            setPhone_num(data.substring(0, 3) + "-" + data.substring(3, 7) + "-" + data.substring(7, 11));
-        }).catch(function(reason){
-        console.log(reason);
-    });
-    
-    axios.post('http://dolbomi.site/getStudentState', {
-        "id" : localStorage.getItem('userid')
-    })
-        .then(function(res){
-            console.log(res);
-            setStudent_state(res.data.state);
-        }).catch(function(reason){
-=======
-    axios.post('http://dolbomi.site/getStudent/' + localStorage.getItem('userid'))
+    axios.post('http://localhost:80/ getStudent/' + localStorage.getItem('userid'))
       .then(function (res) {
         console.log(res);
         setStudent(res.data.name);
@@ -61,12 +34,11 @@ export const ParentMain = () => {
         console.log(reason);
       });
 
-    axios.post('http://dolbomi.site/sendStudentStateToParent/' + localStorage.getItem('userid'))
+    axios.post('http://localhost:80/ sendStudentStateToParent/' + localStorage.getItem('userid'))
       .then(function (res) {
         console.log(res);
         setStudent_state(res.data.state);
       }).catch(function (reason) {
->>>>>>> 3e3c7ea49fd83d7de0ef401512f11720e4ac9758
         console.log(reason);
       });
 

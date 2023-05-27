@@ -7,7 +7,7 @@ function StudentScheduleAdd() {
     const [afterClass, setAfterClass] = useState([]);
 
     useEffect(() => {
-        axios.post('http://dolbomi.site/student_schedule/studentList') // url 모름.. 변경 필요할듯
+        axios.post('http://localhost:80/ student_schedule/studentList') // url 모름.. 변경 필요할듯
             .then(function (response) {
                 console.log(response.data);
                 setStudent(response.data.map(function (el, idx) {
@@ -21,7 +21,7 @@ function StudentScheduleAdd() {
     }, []);
 
     useEffect(() => {
-        axios.post('http://dolbomi.site/student_schedule/AfterSchoolClassList') // url 모름.. 변경 필요할듯
+        axios.post('http://localhost:80/ student_schedule/AfterSchoolClassList') // url 모름.. 변경 필요할듯
             .then(function (response) {
                 console.log(response.data);
                 setAfterClass(response.data.map(function (el, idx) {
@@ -55,7 +55,7 @@ function StudentScheduleAdd() {
     const submitStudentScheduleRecord = async (e) => {
         e.preventDefault();
         e.target.reset();
-        await axios.post('http://dolbomi.site/student_schedule_submit', user);
+        await axios.post('http://localhost:80/ student_schedule_submit', user);
         alert('추가되었습니다!');
 
         // loadStudentScheduleDetail();
