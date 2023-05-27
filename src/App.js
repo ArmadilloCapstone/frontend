@@ -203,7 +203,7 @@ export default function App() {
           }
         </Routes>
       </Center>
-      <Footer />
+      {/* <Footer /> */}
       <Popup />
     </HashRouter>
   );
