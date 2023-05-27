@@ -1,3 +1,7 @@
+.container{
+  margin-top: 3px;
+}
+
 button.delete {
     font-family: Eorinai;
     background-color: #bf0000;
@@ -39,6 +43,7 @@ button.delete {
   }
 
   .tab-button {
+    top: 10px;
     margin-left: 15px;
     margin-right: 15px;
     border-radius: 20px;

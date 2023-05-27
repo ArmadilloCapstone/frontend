@@ -204,21 +204,6 @@ function CustomTimeline() {
           background: randomColor({
             seed: ary[i].seed,
           }),
-          // background: ary[i].seed === 0 ? "rgb(251, 103, 128)" : "rgb(243, 252, 0)",
-
-          // : (ary[i].seed === 1 || ary[i].seed === 2) ? "rgba(46, 133, 248, 0.932)"
-          // : (ary[i].seed === 3 || ary[i].seed === 4) ? " rgb(91, 227, 67)"
-          // : "rgb(243, 252, 0)",
-          // backgroundColor: randomColor({
-          //   luminosity: "light",
-          //   seed: ary[i].seed,
-          //   format: "rgba",
-          //   // alpha: 0.6
-          // }),
-          // background: ary[i].seed === 0 ? "rgb(251, 103, 128)"
-          //   : (ary[i].seed === 1 || ary[i].seed === 2) ? "rgba(46, 133, 248, 0.932)"
-          //   : (ary[i].seed === 3 || ary[i].seed === 4) ? " rgb(91, 227, 67)"
-          //   : "rgb(243, 252, 0)",
           textAlign: "center"
         },
       },
@@ -275,7 +260,6 @@ function CustomTimeline() {
 
   return (
     <div calss="timeline_wrapper">
-      {/* <Detail></Detail>   */}
       <Timeline
         minZoom={defaultTimeRange}
         maxZoom={defaultTimeRange}
@@ -285,28 +269,16 @@ function CustomTimeline() {
         className="timeline"
         groups={groups}
         items={items}
-        //keys={keys}
-        //sidebarContent={<div>Above The Left</div>}
-        //itemsSorted
         itemTouchSendsClick={false}
-        //stackItems
-        itemHeightRatio={0.8}
+        itemHeightRatio={0.9}
         showCursorLine
         canMove={false}
         canResize={false}
         defaultTimeStart={defaultTimeStart}
         defaultTimeEnd={defaultTimeEnd}
       >
-        {/* <TimelineHeaders> */}
-        {/* <SidebarHeader>
-        {({ getRootProps}) => {
-          return <div {...getRootProps()}></div>;
-        }}
-      </SidebarHeader> */}
         <DateHeader unit="primaryHeader" class="timeline_date" />
-        {/* <DateHeader /> */}
-        {/* </TimelineHeaders> */}
-        {/* <TimelineMarkers> */}
+
         <TodayMarker>
           {({ styles }) => {
             const newStyles = { ...styles, backgroundColor: "red", "z-index": "100" };

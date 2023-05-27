@@ -34,10 +34,8 @@ export default DropdownMenu;
 
 const Wrapper = styled.div`
   margin: 10px;
-  
-  
   position: relative;
-  
+
   justify-content: space-around;
   align-items: center;
   color: white;
@@ -58,7 +56,7 @@ const DropdownButton = styled.div`
 `;
 
 const Menu = styled.div`
-  background: #64CD3C;
+  background: oldlace;
   position: absolute;
   top: 52px;
   left: 50%;
@@ -71,6 +69,7 @@ const Menu = styled.div`
   transform: translate(-50%, -20px);
   transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
   z-index: 9;
+  border-radius:: 5px;
 
   &:after {
     content: "";
@@ -82,7 +81,7 @@ const Menu = styled.div`
     transform: translate(-50%, -50%);
     border: 10px solid transparent;
     border-top-width: 0;
-    border-bottom-color: #64CD3C;
+    border-bottom-color: oldlace;
   }
 
   ${({ isDropped }) =>

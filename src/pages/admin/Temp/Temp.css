@@ -4,12 +4,10 @@
     width: 1000px;
     margin: 25px;
     border-radius: 20px;
+    font-size: 30px;
   }
 
-  
-  .mb-5 {
-    margin-bottom: 5rem;
-  }
+ 
   
   .nav-tabs {
     background-color: #ffffff;

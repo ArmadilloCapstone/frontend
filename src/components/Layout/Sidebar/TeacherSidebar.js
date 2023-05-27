@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import SidebarItem from "./SidebarItem";
 import logo from "./logo.png";
+import name from "./name.png";
 import teacher from "./teacher.png";
 import block from "./block.png";
 import book from "./book.png";
@@ -19,11 +20,17 @@ justify-content: center;
 padding-top: 20px;
 `
 const Logo = styled.img`
-  width: 150px;
-  height: 150px;
-  margin-bottom: 30px;
-  margin-left: 40px;
-`
+  width: 100px;
+  height: 100px;
+  margin-left: 23px;
+`;
+
+const Name = styled.img`
+  width: 100px;
+  height: 40px;
+  margin-left: ;
+`;
+
 const Menu = styled.div`
 margin-top: 30px;
 padding-bottom: 20px;
@@ -93,15 +100,15 @@ const StyledNavLink = styled(NavLink)`
 
     return (
       <Side>
-      <Logo src={logo} />
+        <div>
+          <Logo src={logo} />
+          <Name src={name} />
+        </div>
       <div className="sidebar-container">
-
           <SidebarUser>
             <TeacherIcon src={teacher} />
             <h6 style={{ fontSize: "20px", paddingLeft: "5px", paddingTop: "10px" }}>{user_name} 교사님</h6>
-          
           </SidebarUser>
-
         <Menu className="sidebar-content">
           {menus.map((menu, index) => {
             return (
