@@ -7,6 +7,24 @@ function TeacherAdd() {
 
     const [dolbom, setDolbom] = useState([]);
 
+    const [answer, setAnswer] = useState(); // 유효성 검증을 위한 변수
+
+    // 유효성 검증 성공 or 실패했는지 서버에 물어봄
+    const isSuccess = async () => {
+        await axios.post('http://dolbomi.site/isValid') // url 바꾸기
+            .then(function (response) {
+                console.log(response);
+                setAnswer(response.data)
+
+            }).catch(function (reason) {
+                console.log(reason);
+            });
+    }
+
+    useEffect(() => {
+        isSuccess();
+    }, []);
+
     useEffect(() => {
         axios.post('http://dolbomi.site/teacher/dolbom_classList') // url 모름.. 변경 필요할듯
             .then(function (response) {
@@ -35,7 +53,7 @@ function TeacherAdd() {
     });
 
     //  Object Destructuring 
-    const { name, phone_num1, phone_num2, phone_num3, gender, birth_date, class_name, class_id } = user;
+    const { name, phone_num1, phone_num2, phone_num3, gender, birth_date, class_name } = user;
     const onInputChange = e => {
         setUser({ ...user, [e.target.name]: e.target.value });
     };
@@ -63,10 +81,14 @@ function TeacherAdd() {
         e.target.reset();
         const postUser = changeUserForm(user);
         await axios.post('http://dolbomi.site/teacher_submit', postUser);
-        // await axios.post('/teacher_submit', user);
-        alert('추가되었습니다!');
+        isSuccess();
 
-        // loadTeacherDetail();
+        if (answer === "success") {
+            alert('추가되었습니다!');
+        }
+        else {
+            alert('잘못 입력된 값이 존재합니다!');
+        }
     };
 
     return (
@@ -99,7 +121,9 @@ function TeacherAdd() {
                     <div class="form_wrap" select_box>
                         <div class="form_item">
                             <label class="select">성별</label>
-                            <select id="gender" name="gender" onChange={e => onInputChange_Select(e, "gender")} required>
+                            {/* <select id="gender" name="gender" onChange={e => onInputChange_Select(e, "gender")} required> */}
+                            <select id="gender" name="gender" value={gender} onChange={e => onInputChange(e)} required>
+
                                 <option value="" selected>성별을 선택하세요.</option>
                                 {genderKind.map((option) => (
                                     <option
@@ -123,7 +147,8 @@ function TeacherAdd() {
                     <div class="form_wrap" select_box>
                         <div class="form_item">
                             <label class="select">돌봄 반</label>
-                            <select id="class_name" name="class_name" onChange={e => onInputChange_Select(e, "class_name")} required>
+                            {/* <select id="class_name" name="class_name" onChange={e => onInputChange_Select(e, "class_name")} required> */}
+                            <select id="class_name" name="class_name" value={class_name} onChange={e => onInputChange(e)} required>
                                 <option value="" selected>돌봄 반을 선택하세요.</option>
                                 {dolbom.map((option) => (
                                     <option

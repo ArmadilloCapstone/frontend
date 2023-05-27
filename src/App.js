@@ -22,6 +22,7 @@ import StudentTimeManagementPage from './pages/admin/studentTime/studentTimeMana
 import Pickup from './pages/pickup/Pickup';
 import GuardianPickup from './pages/pickup/GuardianPickup';
 import Popup from './pages/popup/Popup';
+import GuardianManagement from './pages/guardian/GuardianManagement';
 
 
 import BbsDetail from './pages/bbs/BbsDetail';
@@ -102,6 +103,12 @@ export default function App() {
               <Route path="/BbsDetail" element={<BbsDetail />} /> :
               <Route path="/BbsDetail" element={<LoginPage />} />
           }
+          {
+            (user_option == "1") ?
+              <Route path="/GuardianManagement" element={<GuardianManagement />} /> :
+              <Route path="/GuardianManagement" element={<LoginPage />} />
+          }
+          
 
           {/* <Route path="/EntireUserAddPage" element={<EntireUserAddPage />} /> */}
           {/* 학부모 페이지 */}

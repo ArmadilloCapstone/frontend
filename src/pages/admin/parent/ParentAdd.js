@@ -36,6 +36,25 @@ function ParentAdd() {
 
   //  Object Destructuring 
   const { name, phone_num1, phone_num2, phone_num3, gender, birth_date, child_name } = user;
+
+  const [answer, setAnswer] = useState(); // 유효성 검증을 위한 변수
+
+  // 유효성 검증 성공 or 실패했는지 서버에 물어봄
+  const isSuccess = async () => {
+    await axios.post('http://dolbomi.site/isValid') // url 바꾸기
+      .then(function (response) {
+        console.log(response);
+        setAnswer(response.data)
+
+      }).catch(function (reason) {
+        console.log(reason);
+      });
+  }
+
+  useEffect(() => {
+    isSuccess();
+  }, []);
+
   const onInputChange = e => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
@@ -62,10 +81,14 @@ function ParentAdd() {
     e.target.reset();
     const postUser = changeUserForm(user);
     await axios.post('http://dolbomi.site/parent_submit', postUser);
-    // await axios.post('/parent_submit', user);
-    alert('추가되었습니다!');
+    isSuccess();
 
-    // loadParentDetail();
+    if (answer === "success") {
+      alert('추가되었습니다!');
+    }
+    else {
+      alert('잘못 입력된 값이 존재합니다!');
+    }
   };
 
   return (

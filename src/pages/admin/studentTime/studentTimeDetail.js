@@ -62,7 +62,7 @@ function StudentTimeDetail() {
     const submitStudentTimeRecord = async (e) => {
         e.preventDefault();
         e.target.reset();
-        await axios.post("http://dolbomi.site/student_time_submit", user);
+        await axios.post("http://13.209.104.24:8080/student_time_submit", user);
         alert('추가되었습니다!');
 
         loadStudentTimeDetail();
@@ -70,7 +70,7 @@ function StudentTimeDetail() {
 
     // Delete Student Record
     const deleteRecord = (productId) => {
-        axios.delete(`http://dolbomi.site/student_time/${productId}`)
+        axios.delete(`/student_time/${productId}`)
             .then((result) => {
                 loadStudentTimeDetail();
             })

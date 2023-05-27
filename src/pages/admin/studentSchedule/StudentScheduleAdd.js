@@ -5,6 +5,23 @@ import axios from "axios";
 function StudentScheduleAdd() {
     const [student, setStudent] = useState([]);
     const [afterClass, setAfterClass] = useState([]);
+    const [answer, setAnswer] = useState(); // 유효성 검증을 위한 변수
+
+    // 유효성 검증 성공 or 실패했는지 서버에 물어봄
+    const isSuccess = async () => {
+        await axios.post('http://dolbomi.site/isValid') // url 바꾸기
+            .then(function (response) {
+                console.log(response);
+                setAnswer(response.data)
+
+            }).catch(function (reason) {
+                console.log(reason);
+            });
+    }
+
+    useEffect(() => {
+        isSuccess();
+    }, []);
 
     useEffect(() => {
         axios.post('http://dolbomi.site/studentFindAll') // url 모름.. 변경 필요할듯
@@ -56,9 +73,14 @@ function StudentScheduleAdd() {
         e.preventDefault();
         e.target.reset();
         await axios.post('http://dolbomi.site/student_schedule_submit', user);
-        alert('추가되었습니다!');
+        isSuccess();
 
-        // loadStudentScheduleDetail();
+        if (answer === "success") {
+            alert('추가되었습니다!');
+        }
+        else {
+            alert('잘못 입력된 값이 존재합니다!');
+        }
     };
 
     return (
