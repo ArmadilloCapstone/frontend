@@ -42,7 +42,7 @@ import GuardianManagementPage from './pages/guardian/GuardianManagementPage';
 import Footer from './components/Layout/Footer/Footer';
 
 
-import {Button, Badge} from 'react-bootstrap';
+import { Button, Badge } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Center = styled.div`
@@ -54,6 +54,7 @@ const Center = styled.div`
 export default function App() {
   const user_option = useSelector((state => state.user_option))
   return (
+
     <HashRouter>
       <Header />
       <Center>
@@ -210,3 +211,5 @@ export default function App() {
     </HashRouter>
   );
 }
+
+

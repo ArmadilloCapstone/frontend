@@ -8,7 +8,7 @@ const Foot = styled.p`
 const Footer = () => {
     return (
         <Foot>
-          
+          footer가 있었으면 좋겠어요...
         </Foot>
     )
 }
