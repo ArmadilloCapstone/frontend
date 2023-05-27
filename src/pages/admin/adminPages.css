@@ -86,7 +86,7 @@ button.delete {
 
   table.admin {
     border: 1px #a39485 solid;
-    font-size: .9em;
+    font-size: 16px;
     box-shadow: 0 2px 5px rgba(0,0,0,.25);
     width: 100%;
     border-collapse: collapse;
@@ -103,7 +103,7 @@ button.delete {
   thead.admin {
     background-color: white;
     color: #12B560;
-    font-size: 30px;
+    font-size: 20px;
     margin-top: 30px;
     border-color: white;
   }
