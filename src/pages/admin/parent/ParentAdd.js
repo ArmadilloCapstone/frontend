@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 function ParentAdd() {
-  let genderKind = [{ value: "남자" }, { value: "여자" }];
+  let genderKind = [{ value: "남" }, { value: "여" }];
 
   const [student, setStudent] = useState([]);
 
@@ -95,10 +95,6 @@ function ParentAdd() {
     <div class="wrapper">
       <div class="form_container">
         <form name="form" onSubmit={submitParentRecord}>
-          <div class="heading">
-            <h2>학부모 추가</h2>
-          </div>
-
           {/* <div class="form_wrap onlyone"> */}
           <div class="form_item">
             <label>학부모 이름</label>

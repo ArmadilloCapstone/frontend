@@ -30,7 +30,18 @@ import BbsList from './pages/bbs/BbsList';
 import BbsUpdate from './pages/bbs/BbsUpdate';
 import BbsWrite from './pages/bbs/BbsWrite';
 
+import GalleryDetail from './pages/gallery/GalleryDetail';
+import GalleryList from './pages/gallery/GalleryList';
+import GalleryUpdate from './pages/gallery/GalleryUpdate';
+import GalleryWrite from './pages/gallery/GalleryWrite';
+
+import GuardianManagementPage from './pages/guardian/GuardianManagementPage';
+
 import Footer from './components/Layout/Footer/Footer';
+
+
+import {Button, Badge} from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Center = styled.div`
   height: 92vh;
@@ -95,20 +106,40 @@ export default function App() {
           }
           {
             (user_option == "1") ?
-              <Route path="/BbsUpdate" element={<BbsUpdate />} /> :
-              <Route path="/BbsUpdate" element={<LoginPage />} />
+              <Route path="/BbsUpdate/:bbs_id" element={<BbsUpdate />} /> :
+              <Route path="/BbsUpdate/:bbs_id" element={<LoginPage />} />
           }
           {
             (user_option == "1") ?
-              <Route path="/BbsDetail" element={<BbsDetail />} /> :
-              <Route path="/BbsDetail" element={<LoginPage />} />
+              <Route path="/BbsDetail/:id" element={<BbsDetail />} /> :
+              <Route path="/BbsDetail/:id" element={<LoginPage />} />
           }
           {
             (user_option == "1") ?
-              <Route path="/GuardianManagement" element={<GuardianManagement />} /> :
-              <Route path="/GuardianManagement" element={<LoginPage />} />
+              <Route path="/GalleryList" element={<GalleryList />} /> :
+              <Route path="/GalleryList" element={<LoginPage />} />
           }
-          
+          {
+            (user_option == "1") ?
+              <Route path="/GalleryWrite" element={<GalleryWrite />} /> :
+              <Route path="/GalleryWrite" element={<LoginPage />} />
+          }
+          {
+            (user_option == "1") ?
+              <Route path="/GalleryUpdate/:gallery_id" element={<GalleryUpdate />} /> :
+              <Route path="/GalleryUpdate/:gallery_id" element={<LoginPage />} />
+          }
+          {
+            (user_option == "1") ?
+              <Route path="/GalleryDetail/:id" element={<GalleryDetail />} /> :
+              <Route path="/GalleryDetail/:id" element={<LoginPage />} />
+          }
+          {
+            (user_option == "1") ?
+              <Route path="/GuardianManagementPage" element={<GuardianManagementPage />} /> :
+              <Route path="/GuardianManagementPage" element={<LoginPage />} />
+          }
+
 
           {/* <Route path="/EntireUserAddPage" element={<EntireUserAddPage />} /> */}
           {/* 학부모 페이지 */}

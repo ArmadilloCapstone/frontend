@@ -2,6 +2,18 @@ import React, { useState } from 'react';
 import TeacherDetail from './TeacherDetail';
 import TeacherAdd from './TeacherAdd';
 import { Route, Routes } from "react-router-dom";
+import styled from "styled-components";
+
+const Container = styled.div`
+  cursor: pointer;
+`;
+
+const TabButton = styled.button`
+  &.active {
+    background-color: #12B560;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+`;
 
 export default function TeacherManagementPage() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -13,12 +25,12 @@ export default function TeacherManagementPage() {
   const tabContArr = [
     {
       tabTitle: (
-        <button
+        <TabButton
           className={`tab-button ${activeIndex === 0 ? "active" : ""}`}
           onClick={() => tabClickHandler(0)}
         >
           돌봄교사 목록
-        </button>
+        </TabButton>
       ),
       tabCont: (
         <div className="TeacherManagementPage">
@@ -27,57 +39,36 @@ export default function TeacherManagementPage() {
           </Routes>
         </div>
       )
-      },
+    },
     {
       tabTitle: (
-      <button
-      className={`tab-button ${activeIndex === 1 ? "active" : ""}`}
-      onClick={() => tabClickHandler(1)}
-    >
-      돌봄교사 추가
-    </button>
-  ),
-  tabCont: (
-    <div className="TeacherManagementPage">
-      <Routes>
-        <Route exact path="/" element={<TeacherAdd />} />
-      </Routes>
-    </div>
-  )
+        <TabButton
+          className={`tab-button ${activeIndex === 1 ? "active" : ""}`}
+          onClick={() => tabClickHandler(1)}
+        >
+          돌봄교사 추가
+        </TabButton>
+      ),
+      tabCont: (
+        <div className="TeacherManagementPage">
+          <Routes>
+            <Route exact path="/" element={<TeacherAdd />} />
+          </Routes>
+        </div>
+      )
     }
   ];
 
   return (
-    <div className="container" style={{cursor: "pointer" }}>
+    <Container className="container">
       <div className="my-3">
         <ul>
           {tabContArr.map((section, index) => {
-            return section.tabTitle
+            return section.tabTitle;
           })}
         </ul>
-
       </div>
       {tabContArr[activeIndex].tabCont}
-    </div>
+    </Container>
   );
 }
-
-
-// import TeacherDetail from './TeacherDetail';
-// import EditTeacher from './EditTeacher';
-// import { BrowserRouter as Router, Route,Routes,withRouter} from "react-router-dom";
-// function TeacherManagementPage(props) {
-//   return (
- 
-     
-//       <div className="TeacherManagementPage">
-//         <Routes>
-//           <Route exact path="/" element={<TeacherDetail />} />
-//           <Route exact path="/EditTeacher/editID/:id" element={<EditTeacher />} />
-//         </Routes>
-//       </div>
- 
-//   );
-// }
- 
-// export default TeacherManagementPage;

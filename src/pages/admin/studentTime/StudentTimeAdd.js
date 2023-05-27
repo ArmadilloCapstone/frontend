@@ -23,7 +23,7 @@ function StudentTimeAdd() {
     }, []);
 
     useEffect(() => {
-        axios.post('http://dolbomi.site/studentFindAll') // url 모름.. 변경 필요할듯
+        axios.post('http://dolbomi.site/student_time/studentList') // url 모름.. 변경 필요할듯
             .then(function (response) {
                 console.log(response.data);
                 setStudent(response.data.map(function (el, idx) {

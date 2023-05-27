@@ -1,20 +1,18 @@
 import './style.css';
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
+import styled from "styled-components";
 import checkImg from './check.png';
 import parentImg from './parent.png';
 import checkedImg from './checked.png';
+import driver from "./driver.png";
 import { useSelector } from 'react-redux';
 
-// 필요 내용 : 버튼 클릭 시 백엔드에 현재 로그인된 학부모의 parentId(여기서 더미 데이터로 구현)를 전달
-
-// Pickup.js와 Popup.js의 연결할 내용 : 
-// parentid 여기서 넘겨주면 백엔드에서 팝업창에 필요한 정보 모아서 하나의 객체로 만들어서 백에 저장함 
-// 객체에 담길 정보 : pickupManName, StudentName, StudentGender, StudentGrade
-// 20초마다 팝업이 요청을 하면 쌓인 내용을 팝업창이 가져옴
-
-
-
+const UserImage = styled.img`
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+`
 
 const GuardianPickup = () => {
   const [showContent, setShowContent] = useState(false);
@@ -101,9 +99,15 @@ const GuardianPickup = () => {
   };
 
   const imageSource = showContent ? checkedImg : parentImg;
+  const user_name = useSelector((state => state.user_name))
 
   return (
-    <div style={{ padding: '45px 0px 0px 350px', flexDirection: 'column', height: '100vh' }}>
+
+    <div style={{ padding: '20px 10px 0px 20px', flexDirection: 'column', height: '100vh' }}>
+      <div style={{ fontSize: '35px'}}>
+        <UserImage src={driver} alt="Driver" style={{ width: '80px', height: '80px' }} />
+        보호자 김철수님
+      </div>
       <div style={{ flex: 1, align: 'center' }}></div>
       <div className="studentList">
         {studentList.map((student, idx) => (
@@ -120,13 +124,13 @@ const GuardianPickup = () => {
             <button
               onClick={handleClick}
               style={{
-                width: '500px',
+                width: '320px',
                 height: '100px',
                 backgroundColor: '#12B560',
                 color: 'white',
                 border: 'none',
                 borderRadius: '20px',
-                fontSize: '30px',
+                fontSize: '20px',
                 fontWeight: 'bold',
                 display: 'block',
                 boxShadow: '4px 4px 20px #8C92AC'
@@ -149,10 +153,10 @@ const GuardianPickup = () => {
         <table style={{ padding: '0px 0px 0px 240px', border: 'none' }}>
           <tr>
             <td>
-              <img src={checkImg} style={{ padding: '30px 20px 10px 10px', width: '70px', height: '80px' }} />
+              <img src={checkImg} style={{ padding: '30px 10px 10px 10px', width: '50px', height: '70px' }} />
             </td>
             <td>
-              <span style={{ padding: '10px 0px 10px 10px', width: '200px', height: '10px', color: 'black', fontSize: '18px' }}>
+              <span style={{ padding: '10px 0px 10px 3px', width: '200px', height: '10px', color: 'black', fontSize: '13px' }}>
                 <br />
                 선생님은 정각부터 15분 단위로 아이들과 함께 나오십니다.
                 <br />

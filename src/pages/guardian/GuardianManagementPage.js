@@ -1,22 +1,12 @@
 import React, { useState } from 'react';
-import StudentDetail from './StudentDetail';
-import StudentAdd from './StudentAdd';
+import GuardianDetail from './GuardianDetail';
+import GuardianAdd from './GuardianAdd';
 import { Route, Routes } from "react-router-dom";
-import styled from "styled-components";
 
-const Container = styled.div`
-  cursor: pointer;
-`;
-
-const TabButton = styled.button`
-  &.active {
-    background-color: #12B560;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  }
-`;
-
-export default function StudentManagementPage() {
+export default function GuardianManagementPage() {
   const [activeIndex, setActiveIndex] = useState(0);
+
+
 
   const tabClickHandler = (index) => {
     setActiveIndex(index);
@@ -25,34 +15,34 @@ export default function StudentManagementPage() {
   const tabContArr = [
     {
       tabTitle: (
-        <TabButton
+        <button
           className={`tab-button ${activeIndex === 0 ? "active" : ""}`}
           onClick={() => tabClickHandler(0)}
         >
-          돌봄학생 목록
-        </TabButton>
+          보호자 목록
+        </button>
       ),
       tabCont: (
         <div className="StudentManagementPage">
           <Routes>
-            <Route exact path="/" element={<StudentDetail />} />
+            <Route exact path="/" element={<GuardianDetail />} />
           </Routes>
         </div>
       )
       },
       {
         tabTitle: (
-        <TabButton
+        <button
         className={`tab-button ${activeIndex === 1 ? "active" : ""}`}
         onClick={() => tabClickHandler(1)}
       >
-        돌봄학생 추가
-      </TabButton>
+        보호자 추가
+      </button>
     ),
     tabCont: (
       <div className="StudentManagementPage">
         <Routes>
-          <Route exact path="/" element={<StudentAdd />} />
+          <Route exact path="/" element={<GuardianAdd />} />
         </Routes>
       </div>
     )
@@ -60,16 +50,17 @@ export default function StudentManagementPage() {
   ];
 
   return (
-    <Container className="container">
+    <div className="container" style={{ cursor: "pointer" }}>
       <div className="my-3">
-        <ul>
+        <ul class="nav nav-tabs">
           {tabContArr.map((section, index) => {
-            return section.tabTitle;
+            return section.tabTitle
           })}
         </ul>
+
       </div>
       {tabContArr[activeIndex].tabCont}
-    </Container>
+    </div>
   );
 }
 

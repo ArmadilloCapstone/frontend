@@ -3,14 +3,14 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Pagination from "react-js-pagination";
 
-import "./bbslist.css";
-import "./bbspage.css";
+import "./gallerylist.css";
+import "./gallerypage.css";
 
-function BbsList() {
+function GalleryList() {
 
     // DB에 저장되어 있는 news 리스트 가져오기 위한 변수
-    const [bbsList, setBbsList] = useState([]);
-    const [currentbbsList, setCurrentbbsList] = useState([]);
+    const [galleryList, setGalleryList] = useState([]);
+    const [currentgalleryList, setCurrentgalleryList] = useState([]);
 
     // 검색용 Hook
     const [choiceVal, setChoiceVal] = useState("");
@@ -23,26 +23,26 @@ function BbsList() {
     // Link 용 (함수) 
     let navigate = useNavigate();
 
-    /* [POST /bbs]: 게시글 목록 가져오기 */
-    const loadBbsList = async (choice, search) => {
+    /* [POST /gallery]: 게시글 목록 가져오기 */
+    const loadGalleryList = async (choice, search) => {
         if (choice === "all" && search === "all") {
-            await axios.post('http://localhost/BbsList', {
+            await axios.post('http://localhost/GalleryList', {
                 id : localStorage.getItem('userid')
             })
                 .then((res) => {
-                    console.log("[BbsList.js] useEffect() 성공");
+                    console.log("[GalleryList.js] useEffect() 성공");
                     console.log(res.data);
 
-                    setBbsList(res.data);
+                    setGalleryList(res.data);
                     setTotalCnt(res.data.length);
                     console.log(res.data.length)
-                    setCurrentbbsList([]);
+                    setCurrentgalleryList([]);
                     if(res.data.length >= 10){
                         console.log("Hi")
                         res.data.map((el, idx) => {
                             console.log(idx)
                             if(idx < 10){
-                                setCurrentbbsList((prev) => ([
+                                setCurrentgalleryList((prev) => ([
                                     ...prev,
                                     el
                                 ]));
@@ -51,7 +51,7 @@ function BbsList() {
                     }
                     else{
                         res.data.map((el) => {
-                            setCurrentbbsList((prev) => ([
+                            setCurrentgalleryList((prev) => ([
                                 ...prev,
                                 el
                             ]));
@@ -59,7 +59,7 @@ function BbsList() {
                     }
                 })
                 .catch((err) => {
-                    console.log("[BbsList.js] useEffect() 실패");
+                    console.log("[GalleryList.js] useEffect() 실패");
                     console.log(err);
 
                 });
@@ -67,25 +67,25 @@ function BbsList() {
 
         else {
             console.log(searchVal, choiceVal)
-            await axios.post(`http://localhost/BbsList/search`, {
+            await axios.post(`http://localhost/GalleryList/search`, {
                 teacher_id : localStorage.getItem('userid'),
                 keyword : searchVal,
                 option : choiceVal
             })
                 .then((res) => {
-                    console.log("[BbsList.js] useEffect() 성공");
+                    console.log("[GalleryList.js] useEffect() 성공");
                     console.log(res.data);
 
-                    setBbsList(res.data);
+                    setGalleryList(res.data);
                     setTotalCnt((res.data.length));
                     console.log(res.data.length)
-                    setCurrentbbsList([]);
+                    setCurrentgalleryList([]);
                     if(res.data.length >= 10){
                         console.log("Hi")
                         res.data.map((el, idx) => {
                             console.log(idx)
                             if(idx < 10){
-                                setCurrentbbsList((prev) => ([
+                                setCurrentgalleryList((prev) => ([
                                     ...prev,
                                     el
                                 ]));
@@ -94,7 +94,7 @@ function BbsList() {
                     }
                     else{
                         res.data.map((el) => {
-                            setCurrentbbsList((prev) => ([
+                            setCurrentgalleryList((prev) => ([
                                 ...prev,
                                 el
                             ]));
@@ -102,7 +102,7 @@ function BbsList() {
                     }
                 })
                 .catch((err) => {
-                    console.log("[BbsList.js] useEffect() 실패");
+                    console.log("[GalleryList.js] useEffect() 실패");
                     console.log(err);
 
                 });
@@ -110,28 +110,28 @@ function BbsList() {
     }
 
     useEffect(() => {
-        loadBbsList("all", "all");
+        loadGalleryList("all", "all");
     }, []);
 
 
     const changeChoice = (event) => { setChoiceVal(event.target.value); }
     const changeSearch = (event) => { setSearchVal(event.target.value); }
     const search = () => {
-        console.log("[BbsList.js searchBtn()] choiceVal=" + choiceVal + ", searchVal=" + searchVal);
+        console.log("[GalleryList.js searchBtn()] choiceVal=" + choiceVal + ", searchVal=" + searchVal);
 
-        navigate("/Bbslist");
-        loadBbsList(choiceVal, searchVal);
+        navigate("/Gallerylist");
+        loadGalleryList(choiceVal, searchVal);
     }
 
     const changePage = (page) => {
         setPage(page);
-        setCurrentbbsList([]);
+        setCurrentgalleryList([]);
         for(let i = (page-1) * 10; i < (page) * 10; i++){
             console.log(i)
-            if(bbsList[i] != null){
-                setCurrentbbsList((prev) => ([
+            if(galleryList[i] != null){
+                setCurrentgalleryList((prev) => ([
                     ...prev,
-                    bbsList[i]
+                    galleryList[i]
                 ]));
             }
         }
@@ -175,9 +175,9 @@ function BbsList() {
 
                 <tbody class="BbList">
 					{
-						currentbbsList.map(function (bbs, idx) {
+						currentgalleryList.map(function (gallery, idx) {
 							return (
-								<TableRow obj={bbs} key={idx} cnt={idx + 1} />
+								<TableRow obj={gallery} key={idx} cnt={idx + 1} />
 							)
 						})
 					}
@@ -194,7 +194,7 @@ function BbsList() {
                 onChange={changePage} />
 
             <div className="my-5 d-flex justify-content-center">
-                <Link className="btn btn-outline-secondary" to="/Bbswrite"><i className="fas fa-pen"></i>글쓰기</Link>
+                <Link className="btn btn-outline-secondary" to="/Gallerywrite"><i className="fas fa-pen"></i>글쓰기</Link>
             </div>
 
         </section>
@@ -203,7 +203,7 @@ function BbsList() {
 
 /* 글 목록 테이블 행 컴포넌트 */
 function TableRow(props) {
-    const bbs = props.obj;
+    const gallery = props.obj;
 
     return (
         <tr class="BbList">
@@ -213,11 +213,11 @@ function TableRow(props) {
                     <>
                         <td class="BbList" >
 
-                            <Link to={{ pathname: `/BbsDetail/${bbs.id}` }}> { /* 게시글 상세 링크 */}
-                                <span className="underline bbs-title" >{bbs.title} </span> { /* 게시글 제목 */}
+                            <Link to={{ pathname: `/GalleryDetail/${gallery.id}` }}> { /* 게시글 상세 링크 */}
+                                <span className="underline gallery-title" >{gallery.title} </span> { /* 게시글 제목 */}
                             </Link>
                         </td>
-                        <td class="BbList">{bbs.date}</td>
+                        <td class="BbList">{gallery.date}</td>
                     </>
                     
             }
@@ -228,4 +228,4 @@ function TableRow(props) {
     );
 }
 
-export default BbsList;
+export default GalleryList;
