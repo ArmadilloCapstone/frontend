@@ -107,11 +107,6 @@ export const LoginForm = (props) => {
 
   return (
     <div className='login_form'>
-      <div
-        className='login_title'
-      >
-        {props.title}
-      </div>
       { (props.option === "3")
             ?
             <div className="login_box login_sid">

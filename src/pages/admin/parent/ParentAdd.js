@@ -36,6 +36,7 @@ function ParentAdd() {
 
   //  Object Destructuring 
   const { name, phone_num1, phone_num2, phone_num3, gender, birth_date, child_name } = user;
+
   const onInputChange = e => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
@@ -61,11 +62,19 @@ function ParentAdd() {
     e.preventDefault();
     e.target.reset();
     const postUser = changeUserForm(user);
-    await axios.post('http://dolbomi.site/parent_submit', postUser);
-    // await axios.post('/parent_submit', user);
-    alert('추가되었습니다!');
+    await axios.post('http://dolbomi.site/parent_submit', postUser)
+      .then(function (response) {
+        console.log(response.data);
+        if(response.data === "success") {
+            alert('추가되었습니다!');
+        }
+        else {
+            alert('잘못 입력된 값이 존재합니다!');
+        }
 
-    // loadParentDetail();
+      }).catch(function (reason) {
+        console.log(reason.data);
+      });
   };
 
   return (

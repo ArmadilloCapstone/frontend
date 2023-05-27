@@ -81,11 +81,19 @@ function StudentAdd() {
     e.preventDefault();
     e.target.reset();
     const postUser = changeUserForm(user);
-    await axios.post('http://dolbomi.site/student_submit', postUser);
-    // await axios.post("/student_submit", user);
-    alert('추가되었습니다!');
+    await axios.post('http://dolbomi.site/student_submit', postUser)
+      .then(function (response) {
+        console.log(response.data);
+        if(response.data === "success") {
+            alert('추가되었습니다!');
+        }
+        else {
+            alert('잘못 입력된 값이 존재합니다!');
+        }
 
-    // loadStudentDetail();
+      }).catch(function (reason) {
+        console.log(reason.data);
+      });
   };
 
   return (

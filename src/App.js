@@ -22,18 +22,27 @@ import StudentTimeManagementPage from './pages/admin/studentTime/studentTimeMana
 import Pickup from './pages/pickup/Pickup';
 import GuardianPickup from './pages/pickup/GuardianPickup';
 import Popup from './pages/popup/Popup';
+import GuardianManagement from './pages/guardian/GuardianManagement';
 
 
 import BbsDetail from './pages/bbs/BbsDetail';
 import BbsList from './pages/bbs/BbsList';
 import BbsUpdate from './pages/bbs/BbsUpdate';
 import BbsWrite from './pages/bbs/BbsWrite';
+
+import GalleryDetail from './pages/gallery/GalleryDetail';
+import GalleryList from './pages/gallery/GalleryList';
+import GalleryUpdate from './pages/gallery/GalleryUpdate';
+import GalleryWrite from './pages/gallery/GalleryWrite';
+
+import Message from './pages/message/Message';
+
 import GuardianManagementPage from './pages/guardian/GuardianManagementPage';
 
 import Footer from './components/Layout/Footer/Footer';
 
 
-import {Button, Badge} from 'react-bootstrap';
+import { Button, Badge } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Center = styled.div`
@@ -45,6 +54,7 @@ const Center = styled.div`
 export default function App() {
   const user_option = useSelector((state => state.user_option))
   return (
+
     <HashRouter>
       <Header />
       <Center>
@@ -109,7 +119,27 @@ export default function App() {
           }
           {
             (user_option == "1") ?
-              <Route path="/GuardianManagementPage" element={<GuardianManagementPage />} /> :
+              <Route path="/GalleryList" element={<GalleryList />} /> :
+              <Route path="/GalleryList" element={<LoginPage />} />
+          }
+          {
+            (user_option == "1") ?
+              <Route path="/GalleryWrite" element={<GalleryWrite />} /> :
+              <Route path="/GalleryWrite" element={<LoginPage />} />
+          }
+          {
+            (user_option == "1") ?
+              <Route path="/GalleryUpdate/:gallery_id" element={<GalleryUpdate />} /> :
+              <Route path="/GalleryUpdate/:gallery_id" element={<LoginPage />} />
+          }
+          {
+            (user_option == "1") ?
+              <Route path="/GalleryDetail/:id" element={<GalleryDetail />} /> :
+              <Route path="/GalleryDetail/:id" element={<LoginPage />} />
+          }
+          {
+            (user_option == "1") ?
+              <Route path="/GuardianManagement" element={<GuardianManagement />} /> :
               <Route path="/GuardianManagementPage" element={<LoginPage />} />
           }
 
@@ -177,6 +207,9 @@ export default function App() {
       </Center>
       {/* <Footer /> */}
       <Popup />
+      <Message/>
     </HashRouter>
   );
 }
+
+

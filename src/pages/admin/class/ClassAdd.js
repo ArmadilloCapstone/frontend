@@ -15,6 +15,8 @@ function ClassAdd() {
     //  Object Destructuring 
     // const { class_name, class_num, year_seme } = user;
     const { class_name, class_num, year, seme } = user;
+    
+  
     const onInputChange = e => {
         setUser({ ...user, [e.target.name]: e.target.value });
     };
@@ -34,11 +36,19 @@ function ClassAdd() {
         e.target.reset();
         const postUser = changeUserForm(user);
         console.log(postUser);
-        await axios.post('http://dolbomi.site/dolbom_class_submit', postUser);
-        // await axios.post('/dolbom_class_submit', user);
-        alert('추가되었습니다!');
+        await axios.post('http://dolbomi.site/dolbom_class_submit', postUser)
+            .then(function (response) {
+                console.log(response.data);
+                if(response.data === "success") {
+                    alert('추가되었습니다!');
+                }
+                else {
+                    alert('잘못 입력된 값이 존재합니다!');
+                }
 
-        // loadClassDetail();
+            }).catch(function (reason) {
+                console.log(reason.data);
+            });
     };
 
     return (

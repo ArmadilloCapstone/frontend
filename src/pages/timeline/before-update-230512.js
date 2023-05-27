@@ -452,7 +452,7 @@ export const Student_schedule = () => {
 // function CustomTimeline() {
 //   console.log(sortedAllItem);
 //   console.log(items);
-// //   const baseUrl = "http://dolbomi.site";
+// //   const baseUrl = "http://dolbomi.site/";
 
 // //     const [user_username, setUser_username] = useState();
 
