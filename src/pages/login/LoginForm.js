@@ -14,7 +14,7 @@ export const LoginForm = (props) => {
   const [serial, setSerial] = useState([]);
   const [id, setId] = useState([]);
   const [pw, setPw] = useState([]);
-  const [hovered, setHovered] = useState(false); // New state for hover
+  const [hovered, setHovered] = useState(false); 
 
   const saveSerial = event => {
     setSerial(event.target.value);
@@ -88,7 +88,6 @@ export const LoginForm = (props) => {
         console.log(res.data)
         if(res.data.name !== "Error"){
           dispatch(setShowSignup(!showSignup));
-          //alert('로그인!');
           localStorage.setItem('userid', res.data.serial_num);
           localStorage.setItem('username', res.data.name);
           localStorage.setItem('useroption', (props.option - 0));

@@ -12,6 +12,7 @@ const Pickup = () => {
   const handleClick = () => {
 
     axios.post("http://dolbomi.site/requestParent", {
+
       pickupManId : user_id
     }).then((res)=>{
       if(res.data == "success"){
