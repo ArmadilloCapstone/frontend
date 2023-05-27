@@ -36,21 +36,24 @@ export const LoginPage = () => {
   };
 
   const logoStyle = {
-    width: '150px', 
-    height: '150px', 
+    width: '170px', 
+    height: '170px', 
+    marginTop: '30px',
+    marginBottom: '20px'
 
   };
 
   const loginFormWrapperStyle = {
     backgroundColor: '#F5FFFA',
+    borderRadius: '30px',
     padding: '25px',
-    width: '60%',
-
-    display: 'center',
+    width: '50%',
+    margin: '0 auto', 
+    display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    minHeight: '120vh',
+    height: '900px',
 
   };
 
@@ -66,7 +69,7 @@ export const LoginPage = () => {
         </div>
 
         <img src={logo} alt="Logo" style={logoStyle} />
-        <h1 className="login_title">돌봄 교실, 자녀의 안전과 행복을 위한 파트너</h1> {/* Add the login_title element */}
+        <h1 className="login_title">돌봄 교실, 자녀의 안전과 행복을 위한 파트너</h1> 
 
         <LoginForm option={userOption} setUserOption={setUserOption} title={option2name(userOption)} />
           {showSignup ? <span className="signupClose" onClick={clickClose}>X</span> : null}
