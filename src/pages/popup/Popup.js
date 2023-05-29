@@ -16,9 +16,10 @@ const PopupContainer = ({ children }) => {
         <div
           style={{
             backgroundColor: '#12B560',
-            border: '1px solid #ccc',
+            border: 'none',
+            color: 'white',
             padding: '20px 20px',
-            borderRadius: '5px',
+            borderRadius: '15px',
             marginBottom: '10px',
             boxShadow: '3px 3px 15px #555555',
           }}

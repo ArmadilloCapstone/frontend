@@ -14,6 +14,8 @@
 
 .login_page{
     display: flex;
+    margin-top: 20px;
+    padding-bottom: -190px;
     flex-direction: row;
     justify-content: space-around;
     width: 80%;
@@ -24,7 +26,7 @@
 }
 .login_title{
     margin-bottom: 50px;
-    font-size: 22px;
+    font-size: 20px;
     text-align: center;
     color: #555555;
 }
@@ -48,17 +50,16 @@
     margin-top: -40px;
     padding-right: 20px;
     font-size: 18px;
+
 }
 .radioGroup input{
     position:inherit;
-
     vertical-align: middle;
     appearance: none;
-
+    
     border: max(2px, 0.1em) solid gray;
     border-radius: 50%;
     width: 1.25em;
-    height: 1.25em;
     transition: border 0.2s ease-in-out;
 
     font-size: 10px;
@@ -90,7 +91,6 @@
     top: 20px;
     height: 70px;
     width: 100%;
-
     border-radius: 15px;
     font-size: 25px;
 }
