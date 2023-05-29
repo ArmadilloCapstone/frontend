@@ -29,7 +29,7 @@ export const SignupForm = (props) => {
   };
 
   const register = () => {
-    axios.post("http://localhost/signup", {
+    axios.post("http://dolbomi.site/signup", {
       "name" : name,
       "phone_num" : phone_num,
       "user_id" : id,
