@@ -25,6 +25,20 @@ export default function AddStudentsOfGaurdian(props) {
     const checkedItemHandler = (id, name, isChecked) => {
         if (isChecked) {
             setCheckedList([...checkedList, { id: id, name: name }]);
+            return true;
+        }
+        else {
+            setCheckedList(checkedList.filter((item) => item.id !== id));
+            return false;
+        }
+    }
+
+    // 어떤 element의 체크 상태 업데이트
+    const checkHandler = (e, id, name) => {
+        setIsChecked(!isChecked);
+        let checkValid = false;
+        checkValid = checkedItemHandler(id, name, e.target.checked);
+        if (checkValid === true) {
             setUser({
                 ...user,
                 serial_num: edited.serial_num,
@@ -32,23 +46,13 @@ export default function AddStudentsOfGaurdian(props) {
             });
         }
         else {
-            setCheckedList(checkedList.filter((item) => item.id !== id));
             setUser({
                 ...user,
                 serial_num: edited.serial_num,
                 students: [...checkedList.filter((item) => item.id !== id)]
             });
         }
-    }
 
-    // 어떤 element의 체크 상태 업데이트
-    const checkHandler = (e, id, name) => {
-        setIsChecked(!isChecked);
-        checkedItemHandler(id, name, e.target.checked);
-        setUser({
-            ...user,
-            studentList: [...checkedList],
-        });
         // setUser({
         //     ...user,
         //     students: [...checkedList],
