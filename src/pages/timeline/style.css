@@ -1,4 +1,3 @@
-
 .timeline {
   font-family: "Eorinai";
   font-style: normal;
@@ -8,16 +7,21 @@
 }
 
 #root>div>div:nth-child(2)>div.react-calendar-timeline.timeline {
-  max-width: 1280px;
+  max-width: 1200px;
   width: 100%;
-  margin: 20px 20px 0;
+  margin: 50px 20px 0;
 }
 
-#root>div.sc-cLuaVy.eQVwos>div:nth-child(2)>div.react-calendar-timeline.timeline>div.rct-header-root {
+#root > div.sc-ikufXD.dtaxHp > div:nth-child(2) > div.react-calendar-timeline.timeline {
+  border: none;
+}
+
+#root>div.sc-ikufXD.dtaxHp>div:nth-child(2)>div.react-calendar-timeline.timeline>div.rct-header-root {
   background-color: #12B560;
+  border: none;
 }
 
-#root>div.sc-cLuaVy.eQVwos>div:nth-child(2)>div.react-calendar-timeline.timeline>div.rct-outer>div.rct-scroll>div>div:nth-child(5)>div:nth-child(2) {
+#root>div.sc-ikufXD.dtaxHp>div:nth-child(2)>div.react-calendar-timeline.timeline>div.rct-outer>div.rct-scroll>div>div:nth-child(5)>div:nth-child(2) {
   opacity: 0;
 }
 
@@ -27,7 +31,6 @@
   background-color: white;
   box-sizing: border-box;
   z-index: 40;
-
 }
 
 #sortingButtons {
@@ -42,6 +45,10 @@
   border-radius: 15px;
 }
 
+.subjectButtons-parent {
+  margin: 5px 20px;
+}
+
 button.subjectButtons {
   /* position: flex; */
   top: 100%;
@@ -51,10 +58,8 @@ button.subjectButtons {
   height: 35px;
   width: 120px;
   margin: 3px;
-  /* margin-right: 20px; */
   border-radius: 15px;
-  /* border: 1px dashed #12B560;
-  float: right; */
+  float: right;
   border: none;
   background-color: #12B560;
 }

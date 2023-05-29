@@ -287,7 +287,7 @@ function CustomTimeline() {
         {/* </TimelineMarkers> */}
       </Timeline>
 
-      <div>
+      <div className="subjectButtons-parent">
         {subjectButtons.map((el) => (
           <button className="subjectButtons"
             key={el.id}

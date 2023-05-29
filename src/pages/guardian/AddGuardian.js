@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import loadGuardianList from "./GuardianManagement"
 import "./Add.css"
 
 export default function AddGuardian() {
@@ -81,7 +82,7 @@ export default function AddGuardian() {
                 console.log(reason.data);
             });
 
-        // loadGuardian();
+        loadGuardianList();
     };
 
     return (
