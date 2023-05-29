@@ -7,7 +7,7 @@ function StudentTimeAdd() {
 
 
     useEffect(() => {
-        axios.post('http://dolbomi.site/student_time/studentList') // url 모름.. 변경 필요할듯
+        axios.post('http://localhost:80/student_time/studentList') // url 모름.. 변경 필요할듯
             .then(function (response) {
                 console.log(response.data);
                 setStudent(response.data.map(function (el, idx) {
@@ -50,20 +50,37 @@ function StudentTimeAdd() {
     const submitStudentTimeRecord = async (e) => {
         e.preventDefault();
         e.target.reset();
-        await axios.post("http://dolbomi.site/student_time_submit", user)
-        .then(function (response) {
-            console.log(response.data);
-            if(response.data === "success") {
-                alert('추가되었습니다!');
-            }
-            else {
-                alert('잘못 입력된 값이 존재합니다!');
-            }
-    
-        }).catch(function (reason) {
-            console.log(reason.data);
+        await axios.post("http://localhost:80/student_time_submit", user)
+            .then(function (response) {
+                console.log(response.data);
+                if (response.data === "success") {
+                    alert('추가되었습니다!');
+                }
+                else {
+                    alert('잘못 입력된 값이 존재합니다!');
+                }
+
+            }).catch(function (reason) {
+                console.log(reason.data);
+            });
+        onReset();
+    };
+
+    const onReset = () => {
+        setUser({
+            id: 0,
+            name: "",
+            entry_1: "",
+            off_1: "",
+            entry_2: "",
+            off_2: "",
+            entry_3: "",
+            off_3: "",
+            entry_4: "",
+            off_4: "",
+            entry_5: "",
+            off_5: ""
         });
-            
     };
 
     return (

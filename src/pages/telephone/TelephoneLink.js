@@ -11,7 +11,7 @@ function TelephoneLink() {
 
     // 주요 연락처 List 가져오기
     const loadCallList = async () => {
-        await axios.post('http://dolbomi.site/callList')
+        await axios.post('http://localhost:80/callList')
             .then(function (response) {
                 setCallList(response.data.map(function (el, id) {
                     console.log(el);

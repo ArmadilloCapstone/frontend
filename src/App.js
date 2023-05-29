@@ -57,7 +57,11 @@ export default function App() {
   return (
 
     <HashRouter>
-      <Header />
+      {
+        (!!user_option) ?
+          <Header /> :
+          null
+      }
       <Center>
         <Sidebar />
         <Routes>

@@ -22,7 +22,7 @@ function GalleryUpdate() {
 	useEffect(() => {
 		console.log(param.gallery_id);
 		const getBoard = async () => {
-		  const {data} = await axios.post(`http://dolbomi.site/album/${param.gallery_id}`);
+		  const {data} = await axios.post(`http://localhost:80/album/${param.gallery_id}`);
 		  return data;
 		}
 		getBoard().then((result) => {
@@ -32,7 +32,7 @@ function GalleryUpdate() {
 		  // 이미지를 선택하지 않고 올리면 db에 저장되어 있는 이미지를 그대로 사용!
 		});
 		
-        axios.post(`http://dolbomi.site/album/files/${param.gallery_id}`)
+        axios.post(`http://localhost:80/album/files/${param.gallery_id}`)
             .then((res) => {
                 console.log("[GalleryDetail.js] getGalleryDetail() success :D");
                 console.log(res.data);
@@ -104,7 +104,7 @@ function GalleryUpdate() {
 				console.log(selectedFiles[i]);
 				formData.append("files", selectedFiles[i]);
 			}
-			axios.post("http://dolbomi.site/GalleryList/update/file", formData, {
+			axios.post("http://localhost:80/GalleryList/update/file", formData, {
 			  headers: {
 				"Content-Type": "multipart/form-data",
 			  }
@@ -121,7 +121,7 @@ function GalleryUpdate() {
 			});
 		}
 		else{
-			axios.post("http://dolbomi.site/GalleryList/update/nofile", formData, {
+			axios.post("http://localhost:80/GalleryList/update/nofile", formData, {
 			  headers: {
 				"Content-Type": "multipart/form-data",
 			  }
@@ -167,7 +167,7 @@ function GalleryUpdate() {
 								<td>
 									{
 										selectedFiles.map((el, idx) => {
-											return <img src={imageUrl? imageUrl : "http://dolbomi.site/download/album/" + el.name}/>
+											return <img src={imageUrl? imageUrl : "http://localhost:80/download/album/" + el.name}/>
 										})
 									}
 									<br></br>

@@ -16,9 +16,10 @@ const PopupContainer = ({ children }) => {
         <div
           style={{
             backgroundColor: '#12B560',
-            border: '1px solid #ccc',
+            border: 'none',
+            color: 'white',
             padding: '20px 20px',
-            borderRadius: '5px',
+            borderRadius: '15px',
             marginBottom: '10px',
             boxShadow: '3px 3px 15px #555555',
           }}
@@ -50,7 +51,7 @@ const Popup = () => {
       setTimeout(() => {
         console.log("pickup");
         if(user_option == 1){
-          axios.post("http://dolbomi.site/sendPickupFormToTeacher/" + localStorage.getItem('userid')).then((res)=>{
+          axios.post("http://localhost:80/sendPickupFormToTeacher/" + localStorage.getItem('userid')).then((res)=>{
             if(!!res.data){
               setStudents(res.data.map(function(el){
                 console.log(el);
@@ -71,7 +72,7 @@ const Popup = () => {
         setInterval(() => {
           console.log("pickup");
           if(user_option == 1){
-            axios.post("http://dolbomi.site/sendPickupFormToTeacher/" + localStorage.getItem('userid')).then((res)=>{
+            axios.post("http://localhost:80/sendPickupFormToTeacher/" + localStorage.getItem('userid')).then((res)=>{
               if(!!res.data){
                 setStudents(res.data.map(function(el){
                   console.log(el);
