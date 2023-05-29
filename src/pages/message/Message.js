@@ -73,14 +73,14 @@ const Message = () => {
   
     return (
       <div>
-        <div>socket</div>
+        {/* <div>socket</div>
         <div>socket connected : {`${socketConnected}`}</div>
         <div>res : </div>
         <div>
           {items.map((item) => {
             return <div>{JSON.stringify(item)}</div>;
           })}
-        </div>
+        </div> */}
       </div>
     );
 };
