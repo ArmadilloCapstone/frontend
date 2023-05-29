@@ -2,16 +2,11 @@ import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-// import CommentWrite from "../comment/CommentWrite";
-// import CommentList from "../comment/CommentList";
-// import { AuthContext } from "../context/AuthProvider";
-
+import "./bbslist.css";
+import "./bbspage.css";
 
 
 function BbsDetail() {
-
-    // const { auth, setAuth } = useContext(AuthContext)
-
     const [bbs, setBbs] = useState({});
     const [files, setFiles] = useState([]);
     const { id } = useParams(); // 파라미터 가져오기
@@ -75,20 +70,8 @@ function BbsDetail() {
         console.log(id)
     }, []);
 
-    // const updateBbs = {
-    //     id: bbs.id,
-    //     title: bbs.title,
-    //     text: bbs.text,
-    //     file_url: bbs.file_url
-    // }
-
-    // const parentBbs = {
-    //     id: bbs.id,
-    //     title: bbs.title
-    // }
-
     return (
-        <div>
+        <div style={{ fontFamily: "Eorinai" }}>
 
             <div className="my-3 d-flex justify-content-end">
 

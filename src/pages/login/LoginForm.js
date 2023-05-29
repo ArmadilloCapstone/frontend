@@ -34,6 +34,7 @@ export const LoginForm = (props) => {
   };
 
   const clickLogin = () => {
+
     if(props.option != "3"){
 
       axios.post("http://localhost:80/login", {

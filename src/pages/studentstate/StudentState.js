@@ -7,20 +7,6 @@ import arrived from "./arrived.png";
 import art from "./art.png";
 import house from "./house.png";
 
-const iconMap = {
-  box1: soon,
-  box2: arrived,
-  box3: art,
-  box4: house
-};
-
-const iconStyles = {
-  width: '70px', 
-  height: '70px', 
-};
-
-
-
 function drop(event, student, setStudent) {
   event.preventDefault();
   var data = event.dataTransfer.getData("text");
@@ -49,11 +35,16 @@ const sortItems = (box) => {
   }
 }
 
+
+const iconSize = {
+  width: '70px',
+  height: '70px',
+};
+
+
 const StudentState = () => {
 
 
-
-  // 더미데이터 -> 추후에 백엔드에서 학생 명단 받아오면 대체할 부분
   const [student, setStudent] = useState([
   ]);
 
@@ -62,10 +53,6 @@ const StudentState = () => {
     axios.post('http://localhost:80/getStudentInfo')
         .then(function(response){
           setStudent(response.data.map(function(el, idx){
-
-            // 서버에서 주는 데이터 형식
-            // {[id : Long, student_id : Long, name : String, state : Long]}
-
 
             console.log(el);
             var returnObj = {}
@@ -83,8 +70,6 @@ const StudentState = () => {
   }, []);
 
 
-
-  // 드래그 끝난 후의 박스 위치 파악 -> state 변경 -> student 변경
   const handleDrag = useCallback((event, ui, ns) => {
     const [ret] = document.elementsFromPoint(event.clientX, event.clientY).filter(i => i.id.startsWith('box'));
     if (!ret) return;
@@ -111,7 +96,7 @@ const StudentState = () => {
     <div className="StudentState">
       <div className="box" id="box1">
         <div className="icon">
-         <img src={iconMap.box1} alt="Icon" style={iconStyles} />
+        <img src={soon} alt="Icon" style={iconSize} />
         </div>
         <h5 style={{ padding: "15px 0px 15px 0px", fontSize: "25px", fontWeight: "bolder"}}>도착하지 않았어요</h5>
         {student.filter((item) => item.state === "box1").map(student => (
@@ -123,7 +108,7 @@ const StudentState = () => {
 
       <div className="box" id="box2">
           <div className="icon">
-            <img src={iconMap.box2} alt="Icon" style={iconStyles}/>
+            <img src={arrived}alt="Icon" style={iconSize}/>
           </div>
         <h5 style={{ padding: "15px 0px 15px 0px", fontSize: "25px", fontWeight: "bolder"}}>돌봄교실에 도착했어요</h5>
         {student.filter((item) => item.state === "box2").map(student => (
@@ -135,7 +120,7 @@ const StudentState = () => {
 
       <div className="box" id="box3">
           <div className="icon">
-            <img src={iconMap.box3} alt="Icon" style={iconStyles}/>
+            <img src={art} alt="Icon" style={iconSize} />
           </div>
         <h5 style={{ padding: "15px 0px 15px 0px", fontSize: "25px", fontWeight: "bolder"}}>방과후수업에 다녀올게요</h5>
         {student.filter((item) => item.state === "box3").map(student => (
@@ -147,7 +132,7 @@ const StudentState = () => {
 
       <div className="box" id="box4">
           <div className="icon">
-            <img src={iconMap.box4} alt="Icon" style={iconStyles}/>
+            <img src={house} alt="Icon" style={iconSize} />
           </div>
         <h5 style={{ padding: "15px 0px 15px 0px", fontSize: "25px", fontWeight: "bolder"}}>오늘은 떠날게요</h5>
         {student.filter((item) => item.state === "box4").map(student => (

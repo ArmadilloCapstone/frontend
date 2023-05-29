@@ -11,9 +11,8 @@ export default function GuardianManagement() {
     const [addGuardian, setAddGuardian] = useState(false); // 새로운 보호자 추가
     const [addstudentList, setAddstudentList] = useState(false); // 기존 보호자의 학생명단 추가
 
-    // 더미데이터, 빈 객체 배열로 변경 예정
     const [guardianList, setGuardianList] = useState([
-        {id: 1, name: "가가가", info: "태권도장 기사", serial_num: 111111, studentList: [{id: 1, name:  "가가가"}]}
+        {id: 1, name: "가가가", info: "태권도장 기사", studentList: [{id: 1, name:  "가가가"}]}
     ]);
 
     // 기존의 guardian List 가져오기
