@@ -26,7 +26,7 @@ function GalleryList() {
     /* [POST /gallery]: 게시글 목록 가져오기 */
     const loadGalleryList = async (choice, search) => {
         if (choice === "all" && search === "all") {
-            await axios.post('http://localhost/GalleryList', {
+            await axios.post('http://localhost:80/GalleryList', {
                 id : localStorage.getItem('userid')
             })
                 .then((res) => {
@@ -67,7 +67,7 @@ function GalleryList() {
 
         else {
             console.log(searchVal, choiceVal)
-            await axios.post(`http://localhost/GalleryList/search`, {
+            await axios.post(`http://localhost:80/GalleryList/search`, {
                 teacher_id : localStorage.getItem('userid'),
                 keyword : searchVal,
                 option : choiceVal

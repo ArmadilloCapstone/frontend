@@ -7,7 +7,7 @@ const Message = () => {
     const [sendMsg, setSendMsg] = useState(false);
     const [items, setItems] = useState([]);
   
-    const webSocketUrl = `ws://localhost/room`;
+    const webSocketUrl = `ws://dolbomi.site/room`;
     
     // 소켓 객체 생성
     useEffect(() => {
