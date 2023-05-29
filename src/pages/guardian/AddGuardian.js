@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import loadGuardianList from "./GuardianManagement"
 import "./Add.css"
 
 export default function AddGuardian() {
@@ -69,7 +70,7 @@ export default function AddGuardian() {
         console.log(user);
         await axios.post("http://dolbomi.site/guardian_submit", user);
         alert('추가되었습니다!');
-        // loadGuardian();
+        loadGuardianList();
     };
 
     return (
