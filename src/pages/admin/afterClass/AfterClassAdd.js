@@ -35,7 +35,7 @@ function AfterClassAdd() {
     const submitAfterClassRecord = async (e) => {
         e.preventDefault();
         e.target.reset();
-        await axios.post('http://localhost/after_school_class_submit', user)
+        await axios.post('http://dolbomi.site/after_school_class_submit', user)
             .then(function (response) {
                 console.log(response.data);
                 if (response.data === "success") {

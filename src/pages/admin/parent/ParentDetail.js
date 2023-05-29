@@ -23,7 +23,7 @@ function ParentDetail() {
 
   // On Page load display all records 
   const loadParentDetail = async () => {
-    await axios.post('http://localhost/parent')
+    await axios.post('http://dolbomi.site/parent')
       .then(function (response) {
         setRecord(response.data.map(function (el, idx) {
           console.log(el);
@@ -45,7 +45,7 @@ function ParentDetail() {
   }
 
   // const loadStudentDetail = async () => {
-  //   var response = fetch('http://localhost:5000/api/v1/employee')
+  //   var response = fetch('http://dolbomi.site:5000/api/v1/employee')
   //     .then(function (response) {
   //       return response.json();
   //     })
@@ -62,7 +62,7 @@ function ParentDetail() {
   const submitParentRecord = async (e) => {
     e.preventDefault();
     e.target.reset();
-    await axios.post('http://localhost/parent_submit', user);
+    await axios.post('http://dolbomi.site/parent_submit', user);
     alert('추가되었습니다!');
 
     loadParentDetail();
@@ -70,7 +70,7 @@ function ParentDetail() {
 
   // Delete Parent Record
   const deleteRecord = (productId) => {
-    axios.delete(`http://localhost/parent/${productId}`)
+    axios.delete(`http://dolbomi.site/parent/${productId}`)
       .then((result) => {
         loadParentDetail();
       })
