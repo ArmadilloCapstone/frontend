@@ -76,7 +76,7 @@ export default function GuardianManagement() {
     return (
         <section class="guardianSection">
             <button class="guardian-add-button" onClick={() => setAddGuardian(!addGuardian)}>
-                + 새로운 보호자 추가
+                보호자 추가
             </button>
 
             {addGuardian && (
