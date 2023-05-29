@@ -36,16 +36,27 @@ function AfterClassAdd() {
         e.preventDefault();
         e.target.reset();
         await axios.post('http://dolbomi.site/after_school_class_submit', user)
-        .then(function (response) {
-            console.log(response.data);
-            if(response.data === "success") {
-                alert('추가되었습니다!');
-            }
-            else {
-                alert('잘못 입력된 값이 존재합니다!');
-            }
-        }).catch(function (reason) {
-            console.log(reason.data);
+            .then(function (response) {
+                console.log(response.data);
+                if (response.data === "success") {
+                    alert('추가되었습니다!');
+                }
+                else {
+                    alert('잘못 입력된 값이 존재합니다!');
+                }
+            }).catch(function (reason) {
+                console.log(reason.data);
+            });
+        onReset();
+    };
+
+    const onReset = () => {
+        setUser({
+            id: 0,
+            class_name: "",
+            start_time: "",
+            end_time: "",
+            day: null
         });
     };
 

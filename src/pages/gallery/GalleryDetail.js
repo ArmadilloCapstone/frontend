@@ -20,42 +20,42 @@ function GalleryDetail() {
 
     const getGalleryDetail = async () => {
         console.log("hi")
-        await axios.post(`http://localhost/album/${id}`)
+        await axios.post(`http://dolbomi.site/album/${id}`)
             .then((resp) => {
                 console.log("[GalleryDetail.js] getGalleryDetail() success :D");
                 console.log(resp.data);
 
                 setGallery(resp.data);
+                setFiles(resp.data.file_url);
             })
             .catch((err) => {
                 console.log("[GalleryDetail.js] getGalleryDetail() error :<");
                 console.log(err);
             });
-        await axios.post(`http://localhost/album/files/${id}`)
-            .then((res) => {
-                console.log("[GalleryDetail.js] getGalleryDetail() success :D");
-                console.log(res.data);
-                let arr = Array.from(res.data);
-                console.log(arr);
-                setFiles([]);
-                for(let i = 0; i < arr.length; i++){
-                    console.log(arr[i].originFileName)
-                    setFiles((prevMessage) => ([
-                        ...prevMessage,
-                        arr[i]
-                    ]));
-                }
-            })
-            .catch((err) => {
-                console.log("[GalleryDetail.js] getGalleryDetail() error :<");
-                console.log(err);
-            });
+        // await axios.post(`http://dolbomi.site/album/files/${id}`)
+        //     .then((res) => {
+        //         console.log("[GalleryDetail.js] getGalleryDetail() success :D");
+        //         console.log(res.data);
+        //         let arr = Array.from(res.data);
+        //         console.log(arr);
+        //         for(let i = 0; i < arr.length; i++){
+        //             console.log(arr[i].originFileName)
+        //             setFiles((prevMessage) => ([
+        //                 ...prevMessage,
+        //                 arr[i]
+        //             ]));
+        //         }
+        //     })
+        //     .catch((err) => {
+        //         console.log("[GalleryDetail.js] getGalleryDetail() error :<");
+        //         console.log(err);
+        //     });
 
     }
 
     const deleteGallery = async () => {
 
-        await axios.delete(`http://localhost/album/${id}`)
+        await axios.delete(`http://dolbomi.site/album/${id}`)
             .then((resp) => {
                 console.log("[GalleryDetail.js] deleteGallery() success :D");
                 console.log(resp.data);
@@ -140,24 +140,21 @@ function GalleryDetail() {
                     <tr>
                         <th className="col-3">첨부파일</th>
                         <td>
-                            {
-                                files.map((el) => {
-                                    return <div>
-                                                <img src={"http://localhost/download/album/"+el.originFileName}/>
-                                                <div>{el.originFileName}</div>
-                                                <div>
-                                                    <a
-                                                        href={"http://localhost/download/album/"+el.originFileName}
-                                                        download
-                                                        target="_blank"
-                                                        rel="noreferrer"
-                                                        >
-                                                            다운로드
-                                                    </a>
-                                                </div>
-                                            </div>
-                                })
-                            }
+                            <div>
+                                <img src={"http://dolbomi.site/download/album/"+gallery.file_url}/>
+                                <div>{gallery.file_url}</div>
+                                <div>
+                                    <a
+                                        href={"http://dolbomi.site/download/album/"+gallery.file_url}
+                                        download
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        >
+                                            다운로드
+                                    </a>
+                                </div>
+                            </div>
+                            
                         </td>
                     </tr>
 
