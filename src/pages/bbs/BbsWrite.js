@@ -118,27 +118,27 @@ function BbsWrite() {
 		<div class="bbswrapper" style={{ fontFamily: "Eorinai" }}>
 			<div class="form_container">
 				<form onSubmit={createBbs}>
-					<table>
-						<tbody>
+					<table class="bbsWrite">
+						<tbody class="bbsWrite">
 
 							<tr>
-								<th>제목</th>
-								<td class="input_container">
-									<input type="text" class="bbsWrite" value={title} onChange={changeTitle} size="50px" />
+								<th class="bbsWrite">제목</th>
+								<td class="bbsWrite">
+									<input class="bbsWrite" type="text" value={title} onChange={changeTitle} size="50px" />
 								</td>
 							</tr>
 
 							<tr>
-								<th className="table-primary">내용</th>
-								<td>
+								<th class="bbsWrite">내용</th>
+								<td class="bbsWrite">
 									<textarea class="bbsWrite" value={text} onChange={changeText} rows="10"></textarea>
 								</td>
 							</tr>
 
 							<tr>
-								<th className="table-primary">첨부파일</th>
-								<td>
-            						<input type="file" multiple onChange={selectFiles} />
+								<th class="bbsWrite">첨부파일</th>
+								<td class="bbsWrite">
+            						<input class="bbsWrite" type="file" multiple onChange={selectFiles} />
 									{
 										selectedFiles.map((el, idx) => {
 											return <div key={idx}> {el.name} </div>
@@ -150,7 +150,7 @@ function BbsWrite() {
 						</tbody>
 					</table>
 					<div className="my-5 d-flex justify-content-center">
-						<button type="submit" className="btn btn-outline-secondary"><i className="fas fa-pen"></i> 등록하기</button>
+						<button type="submit" className="bbsWrite-submit-button"><i className="fas fa-pen"></i> 등록하기</button>
 					</div>
 				</form>
 

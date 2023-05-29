@@ -49,8 +49,8 @@ const StudentState = () => {
   ]);
 
   useEffect(() => {
-
-    axios.post('http://dolbomi.site/getStudentInfo')
+    // 백엔드의 학생 명단 가져오는 부분
+    axios.post('http://dolbomi.site/getStudentInfo/' + localStorage.getItem('userid'))
         .then(function(response){
           setStudent(response.data.map(function(el, idx){
 

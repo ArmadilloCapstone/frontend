@@ -1,23 +1,28 @@
-.underline:hover{
+/* .underline:hover{
     text-decoration: underline;
     cursor: pointer;
 }
 
+<<<<<<< HEAD
+  section.BbListSection {
+    margin: 20px auto 0;
+    padding: 10px;
+=======
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
 
   .BbListSection {
 
     color: #73685d;
 
+>>>>>>> 7da57075ddca25c83c32bc29b73c1fa4b07d28f7
   }
 
-.BbSearchContainer{
-  margin-bottom: 20px;
-  margin-top: 40px;
-  display: flex; 
-  align-items: center; 
-  gap: 20px;
-}
+  table.BbListSearch {
+    font-size: 20px;
+    width: 100%;
+    color: #73685d;
+    overflow: hidden;
+  }
     
   .BbListSearch-1 {
     border-bottom: 1px solid rgba(0,0,0,.1);
@@ -55,10 +60,12 @@
   .BbListSearch-3 {
     background-color: #12B560;
     color: #ffffff;
-    width: 200px;
-    height: 50px;
-    margin-left: 140px;
-    font-size: 19px;
+
+    width: 100%;
+    height: 40px;
+    margin: 0;
+
+    font-size: 15px;
     font-weight: bold;
     text-align: center;
     text-decoration: none;
@@ -82,20 +89,30 @@
 
  .BbList-0 {
     border: 1px #a39485 solid;
-    border-radius: 20px;
-    font-weight: bold;
-    font-size: 20px;
+
+    font-size: 15px;
     box-shadow: 0 2px 5px rgba(0,0,0,.25);
     width: 1000px;
     height: 50px;
     margin-top: 23px;
+>>>>>>> 7da57075ddca25c83c32bc29b73c1fa4b07d28f7
     border-collapse: collapse;
     overflow: hidden;
   }
 
   
-  
+  th.BbList {
+    text-align: left;
 
+  }
+    
+  thead.BbList {
+    font-weight: bold;
+    color: #fff;
+    background:#dadce0;
+    text-align: center;
+    font-size: 16px;
+  }
     
   .BbList{
     padding: 1em .5em;
@@ -103,28 +120,8 @@
     border-bottom: 1px solid rgba(0,0,0,.1);
     background: #fff;
     color: #73685d;
-        text-align: center;
   }
-
-  .btn-outline-secondary{
-    height: 50px;
-    width: 100px;
-    background-color: #12B560;
-    color: white;
     
-  }
-
-
-
-
-
-
-
-
-
-
-
-  
    @media all and (max-width: 768px) {
       
     table.BbList, thead.BbList, tbody.BbList, th.BbList, td.BbList, tr.BbList {
@@ -170,4 +167,4 @@
     
     
     }
-  
+   */
