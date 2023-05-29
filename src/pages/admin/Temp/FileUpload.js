@@ -65,7 +65,7 @@ const FileUpload = () => {
   };
 
   return (
-    <div className="my-3" style={{ fontSize: "40px", fontWeight: "bold",  backgroundColor: "#ffffff", paddingLeft: "20px", paddingTop: "40px" }}>
+    <div className="my-3" style={{ color: "#555555", fontSize: "35px", fontWeight: "bold",  backgroundColor: "#ffffff", paddingLeft: "20px", paddingTop: "40px" }}>
       {progressInfos && progressInfos.val.length > 0 &&
         progressInfos.val.map((progressInfo, index) => (
           <div className="mb-2" key={index}>

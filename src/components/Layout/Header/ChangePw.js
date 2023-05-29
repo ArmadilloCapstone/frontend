@@ -31,7 +31,6 @@ export const ChangePw = (props) => {
 
   return (
     <div className="changepw">
-      <div className="title">비밀번호 변경</div>
       <div className="box name">
         <div className="name">현재 비밀번호</div>
         <input type="password" value ={user_pw} onChange={saveName}/>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import "./Add.css"
 
 export default function AddStudentsOfGaurdian(props) {
     const [edited, setEdited] = useState(props.data); // 선택한 row의 보호자 데이터 불러오기
@@ -7,22 +8,18 @@ export default function AddStudentsOfGaurdian(props) {
     console.log(edited);
 
     // 더미데이터, 빈 객체 배열로 변경 예정
-    const [studentList, setStudentList] = useState([
-        { id: 1, name: "a" }, { id: 2, name: "b" },
-        { id: 3, name: "c" }, { id: 4, name: "d" }, { id: 5, name: "e" },
-        { id: 6, name: "f" }
-    ]);
+    const [studentList, setStudentList] = useState([]);
 
     // 체크된 students 관리할 변수
     const [checkedList, setCheckedList] = useState([]);
-    
+
     // 어떤 element가 체크된 상태인지 파악하기 위한 변수
     const [isChecked, setIsChecked] = useState(false);
 
     // 체크됐는지 확인 후, 리스트에 넣거나 제거
     const checkedItemHandler = (id, name, isChecked) => {
-        if(isChecked) {
-            setCheckedList([...checkedList, {id: id, name: name}]);
+        if (isChecked) {
+            setCheckedList([...checkedList, { id: id, name: name }]);
         }
         else {
             setCheckedList(checkedList.filter((item) => item.id !== id));
@@ -35,7 +32,7 @@ export default function AddStudentsOfGaurdian(props) {
         setIsChecked(!isChecked);
         checkedItemHandler(id, name, e.target.checked)
     }
-    
+
     // 기존의 student List 가져오기
     const loadStudentList = async () => {
         await axios.post('http://dolbomi.site/student')
@@ -91,27 +88,34 @@ export default function AddStudentsOfGaurdian(props) {
     return (
         <form onSubmit={submitGuardian}>
             <div>
-                <h2>{edited.name}의 정보 수정</h2>
+                <h2 class="student-modal-title">{edited.name}의 정보 수정</h2>
             </div>
-            <div>
-                이름: <input type="text" name="name" value={edited.name} onChange={onInputChange} />
+            <div class="guardian-form-item">
+                <label class="guardian-label">이름</label>
+                <input type="text" name="name" value={edited.name} onChange={onInputChange} />
             </div>
-            <div>
-                소속: <input type="text" name="info" value={edited.info} onChange={onInputChange} />
+            <div class="guardian-form-item">
+                <label class="guardian-label">소속</label>
+                <input type="text" name="info" value={edited.info} onChange={onInputChange} />
             </div>
 
-            <label class="select">추가할 학생(중복선택 가능)</label>
-            {studentList.map((option, idx) => (
+            <div class="guardian-label">추가할 학생(중복선택 가능)</div>
+            <div class="guardian-form-item">
+                <div class="guardian-checkbox-border">
+                    {studentList.map((option, idx) => (
 
-                <div key={idx}>
-                    <input type="checkbox" name="students" id={option.id} onChange={ (e) => checkHandler(e, option.id, option.name)} />
-                    {option.name}
+                        <label class="student-label" key={idx}>
+                            <input type="checkbox" name="students" id={option.id} onChange={(e) => checkHandler(e, option.id, option.name)} />
+                            {option.name}
+                        </label>
+                    ))
+                    }
                 </div>
-            ))
-            }
+            </div>
 
-            <div style={{ width: "100%", textAlign: "center" }}>
-                <button type="submit" style={{ backgroundColor: "#12B560", border: "none", borderRadius: "5PX" }}>수정하기</button>
+
+            <div>
+                <button class="guardian-form-add" type="submit">수정하기</button>
             </div>
         </form >
     )

@@ -23,6 +23,7 @@ import Pickup from './pages/pickup/Pickup';
 import GuardianPickup from './pages/pickup/GuardianPickup';
 import Popup from './pages/popup/Popup';
 import GuardianManagement from './pages/guardian/GuardianManagement';
+import TelephoneLink from './pages/telephone/TelephoneLink';
 
 
 import BbsDetail from './pages/bbs/BbsDetail';
@@ -35,12 +36,14 @@ import GalleryList from './pages/gallery/GalleryList';
 import GalleryUpdate from './pages/gallery/GalleryUpdate';
 import GalleryWrite from './pages/gallery/GalleryWrite';
 
+import Message from './pages/message/Message';
+
 import GuardianManagementPage from './pages/guardian/GuardianManagementPage';
 
 import Footer from './components/Layout/Footer/Footer';
 
 
-import {Button, Badge} from 'react-bootstrap';
+import { Button, Badge } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Center = styled.div`
@@ -52,6 +55,7 @@ const Center = styled.div`
 export default function App() {
   const user_option = useSelector((state => state.user_option))
   return (
+
     <HashRouter>
       <Header />
       <Center>
@@ -153,6 +157,11 @@ export default function App() {
               <Route path="/Pickup" element={<Pickup />} /> :
               <Route path="/Pickup" element={<LoginPage />} />
           }
+          {
+            (user_option == "2") ?
+              <Route path="/TelephoneLink" element={<TelephoneLink />} /> :
+              <Route path="/TelephoneLink" element={<LoginPage />} />
+          }
           {/* 보호자 페이지 */}
           {
             (user_option == "3") ?
@@ -204,6 +213,13 @@ export default function App() {
       </Center>
       {/* <Footer /> */}
       <Popup />
+      {
+        (user_option == "1" || user_option == "2") ?
+          <Message/> :
+          null
+      }
     </HashRouter>
   );
 }
+
+

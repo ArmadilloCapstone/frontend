@@ -50,7 +50,7 @@ function CustomTimeline() {
 
           var returnObj = {}
           returnObj['student_id'] = el.student_id;
-          returnObj['seed'] = 0;
+          returnObj['seed'] = 0; // 랜덤컬러 수정 시 "돌봄"으로 수정
           if (moment().day() === 1) {
             returnObj['start_time'] = moment(defaultTimeStart).add(el.entry_1, 'h');
             returnObj['end_time'] = moment(defaultTimeStart).add(el.off_1, 'h');
@@ -98,11 +98,10 @@ function CustomTimeline() {
 
   // subjectButtons 객체 배열 생성
   function MakeSubjectButtons() {
-    subjectButtons.push({ id: 0, class_name: "돌봄교실" });
-
     for (let i = 0; i < after_school_class.length; i++) {
       subjectButtons.push({ id: after_school_class[i].id, class_name: after_school_class[i].class_name })
     }
+    subjectButtons.push({ id: 0, class_name: "돌봄교실" });
   }
   MakeSubjectButtons();
 
@@ -134,7 +133,7 @@ function CustomTimeline() {
       for (let j = 0; j < studentSchedule.length; j++) {
         if (afterSchool[i].id === studentSchedule[j].class_id) {
           arr.push(studentSchedule[j]);
-          // arr.push( {student_id: studentSchedule[j].student_id, class_name: afterSchool[i].class_name});
+          // arr.push( {student_id: studentSchedule[j].student_id, class_name: afterSchool[i].class_name}); // 랜덤컬러 수정 시
         }
       }
     }
@@ -148,7 +147,7 @@ function CustomTimeline() {
     let newList = {};
     newList['student_id'] = obj.student_id;
     newList['seed'] = obj.class_id;
-    // newList['class_name'] = obj.class_name;
+    // newList['seed'] = obj.class_name;
     console.log(obj);
     console.log(after_school_class);
     newList['start_time'] = moment(defaultTimeStart).add(after_school_class.find((el) => el.class_id === obj.id).start_time, 'h');
@@ -204,21 +203,6 @@ function CustomTimeline() {
           background: randomColor({
             seed: ary[i].seed,
           }),
-          // background: ary[i].seed === 0 ? "rgb(251, 103, 128)" : "rgb(243, 252, 0)",
-
-          // : (ary[i].seed === 1 || ary[i].seed === 2) ? "rgba(46, 133, 248, 0.932)"
-          // : (ary[i].seed === 3 || ary[i].seed === 4) ? " rgb(91, 227, 67)"
-          // : "rgb(243, 252, 0)",
-          // backgroundColor: randomColor({
-          //   luminosity: "light",
-          //   seed: ary[i].seed,
-          //   format: "rgba",
-          //   // alpha: 0.6
-          // }),
-          // background: ary[i].seed === 0 ? "rgb(251, 103, 128)"
-          //   : (ary[i].seed === 1 || ary[i].seed === 2) ? "rgba(46, 133, 248, 0.932)"
-          //   : (ary[i].seed === 3 || ary[i].seed === 4) ? " rgb(91, 227, 67)"
-          //   : "rgb(243, 252, 0)",
           textAlign: "center"
         },
       },
@@ -275,7 +259,6 @@ function CustomTimeline() {
 
   return (
     <div calss="timeline_wrapper">
-      {/* <Detail></Detail>   */}
       <Timeline
         minZoom={defaultTimeRange}
         maxZoom={defaultTimeRange}
@@ -285,28 +268,16 @@ function CustomTimeline() {
         className="timeline"
         groups={groups}
         items={items}
-        //keys={keys}
-        //sidebarContent={<div>Above The Left</div>}
-        //itemsSorted
         itemTouchSendsClick={false}
-        //stackItems
-        itemHeightRatio={0.8}
+        itemHeightRatio={0.9}
         showCursorLine
         canMove={false}
         canResize={false}
         defaultTimeStart={defaultTimeStart}
         defaultTimeEnd={defaultTimeEnd}
       >
-        {/* <TimelineHeaders> */}
-        {/* <SidebarHeader>
-        {({ getRootProps}) => {
-          return <div {...getRootProps()}></div>;
-        }}
-      </SidebarHeader> */}
         <DateHeader unit="primaryHeader" class="timeline_date" />
-        {/* <DateHeader /> */}
-        {/* </TimelineHeaders> */}
-        {/* <TimelineMarkers> */}
+
         <TodayMarker>
           {({ styles }) => {
             const newStyles = { ...styles, backgroundColor: "red", "z-index": "100" };
@@ -318,7 +289,7 @@ function CustomTimeline() {
 
       <div>
         {subjectButtons.map((el) => (
-          <button id="subjectButtons"
+          <button className="subjectButtons"
             key={el.id}
             style={{
               background: randomColor({
@@ -329,8 +300,8 @@ function CustomTimeline() {
             {el.class_name}
           </button>
         ))}
-        {/* <button id="subjectButtons" class="dolbom">돌봄교실</button>
-        <button id="subjectButtons" class="art">종이접기반B</button> */}
+        {/* <button className="subjectButtons">돌봄교실</button>
+        <button className="subjectButtons">종이접기반B</button> */}
       </div>
 
     </div>
