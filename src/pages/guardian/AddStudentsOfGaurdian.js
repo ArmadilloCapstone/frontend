@@ -4,7 +4,6 @@ import "./Add.css"
 
 export default function AddStudentsOfGaurdian(props) {
     const [edited, setEdited] = useState(props.data); // 선택한 row의 보호자 데이터 불러오기
-    const [sudentsOfGuardian, setSudentsOfGuardian] = useState(edited.students); // 선택한 row의 보호자 데이터 불러오기
     const [user, setUser] = useState({
         id: edited.id,
         name: edited.name,
@@ -12,7 +11,6 @@ export default function AddStudentsOfGaurdian(props) {
     });
     const { id, name, students } = user;
     console.log(edited);
-    console.log(user);
 
     // 더미데이터, 빈 객체 배열로 변경 예정
     const [studentList, setStudentList] = useState([]);
@@ -27,18 +25,20 @@ export default function AddStudentsOfGaurdian(props) {
     const checkedItemHandler = (id, name, isChecked) => {
         if (isChecked) {
             setCheckedList([...checkedList, { id: id, name: name }]);
+            setUser({
+                ...user,
+                serial_num: edited.serial_num,
+                students: [...checkedList, { id: id, name: name }]
+            });
         }
         else {
             setCheckedList(checkedList.filter((item) => item.id !== id));
+            setUser({
+                ...user,
+                serial_num: edited.serial_num,
+                students: [...checkedList.filter((item) => item.id !== id)]
+            });
         }
-        console.log(checkedList);
-
-        // setUser({
-        //     ...user,
-        //     students: [...checkedList]
-        // });
-
-        // console.log(user);
     }
 
     // 어떤 element의 체크 상태 업데이트
@@ -91,15 +91,12 @@ export default function AddStudentsOfGaurdian(props) {
     const submitGuardian = async (e) => {
         e.preventDefault();
         // e.target.reset();
-        setUser({
-            ...user,
-            students: [...checkedList],
-        });
+
+        console.log(user);
+        console.log(checkedList);
 
         await axios.post("http://dolbomi.site/guardian_student_submit", user); // 이름, 소속 수정 시 (edited의 student list 변경 불가)
         // await axios.post("http://dolbomi.site/guardian_student_submit", checkedList); // (추가된 학생)
-        console.log(user);
-        console.log(checkedList);
 
         alert('추가되었습니다!');
         window.close(); //클로즈 먼저해야만 새로고침이 되었음
@@ -126,7 +123,7 @@ export default function AddStudentsOfGaurdian(props) {
                     {studentList.map((option, idx) => (
 
                         <label class="student-label" key={idx}>
-                            <input type="checkbox" name="students" id={option.id} onChange={(e) => checkHandler(e, option.id, option.name)} />
+                            <input type="checkbox" name="students" id={option.id} onClick={(e) => checkHandler(e, option.id, option.name)} />
                             {option.name}
                         </label>
                     ))

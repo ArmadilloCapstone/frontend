@@ -30,7 +30,7 @@ function CustomTimeline() {
   const defaultTimeStart = moment().startOf("day").toDate();
   const defaultTimeEnd = moment().startOf("day").add(1, "day").toDate();
 
-  const defaultTimeRange = defaultTimeEnd - defaultTimeStart;
+  const defaultTimeRange = defaultTimeEnd-defaultTimeStart;
 
   const [student, setStudent] = useState([]);
   const [student_time, setStudent_time] = useState([]);
@@ -198,7 +198,8 @@ function CustomTimeline() {
       itemProps: {
         style: {
           "border-radius": "5px",
-          "border": "0px",
+          "border": "1px",
+          "box-shadow": ary[i].seed !== 0 ? "2px 2px 2px 0px gray" : "none",
           color: "black",
           background: randomColor({
             seed: ary[i].seed,
@@ -292,6 +293,7 @@ function CustomTimeline() {
           <button className="subjectButtons"
             key={el.id}
             style={{
+              "box-shadow": el.id !== 0 ? "2px 2px 5px 0px gray" : "none",
               background: randomColor({
                 seed: el.id,
               })
