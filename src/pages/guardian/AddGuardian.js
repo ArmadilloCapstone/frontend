@@ -14,7 +14,7 @@ export default function AddGuardian() {
         studentList: []
     });
 
-    const { name, info, serial_num, students } = user;
+    const { name, info, serial_num, studentList } = user;
 
 
     // 6자리의 중복 없는 serial_num 생성하기 (serial_num 테이블 필요할듯, 중복 대조 위해서)
