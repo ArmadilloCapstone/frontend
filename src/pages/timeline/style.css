@@ -23,30 +23,18 @@
 }
 
 #root>div.sc-cLuaVy.eQVwos>div:nth-child(2)>div.react-calendar-timeline.timeline>div.rct-outer>div.rct-scroll>div>div:nth-child(5)>div:nth-child(2) {
-
   opacity: 0;
+}
+
+.react-calendar-timeline .rct-horizontal-lines .rct-hl-even,
+.react-calendar-timeline .rct-horizontal-lines .rct-hl-odd {
+  border-bottom: 0.5px solid #bbb;
+  background-color: white;
+  box-sizing: border-box;
+  z-index: 40;
 
 }
 
-
-
-
-/* .timeline_sort {
-    width: 50px;
-    height: 50px;
-    background-color: red;
-    수평 중앙 정렬하기
-    margin: 0 auto;
-  } */
-
-/* button{
-    height: 25px; 
-    width: 85px; 
-    margin: 2px; 
-    position: relative;
-    top:100%; 
-    left:73%;
-  } */
 #sortingButtons {
   height: 25px;
   width: 85px;
@@ -61,16 +49,17 @@
 }
 
 button.subjectButtons {
-  position: relative;
+  /* position: flex; */
   top: 100%;
-  /* left: 100%; */
+  left: 100%;
   /* position: absolute; */
   height: 25px;
   width: 120px;
-  margin: 2px;
-  right: -89%;
+  margin: 3px;
+  /* margin-right: 20px; */
   border-radius: 15px;
-  border: 1px dashed #12B560;;
+  border: 1px dashed #12B560;
+  float: right;
 }
 
 /* .react-calendar-timeline .rct-sidebar-header {
