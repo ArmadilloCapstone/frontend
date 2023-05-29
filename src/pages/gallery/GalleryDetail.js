@@ -20,7 +20,7 @@ function GalleryDetail() {
 
     const getGalleryDetail = async () => {
         console.log("hi")
-        await axios.post(`http://localhost:80/album/${id}`)
+        await axios.post(`http://dolbomi.site/album/${id}`)
             .then((resp) => {
                 console.log("[GalleryDetail.js] getGalleryDetail() success :D");
                 console.log(resp.data);
@@ -31,7 +31,7 @@ function GalleryDetail() {
                 console.log("[GalleryDetail.js] getGalleryDetail() error :<");
                 console.log(err);
             });
-        await axios.post(`http://localhost:80/album/files/${id}`)
+        await axios.post(`http://dolbomi.site/album/files/${id}`)
             .then((res) => {
                 console.log("[GalleryDetail.js] getGalleryDetail() success :D");
                 console.log(res.data);
@@ -55,7 +55,7 @@ function GalleryDetail() {
 
     const deleteGallery = async () => {
 
-        await axios.delete(`http://localhost:80/album/${id}`)
+        await axios.delete(`http://dolbomi.site/album/${id}`)
             .then((resp) => {
                 console.log("[GalleryDetail.js] deleteGallery() success :D");
                 console.log(resp.data);
@@ -143,11 +143,11 @@ function GalleryDetail() {
                             {
                                 files.map((el) => {
                                     return <div>
-                                                <img src={"http://localhost:80/download/album/"+el.originFileName}/>
+                                                <img src={"http://dolbomi.site/download/album/"+el.originFileName}/>
                                                 <div>{el.originFileName}</div>
                                                 <div>
                                                     <a
-                                                        href={"http://localhost:80/download/album/"+el.originFileName}
+                                                        href={"http://dolbomi.site/download/album/"+el.originFileName}
                                                         download
                                                         target="_blank"
                                                         rel="noreferrer"

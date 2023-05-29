@@ -13,12 +13,12 @@ export default function GuardianManagement() {
 
     // 더미데이터, 빈 객체 배열로 변경 예정
     const [guardianList, setGuardianList] = useState([
-        {id: 1, name: "가가가", info: "태권도장 기사", serial_num: 111111, students: [{id: 1, name:  "가가가"}]}
+        {id: 1, name: "가가가", info: "태권도장 기사", serial_num: 111111, studentList: [{id: 1, name:  "가가가"}]}
     ]);
 
     // 기존의 guardian List 가져오기
     const loadGuardianList = async () => {
-        await axios.post('http://localhost:80/guardianManage')
+        await axios.post('http://dolbomi.site/guardianManage')
             .then(function (response) {
                 setGuardianList(response.data.map(function (el, id) {
                     console.log(el);
@@ -42,7 +42,7 @@ export default function GuardianManagement() {
 
     // 보호자 삭제
     const deleteGuardian = (productId) => {
-        axios.delete(`http://localhost:80/guardianManage/guardian/${productId}`)
+        axios.delete(`http://dolbomi.site/guardianManage/guardian/${productId}`)
             .then((result) => {
                 loadGuardianList();
             })
@@ -53,7 +53,7 @@ export default function GuardianManagement() {
 
     // 보호자의 학생 삭제 (버튼 클릭 이벤트, ui 지저분해서 학생 이름을 버튼으로 만듦!)
     const deleteStudent = (guardian_id,student_id) => {
-        axios.delete(`http://localhost:80/guardianManage/student/${guardian_id}/${student_id}`)
+        axios.delete(`http://dolbomi.site/guardianManage/student/${guardian_id}/${student_id}`)
             .then((result) => {
                 loadGuardianList();
             })
