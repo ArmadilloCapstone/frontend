@@ -42,7 +42,7 @@ function CustomTimeline() {
 
   // 백엔드에서 데이터 가져오기 & 오늘의 요일에 맞는 학생들의 입실/퇴실 시간 설정 => todaylist === student_time
   useEffect(() => {
-    axios.post('http://dolbomi.site/studentTimeFindAll'  + localStorage.getItem('userid'))
+    axios.post('http://dolbomi.site/studentTimeFindAll/'  + localStorage.getItem('userid'))
       .then(function (response) {
         console.log("학생 입퇴실 데이터");
         console.log(response.data);
