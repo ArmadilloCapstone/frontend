@@ -118,7 +118,7 @@ export default function GuardianManagement() {
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
                                 <button class="add-student-button" onClick={() => {
-                                    setAddStudents(!addstudentList)
+                                    setAddstudentList(!addstudentList)
                                     onEdit(el);
                                 }}>추가
                                 </button>
