@@ -151,7 +151,7 @@ function BbsList() {
                                 <option>검색 옵션</option>
                                 <option value="title">제목</option>
                                 <option value="text">내용</option>
-                                {/* <option value="writer">작성자</option> */}
+
                             </select>
                         </td>
                         <td>
@@ -162,7 +162,7 @@ function BbsList() {
                         </td>
                     </tr>
                 </tbody>
-            </table><br />
+            </table>
 
             <table>
                 <thead>

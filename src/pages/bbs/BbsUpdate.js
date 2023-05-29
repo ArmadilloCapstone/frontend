@@ -169,7 +169,7 @@ function BbsUpdate() {
 
 
 	return (
-		<div class="bbswrapper">
+		<div class="bbswrapper" style={{ fontFamily: "Eorinai" }}>
 			<div class="form_container">
 				<form onSubmit={updateBbs}>
 					<table>

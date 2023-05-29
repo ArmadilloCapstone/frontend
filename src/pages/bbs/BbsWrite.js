@@ -124,7 +124,7 @@ function BbsWrite() {
 		// 	<BbsEditor />
 		// </div>onSubmit={submitTeacherRecord}
 
-		<div class="bbswrapper">
+		<div class="bbswrapper" style={{ fontFamily: "Eorinai" }}>
 			<div class="form_container">
 				<form onSubmit={createBbs}>
 					<table class="bbsWrite">
