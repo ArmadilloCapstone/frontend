@@ -11,15 +11,15 @@ export default function AddGuardian() {
         name: "",
         info: "",
         serial_num: createSerialNum(),
-        students: []
+        studentList: []
     });
 
-    const { name, info, serial_num, students } = user;
+    const { name, info, serial_num, studentList } = user;
 
 
     // 6자리의 중복 없는 serial_num 생성하기 (serial_num 테이블 필요할듯, 중복 대조 위해서)
     const loadSerialNum = async () => {
-        await axios.post('http://13.209.104.24:8080/guardian_serial_num')
+        await axios.post('http://localhost/guardianManage/guardianList')
             .then(function (response) {
                 setSerialNumList(response.data.map(function (el, id) {
                     console.log(el);
@@ -68,8 +68,20 @@ export default function AddGuardian() {
         e.preventDefault();
         e.target.reset();
         console.log(user);
-        await axios.post("http://dolbomi.site/guardian_submit", user);
-        alert('추가되었습니다!');
+        await axios.post("http://localhost/guardianManage/guardian_submit", user)
+            .then(function (response) {
+                console.log(response.data);
+                if(response.data === "success") {
+                    alert('추가되었습니다!');
+                }
+                else {
+                    alert('잘못 입력된 값이 존재합니다!');
+                }
+
+            }).catch(function (reason) {
+                console.log(reason.data);
+            });
+
         window.close(); //클로즈 먼저해야만 새로고침이 되었음
         window.location.reload();
     };

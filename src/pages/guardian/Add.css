@@ -22,6 +22,7 @@
 }
 
 .guardian-checkbox-border {
+    background-color: white;
     border: 1px solid #dadce0;
     color: #73685d;
     border-radius: 10px;

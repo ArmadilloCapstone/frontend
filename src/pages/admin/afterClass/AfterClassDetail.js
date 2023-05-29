@@ -36,7 +36,7 @@ function AfterClassDetail() {
 
   // On Page load display all records 
   const loadAfterClassDetail = async () => {
-    await axios.post('http://dolbomi.site/after_school_class')
+    await axios.post('http://localhost/after_school_class')
         .then(function(response){
           setRecord(response.data.map(function(el, idx){
             console.log(el);
@@ -79,7 +79,7 @@ function AfterClassDetail() {
     e.preventDefault();
     e.target.reset();
     
-    await axios.post('http://dolbomi.site/after_school_class_submit', user);
+    await axios.post('http://localhost/after_school_class_submit', user);
     alert('추가되었습니다!');
 
     loadAfterClassDetail();
@@ -87,7 +87,7 @@ function AfterClassDetail() {
 
   // Delete After Class Record
   const deleteRecord = (productId) => {
-    axios.delete(`/after_school_class/${productId}`)
+    axios.delete(`http://localhost/after_school_class/${productId}`)
       .then((result) => {
         loadAfterClassDetail();
       })

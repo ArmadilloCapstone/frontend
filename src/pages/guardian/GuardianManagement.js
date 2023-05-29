@@ -9,15 +9,15 @@ export default function GuardianManagement() {
     // 모달창 나타내기 위한 변수들
     const [selected, setSelected] = useState()
     const [addGuardian, setAddGuardian] = useState(false); // 새로운 보호자 추가
-    const [addStudents, setAddStudents] = useState(false); // 기존 보호자의 학생명단 추가
+    const [addstudentList, setAddstudentList] = useState(false); // 기존 보호자의 학생명단 추가
 
     const [guardianList, setGuardianList] = useState([
-        {id:1, name: "가가가", info: "학원", students: [{id:1, name: "학생1"}]}
+        // {id: 1, name: "가가가", info: "태권도장 기사", studentList: [{id: 1, name:  "가가가"}]}
     ]);
 
     // 기존의 guardian List 가져오기
     const loadGuardianList = async () => {
-        await axios.post('http://dolbomi.site/guardianManage')
+        await axios.post('http://localhost/guardianManage')
             .then(function (response) {
                 setGuardianList(response.data.map(function (el, id) {
                     console.log(el);
@@ -27,7 +27,7 @@ export default function GuardianManagement() {
                     returnObj['name'] = el.name;
                     returnObj['info'] = el.info;
                     returnObj['serial_num'] = el.serial_num;
-                    returnObj['students'] = el.students; // 서버에서 guardian의 id == student_of_guardian의 guardian id 조건으로 데이터 찾아서 전송해줘야 할듯?
+                    returnObj['studentList'] = el.studentList; // 서버에서 guardian의 id == student_of_guardian의 guardian id 조건으로 데이터 찾아서 전송해줘야 할듯?
 
                     return returnObj;
                 }));
@@ -41,7 +41,7 @@ export default function GuardianManagement() {
 
     // 보호자 삭제
     const deleteGuardian = (productId) => {
-        axios.delete(`http://dolbomi.site/guardian/${productId}`)
+        axios.delete(`http://localhost/guardianManage/guardian/${productId}`)
             .then((result) => {
                 loadGuardianList();
             })
@@ -51,8 +51,8 @@ export default function GuardianManagement() {
     };
 
     // 보호자의 학생 삭제 (버튼 클릭 이벤트, ui 지저분해서 학생 이름을 버튼으로 만듦!)
-    const deleteStudent = (student_id) => {
-        axios.delete(`http://dolbomi.site/guardian/student/${student_id}`)
+    const deleteStudent = (guardian_id,student_id) => {
+        axios.delete(`http://localhost/guardianManage/student/${guardian_id}/${student_id}`)
             .then((result) => {
                 loadGuardianList();
             })
@@ -67,7 +67,7 @@ export default function GuardianManagement() {
             name: guardian.name,
             info: guardian.info,
             serial_num: guardian.serial_num,
-            students: guardian.students
+            studentList: guardian.studentList
         };
         console.log(data);
         setSelected(data);
@@ -103,7 +103,7 @@ export default function GuardianManagement() {
                             <td class="guardian">{el.info}</td>
                             <td class="guardian">{el.serial_num}</td>
                             <td class="guardian">
-                                {el.students.map((stu_el) =>
+                                {el.studentList.map((stu_el) =>
                                     <>
                                         {stu_el.name}&nbsp;
                                         <button class="delete-student-button" onClick={() => {
@@ -111,7 +111,7 @@ export default function GuardianManagement() {
                                                 "'" + stu_el.name + "'" + " 학생을 정말 삭제하시겠습니까?"
                                             )
                                             if (confirmBox === true) {
-                                                deleteStudent(stu_el.id)
+                                                deleteStudent(el.id, stu_el.id)
                                             }
                                         }}>-</button>&nbsp;&nbsp;
                                     </>
@@ -119,12 +119,12 @@ export default function GuardianManagement() {
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
                                 <button class="add-student-button" onClick={() => {
-                                    setAddStudents(!addStudents)
+                                    setAddstudentList(!addstudentList)
                                     onEdit(el);
                                 }}>추가
                                 </button>
-                                {/* {addStudents && (
-                                    <Modal closeModal={() => setAddStudents(!addStudents)}>
+                                {/* {addstudentList && (
+                                    <Modal closeModal={() => setAddstudentList(!addstudentList)}>
                                         <AddStudentsOfGaurdian data={selected} />
                                     </Modal>
                                 )} */}
@@ -145,8 +145,8 @@ export default function GuardianManagement() {
                             </td>
                         </tr>
                     )}
-                    {addStudents && (
-                        <Modal closeModal={() => setAddStudents(!addStudents)}>
+                    {addstudentList && (
+                        <Modal closeModal={() => setAddstudentList(!addstudentList)}>
                             <AddStudentsOfGaurdian data={selected} />
                         </Modal>
                     )}

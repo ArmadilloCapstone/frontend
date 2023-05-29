@@ -15,7 +15,7 @@ function BbsDetail() {
 
     const getBbsDetail = async () => {
         console.log("hi")
-        await axios.post(`http://dolbomi.site/news/${id}`)
+        await axios.post(`http://localhost/news/${id}`)
             .then((resp) => {
                 console.log("[BbsDetail.js] getBbsDetail() success :D");
                 console.log(resp.data);
@@ -26,7 +26,7 @@ function BbsDetail() {
                 console.log("[BbsDetail.js] getBbsDetail() error :<");
                 console.log(err);
             });
-        await axios.post(`http://dolbomi.site/news/files/${id}`)
+        await axios.post(`http://localhost/news/files/${id}`)
             .then((res) => {
                 console.log("[BbsDetail.js] getBbsDetail() success :D");
                 console.log(res.data);
@@ -50,7 +50,7 @@ function BbsDetail() {
 
     const deleteBbs = async () => {
 
-        await axios.delete(`http://dolbomi.site/news/${id}`)
+        await axios.delete(`http://localhost/news/${id}`)
             .then((resp) => {
                 console.log("[BbsDetail.js] deleteBbs() success :D");
                 console.log(resp.data);
@@ -128,7 +128,7 @@ function BbsDetail() {
                                                 <div>{el.originFileName}</div>
                                                 <div>
                                                     <a
-                                                        href={"http://dolbomi.site/download/news/"+el.originFileName}
+                                                        href={"http://localhost/download/news/"+el.originFileName}
                                                         download
                                                         target="_blank"
                                                         rel="noreferrer"
