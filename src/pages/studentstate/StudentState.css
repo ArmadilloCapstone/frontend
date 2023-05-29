@@ -1,8 +1,10 @@
+
+
 .statebody {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: 90vh;
+	height: 60vh;
 	margin: 10px;
 }
 .StudentState {
@@ -17,7 +19,7 @@
 	flex-direction: column;
 	align-items: center;
 	width: 450px;
-	height: 650px;
+	height: 400px;
 	background-color: white;
 	border-radius: 20px;
 	margin: 6px;
