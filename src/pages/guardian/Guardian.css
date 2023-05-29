@@ -25,7 +25,7 @@ button.guardian-add-button {
     cursor: pointer;
     padding: 0.5rem 1rem;
 
-    background-color: #bf0000;
+    background-color: brown;
     color: white;
     border-radius: 10px;
     border: none;
@@ -45,7 +45,7 @@ button.guardian-add-button {
     /* margin-bottom: 15px; */
     /* padding: 0.1rem 0.5rem; */
 
-    background-color: #de0505;
+    background-color: brown;
     color: white;
     border-radius: 7px;
     border: none;
@@ -64,7 +64,7 @@ button.guardian-add-button {
     cursor: pointer;
     padding: 0.5rem 1rem;
 
-    background-color: #007fff;
+    background-color: #12B560;
     color: white;
     border-radius: 10px;
     border: none;
@@ -79,7 +79,8 @@ button.guardian-add-button {
   
   section.guardianSection {
     font-family: Eorinai;
-    margin: 20px auto 0;
+    margin-top: 120px;
+    margin-left: 40px;
     padding: 10px;
     border-radius: 20px;
     width: 80%
