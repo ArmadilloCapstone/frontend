@@ -167,7 +167,7 @@ function GalleryUpdate() {
 								<td>
 									{
 										selectedFiles.map((el, idx) => {
-											return <img src={imageUrl? imageUrl : "http://localhost/download/album/" + el.name}/>
+											return <img src={imageUrl? imageUrl : "http://localhost/download/album/" + title + "/" + el.name}/>
 										})
 									}
 									<br></br>

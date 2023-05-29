@@ -141,11 +141,11 @@ function GalleryDetail() {
                         <th className="col-3">첨부파일</th>
                         <td>
                             <div>
-                                <img src={"http://localhost/download/album/"+gallery.file_url}/>
+                                <img src={"http://localhost/download/album/"+gallery.title + "/" + gallery.file_url}/>
                                 <div>{gallery.file_url}</div>
                                 <div>
                                     <a
-                                        href={"http://localhost/download/album/"+gallery.file_url}
+                                        href={"http://localhost/download/album/"+gallery.title + "/" + gallery.file_url}
                                         download
                                         target="_blank"
                                         rel="noreferrer"

@@ -128,7 +128,7 @@ function BbsDetail() {
                                                 <div>{el.originFileName}</div>
                                                 <div>
                                                     <a
-                                                        href={"http://localhost/download/news/"+el.originFileName}
+                                                        href={"http://localhost/download/news/"+ bbs.title + "/" +el.originFileName}
                                                         download
                                                         target="_blank"
                                                         rel="noreferrer"
