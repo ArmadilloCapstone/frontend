@@ -51,7 +51,7 @@ const Popup = () => {
       setTimeout(() => {
         console.log("pickup");
         if(user_option == 1){
-          axios.post("http://localhost:80/sendPickupFormToTeacher/" + localStorage.getItem('userid')).then((res)=>{
+          axios.post("http://dolbomi.site/sendPickupFormToTeacher/" + localStorage.getItem('userid')).then((res)=>{
             if(!!res.data){
               setStudents(res.data.map(function(el){
                 console.log(el);
@@ -72,7 +72,7 @@ const Popup = () => {
         setInterval(() => {
           console.log("pickup");
           if(user_option == 1){
-            axios.post("http://localhost:80/sendPickupFormToTeacher/" + localStorage.getItem('userid')).then((res)=>{
+            axios.post("http://dolbomi.site/sendPickupFormToTeacher/" + localStorage.getItem('userid')).then((res)=>{
               if(!!res.data){
                 setStudents(res.data.map(function(el){
                   console.log(el);

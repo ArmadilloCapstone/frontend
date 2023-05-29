@@ -31,6 +31,13 @@ export default function AddStudentsOfGaurdian(props) {
             setCheckedList(checkedList.filter((item) => item.id !== id));
         }
         console.log(checkedList);
+
+        // setUser({
+        //     ...user,
+        //     students: [...checkedList]
+        // });
+
+        // console.log(user);
     }
 
     // 어떤 element의 체크 상태 업데이트
@@ -51,7 +58,7 @@ export default function AddStudentsOfGaurdian(props) {
 
     // 기존의 student List 가져오기
     const loadStudentList = async () => {
-        await axios.post('http://localhost:80/guardianManage/studentList', edited)
+        await axios.post('http://dolbomi.site/guardianManage/studentList', edited)
             .then(function (response) {
                 setStudents(response.data.map(function (el, idx) {
                     var returnObj = {}
@@ -94,8 +101,8 @@ export default function AddStudentsOfGaurdian(props) {
         e.preventDefault();
         // e.target.reset();
 
-        await axios.post("http://localhost:80/guardianManage/student_submit", user); // 이름, 소속 수정 시 (edited의 student list 변경 불가)
-        // await axios.post("http://localhost:80/guardian_student_submit", checkedList); // (추가된 학생)
+        await axios.post("http://dolbomi.site/guardianManage/student_submit", user); // 이름, 소속 수정 시 (edited의 student list 변경 불가)
+        // await axios.post("http://dolbomi.site/guardian_student_submit", checkedList); // (추가된 학생)
         console.log(edited);
         console.log(checkedList);
         alert('추가되었습니다!');

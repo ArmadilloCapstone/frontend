@@ -37,7 +37,7 @@ export const LoginForm = (props) => {
 
     if(props.option != "3"){
 
-      axios.post("http://localhost:80/login", {
+      axios.post("http://dolbomi.site/login", {
         "user_id" : id,
         "user_pw" : pw,
         "option" : (props.option - 0)
@@ -45,7 +45,7 @@ export const LoginForm = (props) => {
         console.log(res.data)
         if(res.data.name !== "Error"){
 
-          //alert('๋ก๊ทธ์ธ!');
+          //alert('๋ก๊ทธ?ธ!');
           console.log(res.data)
           if(props.option == "4"){
             console.log("admin")
@@ -77,12 +77,12 @@ export const LoginForm = (props) => {
 
         }
         else{
-          alert('์คํจ')
+          alert('?ค?จ')
         }
       })
     }
     else{
-      axios.post("http://localhost:80/login", {
+      axios.post("http://dolbomi.site/login", {
         "serial_num" : serial,
         "option" : (props.option - 0)
       }).then((res) => {
@@ -98,7 +98,7 @@ export const LoginForm = (props) => {
           navigate('/GuardianPickup');
         }
         else{
-          alert('์คํจ')
+          alert('?ค?จ')
         }
       })
 
@@ -111,7 +111,7 @@ export const LoginForm = (props) => {
       { (props.option === "3")
             ?
             <div className="login_box login_sid">
-              <div className="login_name">์ผ๋ จ๋ฒํธ</div>
+              <div className="login_name">?ผ? จ๋ฒํธ</div>
               <input type="text" value ={serial} onChange={saveSerial}/>
             </div>
             :
@@ -132,10 +132,10 @@ export const LoginForm = (props) => {
             </div>
         }
         <div className="signupButton">
-        <h1 className="login_subtitle">์•์ง ํ์์ด ์•๋์ ๊ฐ€์”?</h1> 
-          {(props.option === '1' || props.option === '2')?<span className="signup_button" onClick={clickSignup}>ํ์๊ฐ€์…</span> : <span className="signup_button"></span>}
+        <h1 className="login_subtitle">?•์ง? ???ด ?•?? ๊ฐ??”?</h1> 
+          {(props.option === '1' || props.option === '2')?<span className="signup_button" onClick={clickSignup}>??๊ฐ??…</span> : <span className="signup_button"></span>}
         </div>
-        <div className="login_button" onClick={clickLogin}>๋ก๊ทธ์ธ</div>
+        <div className="login_button" onClick={clickLogin}>๋ก๊ทธ?ธ</div>
       </div>
   );
 };

@@ -20,7 +20,7 @@ function GalleryDetail() {
 
     const getGalleryDetail = async () => {
         console.log("hi")
-        await axios.post(`http://localhost:80/album/${id}`)
+        await axios.post(`http://dolbomi.site/album/${id}`)
             .then((resp) => {
                 console.log("[GalleryDetail.js] getGalleryDetail() success :D");
                 console.log(resp.data);
@@ -32,7 +32,7 @@ function GalleryDetail() {
                 console.log("[GalleryDetail.js] getGalleryDetail() error :<");
                 console.log(err);
             });
-        // await axios.post(`http://localhost:80/album/files/${id}`)
+        // await axios.post(`http://dolbomi.site/album/files/${id}`)
         //     .then((res) => {
         //         console.log("[GalleryDetail.js] getGalleryDetail() success :D");
         //         console.log(res.data);
@@ -55,7 +55,7 @@ function GalleryDetail() {
 
     const deleteGallery = async () => {
 
-        await axios.delete(`http://localhost:80/album/${id}`)
+        await axios.delete(`http://dolbomi.site/album/${id}`)
             .then((resp) => {
                 console.log("[GalleryDetail.js] deleteGallery() success :D");
                 console.log(resp.data);
@@ -141,11 +141,11 @@ function GalleryDetail() {
                         <th className="col-3">첨부파일</th>
                         <td>
                             <div>
-                                <img src={"http://localhost:80/download/album/"+gallery.file_url}/>
+                                <img src={"http://dolbomi.site/download/album/"+gallery.file_url}/>
                                 <div>{gallery.file_url}</div>
                                 <div>
                                     <a
-                                        href={"http://localhost:80/download/album/"+gallery.file_url}
+                                        href={"http://dolbomi.site/download/album/"+gallery.file_url}
                                         download
                                         target="_blank"
                                         rel="noreferrer"

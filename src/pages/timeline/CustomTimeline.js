@@ -42,7 +42,7 @@ function CustomTimeline() {
 
   // 백엔드에서 데이터 가져오기 & 오늘의 요일에 맞는 학생들의 입실/퇴실 시간 설정 => todaylist === student_time
   useEffect(() => {
-    axios.post('http://localhost:80/studentTimeFindAll')
+    axios.post('http://dolbomi.site/studentTimeFindAll'  + localStorage.getItem('userid'))
       .then(function (response) {
         console.log("학생 입퇴실 데이터");
         console.log(response.data);
@@ -80,7 +80,7 @@ function CustomTimeline() {
 
   // 백엔드에서 데이터 가져오기 & 오늘의 요일에 맞는 방과후교실 목록 추출 => todayAfterSchoolList === after_school_class
   useEffect(() => {
-    axios.post('http://localhost:80/AfterSchoolClassFindAll')
+    axios.post('http://dolbomi.site/AfterSchoolClassFindAll')
       .then(function (response) {
         console.log("방과후교실 목록 데이터");
         console.log(response.data);
@@ -108,7 +108,11 @@ function CustomTimeline() {
 
   // 백엔드에서 데이터 가져오기 & student_schedule 가져오기
   useEffect(() => {
-    axios.post('http://localhost:80/studentScheduleFindAll')
+<<<<<<< HEAD
+    axios.post('http://dolbomi.site/studentScheduleFindAll')
+=======
+    axios.post('http://dolbomi.site/studentScheduleFindAll/' + localStorage.getItem('userid'))
+>>>>>>> f763d70e4eb969aec58ab939538514075fa88ef9
       .then(function (response) {
         console.log("학생 방과후교실 시간표 데이터");
         console.log(response.data);
@@ -210,7 +214,11 @@ function CustomTimeline() {
     });
 
   useEffect(() => {
-    axios.post('http://localhost:80/studentFindAll')
+<<<<<<< HEAD
+    axios.post('http://dolbomi.site/studentFindAll')
+=======
+    axios.post('http://dolbomi.site/studentFindAll/' + localStorage.getItem('userid'))
+>>>>>>> f763d70e4eb969aec58ab939538514075fa88ef9
       .then(function (response) {
         console.log(response.data);
         setStudent(response.data.map(function (el, idx) {

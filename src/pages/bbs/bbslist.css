@@ -1,8 +1,13 @@
-.underline:hover{
+/* .underline:hover{
     text-decoration: underline;
     cursor: pointer;
 }
 
+<<<<<<< HEAD
+  section.BbListSection {
+    margin: 20px auto 0;
+    padding: 10px;
+=======
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
 
   .BbListSection {
@@ -10,12 +15,17 @@
     padding-top: 60px;
     color: #73685d;
 
+>>>>>>> 7da57075ddca25c83c32bc29b73c1fa4b07d28f7
   }
 
   table.BbListSearch {
     font-size: 20px;
     width: 100%;
+<<<<<<< HEAD
+    border-collapse: collapse;
+=======
     color: #73685d;
+>>>>>>> 7da57075ddca25c83c32bc29b73c1fa4b07d28f7
     overflow: hidden;
   }
     
@@ -62,7 +72,11 @@
     height: 40px;
     margin: 0;
 
+<<<<<<< HEAD
+    font-size: .9em;
+=======
     font-size: 15px;
+>>>>>>> 7da57075ddca25c83c32bc29b73c1fa4b07d28f7
     font-weight: bold;
     text-align: center;
     text-decoration: none;
@@ -83,11 +97,17 @@
 
   table.BbList {
     border: 1px #a39485 solid;
+<<<<<<< HEAD
+    font-size: .9em;
+    box-shadow: 0 2px 5px rgba(0,0,0,.25);
+    width: 1000px;
+=======
 
     font-size: 15px;
     box-shadow: 0 2px 5px rgba(0,0,0,.25);
     width: 800px;
     margin-top: 23px;
+>>>>>>> 7da57075ddca25c83c32bc29b73c1fa4b07d28f7
     border-collapse: collapse;
     border-radius: 5px;
     overflow: hidden;
@@ -96,7 +116,10 @@
   
   th.BbList {
     text-align: left;
+<<<<<<< HEAD
+=======
 
+>>>>>>> 7da57075ddca25c83c32bc29b73c1fa4b07d28f7
   }
     
   thead.BbList {
@@ -119,9 +142,9 @@
   
   a.BbList {
     color: #73685d;
-  }
+  } */
     
-   @media all and (max-width: 768px) {
+   /* @media all and (max-width: 768px) {
       
     table.BbList, thead.BbList, tbody.BbList, th.BbList, td.BbList, tr.BbList {
       display: block;
@@ -166,4 +189,4 @@
     
     
     }
-  
+   */
