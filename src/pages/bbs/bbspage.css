@@ -2,11 +2,7 @@
     display: flex;
     justify-content: center;
     margin-top: 15px;
-  }
-  
-  ul {
-    list-style: none;
-    padding: 0;
+    
   }
   
   ul.pagination li {
@@ -30,7 +26,7 @@
   
   ul.pagination li a {
     text-decoration: none;
-    color: #337ab7;
+    color:darkgreen;
     font-size: 1rem;
   }
   
@@ -39,7 +35,7 @@
   }
 
   ul.pagination li.active {
-    background-color: #337ab7;
+    background-color: darkgreen;
   }
   
   ul.pagination li a:hover,
@@ -50,5 +46,5 @@
   .page-selection {
     width: 48px;
     height: 30px;
-    color: #337ab7;
+    color: darkgreen;
   }

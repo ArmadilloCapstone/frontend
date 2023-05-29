@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useRef, useState } from "react";
-// import { AuthContext } from "../context/AuthProvider";
-// import { HttpHeadersContext } from "../context/HttpHeadersProvider";
+import "./bbslist.css";
+import "./bbspage.css";
 
 function BbsUpdate() {
 
