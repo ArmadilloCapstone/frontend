@@ -123,7 +123,7 @@ function BbsDetail() {
                                         <div>{el.originFileName}</div>
                                         <div>
                                             <a
-                                                href={"http://dolbomi.site/download/news/" + el.originFileName}
+                                                href={"http://dolbomi.site/download/news/"+bbs.title +"/" + el.originFileName}
                                                 download
                                                 target="_blank"
                                                 rel="noreferrer"
