@@ -67,16 +67,15 @@ function TeacherAdd() {
                 console.log(response.data);
                 if (response.data === "success") {
                     alert('추가되었습니다!');
-                    onReset();
                 }
                 else {
                     alert('잘못 입력된 값이 존재합니다!');
-                    onReset();
                 }
 
             }).catch(function (reason) {
                 console.log(reason.data);
             });
+        onReset();
     };
 
     const onReset = () => {

@@ -12,10 +12,6 @@
   margin: 50px 20px 0;
 }
 
-#root > div.sc-ikufXD.dtaxHp > div:nth-child(2) > div.react-calendar-timeline.timeline {
-  border: none;
-}
-
 #root>div.sc-ikufXD.dtaxHp>div:nth-child(2)>div.react-calendar-timeline.timeline>div.rct-header-root {
   background-color: #12B560;
   border: none;

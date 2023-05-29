@@ -91,6 +91,8 @@ export default function AddStudentsOfGaurdian(props) {
         console.log(checkedList);
 
         alert('추가되었습니다!');
+        window.close(); //클로즈 먼저해야만 새로고침이 되었음
+        window.location.reload();
     };
 
     return (
