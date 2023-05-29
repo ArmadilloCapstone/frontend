@@ -15,7 +15,7 @@ const PopupContainer = ({ children }) => {
       {popup && (
         <div
           style={{
-            backgroundColor: '#12B560',
+            backgroundColor: 'oldlace',
             border: 'none',
             color: 'white',
             padding: '20px 20px',

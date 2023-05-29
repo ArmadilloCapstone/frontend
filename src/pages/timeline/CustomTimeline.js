@@ -3,6 +3,7 @@ import axios from 'axios';
 import moment from "moment";
 import 'moment/locale/ko';
 import randomColor from "randomcolor";
+import './style.css';
 
 import Timeline, {
   TimelineHeaders,
@@ -259,7 +260,7 @@ function CustomTimeline() {
   let items = individualItems();
 
   return (
-    <div calss="timeline_wrapper">
+    <div class="timeline_wrapper">
       <Timeline
         minZoom={defaultTimeRange}
         maxZoom={defaultTimeRange}
