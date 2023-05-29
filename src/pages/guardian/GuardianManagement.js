@@ -17,7 +17,7 @@ export default function GuardianManagement() {
 
     // 기존의 guardian List 가져오기
     const loadGuardianList = async () => {
-        await axios.post('http://dolbomi.site/guardianManage')
+        await axios.post('http://localhost/guardianManage')
             .then(function (response) {
                 setGuardianList(response.data.map(function (el, id) {
                     console.log(el);
