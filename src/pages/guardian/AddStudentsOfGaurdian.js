@@ -6,9 +6,13 @@ export default function AddStudentsOfGaurdian(props) {
     const [edited, setEdited] = useState(props.data); // 선택한 row의 보호자 데이터 불러오기
     const [sudentsOfGuardian, setSudentsOfGuardian] = useState(edited.students); // 선택한 row의 보호자 데이터 불러오기
     console.log(edited);
+    console.log(sudentsOfGuardian);
 
     // 더미데이터, 빈 객체 배열로 변경 예정
-    const [studentList, setStudentList] = useState([]);
+    const [studentList, setStudentList] = useState([
+        {id: 1, name:"가가가"},
+        {id: 2, name:"나나나"}
+    ]);
 
     // 체크된 students 관리할 변수
     const [checkedList, setCheckedList] = useState([]);
@@ -25,6 +29,7 @@ export default function AddStudentsOfGaurdian(props) {
             setCheckedList(checkedList.filter((item) => item.id !== id));
         }
         console.log(checkedList);
+        // setSudentsOfGuardian(sudentsOfGuardian.concat(checkedList));
     }
 
     // 어떤 element의 체크 상태 업데이트
@@ -40,8 +45,9 @@ export default function AddStudentsOfGaurdian(props) {
                 setStudentList(response.data.map(function (el, idx) {
                     console.log(el);
 
-                    var returnObj = []
-                    returnObj.push(el.name);
+                    var returnObj = {}
+                    returnObj['id'] = el.id;
+                    returnObj['name'] = el.name;
 
                     return returnObj;
                 }));
@@ -77,6 +83,8 @@ export default function AddStudentsOfGaurdian(props) {
     const submitGuardian = async (e) => {
         e.preventDefault();
         // e.target.reset();
+        // console.log(sudentsOfGuardian);
+
         await axios.post("http://dolbomi.site/guardian_student_submit", edited); // 이름, 소속 수정 시 (edited의 student list 변경 불가)
         await axios.post("http://dolbomi.site/guardian_student_submit", checkedList); // (추가된 학생)
         console.log(edited);
