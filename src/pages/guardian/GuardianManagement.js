@@ -17,7 +17,7 @@ export default function GuardianManagement() {
 
     // 기존의 guardian List 가져오기
     const loadGuardianList = async () => {
-        await axios.post('http://localhost/guardianManage')
+        await axios.post('http://dolbomi.site/guardianManage')
             .then(function (response) {
                 setGuardianList(response.data.map(function (el, id) {
                     console.log(el);
@@ -41,7 +41,7 @@ export default function GuardianManagement() {
 
     // 보호자 삭제
     const deleteGuardian = (productId) => {
-        axios.delete(`http://localhost/guardianManage/guardian/${productId}`)
+        axios.delete(`http://dolbomi.site/guardianManage/guardian/${productId}`)
             .then((result) => {
                 loadGuardianList();
             })
@@ -52,7 +52,7 @@ export default function GuardianManagement() {
 
     // 보호자의 학생 삭제 (버튼 클릭 이벤트, ui 지저분해서 학생 이름을 버튼으로 만듦!)
     const deleteStudent = (guardian_id,student_id) => {
-        axios.delete(`http://localhost/guardianManage/student/${guardian_id}/${student_id}`)
+        axios.delete(`http://dolbomi.site/guardianManage/student/${guardian_id}/${student_id}`)
             .then((result) => {
                 loadGuardianList();
             })
