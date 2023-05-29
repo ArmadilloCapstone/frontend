@@ -8,3 +8,26 @@
   body #root{
     font-family: "Eorinai";
   }
+
+  .scroll {
+    width: 200px;
+    height: 200px;
+    overflow-y: scroll;
+  }
+  
+  /* 스크롤바 설정*/
+  body::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* 스크롤바 막대 설정*/
+  body::-webkit-scrollbar-thumb {
+    background: #12B560;
+    border-radius: 10px;
+  }
+  
+  /* 스크롤바 뒷 배경 설정*/
+  body::-webkit-scrollbar-track {
+    background: #70ffb590;
+    border-radius: 10px;
+  }
