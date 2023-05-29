@@ -65,12 +65,12 @@
 // }
 
 
-// import StudentDetail from './StudentDetail';
+// // import StudentDetail from './StudentDetail';
 
-// function StudentManagementPage() {
-//   return (
-//     <StudentDetail />
-//   );
-// }
+// // function StudentManagementPage() {
+// //   return (
+// //     <StudentDetail />
+// //   );
+// // }
  
-// export default StudentManagementPage;
+// // export default StudentManagementPage;

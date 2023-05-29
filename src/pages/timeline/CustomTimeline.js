@@ -3,6 +3,7 @@ import axios from 'axios';
 import moment from "moment";
 import 'moment/locale/ko';
 import randomColor from "randomcolor";
+import './style.css';
 
 import Timeline, {
   TimelineHeaders,
@@ -30,7 +31,7 @@ function CustomTimeline() {
   const defaultTimeStart = moment().startOf("day").toDate();
   const defaultTimeEnd = moment().startOf("day").add(1, "day").toDate();
 
-  const defaultTimeRange = defaultTimeEnd - defaultTimeStart;
+  const defaultTimeRange = defaultTimeEnd-defaultTimeStart;
 
   const [student, setStudent] = useState([]);
   const [student_time, setStudent_time] = useState([]);
@@ -42,7 +43,7 @@ function CustomTimeline() {
 
   // 백엔드에서 데이터 가져오기 & 오늘의 요일에 맞는 학생들의 입실/퇴실 시간 설정 => todaylist === student_time
   useEffect(() => {
-    axios.post('http://dolbomi.site/studentTimeFindAll')
+    axios.post('http://dolbomi.site/studentTimeFindAll/'  + localStorage.getItem('userid'))
       .then(function (response) {
         console.log("학생 입퇴실 데이터");
         console.log(response.data);
@@ -50,7 +51,7 @@ function CustomTimeline() {
 
           var returnObj = {}
           returnObj['student_id'] = el.student_id;
-          returnObj['seed'] = 0;
+          returnObj['seed'] = 0; // 랜덤컬러 수정 시 "돌봄"으로 수정
           if (moment().day() === 1) {
             returnObj['start_time'] = moment(defaultTimeStart).add(el.entry_1, 'h');
             returnObj['end_time'] = moment(defaultTimeStart).add(el.off_1, 'h');
@@ -98,18 +99,17 @@ function CustomTimeline() {
 
   // subjectButtons 객체 배열 생성
   function MakeSubjectButtons() {
-    subjectButtons.push({ id: 0, class_name: "돌봄교실" });
-
     for (let i = 0; i < after_school_class.length; i++) {
       subjectButtons.push({ id: after_school_class[i].id, class_name: after_school_class[i].class_name })
     }
+    subjectButtons.push({ id: 0, class_name: "돌봄교실" });
   }
   MakeSubjectButtons();
 
 
   // 백엔드에서 데이터 가져오기 & student_schedule 가져오기
   useEffect(() => {
-    axios.post('http://dolbomi.site/studentScheduleFindAll')
+    axios.post('http://dolbomi.site/studentScheduleFindAll/' + localStorage.getItem('userid'))
       .then(function (response) {
         console.log("학생 방과후교실 시간표 데이터");
         console.log(response.data);
@@ -134,7 +134,7 @@ function CustomTimeline() {
       for (let j = 0; j < studentSchedule.length; j++) {
         if (afterSchool[i].id === studentSchedule[j].class_id) {
           arr.push(studentSchedule[j]);
-          // arr.push( {student_id: studentSchedule[j].student_id, class_name: afterSchool[i].class_name});
+          // arr.push( {student_id: studentSchedule[j].student_id, class_name: afterSchool[i].class_name}); // 랜덤컬러 수정 시
         }
       }
     }
@@ -148,7 +148,7 @@ function CustomTimeline() {
     let newList = {};
     newList['student_id'] = obj.student_id;
     newList['seed'] = obj.class_id;
-    // newList['class_name'] = obj.class_name;
+    // newList['seed'] = obj.class_name;
     console.log(obj);
     console.log(after_school_class);
     newList['start_time'] = moment(defaultTimeStart).add(after_school_class.find((el) => el.class_id === obj.id).start_time, 'h');
@@ -199,7 +199,8 @@ function CustomTimeline() {
       itemProps: {
         style: {
           "border-radius": "5px",
-          "border": "0px",
+          "border": "1px",
+          "box-shadow": ary[i].seed !== 0 ? "2px 2px 2px 0px gray" : "none",
           color: "black",
           background: randomColor({
             seed: ary[i].seed,
@@ -211,7 +212,7 @@ function CustomTimeline() {
     });
 
   useEffect(() => {
-    axios.post('http://dolbomi.site/studentFindAll')
+    axios.post('http://dolbomi.site/studentFindAll/' + localStorage.getItem('userid'))
       .then(function (response) {
         console.log(response.data);
         setStudent(response.data.map(function (el, idx) {
@@ -259,7 +260,7 @@ function CustomTimeline() {
   let items = individualItems();
 
   return (
-    <div calss="timeline_wrapper">
+    <div class="timeline_wrapper">
       <Timeline
         minZoom={defaultTimeRange}
         maxZoom={defaultTimeRange}
@@ -288,11 +289,12 @@ function CustomTimeline() {
         {/* </TimelineMarkers> */}
       </Timeline>
 
-      <div>
+      <div className="subjectButtons-parent">
         {subjectButtons.map((el) => (
           <button className="subjectButtons"
             key={el.id}
             style={{
+              "box-shadow": el.id !== 0 ? "2px 2px 5px 0px gray" : "none",
               background: randomColor({
                 seed: el.id,
               })

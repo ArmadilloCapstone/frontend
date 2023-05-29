@@ -29,7 +29,7 @@ const GuardianPickup = () => {
     axios.post("http://dolbomi.site/guardian", {
       id : user_id
     }).then((res)=>{
-      if(res.data == null){
+      if(res.data != null){
         setStudentList(res.data.map(function(el, idx){
           var returnObj = {}
           returnObj['id'] = el.id;
@@ -84,7 +84,7 @@ const GuardianPickup = () => {
     
     // 백엔드로 parentId 보내는 코드
     axios.post("http://dolbomi.site/requestGuardian", {
-        id : localStorage.getItem('userid'),
+        pickupManId : localStorage.getItem('userid'),
         pickupManName : localStorage.getItem('username'),
         studentPickupFormList : list
     }).then((res)=>{
@@ -106,7 +106,7 @@ const GuardianPickup = () => {
     <div style={{ padding: '20px 10px 0px 20px', flexDirection: 'column', height: '100vh' }}>
       <div style={{ fontSize: '35px'}}>
         <UserImage src={driver} alt="Driver" style={{ width: '80px', height: '80px' }} />
-        보호자 김철수님
+        보호자 {localStorage.getItem('username')}님
       </div>
       <div style={{ flex: 1, align: 'center' }}></div>
       <div className="studentList">

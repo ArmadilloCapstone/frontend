@@ -2,16 +2,11 @@ import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-// import CommentWrite from "../comment/CommentWrite";
-// import CommentList from "../comment/CommentList";
-// import { AuthContext } from "../context/AuthProvider";
-
+import "./bbslist.css";
+import "./bbspage.css";
 
 
 function BbsDetail() {
-
-    // const { auth, setAuth } = useContext(AuthContext)
-
     const [bbs, setBbs] = useState({});
     const [files, setFiles] = useState([]);
     const { id } = useParams(); // 파라미터 가져오기
@@ -20,7 +15,7 @@ function BbsDetail() {
 
     const getBbsDetail = async () => {
         console.log("hi")
-        await axios.post(`http://localhost/news/${id}`)
+        await axios.post(`http://dolbomi.site/news/${id}`)
             .then((resp) => {
                 console.log("[BbsDetail.js] getBbsDetail() success :D");
                 console.log(resp.data);
@@ -31,14 +26,14 @@ function BbsDetail() {
                 console.log("[BbsDetail.js] getBbsDetail() error :<");
                 console.log(err);
             });
-        await axios.post(`http://localhost/news/files/${id}`)
+        await axios.post(`http://dolbomi.site/news/files/${id}`)
             .then((res) => {
                 console.log("[BbsDetail.js] getBbsDetail() success :D");
                 console.log(res.data);
                 let arr = Array.from(res.data);
                 console.log(arr);
                 setFiles([]);
-                for(let i = 0; i < arr.length; i++){
+                for (let i = 0; i < arr.length; i++) {
                     console.log(arr[i].originFileName)
                     setFiles((prevMessage) => ([
                         ...prevMessage,
@@ -55,7 +50,7 @@ function BbsDetail() {
 
     const deleteBbs = async () => {
 
-        await axios.delete(`http://localhost/news/${id}`)
+        await axios.delete(`http://dolbomi.site/news/${id}`)
             .then((resp) => {
                 console.log("[BbsDetail.js] deleteBbs() success :D");
                 console.log(resp.data);
@@ -75,42 +70,24 @@ function BbsDetail() {
         console.log(id)
     }, []);
 
-    // const updateBbs = {
-    //     id: bbs.id,
-    //     title: bbs.title,
-    //     text: bbs.text,
-    //     file_url: bbs.file_url
-    // }
-
-    // const parentBbs = {
-    //     id: bbs.id,
-    //     title: bbs.title
-    // }
-
     return (
-        <div>
+        <div className="detailPage" style={{ fontFamily: "Eorinai" }}>
 
-            <div className="my-3 d-flex justify-content-end">
+            {/* <Link className="change-detail" to={{ pathname: `/BbsUpdate/${id}` }}>
+                    <span  >수정 </span>
+                </Link>  */}
 
-                {
-                    /* 자신이 작성한 게시글인 경우에만 수정 삭제 가능 */
-                        <>                            
-                            <Link to={{ pathname: `/BbsUpdate/${id}` }}> { /* 게시글 상세 링크 */}
-                                <span className="underline bbs-title" >수정 </span> { /* 게시글 제목 */}
-                            </Link>
-                            <button className="btn btn-outline-danger" onClick={deleteBbs}><i className="fas fa-trash-alt"></i> 삭제</button>
-                        </>
-                        
-                }
-
-            </div>
-
-            <table className="table table-striped">
-                <tbody>
+                <button className="change-detail">
+                    <span  >수정 </span>
+                </button>
+                
+                <button className="delete-detail" onClick={deleteBbs}><i className="fas fa-trash-alt"></i> 삭제</button>
+            <table className="table table-striped" style={{ fontFamily: "Eorinai" }} >
+                <tbody style={{ color: "#555555" }} >
                     <tr>
-                        <th className="col-3">번호</th>
+                        <th>번호</th>
                         <td>
-                            <span>{bbs.id}</span>
+                            <span>{bbs.id}</span>a
                         </td>
                     </tr>
 
@@ -143,18 +120,18 @@ function BbsDetail() {
                             {
                                 files.map((el) => {
                                     return <div>
-                                                <div>{el.originFileName}</div>
-                                                <div>
-                                                    <a
-                                                        href={"http://localhost/download/news/"+el.originFileName}
-                                                        download
-                                                        target="_blank"
-                                                        rel="noreferrer"
-                                                        >
-                                                            다운로드
-                                                    </a>
-                                                </div>
-                                            </div>
+                                        <div>{el.originFileName}</div>
+                                        <div>
+                                            <a
+                                                href={"http://dolbomi.site/download/news/" + el.originFileName}
+                                                download
+                                                target="_blank"
+                                                rel="noreferrer"
+                                            >
+                                                다운로드
+                                            </a>
+                                        </div>
+                                    </div>
                                 })
                             }
                         </td>

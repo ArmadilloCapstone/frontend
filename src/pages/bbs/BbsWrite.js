@@ -1,5 +1,6 @@
 import axios from "axios";
-import "./bbswrite.css";
+import "./bbslist.css";
+import "./bbspage.css";
 
 import { useRef, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -74,7 +75,7 @@ function BbsWrite() {
 		  formData.append("files", selectedFiles[i]);
 		}
 		if(selectedFiles.length == 0){
-			axios.post("http://localhost/BbsList/create/nofile", formData, {
+			axios.post("http://dolbomi.site/BbsList/create/nofile", formData, {
 			  headers: {
 				"Content-Type": "multipart/form-data",
 			  }
@@ -92,7 +93,7 @@ function BbsWrite() {
 
 		}
 		else{
-			axios.post("http://localhost/BbsList/create/file", formData, {
+			axios.post("http://dolbomi.site/BbsList/create/file", formData, {
 			  headers: {
 				"Content-Type": "multipart/form-data",
 			  }
@@ -111,20 +112,10 @@ function BbsWrite() {
 		}
 	}
 
-	// useEffect(() => {
-	// 	if (!auth) {
-	// 		alert("로그인 한 사용자만 게시글을 작성할 수 있습니다 !");
-	// 		navigate(-1);
-	// 	}
-	// }, []);
-
 
 	return (
-		// <div style={{ padding: "20px" }}>
-		// 	<BbsEditor />
-		// </div>onSubmit={submitTeacherRecord}
 
-		<div class="bbswrapper">
+		<div class="bbswrapper" style={{ fontFamily: "Eorinai" }}>
 			<div class="form_container">
 				<form onSubmit={createBbs}>
 					<table>

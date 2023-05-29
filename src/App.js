@@ -23,6 +23,7 @@ import Pickup from './pages/pickup/Pickup';
 import GuardianPickup from './pages/pickup/GuardianPickup';
 import Popup from './pages/popup/Popup';
 import GuardianManagement from './pages/guardian/GuardianManagement';
+import TelephoneLink from './pages/telephone/TelephoneLink';
 
 
 import BbsDetail from './pages/bbs/BbsDetail';
@@ -56,7 +57,11 @@ export default function App() {
   return (
 
     <HashRouter>
-      <Header />
+      {
+        (!!user_option) ?
+          <Header /> :
+          null
+      }
       <Center>
         <Sidebar />
         <Routes>
@@ -155,6 +160,11 @@ export default function App() {
             (user_option == "2") ?
               <Route path="/Pickup" element={<Pickup />} /> :
               <Route path="/Pickup" element={<LoginPage />} />
+          }
+          {
+            (user_option == "2") ?
+              <Route path="/TelephoneLink" element={<TelephoneLink />} /> :
+              <Route path="/TelephoneLink" element={<LoginPage />} />
           }
           {/* 보호자 페이지 */}
           {

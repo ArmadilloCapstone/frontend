@@ -7,7 +7,7 @@ const Message = () => {
     const [sendMsg, setSendMsg] = useState(false);
     const [items, setItems] = useState([]);
   
-    const webSocketUrl = `ws://localhost/room`;
+    const webSocketUrl = `ws://dolbomi.site/room`;
     
     // 소켓 객체 생성
     useEffect(() => {
@@ -74,14 +74,14 @@ const Message = () => {
   
     return (
       <div>
-        <div>socket</div>
+        {/* <div>socket</div>
         <div>socket connected : {`${socketConnected}`}</div>
         <div>res : </div>
         <div>
           {items.map((item) => {
             return <div>{JSON.stringify(item)}</div>;
           })}
-        </div>
+        </div> */}
       </div>
     );
 };

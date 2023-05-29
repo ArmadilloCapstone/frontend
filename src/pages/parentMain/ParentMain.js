@@ -22,9 +22,9 @@ export const ParentMain = () => {
       .then(function (res) {
         console.log(res);
         setStudent(res.data.name);
-        setGrade(res.data.grade);
-        setOrigin_class(res.data.origin_class);
-        setDol_class(res.data.dol_class);
+        setGrade(res.data.grade + "학년");
+        setOrigin_class(res.data.original_class_num + "반");
+        setDol_class("돌봄" + res.data.class_id + "반");
         setBirth_date(res.data.birth_date);
         var data = res.data.phone_num;
         console.log(data)

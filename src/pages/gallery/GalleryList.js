@@ -26,7 +26,7 @@ function GalleryList() {
     /* [POST /gallery]: 게시글 목록 가져오기 */
     const loadGalleryList = async (choice, search) => {
         if (choice === "all" && search === "all") {
-            await axios.post('http://localhost/GalleryList', {
+            await axios.post('http://dolbomi.site/GalleryList', {
                 id : localStorage.getItem('userid')
             })
                 .then((res) => {
@@ -67,7 +67,7 @@ function GalleryList() {
 
         else {
             console.log(searchVal, choiceVal)
-            await axios.post(`http://localhost/GalleryList/search`, {
+            await axios.post(`http://dolbomi.site/GalleryList/search`, {
                 teacher_id : localStorage.getItem('userid'),
                 keyword : searchVal,
                 option : choiceVal
@@ -140,44 +140,38 @@ function GalleryList() {
 
     return (
 
-        <section class="BbListSection">
-
-            { /* 검색 */}
-            <table class="BbListSearch">
-                <tbody class="BbListSearch">
-                    <tr class="BbListSearch">
-                        <td class="BbListSearch">
-                            <select class="BbListSearch" value={choiceVal} onChange={changeChoice}>
+        <section class="BbListSection" style={{ fontFamily: "Eorinai" }}>
+                        <div className="BbSearchContainer">
+                            <select class="BbListSearch-1" value={choiceVal} onChange={changeChoice}>
                                 <option>검색 옵션</option>
                                 <option value="title">제목</option>
                                 <option value="text">내용</option>
-                                {/* <option value="writer">작성자</option> */}
                             </select>
-                        </td>
-                        <td class="BbListSearch">
-                            <input class="BbList" type="text" placeholder="검색어" value={searchVal} onChange={changeSearch} />
-                        </td>
-                        <td class="BbListSearch">
-                            <button class="BbList" type="button" onClick={search}><i className="fas fa-search"></i>검색</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table><br />
+                            <input  class="BbListSearch-2" type="text" placeholder="검색어" value={searchVal} onChange={changeSearch} />
+                        <div className="BbButton">
+                            <button class="BbListSearch-3" type="button" onClick={search}>검색</button>
+                        </div>
+                        </div>
 
-            <table class="BbList">
-                <thead class="BbList">
-                    <tr class="BbList">
-                        <th class="BbList">번호</th>
-                        <th class="BbList">제목</th>
-                        <th class="BbList">작성일시</th>
+                <table class="BbList-0"  >
+                <thead class="BbList-0" >
+                    <tr class="BbList" >
+                        <th >번호</th>
+                        <th >제목</th>
+                        <th >작성일시</th>
                     </tr>
                 </thead>
 
-                <tbody class="BbList">
+
+
+
+
+
+                <tbody style={{ fontFamily: "Eorinai" }}>
 					{
-						currentgalleryList.map(function (gallery, idx) {
+						currentgalleryList.map(function (bbs, idx) {
 							return (
-								<TableRow obj={gallery} key={idx} cnt={idx + 1} />
+								<TableRow obj={bbs} key={idx} cnt={idx + 1} />
 							)
 						})
 					}
@@ -196,7 +190,6 @@ function GalleryList() {
             <div className="my-5 d-flex justify-content-center">
                 <Link className="btn btn-outline-secondary" to="/Gallerywrite"><i className="fas fa-pen"></i>글쓰기</Link>
             </div>
-
         </section>
     );
 }

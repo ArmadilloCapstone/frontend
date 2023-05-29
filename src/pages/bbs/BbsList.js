@@ -26,7 +26,7 @@ function BbsList() {
     /* [POST /bbs]: 게시글 목록 가져오기 */
     const loadBbsList = async (choice, search) => {
         if (choice === "all" && search === "all") {
-            await axios.post('http://localhost/BbsList', {
+            await axios.post('http://dolbomi.site/BbsList', {
                 id : localStorage.getItem('userid')
             })
                 .then((res) => {
@@ -67,7 +67,7 @@ function BbsList() {
 
         else {
             console.log(searchVal, choiceVal)
-            await axios.post(`http://localhost/BbsList/search`, {
+            await axios.post(`http://dolbomi.site/BbsList/search`, {
                 teacher_id : localStorage.getItem('userid'),
                 keyword : searchVal,
                 option : choiceVal
@@ -140,40 +140,33 @@ function BbsList() {
 
     return (
 
-        <section class="BbListSection">
-
-            { /* 검색 */}
-            <table class="BbListSearch">
-                <tbody class="BbListSearch">
-                    <tr class="BbListSearch">
-                        <td class="BbListSearch">
-                            <select class="BbListSearch" value={choiceVal} onChange={changeChoice}>
+        <section class="BbListSection" style={{ fontFamily: "Eorinai" }}>
+                        <div className="BbSearchContainer">
+                            <select class="BbListSearch-1" value={choiceVal} onChange={changeChoice}>
                                 <option>검색 옵션</option>
                                 <option value="title">제목</option>
                                 <option value="text">내용</option>
-                                {/* <option value="writer">작성자</option> */}
                             </select>
-                        </td>
-                        <td class="BbListSearch">
-                            <input class="BbList" type="text" placeholder="검색어" value={searchVal} onChange={changeSearch} />
-                        </td>
-                        <td class="BbListSearch">
-                            <button class="BbList" type="button" onClick={search}><i className="fas fa-search"></i>검색</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table><br />
+                            <input  class="BbListSearch-2" type="text" placeholder="검색어" value={searchVal} onChange={changeSearch} />
+                        <div className="BbButton">
+                            <button class="BbListSearch-3" type="button" onClick={search}>검색</button>
+                        </div>
+                        </div>
 
-            <table class="BbList">
-                <thead class="BbList">
-                    <tr class="BbList">
-                        <th class="BbList">번호</th>
-                        <th class="BbList">제목</th>
-                        <th class="BbList">작성일시</th>
+            <table class="BbList-0"  >
+                <thead class="BbList-0" >
+                    <tr class="BbList" >
+                        <th >번호</th>
+                        <th >제목</th>
+                        <th >작성일시</th>
                     </tr>
                 </thead>
 
-                <tbody class="BbList">
+
+
+
+
+                <tbody style={{ fontFamily: "Eorinai" }}>
 					{
 						currentbbsList.map(function (bbs, idx) {
 							return (
@@ -196,7 +189,6 @@ function BbsList() {
             <div className="my-5 d-flex justify-content-center">
                 <Link className="btn btn-outline-secondary" to="/Bbswrite"><i className="fas fa-pen"></i>글쓰기</Link>
             </div>
-
         </section>
     );
 }
@@ -207,24 +199,18 @@ function TableRow(props) {
 
     return (
         <tr class="BbList">
-
-            <th class="BbList">{props.cnt}</th>
+            <th class="BbList" style={{ textAlign: "center" }} >{props.cnt}</th>
             {
                     <>
                         <td class="BbList" >
-
-                            <Link to={{ pathname: `/BbsDetail/${bbs.id}` }}> { /* 게시글 상세 링크 */}
-                                <span className="underline bbs-title" >{bbs.title} </span> { /* 게시글 제목 */}
+                            <Link to={{ pathname: `/BbsDetail/${bbs.id}` }}> 
+                                <span >{bbs.title} </span> 
                             </Link>
                         </td>
                         <td class="BbList">{bbs.date}</td>
                     </>
-                    
             }
-
-
         </tr>
-
     );
 }
 

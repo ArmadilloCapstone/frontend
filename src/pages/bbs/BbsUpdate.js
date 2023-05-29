@@ -1,13 +1,11 @@
 import axios from "axios";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useRef, useState } from "react";
-// import { AuthContext } from "../context/AuthProvider";
-// import { HttpHeadersContext } from "../context/HttpHeadersProvider";
+import "./bbslist.css";
+import "./bbspage.css";
 
 function BbsUpdate() {
 
-	// const { headers, setHeaders } = useContext(HttpHeadersContext);
-	// const { auth, setAuth } = useContext(AuthContext);
 
 	const navigate = useNavigate();
 
@@ -22,7 +20,7 @@ function BbsUpdate() {
 	useEffect(() => {
 		console.log(param.bbs_id);
 		const getBoard = async () => {
-		  const {data} = await axios.post(`http://localhost/news/${param.bbs_id}`);
+		  const {data} = await axios.post(`http://dolbomi.site/news/${param.bbs_id}`);
 		  return data;
 		}
 		getBoard().then((result) => {
@@ -30,10 +28,10 @@ function BbsUpdate() {
 		  setText(result.text);
 		  // 이미지는 파일을 불러올 필요가 없이 미리보기 url만 가져온다.
 		  // 이미지를 선택하지 않고 올리면 db에 저장되어 있는 이미지를 그대로 사용!
-		  setImageUrl({...imageUrl, preview_URL: `http://localhost/news/image/${param.bbs_id}`})
+		  setImageUrl({...imageUrl, preview_URL: `http://dolbomi.site/news/image/${param.bbs_id}`})
 		});
 		
-        axios.post(`http://localhost/news/files/${param.bbs_id}`)
+        axios.post(`http://dolbomi.site/news/files/${param.bbs_id}`)
             .then((res) => {
                 console.log("[BbsDetail.js] getBbsDetail() success :D");
                 console.log(res.data);
@@ -131,7 +129,7 @@ function BbsUpdate() {
 				console.log(selectedFiles[i]);
 				formData.append("files", selectedFiles[i]);
 			}
-			axios.post("http://localhost/BbsList/update/file", formData, {
+			axios.post("http://dolbomi.site/BbsList/update/file", formData, {
 			  headers: {
 				"Content-Type": "multipart/form-data",
 			  }
@@ -148,7 +146,7 @@ function BbsUpdate() {
 			});
 		}
 		else{
-			axios.post("http://localhost/BbsList/update/nofile", formData, {
+			axios.post("http://dolbomi.site/BbsList/update/nofile", formData, {
 			  headers: {
 				"Content-Type": "multipart/form-data",
 			  }
@@ -169,7 +167,7 @@ function BbsUpdate() {
 
 
 	return (
-		<div class="bbswrapper">
+		<div class="bbswrapper" style={{ fontFamily: "Eorinai" }}>
 			<div class="form_container">
 				<form onSubmit={updateBbs}>
 					<table>

@@ -1,166 +1,172 @@
 .underline:hover{
-    text-decoration: underline;
-    cursor: pointer;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
 
-  section.BbListSection {
-    margin: 20px auto 0;
-    padding: 10px;
-    font-family: 'Noto Sans KR', sans-serif;
-  }
+.BbListSection {
 
-  table.BbListSearch {
-    font-size: .9em;
-    width: 100%;
-    border-collapse: collapse;
-    /* border-radius: 5px; */
-    overflow: hidden;
-  }
+  color: #73685d;
+
+}
+
+.BbSearchContainer{
+margin-bottom: 20px;
+margin-top: 40px;
+display: flex; 
+align-items: center; 
+gap: 20px;
+}
+  
+.BbListSearch-1 {
+  border-bottom: 1px solid rgba(0,0,0,.1);
+  width: 300px;
+  height: 50px;
+  color: #73685d;
+
+  margin-right: 20px;
+  background: white;
+  
+  font-size: 19px;
+  border: 2px solid #dadce0;
+  border-radius: 7px;
+}
+
+
+.BbListSearch-2 {
+  display: flex;
+  width: 300px;
+  height: 50px;
+  font-size: 19px;
+  color: #a39485;
+  font-size: 19px;
+  border: 2px solid #dadce0;
+  border-radius: 7px;
+}
+
+
+
+.BbButton{
+  width: 100px;
+  height: 50px;
+}
+
+.BbListSearch-3 {
+  background-color: #12B560;
+  color: #ffffff;
+  width: 200px;
+  height: 50px;
+  margin-left: 140px;
+  font-size: 19px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+
+  border: none;
+  border-radius: 10px;
+
+
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
+  cursor: pointer;
+
+  transition: 0.5s;
+}
+
+
+
+
+
+
+
+.BbList-0 {
+  border: 1px #a39485 solid;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,.25);
+  width: 1000px;
+  height: 50px;
+  margin-top: 23px;
+  border-collapse: collapse;
+  overflow: hidden;
+}
+
+
+
+
+  
+.BbList{
+  padding: 1em .5em;
+  vertical-align: middle;
+  border-bottom: 1px solid rgba(0,0,0,.1);
+  background: #fff;
+  color: #73685d;
+      text-align: center;
+}
+
+.btn-outline-secondary{
+  height: 50px;
+  width: 100px;
+  background-color: #12B560;
+  color: white;
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+ @media all and (max-width: 768px) {
     
-  td.BbListSearch, th.BbListSearch {
-    padding: 1em .5em;
-    vertical-align: middle;
-  }
-    
-  td.BbListSearch {
-    border-bottom: 1px solid rgba(0,0,0,.1);
-    background: #fff;
-  }
-
-  select.BbListSearch {
-    width: 100%;
-    height: 50px;
-
-    background: #F3F3F3;
-
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #dadce0;
-    border-radius: 3px;
-  }
-
-  td.BbListSearch input[type="text"] {
-    display: flex;
-    width: 100%;
-    height: 50px;
-    margin-top: -40px;
-    margin-right: 40px;
-    font-size: 16px;
-    border: 1px solid #dadce0;
-    border-radius: 3px;
-  }
-
-  button.BbList {
-    background: #03C75A;
-    color: #ffffff;
-
-    width: 100%;
-    height: 40px;
-    margin: 0;
-    padding: 0.5rem 1rem;
-
-    font-family: 'Noto Sans KR', sans-serif;
-    font-size: .9em;
-    font-weight: bold;
-    text-align: center;
-    text-decoration: none;
-
-    border: none;
-    border-radius: 4px;
-
-    display: inline-block;
-    width: auto;
-
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-
-    cursor: pointer;
-
-    transition: 0.5s;
-  }
-
-
-
-  table.BbList {
-    border: 1px #a39485 solid;
-    /* font-family: 'Noto Sans KR', sans-serif; */
-    font-size: .9em;
-    box-shadow: 0 2px 5px rgba(0,0,0,.25);
-    width: 1000px;
-    /* width: 100%; */
-    border-collapse: collapse;
-    border-radius: 5px;
-    overflow: hidden;
+  table.BbList, thead.BbList, tbody.BbList, th.BbList, td.BbList, tr.BbList {
+    display: block;
   }
   
   th.BbList {
-    text-align: left;
-    font-family: 'Noto Sans KR', sans-serif;
+    text-align: right;
   }
-    
+  
+  table.BbList {
+    position: relative; 
+    padding-bottom: 0;
+    border: none;
+    box-shadow: 0 0 10px rgba(0,0,0,.2);
+  }
+  
   thead.BbList {
-    font-weight: bold;
-    color: #fff;
-    background: #12B560;
+    float: left;
+    white-space: nowrap;
   }
-    
-  td.BbList, th.BbList {
-    padding: 1em .5em;
-    vertical-align: middle;
+  
+  tbody.BbList {
+    overflow-x: auto;
+    overflow-y: hidden;
+    position: relative;
+    white-space: nowrap;
   }
-    
+  
+  tr.BbList {
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 30px;
+  }
+  
+  th.BbList {
+    border-bottom: 1px solid #a39485;
+  }
+  
   td.BbList {
-    border-bottom: 1px solid rgba(0,0,0,.1);
-    background: #fff;
+    border-bottom: 1px solid #e5e5e5;
   }
   
-  a.BbList {
-    color: #73685d;
-  }
-    
-   @media all and (max-width: 768px) {
-      
-    table.BbList, thead.BbList, tbody.BbList, th.BbList, td.BbList, tr.BbList {
-      display: block;
-    }
-    
-    th.BbList {
-      text-align: right;
-    }
-    
-    table.BbList {
-      position: relative; 
-      padding-bottom: 0;
-      border: none;
-      box-shadow: 0 0 10px rgba(0,0,0,.2);
-    }
-    
-    thead.BbList {
-      float: left;
-      white-space: nowrap;
-    }
-    
-    tbody.BbList {
-      overflow-x: auto;
-      overflow-y: hidden;
-      position: relative;
-      white-space: nowrap;
-    }
-    
-    tr.BbList {
-      display: inline-block;
-      vertical-align: top;
-    }
-    
-    th.BbList {
-      border-bottom: 1px solid #a39485;
-    }
-    
-    td.BbList {
-      border-bottom: 1px solid #e5e5e5;
-    }
-    
-    
-    }
   
+  }

@@ -52,7 +52,7 @@ function TeacherDetail() {
   }
 
   // const loadStudentDetail = async () => {
-  //   var response = fetch('http://localhost:5000/api/v1/employee')
+  //   var response = fetch('http://dolbomi.site:5000/api/v1/employee')
   //     .then(function (response) {
   //       return response.json();
   //     })
