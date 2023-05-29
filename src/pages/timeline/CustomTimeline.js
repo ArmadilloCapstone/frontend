@@ -108,15 +108,7 @@ function CustomTimeline() {
 
   // 백엔드에서 데이터 가져오기 & student_schedule 가져오기
   useEffect(() => {
-<<<<<<< Updated upstream
-<<<<<<< HEAD
-    axios.post('http://dolbomi.site/studentScheduleFindAll')
-=======
     axios.post('http://dolbomi.site/studentScheduleFindAll/' + localStorage.getItem('userid'))
->>>>>>> f763d70e4eb969aec58ab939538514075fa88ef9
-=======
-    axios.post('http://localhost/studentScheduleFindAll/' + localStorage.getItem('userid'))
->>>>>>> Stashed changes
       .then(function (response) {
         console.log("학생 방과후교실 시간표 데이터");
         console.log(response.data);
@@ -218,15 +210,7 @@ function CustomTimeline() {
     });
 
   useEffect(() => {
-<<<<<<< Updated upstream
-<<<<<<< HEAD
-    axios.post('http://dolbomi.site/studentFindAll')
-=======
-    axios.post('http://dolbomi.site/studentFindAll/' + localStorage.getItem('userid'))
->>>>>>> f763d70e4eb969aec58ab939538514075fa88ef9
-=======
     axios.post('http://localhost/studentFindAll/' + localStorage.getItem('userid'))
->>>>>>> Stashed changes
       .then(function (response) {
         console.log(response.data);
         setStudent(response.data.map(function (el, idx) {
