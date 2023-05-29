@@ -29,12 +29,12 @@ const EditTeacher = () => {
    
   const updateTeacher = async e => {
     e.preventDefault();
-    await axios.put(`http://localhost:5000/api/v1/employee/${id}`, user);
+    await axios.put(`http://dolbomi.site:5000/api/v1/employee/${id}`, user);
     history.push("/");
   };
  
   const loadUser =  () => {
-    fetch(`http://localhost:5000/api/v1/employee/${id}`,{
+    fetch(`http://dolbomi.site:5000/api/v1/employee/${id}`,{
             method: "GET",
           })
             .then((response) => response.json())

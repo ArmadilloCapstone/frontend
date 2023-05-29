@@ -50,31 +50,13 @@ const Popup = () => {
       var now = new Date();
       //const period = 1; // 1분주기
       //var lastsec = 60 - now.getSeconds(); // 남은 시간
-      const period = 0.333;
+      const period = 20; // 초단위 주기
       var lastsec = 1;
       setTimeout(() => {
+        console.log("pickup");
         if(user_option == 1){
           axios.post("http://dolbomi.site/sendPickupFormToTeacher/" + localStorage.getItem('userid')).then((res)=>{
-            setStudents(res.data.map(function(el){
-              console.log(el);
-              var returnObj = {}
-              returnObj['id'] = el.studentId;
-              returnObj['name'] = el.studentName;
-              returnObj['grade'] = el.studentGrade;
-              returnObj['gender'] = (el.studentGender==1)?'M':'F';
-              returnObj['pickupManName'] = el.pickupManName;
-              return returnObj;
-            }));
-            if(res.data != null){
-              setShowPopup(true);
-              console.log("showPopup is true")
-            }
-          
-          })
-        }
-        setInterval(() => {
-          if(user_option == 1){
-            axios.post("http://dolbomi.site/sendPickupFormToTeacher").then((res)=>{
+            if(!!res.data){
               setStudents(res.data.map(function(el){
                 console.log(el);
                 var returnObj = {}
@@ -85,14 +67,34 @@ const Popup = () => {
                 returnObj['pickupManName'] = el.pickupManName;
                 return returnObj;
               }));
-              if(res.data != null){
+              setShowPopup(true);
+              console.log("showPopup is true")
+            }
+          
+          })
+        }
+        setInterval(() => {
+          console.log("pickup");
+          if(user_option == 1){
+            axios.post("http://dolbomi.site/sendPickupFormToTeacher/" + localStorage.getItem('userid')).then((res)=>{
+              if(!!res.data){
+                setStudents(res.data.map(function(el){
+                  console.log(el);
+                  var returnObj = {}
+                  returnObj['id'] = el.studentId;
+                  returnObj['name'] = el.studentName;
+                  returnObj['grade'] = el.studentGrade;
+                  returnObj['gender'] = (el.studentGender==1)?'M':'F';
+                  returnObj['pickupManName'] = el.pickupManName;
+                  return returnObj;
+                }));
                 setShowPopup(true);
                 console.log("showPopup is true")
               }
             
             })
           }
-        }, period * 60 * 1000);
+        }, period * 1000);
       }, lastsec* 1000);
         console.log(showPopup)
   }, []);
