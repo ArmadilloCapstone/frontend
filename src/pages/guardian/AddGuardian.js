@@ -70,7 +70,8 @@ export default function AddGuardian() {
         console.log(user);
         await axios.post("http://dolbomi.site/guardian_submit", user);
         alert('추가되었습니다!');
-        loadGuardianList();
+        window.close(); //클로즈 먼저해야만 새로고침이 되었음
+        window.dialogArguments.document.location.reload(); //클로즈 먼저해야만 새로고침이 되었음
     };
 
     return (
