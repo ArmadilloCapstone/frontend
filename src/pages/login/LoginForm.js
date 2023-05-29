@@ -37,7 +37,7 @@ export const LoginForm = (props) => {
 
     if(props.option != "3"){
 
-      axios.post("http://localhost/login", {
+      axios.post("http://dolbomi.site/login", {
         "user_id" : id,
         "user_pw" : pw,
         "option" : (props.option - 0)
@@ -45,7 +45,7 @@ export const LoginForm = (props) => {
         console.log(res.data)
         if(res.data.name !== "Error"){
 
-          //alert('ë¡œê·¸?¸!');
+          //alert('ë¡œê·¸?ï¿½ï¿½!');
           console.log(res.data)
           if(props.option == "4"){
             console.log("admin")
@@ -77,12 +77,12 @@ export const LoginForm = (props) => {
 
         }
         else{
-          alert('?‹¤?Œ¨')
+          alert('?ï¿½ï¿½?ï¿½ï¿½')
         }
       })
     }
     else{
-      axios.post("http://localhost/login", {
+      axios.post("http://dolbomi.site/login", {
         "serial_num" : serial,
         "option" : (props.option - 0)
       }).then((res) => {
@@ -98,7 +98,7 @@ export const LoginForm = (props) => {
           navigate('/GuardianPickup');
         }
         else{
-          alert('?‹¤?Œ¨')
+          alert('?ï¿½ï¿½?ï¿½ï¿½')
         }
       })
 
@@ -111,7 +111,7 @@ export const LoginForm = (props) => {
       { (props.option === "3")
             ?
             <div className="login_box login_sid">
-              <div className="login_name">?¼? ¨ë²ˆí˜¸</div>
+              <div className="login_name">?ï¿½ï¿½?ï¿½ï¿½ë²ˆí˜¸</div>
               <input type="text" value ={serial} onChange={saveSerial}/>
             </div>
             :
@@ -132,10 +132,10 @@ export const LoginForm = (props) => {
             </div>
         }
         <div className="signupButton">
-        <h1 className="login_subtitle">?•„ì§? ?šŒ?›?´ ?•„?‹ˆ?‹ ê°??š”?</h1> 
-          {(props.option === '1' || props.option === '2')?<span className="signup_button" onClick={clickSignup}>?šŒ?›ê°??ž…</span> : <span className="signup_button"></span>}
+        <h1 className="login_subtitle">?ï¿½ï¿½ï¿½? ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ï¿½??ï¿½ï¿½?</h1> 
+          {(props.option === '1' || props.option === '2')?<span className="signup_button" onClick={clickSignup}>?ï¿½ï¿½?ï¿½ï¿½ï¿½??ï¿½ï¿½</span> : <span className="signup_button"></span>}
         </div>
-        <div className="login_button" onClick={clickLogin}>ë¡œê·¸?¸</div>
+        <div className="login_button" onClick={clickLogin}>ë¡œê·¸?ï¿½ï¿½</div>
       </div>
   );
 };

@@ -5,7 +5,7 @@ const upload = (file, onUploadProgress) => {
 
   formData.append("file", file);
 
-  return http.post("http://localhost/student_submit_csv", formData, {
+  return http.post("http://dolbomi.site/student_submit_csv", formData, {
     headers: {
       "Content-Type": "multipart/form-data",
     },
@@ -14,7 +14,7 @@ const upload = (file, onUploadProgress) => {
 };
 
 const getFiles = () => {
-  return http.post("http://localhost/files");
+  return http.post("http://dolbomi.site/files");
 };
 
 const FileUploadService = {
