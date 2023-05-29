@@ -4,7 +4,6 @@ import { useParams, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./bbslist.css";
 import "./bbspage.css";
-import { useHistory } from 'react-router-dom';
 
 
 function BbsDetail() {
@@ -74,14 +73,14 @@ function BbsDetail() {
     return (
         <div className="detailPage" style={{ fontFamily: "Eorinai" }}>
 
-
-                <Link className="change-detail" to={{ pathname: `/BbsUpdate/${id}` }}>
+            {/* <Link className="change-detail" to={{ pathname: `/BbsUpdate/${id}` }}>
                     <span  >수정 </span>
-                </Link>
+                </Link>  */}
+
+                <button className="change-detail">
+                    <span  >수정 </span>
+                </button>
                 
-
-
-
                 <button className="delete-detail" onClick={deleteBbs}><i className="fas fa-trash-alt"></i> 삭제</button>
             <table className="table table-striped" style={{ fontFamily: "Eorinai" }} >
                 <tbody style={{ color: "#555555" }} >

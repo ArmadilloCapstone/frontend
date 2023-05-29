@@ -9,7 +9,9 @@
     color : white;
     cursor: pointer;
     transition: 0.5s;
+    border: none;
 }
 .studentList .student.checked{
-    background-color: #12B560;
+    background-color: oldlace;
+    border: none;
 }
