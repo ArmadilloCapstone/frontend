@@ -3,6 +3,7 @@ import axios from 'axios';
 import Modal from './Modal';
 import AddGuardian from './AddGuardian';
 import AddStudentsOfGaurdian from './AddStudentsOfGaurdian';
+import "./Guardian.css"
 
 export default function GuardianManagement() {
     // 모달창 나타내기 위한 변수들
@@ -11,11 +12,7 @@ export default function GuardianManagement() {
     const [addStudents, setAddStudents] = useState(false); // 기존 보호자의 학생명단 추가
 
     // 더미데이터, 빈 객체 배열로 변경 예정
-    const [guardianList, setGuardianList] = useState([
-        { id: 1, name: "보호자1", info: "학원1", serial_num: 111111, students: [{ id: 1, name: "a" }, { id: 2, name: "b" }] },
-        { id: 2, name: "보호자2", info: "학원2", serial_num: 222222, students: [{ id: 3, name: "c" }, { id: 4, name: "d" }, { id: 5, name: "e" }] },
-        { id: 3, name: "보호자3", info: "학원3", serial_num: 333333, students: [{ id: 6, name: "f" }] }
-    ]);
+    const [guardianList, setGuardianList] = useState([]);
 
     // 기존의 guardian List 가져오기
     const loadGuardianList = async () => {
@@ -63,7 +60,6 @@ export default function GuardianManagement() {
             });
     };
 
-
     const onEdit = (guardian) => {
         let data = {
             id: guardian.id,
@@ -77,39 +73,39 @@ export default function GuardianManagement() {
     }
 
     return (
-        <section class="tableSection">
-            <button class="delete" onClick={() => setAddGuardian(!addGuardian)}>
+        <section class="guardianSection">
+            <button class="guardian-add-button" onClick={() => setAddGuardian(!addGuardian)}>
                 + 새로운 보호자 추가
             </button>
-            
+
             {addGuardian && (
                 <Modal closeModal={() => setAddGuardian(!addGuardian)}>
                     <AddGuardian />
                 </Modal>
             )}
 
-            <table class="admin">
-                <thead class="admin">
-                    <tr class="admin">
-                        <th class="admin">이름</th>
-                        <th class="admin">소속</th>
-                        <th class="admin">일련번호</th>
-                        <th class="admin">학생 명단</th>
-                        <th class="admin">Action</th>
+            <table class="guardian">
+                <thead class="guardian">
+                    <tr class="guardian">
+                        <th class="guardian">이름</th>
+                        <th class="guardian">소속</th>
+                        <th class="guardian">일련번호</th>
+                        <th class="guardian">학생 명단</th>
+                        <th class="guardian">Action</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="guardian">
 
                     {guardianList.map((el, id) =>
-                        <tr class="admin">
-                            <td class="admin">{el.name}</td>
-                            <td class="admin">{el.info}</td>
-                            <td class="admin">{el.serial_num}</td>
-                            <td class="admin">
+                        <tr class="guardian">
+                            <td class="guardian">{el.name}</td>
+                            <td class="guardian">{el.info}</td>
+                            <td class="guardian">{el.serial_num}</td>
+                            <td class="guardian">
                                 {el.students.map((stu_el) =>
                                     <>
                                         {stu_el.name}&nbsp;
-                                        <button style={{backgroundColor:"red", border:"none", borderRadius:"5PX"}} onClick={() => {
+                                        <button class="delete-student-button" onClick={() => {
                                             const confirmBox = window.confirm(
                                                 "'" + stu_el.name + "'" + " 학생을 정말 삭제하시겠습니까?"
                                             )
@@ -121,7 +117,7 @@ export default function GuardianManagement() {
                                 )}
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-                                <button className="btn btn-primary" onClick={() => {
+                                <button class="add-student-button" onClick={() => {
                                     setAddStudents(!addStudents)
                                     onEdit(el);
                                 }}>추가
@@ -133,8 +129,8 @@ export default function GuardianManagement() {
                                 )} */}
                             </td>
 
-                            <td class="admin">
-                                <button class="delete"
+                            <td class="guardian">
+                                <button class="delete-guardian-button"
                                     onClick={() => {
                                         const confirmBox = window.confirm(
                                             "'" + el.name + "'" + " 보호자를 정말 삭제하시겠습니까?"

@@ -1,0 +1,182 @@
+/* 버튼 css */
+button.guardian-add-button {
+    display: inline-block;
+    width: auto;
+    cursor: pointer;
+    margin-bottom: 15px;
+    padding: 0.5rem 1rem;
+
+    background-color: #12B560;
+    color: white;
+    border-radius: 10px;
+    border: none;
+    transition: 0.5s;
+    
+    font-family: Eorinai;
+    font-size: .9em;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  button.delete-guardian-button {
+    display: inline-block;
+    width: auto;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+
+    background-color: #bf0000;
+    color: white;
+    border-radius: 10px;
+    border: none;
+    transition: 0.5s;
+    
+    font-family: Eorinai;
+    font-size: .9em;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  button.delete-student-button {
+    display: inline-block;
+    width: auto;
+    cursor: pointer;
+    /* margin-bottom: 15px; */
+    /* padding: 0.1rem 0.5rem; */
+
+    background-color: #de0505;
+    color: white;
+    border-radius: 7px;
+    border: none;
+    transition: 0.5s;
+    
+    font-family: Eorinai;
+    font-size: .9em;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  button.add-student-button {
+    display: inline-block;
+    width: auto;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+
+    background-color: #007fff;
+    color: white;
+    border-radius: 10px;
+    border: none;
+    transition: 0.5s;
+    
+    font-family: Eorinai;
+    font-size: .9em;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+  }
+  
+  section.guardianSection {
+    font-family: Eorinai;
+    margin: 20px auto 0;
+    padding: 10px;
+    border-radius: 20px;
+    width: 80%
+  }
+
+  table.guardian {
+    border: 1px #a39485 solid;
+    font-size: .9em;
+    box-shadow: 0 2px 5px rgba(0,0,0,.25);
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+  
+  th.guardian {
+    text-align: center;
+    color: #73685d;
+    font-size: 18px;
+  }
+    
+  thead.guardian {
+    background-color: white;
+    color: #12B560;
+    font-size: 30px;
+    margin-top: 30px;
+    border-color: white;
+  }
+
+  /* tbody.guardian {
+    background-color: white;
+    color: #12B560;
+    font-size: 18px;
+    margin-top: 30px;
+    border-color: white;
+  } */
+    
+  td.guardian, th.guardian {
+    padding: 1em .5em;
+    vertical-align: middle;   
+    text-align: center;
+  }
+
+    
+  td.guardian {
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    background: #fff;
+  }
+  
+  a.guardian {
+    color: #73685d;
+  }
+    
+
+
+
+
+   @media all and (max-width: 768px) {
+      
+    table.guardian, thead.guardian, tbody.guardian, th.guardian, td.guardian, tr.guardian {
+      display: block;
+    }
+    
+    th.guardian {
+      text-align: right;
+    }
+    
+    table.guardian {
+      position: relative; 
+      padding-bottom: 0;
+      border: none;
+      box-shadow: 0 0 10px rgba(0,0,0,.2);
+    }
+    
+    thead.guardian {
+      float: left;
+      white-space: nowrap;
+    }
+    
+    tbody.guardian {
+      overflow-x: auto;
+      overflow-y: hidden;
+      position: relative;
+      white-space: nowrap;
+    }
+    
+    tr.guardian {
+      display: inline-block;
+      vertical-align: top;
+    }
+    
+    th.guardian {
+      border-bottom: 1px solid #a39485;
+    }
+    
+    td.guardian {
+      border-bottom: 1px solid #e5e5e5;
+    }
+    
+   }

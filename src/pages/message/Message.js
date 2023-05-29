@@ -15,6 +15,12 @@ const Message = () => {
         var ws2 = new WebSocket(webSocketUrl);
         ws2.onopen = () => {
           console.log("connected to " + webSocketUrl);
+          if(localStorage.getItem('useroption') == 1){
+            ws2.send("setting_user_id:T"+localStorage.getItem('userid'));
+          }
+          if(localStorage.getItem('useroption') == 2){
+            ws2.send("setting_user_id:P"+localStorage.getItem('userid'));
+          }
           setSocketConnected(true);
         };
         ws2.onclose = (error) => {
@@ -25,10 +31,9 @@ const Message = () => {
           console.log("connection error " + webSocketUrl);
           console.log(error);
         };
-        ws2.onmessage = (evt) => {
-          const data = JSON.parse(evt.data);
-          console.log(data);
-          setItems((prevItems) => [...prevItems, data]);
+        ws2.onmessage = (evt) => { // 메시지가 온 경우
+          console.log(evt.data);
+          //setItems((prevItems) => [...prevItems, data]);
         };
 
         setWs(ws2);
@@ -45,11 +50,22 @@ const Message = () => {
     // 소켓이 연결되었을 시에 send 메소드
     useEffect(() => {
       if (socketConnected && ws) {
-        ws.send(
-          JSON.stringify({
-            message: "hi",
-          })
-        );
+        if(localStorage.getItem('useroption') == 1){
+          ws.send(
+            JSON.stringify({
+              id: "T"+localStorage.getItem('userid'),
+              text: "선생님이 입장하였습니다."
+            })
+          );
+        }
+        if(localStorage.getItem('useroption') == 2){
+          ws.send(
+            JSON.stringify({
+              id: "P"+localStorage.getItem('userid'),
+              text: "학부모가 입장하였습니다."
+            })
+          );
+        }
   
         setSendMsg(true);
       }

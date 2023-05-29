@@ -1,0 +1,67 @@
+.guardian-modal-title,
+.student-modal-title {
+    color: #73685d;
+}
+
+.guardian-label {
+    float: left;
+    padding: 5px;
+    font-size: 18px;
+    margin-top: 15px;
+}
+
+.guardian-form-item input[type="text"] {
+    width: 100%;
+    height: 50px;
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #dadce0;
+    color: #73685d;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.guardian-checkbox-border {
+    border: 1px solid #dadce0;
+    color: #73685d;
+    border-radius: 10px;
+    padding: 5px;
+    margin-top: 52px;
+    text-align: left;
+}
+
+.student-label {
+    display:inline-block;
+    width:33%;
+    line-height:50px;
+}
+
+.guardian-form-item input[type="checkbox"] {
+    display:inline-block;
+    width: 30%;
+    height: 20px;
+    vertical-align: middle;
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #dadce0;
+    color: #73685d;
+    border-radius: 10px;
+}
+
+button.guardian-form-add {
+    background: #12B560;
+    color: #ffffff;
+    padding: 0.5rem 1rem;
+    margin: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+
+    border: none;
+    border-radius: 20px;
+
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    cursor: pointer;
+    transition: 0.5s;
+}

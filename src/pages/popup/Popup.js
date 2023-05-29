@@ -15,12 +15,12 @@ const PopupContainer = ({ children }) => {
       {popup && (
         <div
           style={{
-            backgroundColor: '#b8dff8',
+            backgroundColor: '#12B560',
             border: '1px solid #ccc',
             padding: '20px 20px',
             borderRadius: '5px',
             marginBottom: '10px',
-            boxShadow: '3px 3px 15px #888888',
+            boxShadow: '3px 3px 15px #555555',
           }}
         >
           {popup}
@@ -32,11 +32,6 @@ const PopupContainer = ({ children }) => {
 
 const Popup = () => {
   const [students, setStudents] = useState([
-    // { id: "1", name: "김민수", grade: "1", gender: "M", pickupManName: "김미영" },
-    // { id: "2", name: "이민수", grade: "2", gender: "F", pickupManName: "이미영" },
-    // { id: "3", name: "박민수", grade: "1", gender: "M", pickupManName: "박미영" },
-    // { id: "4", name: "최민수", grade: "2", gender: "F", pickupManName: "최미영" },
-    // { id: "5", name: "강민수", grade: "1", gender: "M", pickupManName: "강미영" },
   ]);
   const [showPopup, setShowPopup] = useState(false);
   const user_option = useSelector((state => state.user_option))

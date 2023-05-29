@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import SidebarItem from "./SidebarItem";
 import logo from "./logo.png";
+import name from "./name.png";
 import manager from "./manager.png";
 import block from "./block.png";
 import book from "./book.png";
@@ -19,10 +20,15 @@ const Side = styled.div`
 `;
 
 const Logo = styled.img`
-  width: 170px;
-  height: 170px;
-  margin-bottom: 30px;
-  margin-left: 40px;
+  width: 100px;
+  height: 100px;
+  margin-left: 23px;
+`;
+
+const Name = styled.img`
+  width: 100px;
+  height: 40px;
+  margin-left: ;
 `;
 
 const Menu = styled.div`
@@ -32,7 +38,6 @@ const Menu = styled.div`
   display: flex;
   flex-direction: column;
 `;
-
 
 
 const MenuItem = styled.div`
@@ -103,7 +108,10 @@ function AdminSidebar() {
 
   return (
     <Side>
-      <Logo src={logo} />
+        <div>
+          <Logo src={logo} />
+          <Name src={name} />
+        </div>
       <div className="sidebar-container">
         <MenuItem>
           <SidebarUser>
