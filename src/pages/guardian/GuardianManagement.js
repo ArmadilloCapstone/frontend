@@ -41,7 +41,7 @@ export default function GuardianManagement() {
 
     // 보호자 삭제
     const deleteGuardian = (productId) => {
-        axios.delete(`http://dolbomi.site/guardianManage/guardian/${productId}`)
+        axios.delete(`http://localhost/guardianManage/guardian/${productId}`)
             .then((result) => {
                 loadGuardianList();
             })
@@ -52,7 +52,7 @@ export default function GuardianManagement() {
 
     // 보호자의 학생 삭제 (버튼 클릭 이벤트, ui 지저분해서 학생 이름을 버튼으로 만듦!)
     const deleteStudent = (guardian_id,student_id) => {
-        axios.delete(`http://dolbomi.site/guardianManage/student/${guardian_id}/${student_id}`)
+        axios.delete(`http://localhost/guardianManage/student/${guardian_id}/${student_id}`)
             .then((result) => {
                 loadGuardianList();
             })
