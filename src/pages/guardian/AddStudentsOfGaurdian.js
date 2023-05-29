@@ -37,6 +37,10 @@ export default function AddStudentsOfGaurdian(props) {
     const checkHandler = (e, id, name) => {
         setIsChecked(!isChecked);
         checkedItemHandler(id, name, e.target.checked);
+        setUser({
+            ...user,
+            studentList: [...checkedList],
+        });
         // setUser({
         //     ...user,
         //     students: [...checkedList],
@@ -89,10 +93,6 @@ export default function AddStudentsOfGaurdian(props) {
     const submitGuardian = async (e) => {
         e.preventDefault();
         // e.target.reset();
-        setUser({
-            ...user,
-            studentList: [...checkedList],
-        });
 
         await axios.post("http://localhost:80/guardianManage/student_submit", user); // 이름, 소속 수정 시 (edited의 student list 변경 불가)
         // await axios.post("http://localhost:80/guardian_student_submit", checkedList); // (추가된 학생)
