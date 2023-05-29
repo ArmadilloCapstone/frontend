@@ -35,7 +35,7 @@ export default function AddStudentsOfGaurdian(props) {
 
     // 기존의 student List 가져오기
     const loadStudentList = async () => {
-        await axios.post('http://dolbomi.site/student')
+        await axios.post('http://dolbomi.site/student', edited)
             .then(function (response) {
                 setStudentList(response.data.map(function (el, idx) {
                     console.log(el);
