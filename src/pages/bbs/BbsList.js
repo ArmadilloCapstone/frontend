@@ -140,9 +140,8 @@ function BbsList() {
 
     return (
 
-        <section class="BbListSection">
+        <section class="BbListSection" style={{ fontFamily: "Eorinai" }}>
 
-            { /* 검색 */}
             <table class="BbListSearch">
                 <tbody class="BbListSearch">
                     <tr class="BbListSearch">
@@ -151,7 +150,7 @@ function BbsList() {
                                 <option>검색 옵션</option>
                                 <option value="title">제목</option>
                                 <option value="text">내용</option>
-                                {/* <option value="writer">작성자</option> */}
+
                             </select>
                         </td>
                         <td class="BbListSearch">
@@ -162,9 +161,9 @@ function BbsList() {
                         </td>
                     </tr>
                 </tbody>
-            </table><br />
+            </table>
 
-            <table class="BbList">
+            <table class="BbList" >
                 <thead class="BbList">
                     <tr class="BbList">
                         <th class="BbList">번호</th>
@@ -173,7 +172,7 @@ function BbsList() {
                     </tr>
                 </thead>
 
-                <tbody class="BbList">
+                <tbody class="BbList" style={{ fontFamily: "Eorinai" }}>
 					{
 						currentbbsList.map(function (bbs, idx) {
 							return (
