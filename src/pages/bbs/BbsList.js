@@ -26,7 +26,7 @@ function BbsList() {
     /* [POST /bbs]: 게시글 목록 가져오기 */
     const loadBbsList = async (choice, search) => {
         if (choice === "all" && search === "all") {
-            await axios.post('http://dolbomi.site/BbsList', {
+            await axios.post('http://localhost/BbsList', {
                 id : localStorage.getItem('userid')
             })
                 .then((res) => {
@@ -67,7 +67,7 @@ function BbsList() {
 
         else {
             console.log(searchVal, choiceVal)
-            await axios.post(`http://dolbomi.site/BbsList/search`, {
+            await axios.post(`http://localhost/BbsList/search`, {
                 teacher_id : localStorage.getItem('userid'),
                 keyword : searchVal,
                 option : choiceVal
