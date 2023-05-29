@@ -1,5 +1,6 @@
 import axios from "axios";
-import "./bbswrite.css";
+import "./bbslist.css";
+import "./bbspage.css";
 
 import { useRef, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -111,18 +112,8 @@ function BbsWrite() {
 		}
 	}
 
-	// useEffect(() => {
-	// 	if (!auth) {
-	// 		alert("로그인 한 사용자만 게시글을 작성할 수 있습니다 !");
-	// 		navigate(-1);
-	// 	}
-	// }, []);
-
 
 	return (
-		// <div style={{ padding: "20px" }}>
-		// 	<BbsEditor />
-		// </div>onSubmit={submitTeacherRecord}
 
 		<div class="bbswrapper" style={{ fontFamily: "Eorinai" }}>
 			<div class="form_container">

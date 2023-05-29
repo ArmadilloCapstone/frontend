@@ -78,17 +78,16 @@ function BbsDetail() {
                 {
                     /* 자신이 작성한 게시글인 경우에만 수정 삭제 가능 */
                         <>                            
-                            <Link to={{ pathname: `/BbsUpdate/${id}` }}> { /* 게시글 상세 링크 */}
-                                <span className="underline bbs-title" >수정 </span> { /* 게시글 제목 */}
+                            <Link to={{ pathname: `/BbsUpdate/${id}` }}> 
+                                <span  >수정 </span> 
                             </Link>
                             <button className="btn btn-outline-danger" onClick={deleteBbs}><i className="fas fa-trash-alt"></i> 삭제</button>
                         </>
-                        
                 }
 
             </div>
 
-            <table className="table table-striped">
+            <table className="table table-striped" style={{ fontFamily: "Eorinai" }}>
                 <tbody>
                     <tr>
                         <th className="col-3">번호</th>
