@@ -9,35 +9,59 @@
     max-width: 1000px;
     width: 100%;
     margin: 20px auto 0;
-    padding: 10px;
-    font-family: 'Noto Sans KR', sans-serif;
     background: #fff;
     padding: 30px;
     box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.15);
     border-radius: 4px;
 }
-
-.input_container {
-    max-width: 900px;
-    width: 95%;
-    /* margin: 20px auto 0; */
-    /* padding: 10px; */
-    font-family: 'Noto Sans KR', sans-serif;
-    /* background: #fff; */
-    /* padding: 30px; */
-    /* box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.15);
-    border-radius: 4px; */
+table.bbsWrite {
+    width: 100%;
 }
 
-.bbsWrite {
+tbody.bbsWrite {
     display: block;
-
-    box-sizing: border-box;
     width: 100%;
+}
 
-    margin: 20px auto 0;
+td.bbsWrite {
+    max-width: 1000px;
+    width: 100%;
+}
+
+th.bbsWrite {
+    width: 10%;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.bbsWrite textarea,
+.bbsWrite input[type="text"],
+.bbsWrite input[type="file"] {
+    display: flex;
+
+    /* box-sizing: border-box; */
+    width: 150%;
+
+    margin: 10px 20px;
     padding: 10px;
     font-size: 16px;
     border: 1px solid #dadce0;
     border-radius: 3px;
+}
+
+.bbsWrite-submit-button {
+    background: #12B560;
+    color: #ffffff;
+    padding: 0.5rem 1rem;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+
+    border: none;
+    border-radius: 20px;
+
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    cursor: pointer;
+    transition: 0.5s;
 }

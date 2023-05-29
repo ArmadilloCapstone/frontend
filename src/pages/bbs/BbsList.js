@@ -140,40 +140,40 @@ function BbsList() {
 
     return (
 
-        <section class="BbListSection">
+        <section>
 
             { /* 검색 */}
-            <table class="BbListSearch">
-                <tbody class="BbListSearch">
-                    <tr class="BbListSearch">
-                        <td class="BbListSearch">
-                            <select class="BbListSearch" value={choiceVal} onChange={changeChoice}>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <select value={choiceVal} onChange={changeChoice}>
                                 <option>검색 옵션</option>
                                 <option value="title">제목</option>
                                 <option value="text">내용</option>
                                 {/* <option value="writer">작성자</option> */}
                             </select>
                         </td>
-                        <td class="BbListSearch">
-                            <input class="BbList" type="text" placeholder="검색어" value={searchVal} onChange={changeSearch} />
+                        <td>
+                            <input type="text" placeholder="검색어" value={searchVal} onChange={changeSearch} />
                         </td>
-                        <td class="BbListSearch">
-                            <button class="BbList" type="button" onClick={search}><i className="fas fa-search"></i>검색</button>
+                        <td>
+                            <button type="button" onClick={search}><i className="fas fa-search"></i>검색</button>
                         </td>
                     </tr>
                 </tbody>
             </table><br />
 
-            <table class="BbList">
-                <thead class="BbList">
-                    <tr class="BbList">
-                        <th class="BbList">번호</th>
-                        <th class="BbList">제목</th>
-                        <th class="BbList">작성일시</th>
+            <table>
+                <thead>
+                    <tr>
+                        <th>번호</th>
+                        <th>제목</th>
+                        <th>작성일시</th>
                     </tr>
                 </thead>
 
-                <tbody class="BbList">
+                <tbody>
 					{
 						currentbbsList.map(function (bbs, idx) {
 							return (
@@ -193,7 +193,7 @@ function BbsList() {
                 nextPageText={"›"}
                 onChange={changePage} />
 
-            <div className="my-5 d-flex justify-content-center">
+            <div>
                 <Link className="btn btn-outline-secondary" to="/Bbswrite"><i className="fas fa-pen"></i>글쓰기</Link>
             </div>
 
@@ -206,18 +206,18 @@ function TableRow(props) {
     const bbs = props.obj;
 
     return (
-        <tr class="BbList">
+        <tr>
 
-            <th class="BbList">{props.cnt}</th>
+            <th>{props.cnt}</th>
             {
                     <>
-                        <td class="BbList" >
+                        <td>
 
                             <Link to={{ pathname: `/BbsDetail/${bbs.id}` }}> { /* 게시글 상세 링크 */}
-                                <span className="underline bbs-title" >{bbs.title} </span> { /* 게시글 제목 */}
+                                <span>{bbs.title} </span> { /* 게시글 제목 */}
                             </Link>
                         </td>
-                        <td class="BbList">{bbs.date}</td>
+                        <td>{bbs.date}</td>
                     </>
                     
             }

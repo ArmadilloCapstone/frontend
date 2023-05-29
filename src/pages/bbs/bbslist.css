@@ -1,21 +1,17 @@
-.underline:hover{
+/* .underline:hover{
     text-decoration: underline;
     cursor: pointer;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
-
   section.BbListSection {
     margin: 20px auto 0;
     padding: 10px;
-    font-family: 'Noto Sans KR', sans-serif;
   }
 
   table.BbListSearch {
     font-size: .9em;
     width: 100%;
     border-collapse: collapse;
-    /* border-radius: 5px; */
     overflow: hidden;
   }
     
@@ -59,7 +55,6 @@
     margin: 0;
     padding: 0.5rem 1rem;
 
-    font-family: 'Noto Sans KR', sans-serif;
     font-size: .9em;
     font-weight: bold;
     text-align: center;
@@ -82,11 +77,9 @@
 
   table.BbList {
     border: 1px #a39485 solid;
-    /* font-family: 'Noto Sans KR', sans-serif; */
     font-size: .9em;
     box-shadow: 0 2px 5px rgba(0,0,0,.25);
     width: 1000px;
-    /* width: 100%; */
     border-collapse: collapse;
     border-radius: 5px;
     overflow: hidden;
@@ -94,7 +87,6 @@
   
   th.BbList {
     text-align: left;
-    font-family: 'Noto Sans KR', sans-serif;
   }
     
   thead.BbList {
@@ -115,9 +107,9 @@
   
   a.BbList {
     color: #73685d;
-  }
+  } */
     
-   @media all and (max-width: 768px) {
+   /* @media all and (max-width: 768px) {
       
     table.BbList, thead.BbList, tbody.BbList, th.BbList, td.BbList, tr.BbList {
       display: block;
@@ -161,4 +153,4 @@
     
     
     }
-  
+   */
