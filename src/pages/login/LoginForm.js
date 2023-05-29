@@ -133,9 +133,9 @@ export const LoginForm = (props) => {
         }
         <div className="signupButton">
         <h1 className="login_subtitle">?���? ?��?��?�� ?��?��?���??��?</h1> 
-          {(props.option === '1' || props.option === '2')?<span className="signup_button" onClick={clickSignup}>?��?���??��</span> : <span className="signup_button"></span>}
+          {(props.option === '1' || props.option === '2')?<span className="signup_button" onClick={clickSignup}>회원가입</span> : <span className="signup_button"></span>}
         </div>
-        <div className="login_button" onClick={clickLogin}>로그?��</div>
+        <div className="login_button" onClick={clickLogin}>로그인</div>
       </div>
   );
 };
