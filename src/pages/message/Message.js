@@ -31,7 +31,8 @@ const Message = () => {
           console.log("connection error " + webSocketUrl);
           console.log(error);
         };
-        ws2.onmessage = (evt) => { // 메시지가 온 경우
+        ws2.onmessage = (evt) => {
+          const data = JSON.parse(evt.data);
           console.log(evt.data);
           //setItems((prevItems) => [...prevItems, data]);
         };
