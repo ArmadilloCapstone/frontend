@@ -1,5 +1,5 @@
 .studentList .student{
-    background-color: #0f9443;
+    background-color: oldlace;
     border-radius: 20px;
     padding-top: 5px;
     margin-top: 15px;
@@ -12,6 +12,6 @@
     border: none;
 }
 .studentList .student.checked{
-    background-color: oldlace;
+    background-color:#0f9443;
     border: none;
 }
