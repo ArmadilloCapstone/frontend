@@ -33,7 +33,7 @@ function BbsDetail() {
                 let arr = Array.from(res.data);
                 console.log(arr);
                 setFiles([]);
-                for(let i = 0; i < arr.length; i++){
+                for (let i = 0; i < arr.length; i++) {
                     console.log(arr[i].originFileName)
                     setFiles((prevMessage) => ([
                         ...prevMessage,
@@ -71,28 +71,23 @@ function BbsDetail() {
     }, []);
 
     return (
-        <div style={{ fontFamily: "Eorinai" }}>
+        <div className="detailPage" style={{ fontFamily: "Eorinai" }}>
 
-            <div className="my-3 d-flex justify-content-end">
+            {/* <Link className="change-detail" to={{ pathname: `/BbsUpdate/${id}` }}>
+                    <span  >수정 </span>
+                </Link>  */}
 
-                {
-                    /* 자신이 작성한 게시글인 경우에만 수정 삭제 가능 */
-                        <>                            
-                            <Link to={{ pathname: `/BbsUpdate/${id}` }}> 
-                                <span  >수정 </span> 
-                            </Link>
-                            <button className="btn btn-outline-danger" onClick={deleteBbs}><i className="fas fa-trash-alt"></i> 삭제</button>
-                        </>
-                }
-
-            </div>
-
-            <table className="table table-striped" style={{ fontFamily: "Eorinai" }}>
-                <tbody>
+                <button className="change-detail">
+                    <span  >수정 </span>
+                </button>
+                
+                <button className="delete-detail" onClick={deleteBbs}><i className="fas fa-trash-alt"></i> 삭제</button>
+            <table className="table table-striped" style={{ fontFamily: "Eorinai" }} >
+                <tbody style={{ color: "#555555" }} >
                     <tr>
-                        <th className="col-3">번호</th>
+                        <th>번호</th>
                         <td>
-                            <span>{bbs.id}</span>
+                            <span>{bbs.id}</span>a
                         </td>
                     </tr>
 
@@ -125,18 +120,18 @@ function BbsDetail() {
                             {
                                 files.map((el) => {
                                     return <div>
-                                                <div>{el.originFileName}</div>
-                                                <div>
-                                                    <a
-                                                        href={"http://dolbomi.site/download/news/"+ bbs.title + "/" +el.originFileName}
-                                                        download
-                                                        target="_blank"
-                                                        rel="noreferrer"
-                                                        >
-                                                            다운로드
-                                                    </a>
-                                                </div>
-                                            </div>
+                                        <div>{el.originFileName}</div>
+                                        <div>
+                                            <a
+                                                href={"http://dolbomi.site/download/news/"+bbs.title +"/" + el.originFileName}
+                                                download
+                                                target="_blank"
+                                                rel="noreferrer"
+                                            >
+                                                다운로드
+                                            </a>
+                                        </div>
+                                    </div>
                                 })
                             }
                         </td>

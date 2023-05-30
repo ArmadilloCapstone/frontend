@@ -7,7 +7,7 @@ const Message = () => {
     const [sendMsg, setSendMsg] = useState(false);
     const [items, setItems] = useState([]);
   
-    const webSocketUrl = `ws://localhost/room`;
+    const webSocketUrl = `ws://dolbomi.site/room`;
     
     // 소켓 객체 생성
     useEffect(() => {
@@ -31,7 +31,7 @@ const Message = () => {
           console.log("connection error " + webSocketUrl);
           console.log(error);
         };
-        ws2.onmessage = (evt) => { // 메시지가 온 경우
+        ws2.onmessage = (evt) => {
           console.log(evt.data);
           //setItems((prevItems) => [...prevItems, data]);
         };

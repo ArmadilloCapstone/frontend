@@ -45,7 +45,7 @@ export const LoginForm = (props) => {
         console.log(res.data)
         if(res.data.name !== "Error"){
 
-          //alert('로그?��!');
+          //alert('로그인!');
           console.log(res.data)
           if(props.option == "4"){
             console.log("admin")
@@ -77,7 +77,7 @@ export const LoginForm = (props) => {
 
         }
         else{
-          alert('?��?��')
+          alert('실패')
         }
       })
     }
@@ -98,7 +98,7 @@ export const LoginForm = (props) => {
           navigate('/GuardianPickup');
         }
         else{
-          alert('?��?��')
+          alert('실패')
         }
       })
 
@@ -111,7 +111,7 @@ export const LoginForm = (props) => {
       { (props.option === "3")
             ?
             <div className="login_box login_sid">
-              <div className="login_name">?��?��번호</div>
+              <div className="login_name">일련번호</div>
               <input type="text" value ={serial} onChange={saveSerial}/>
             </div>
             :
@@ -132,10 +132,11 @@ export const LoginForm = (props) => {
             </div>
         }
         <div className="signupButton">
-        <h1 className="login_subtitle">?���? ?��?��?�� ?��?��?���??��?</h1> 
-          {(props.option === '1' || props.option === '2')?<span className="signup_button" onClick={clickSignup}>?��?���??��</span> : <span className="signup_button"></span>}
+
+        <h1 className="login_subtitle">아직 회원이 아니신가요?</h1> 
+          {(props.option === '1' || props.option === '2')?<span className="signup_button" onClick={clickSignup}>회원가입</span> : <span className="signup_button"></span>}
         </div>
-        <div className="login_button" onClick={clickLogin}>로그?��</div>
+        <div className="login_button" onClick={clickLogin}>로그인</div>
       </div>
   );
 };

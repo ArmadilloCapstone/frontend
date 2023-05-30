@@ -6,8 +6,6 @@ import "./bbspage.css";
 
 function BbsUpdate() {
 
-	// const { headers, setHeaders } = useContext(HttpHeadersContext);
-	// const { auth, setAuth } = useContext(AuthContext);
 
 	const navigate = useNavigate();
 
