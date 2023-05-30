@@ -15,36 +15,30 @@
     border-radius: 4px;
 }
 
-.input_container {
-    max-width: 900px;
-    width: 95%;
-}
-
-tbody.bbsWrite {
-    display: block;
-    width: 100%;
-}
-
-td.bbsWrite {
-    max-width: 1000px;
-    width: 100%;
-}
-
-th.bbsWrite {
-    width: 10%;
-    vertical-align: middle;
+.input_header {
+    white-space: nowrap;
+    vertical-align : middle;
     text-align: center;
 }
 
-.bbsWrite textarea,
-.bbsWrite input[type="text"],
-.bbsWrite input[type="file"] {
-    display: flex;
+.input_container {
+    max-width: 900px;
+    width: 95%;
+    /* margin: 20px auto 0; */
+    /* padding: 10px; */
+    /* background: #fff; */
+    /* padding: 30px; */
+    /* box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.15);
+    border-radius: 4px; */
+}
 
-    /* box-sizing: border-box; */
-    width: 150%;
+.bbsWrite {
+    display: block;
 
-    margin: 10px 20px;
+    box-sizing: border-box;
+    width: 98%;
+
+    margin: 20px auto 0;
     padding: 10px;
     font-size: 16px;
     border: 1px solid #dadce0;
@@ -56,7 +50,7 @@ th.bbsWrite {
     color: #ffffff;
     padding: 0.5rem 1rem;
     font-size: 18px;
-    font-weight: bold;
+    /* font-weight: bold; */
     text-align: center;
     text-decoration: none;
 
