@@ -6,7 +6,7 @@
     height: 50px;
     text-align: center;
     font-size: 25px;
-    color : white;
+    color: #555555;
     cursor: pointer;
     transition: 0.5s;
     border: none;
@@ -14,4 +14,7 @@
 .studentList .student.checked{
     background-color:#0f9443;
     border: none;
+    color: white;
+
+
 }
