@@ -32,7 +32,6 @@ const Message = () => {
           console.log(error);
         };
         ws2.onmessage = (evt) => {
-          const data = JSON.parse(evt.data);
           console.log(evt.data);
           //setItems((prevItems) => [...prevItems, data]);
         };
