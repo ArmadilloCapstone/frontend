@@ -1,6 +1,5 @@
 import axios from "axios";
-import "./bbslist.css";
-import "./bbspage.css";
+import "./bbswrite.css";
 
 import { useRef, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -122,23 +121,23 @@ function BbsWrite() {
 						<tbody>
 
 							<tr>
-								<th>제목</th>
+								<th class="input_header">제목</th>
 								<td class="input_container">
-									<input type="text" class="bbsWrite" value={title} onChange={changeTitle} size="50px" />
+									<input class="bbsWrite" type="text" value={title} onChange={changeTitle} size="50px" />
 								</td>
 							</tr>
 
 							<tr>
-								<th className="table-primary">내용</th>
-								<td>
+								<th class="input_header">내용</th>
+								<td class="input_container">
 									<textarea class="bbsWrite" value={text} onChange={changeText} rows="10"></textarea>
 								</td>
 							</tr>
 
 							<tr>
-								<th className="table-primary">첨부파일</th>
-								<td>
-            						<input type="file" multiple onChange={selectFiles} />
+								<th class="input_header">첨부파일</th>
+								<td class="input_container">
+            						<input  class="bbsWrite" type="file" multiple onChange={selectFiles} />
 									{
 										selectedFiles.map((el, idx) => {
 											return <div key={idx}> {el.name} </div>
@@ -150,7 +149,7 @@ function BbsWrite() {
 						</tbody>
 					</table>
 					<div className="my-5 d-flex justify-content-center">
-						<button type="submit" className="btn btn-outline-secondary"><i className="fas fa-pen"></i> 등록하기</button>
+						<button type="submit" className="bbsWrite-submit-button"><i className="fas fa-pen"></i> 등록하기</button>
 					</div>
 				</form>
 

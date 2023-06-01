@@ -132,6 +132,7 @@ export const LoginForm = (props) => {
             </div>
         }
         <div className="signupButton">
+
         <h1 className="login_subtitle">아직 회원이 아니신가요?</h1> 
           {(props.option === '1' || props.option === '2')?<span className="signup_button" onClick={clickSignup}>회원가입</span> : <span className="signup_button"></span>}
         </div>

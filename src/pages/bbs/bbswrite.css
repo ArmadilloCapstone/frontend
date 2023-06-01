@@ -16,21 +16,49 @@
     border-radius: 4px;
 }
 
+.input_header {
+    white-space: nowrap;
+    vertical-align : middle;
+    text-align: center;
+}
 
 .input_container {
     max-width: 900px;
     width: 95%;
+    /* margin: 20px auto 0; */
+    /* padding: 10px; */
+    /* background: #fff; */
+    /* padding: 30px; */
+    /* box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.15);
+    border-radius: 4px; */
 }
 
 .bbsWrite {
     display: block;
 
     box-sizing: border-box;
-    width: 100%;
+    width: 98%;
 
     margin: 20px auto 0;
     padding: 10px;
     font-size: 16px;
     border: 1px solid #dadce0;
     border-radius: 3px;
+}
+
+.bbsWrite-submit-button {
+    background: #12B560;
+    color: #ffffff;
+    padding: 0.5rem 1rem;
+    font-size: 18px;
+    /* font-weight: bold; */
+    text-align: center;
+    text-decoration: none;
+
+    border: none;
+    border-radius: 20px;
+
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    cursor: pointer;
+    transition: 0.5s;
 }

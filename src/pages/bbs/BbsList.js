@@ -162,6 +162,10 @@ function BbsList() {
                     </tr>
                 </thead>
 
+
+
+
+
                 <tbody style={{ fontFamily: "Eorinai" }}>
 					{
 						currentbbsList.map(function (bbs, idx) {

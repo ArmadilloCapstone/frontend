@@ -2,11 +2,21 @@ import React, { useState } from 'react';
 import StudentTimeAdd from './StudentTimeAdd';
 import StudentTimeDetail from './studentTimeDetail';
 import { Route, Routes } from "react-router-dom";
+import styled from "styled-components";
+
+const Container = styled.div`
+  cursor: pointer;
+`;
+
+const TabButton = styled.button`
+  &.active {
+    background-color: #12B560;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+`;
 
 export default function StudentTimeManagementPage() {
   const [activeIndex, setActiveIndex] = useState(0);
-
-
 
   const tabClickHandler = (index) => {
     setActiveIndex(index);
@@ -15,32 +25,36 @@ export default function StudentTimeManagementPage() {
   const tabContArr = [
     {
       tabTitle: (
-        <li className={(activeIndex === 0 ? "is-active" : "")} onClick={() => tabClickHandler(0)}>
-          <p class="nav-link active" style={{ backgroundColor: activeIndex === 0 ? "#12B560" : "white",
-            color: activeIndex === 0 ? "white" : "gray"}}>학생 입퇴실 시간 목록</p>
-        </li>
+        <TabButton
+          className={`tab-button ${activeIndex === 0 ? "active" : ""}`}
+          onClick={() => tabClickHandler(0)}
+          style={{ width: '170px'}}
+          >
+          입퇴실시간 목록
+        </TabButton>
       ),
       tabCont: (
         <div className="StudentTimeManagementPage">
-
           <Routes>
-            <Route exact path="/" element={<StudentTimeDetail />} />
+            <Route path="/" element={<StudentTimeDetail />} />
           </Routes>
         </div>
       )
     },
     {
       tabTitle: (
-        <li className={activeIndex === 1 ? "is-active" : ""} onClick={() => tabClickHandler(1)}>
-          <p class="nav-link active" style={{ backgroundColor: activeIndex === 1 ? "#12B560" : "white",
-            color: activeIndex === 1 ? "white" : "gray"}}>학생 입퇴실 시간 추가</p>
-        </li>
+        <TabButton
+          className={`tab-button ${activeIndex === 1 ? "active" : ""}`}
+          onClick={() => tabClickHandler(1)}
+          style={{ width: '170px'}}
+        >
+         입퇴실시간 추가
+        </TabButton>
       ),
       tabCont: (
         <div className="StudentTimeManagementPage">
-
           <Routes>
-            <Route exact path="/" element={<StudentTimeAdd />} />
+            <Route path="/" element={<StudentTimeAdd />} />
           </Routes>
         </div>
       )
@@ -48,17 +62,16 @@ export default function StudentTimeManagementPage() {
   ];
 
   return (
-    <div className="container" style={{ width: "1200px", cursor: "pointer" }}>
+    <Container className="container">
       <div className="my-3">
-        <ul class="nav nav-tabs">
+        <ul>
           {tabContArr.map((section, index) => {
-            return section.tabTitle
+            return section.tabTitle;
           })}
         </ul>
-
       </div>
       {tabContArr[activeIndex].tabCont}
-    </div>
+    </Container>
   );
 }
 

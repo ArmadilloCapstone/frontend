@@ -108,25 +108,24 @@ function GalleryWrite() {
 						<tbody>
 
 							<tr>
-								<th>제목</th>
+								<th class="input_header">제목</th>
 								<td class="input_container">
 									<input type="text" class="galleryWrite" value={title} onChange={changeTitle} size="50px" />
 								</td>
 							</tr>
 
 							<tr>
-								<th className="table-primary">내용</th>
-								<td>
+								<th class="input_header">내용</th>
+								<td class="input_container">
 									<textarea class="galleryWrite" value={text} onChange={changeText} rows="10"></textarea>
 								</td>
 							</tr>
 
 							<tr>
-								<th className="table-primary">첨부파일</th>
-								<td>
-									<img src={imageUrl}/>
-									<br></br>
-            						<input type="file" onChange={selectFiles} />
+								<th class="input_header">첨부파일</th>
+								<td class="input_container">
+									<img style={{width: "700px", margin: "10px"}} src={imageUrl}/>
+            						<input class="galleryWrite" type="file" onChange={selectFiles} />
 									{
 										selectedFiles.map((el, idx) => {
 											return <div key={idx}> {el.name} </div>
@@ -138,7 +137,7 @@ function GalleryWrite() {
 						</tbody>
 					</table>
 					<div className="my-5 d-flex justify-content-center">
-						<button type="submit" className="btn btn-outline-secondary"><i className="fas fa-pen"></i> 등록하기</button>
+						<button type="submit" className="galleryWrite-submit-button"><i className="fas fa-pen"></i> 등록하기</button>
 					</div>
 				</form>
 

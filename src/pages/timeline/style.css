@@ -6,6 +6,10 @@
   color: #666666;
 }
 
+.timeline_wrapper{
+  margin-top: 90px;
+}
+
 #root>div>div:nth-child(2)>div.react-calendar-timeline.timeline {
   max-width: 1200px;
   width: 100%;

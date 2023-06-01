@@ -102,7 +102,10 @@ const Message = () => {
           console.log(error);
         };
         ws2.onmessage = (evt) => {
+<<<<<<< HEAD
           // 메시지가 온 경우
+=======
+>>>>>>> fe2da1aa7b85de2853d9000042bc182f45386af2
           console.log(evt.data);
           /*
           {

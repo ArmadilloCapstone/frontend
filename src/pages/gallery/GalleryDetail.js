@@ -88,27 +88,22 @@ function GalleryDetail() {
     // }
 
     return (
-        <div>
 
-            <div className="my-3 d-flex justify-content-end">
+            <div className="detailPage" style={{ fontFamily: "Eorinai" }}>
 
-                {
-                    /* 자신이 작성한 게시글인 경우에만 수정 삭제 가능 */
-                        <>                            
-                            <Link to={{ pathname: `/GalleryUpdate/${id}` }}> { /* 게시글 상세 링크 */}
-                                <span className="underline gallery-title" >수정 </span> { /* 게시글 제목 */}
-                            </Link>
-                            <button className="btn btn-outline-danger" onClick={deleteGallery}><i className="fas fa-trash-alt"></i> 삭제</button>
-                        </>
-                        
-                }
-
-            </div>
-
-            <table className="table table-striped">
-                <tbody>
+                { /* 
+                    <Link to={{ pathname: `/GalleryUpdate/${id}` }}> 
+                        <span className="underline gallery-title" >수정 </span> 
+                    </Link>
+                */}                          
+                <button className="change-detail">
+                    <span  >수정 </span>
+                </button>
+                <button className="delete-detail" onClick={deleteGallery}><i className="fas fa-trash-alt"></i> 삭제</button>
+            <table className="table table-striped" style={{ fontFamily: "Eorinai" }}>
+                <tbody style={{ color: "#555555" }}>
                     <tr>
-                        <th className="col-3">번호</th>
+                        <th>번호</th>
                         <td>
                             <span>{gallery.id}</span>
                         </td>

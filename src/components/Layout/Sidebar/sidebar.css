@@ -27,4 +27,6 @@
 .bottom-button {
     background-color: #f9f9f7;
     color: darkgray;
+    padding-left: 15px;
+    padding-right: 15px;
 }
