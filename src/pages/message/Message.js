@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import axios from "axios";
 
 const Message = () => {
     const [socketConnected, setSocketConnected] = useState(false);
@@ -11,15 +12,84 @@ const Message = () => {
     
     // 소켓 객체 생성
     useEffect(() => {
+      if(localStorage.getItem('useroption') == 1){
+        axios.post("localhost/getAllParentByTid", {
+          id : localStorage.getItem('userid')
+        }).then((res) => {
+          /*
+          [
+            {
+              id : Long,
+              name : String,
+              phone_num : String, 
+              gender : Long,
+              birth_date : Date,
+              class_id
+            }
+          ]
+          */
+        })
+        axios.post("localhost/getAllMessageByTid", {
+          id : localStorage.getItem('userid')
+        }).then((res) => {
+          /*
+          [
+            {
+              
+            }
+          ]
+          */
+        })
+      }
+      if(localStorage.getItem('useroption') == 2){
+        axios.post("localhost/getAllTeacherByPid", {
+          id : localStorage.getItem('userid')
+        }).then((res) => {
+          /*
+          [
+            {
+              
+            }
+          ]
+          */
+        })
+        axios.post("localhost/getAllMessageByPid", {
+          id : localStorage.getItem('userid')
+        }).then((res) => {
+          /*
+          [
+            {
+              
+            }
+          ]
+          */
+        })
+      }
+
+
+
+
       if (!ws) {
         var ws2 = new WebSocket(webSocketUrl);
         ws2.onopen = () => {
+          // 소켓이 연결되는 부분
           console.log("connected to " + webSocketUrl);
           if(localStorage.getItem('useroption') == 1){
-            ws2.send("setting_user_id:T"+localStorage.getItem('userid'));
+            
+            ws2.send(
+              JSON.stringify({
+                type: "setting",
+                id: "T"+localStorage.getItem('userid'),
+                name: localStorage.getItem('username')
+              }));
           }
           if(localStorage.getItem('useroption') == 2){
-            ws2.send("setting_user_id:P"+localStorage.getItem('userid'));
+            ws2.send(
+              JSON.stringify({
+                type: "setting",
+                id: "P"+localStorage.getItem('userid'),
+                name: localStorage.getItem('username')
+              }));
           }
           setSocketConnected(true);
         };
@@ -31,8 +101,14 @@ const Message = () => {
           console.log("connection error " + webSocketUrl);
           console.log(error);
         };
-        ws2.onmessage = (evt) => { // 메시지가 온 경우
+        ws2.onmessage = (evt) => {
+          // 메시지가 온 경우
           console.log(evt.data);
+          /*
+          {
+            
+          }
+          */
           //setItems((prevItems) => [...prevItems, data]);
         };
 
@@ -53,7 +129,9 @@ const Message = () => {
         if(localStorage.getItem('useroption') == 1){
           ws.send(
             JSON.stringify({
+              type: "message",
               id: "T"+localStorage.getItem('userid'),
+              name: localStorage.getItem('username'),
               text: "선생님이 입장하였습니다."
             })
           );
@@ -61,7 +139,9 @@ const Message = () => {
         if(localStorage.getItem('useroption') == 2){
           ws.send(
             JSON.stringify({
+              type: "message",
               id: "P"+localStorage.getItem('userid'),
+              name: localStorage.getItem('username'),
               text: "학부모가 입장하였습니다."
             })
           );
