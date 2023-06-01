@@ -21,7 +21,7 @@ const PopupContainer = ({ children }) => {
             padding: '20px 20px',
             borderRadius: '15px',
             marginBottom: '10px',
-            boxShadow: '3px 3px 15px #555555',
+            boxShadow: '3px 3px 15px darkgreen',
           }}
         >
           {popup}
