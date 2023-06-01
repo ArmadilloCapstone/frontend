@@ -45,11 +45,12 @@ export const LoginPage = () => {
 
   const loginFormWrapperStyle = {
     backgroundColor: '#F5FFFA',
-    borderRadius: '30px',
+    borderRadius: '15px',
     paddingRight: '10px',
     paddingLeft: '10px',
     marginBottom: '-140px',
-    width: '55%',
+    marginTop: '80px',
+    width: '40%',
     margin: 'auto', 
     display: 'flex',
     flexDirection: 'column',
@@ -76,6 +77,8 @@ export const LoginPage = () => {
         <LoginForm option={userOption} setUserOption={setUserOption} title={option2name(userOption)} />
           {showSignup ? <span className="signupClose" onClick={clickClose}>X</span> : null}
           {showSignup ? <SignupForm option={userOption} /> : null}
+
+          
     </div>
   );
 };
