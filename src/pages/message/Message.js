@@ -24,7 +24,8 @@ const Message = () => {
               phone_num : String, 
               gender : Long,
               birth_date : Date,
-              class_id
+              class_id : Long,
+              disable : Long
             }
           ]
           */
@@ -35,7 +36,13 @@ const Message = () => {
           /*
           [
             {
-              
+              id : Long,
+              sender_id : String,
+              sender_name : String, 
+              receiver_id : String,
+              receiver_name : String, 
+              text : String,
+              date : Timestamp
             }
           ]
           */
@@ -48,7 +55,14 @@ const Message = () => {
           /*
           [
             {
-              
+              id : Long,
+              name : String,
+              phone_num : String, 
+              gender : Long,
+              birth_date : Date,
+              child_id : Long,
+              class_id : Long,
+              disable : Long
             }
           ]
           */
@@ -59,7 +73,13 @@ const Message = () => {
           /*
           [
             {
-              
+              id : Long,
+              sender_id : String,
+              sender_name : String, 
+              receiver_id : String,
+              receiver_name : String, 
+              text : String,
+              date : Timestamp
             }
           ]
           */
@@ -102,14 +122,10 @@ const Message = () => {
           console.log(error);
         };
         ws2.onmessage = (evt) => {
-<<<<<<< HEAD
-          // 메시지가 온 경우
-=======
->>>>>>> fe2da1aa7b85de2853d9000042bc182f45386af2
           console.log(evt.data);
           /*
           {
-            
+            {'id':'1','sender_id':'P02','sender_name':'라마바','receiver_id':'T01','receiver_name':'가나다','text':'선생님이 입장하였습니다.','date':'2023-06-01 19:03:57.982'}
           }
           */
           //setItems((prevItems) => [...prevItems, data]);
@@ -130,7 +146,7 @@ const Message = () => {
     useEffect(() => {
       if (socketConnected && ws) {
         if(localStorage.getItem('useroption') == 1){
-          ws.send(
+          ws.send( //상대방한테
             JSON.stringify({
               type: "message",
               id: "T"+localStorage.getItem('userid'),
@@ -138,6 +154,7 @@ const Message = () => {
               text: "선생님이 입장하였습니다."
             })
           );
+          //자
         }
         if(localStorage.getItem('useroption') == 2){
           ws.send(
