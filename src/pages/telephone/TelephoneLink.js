@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios";
 import teacherImg from './teacher.png';
+import schoolImg from './school-round.png';
+import buildingImg from './building.png';
 
 function TelephoneLink() {
     const [callList, setCallList] = useState([
