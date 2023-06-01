@@ -97,7 +97,7 @@ function GalleryDetail() {
                     </Link>
                 */ }
 
-                <button className="change-detail">
+                <button className="change-detail" onClick={() => {navigate(`/GalleryUpdate/${id}`)}}>
                     <span  >수정 </span>
                 </button>  
                                    
