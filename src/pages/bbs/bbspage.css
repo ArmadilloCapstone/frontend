@@ -16,7 +16,7 @@
 }
 
 .change-detail{
-  background-color: #e2e2e2;
+  background-color: #12B560;
   color: white;
   width: 90px;
   height: 40px;
@@ -73,7 +73,7 @@ ul.pagination li.active {
 
 ul.pagination li a:hover,
 ul.pagination li a.active {
-  color: black;
+  color: darkgreen;
 }
 
 .page-selection {

@@ -60,6 +60,21 @@ export const LoginPage = () => {
 
   };
 
+/* Mobile View */
+const mobileView = window.matchMedia('(max-width: 600px)');
+if (mobileView.matches) {
+  logoStyle.width = '120px';
+  logoStyle.height = '120px';
+  logoStyle.marginTop = '20px';
+  logoStyle.marginBottom = '10px';
+
+  loginFormWrapperStyle.width = '90%';
+  loginFormWrapperStyle.height = 'auto';
+}
+
+  
+  
+
   return (
     <div style={{ ...loginFormWrapperStyle, fontFamily: "Eorinai" }} className='login_page'>
       {showSignup ? <div className="blur"></div> : null}

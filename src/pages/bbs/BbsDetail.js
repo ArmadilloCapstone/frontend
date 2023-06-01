@@ -4,6 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./bbslist.css";
 import "./bbspage.css";
+import "./bbswrite.css";
 
 
 function BbsDetail() {
@@ -73,41 +74,44 @@ function BbsDetail() {
     return (
         <div className="detailPage" style={{ fontFamily: "Eorinai" }}>
 
-            {/* <Link className="change-detail" to={{ pathname: `/BbsUpdate/${id}` }}>
+            { /*}
+             <Link className="change-detail" to={{ pathname: `/BbsUpdate/${id}` }}>
                     <span  >수정 </span>
-                </Link>  */}
+                </Link> 
+                      */}   
 
                 <button className="change-detail">
                     <span  >수정 </span>
-                </button>
+                </button>  
+
                 
                 <button className="delete-detail" onClick={deleteBbs}><i className="fas fa-trash-alt"></i> 삭제</button>
             <table className="table table-striped" style={{ fontFamily: "Eorinai" }} >
                 <tbody style={{ color: "#555555" }} >
                     <tr>
-                        <th>번호</th>
-                        <td>
+                        <th class="input_header">번호</th>
+                        <td class="input_container">
                             <span>{bbs.id}</span>a
                         </td>
                     </tr>
 
                     <tr>
-                        <th>제목</th>
-                        <td>
+                        <th class="input_header">제목</th>
+                        <td class="input_container">
                             <span>{bbs.title}</span>
                         </td>
                     </tr>
 
                     <tr>
-                        <th>작성일</th>
-                        <td>
+                        <th class="input_header">작성일</th>
+                        <td class="input_container">
                             <span>{bbs.date}</span>
                         </td>
                     </tr>
 
                     <tr>
-                        <th>내용</th>
-                        <td>
+                        <th class="input_header">내용</th>
+                        <td class="input_container">
                             <div>
                                 {bbs.text}
                             </div>
@@ -116,7 +120,7 @@ function BbsDetail() {
 
                     <tr>
                         <th className="col-3">첨부파일</th>
-                        <td>
+                        <td class="input_container">
                             {
                                 files.map((el) => {
                                     return <div>

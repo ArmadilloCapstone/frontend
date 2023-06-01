@@ -142,14 +142,14 @@ function GalleryUpdate() {
 
 
 	return (
-		<div class="gallerywrapper">
+		<div class="gallerywrapper" style={{ fontFamily: "Eorinai" }}>
 			<div class="form_container">
 				<form onSubmit={updateGallery}>
 					<table>
 						<tbody>
 
 							<tr>
-								<th>제목</th>
+								<th className="table-primary">제목</th>
 								<td class="input_container">
 									<input type="text" class="galleryWrite" value={title} onChange={changeTitle} size="50px" />
 								</td>
@@ -163,7 +163,7 @@ function GalleryUpdate() {
 							</tr>
 
 							<tr>
-								<th className="table-primary">첨부파일</th>
+								<th className="table-primary">첨부</th>
 								<td>
 									{
 										selectedFiles.map((el, idx) => {
@@ -183,7 +183,7 @@ function GalleryUpdate() {
 						</tbody>
 					</table>
 					<div className="my-5 d-flex justify-content-center">
-						<button type="submit" className="btn btn-outline-secondary"><i className="fas fa-pen"></i> 수정하기</button>
+						<button type="submit" className="bbsWrite-submit-button"><i className="fas fa-pen"></i> 수정하기</button>
 					</div>
 				</form>
 
