@@ -27,7 +27,7 @@ const GuardianPickup = () => {
 
   useEffect(() => {
     axios.post("http://dolbomi.site/guardian", {
-      id : user_id
+      id : localStorage.getItem('userid')
     }).then((res)=>{
       if(res.data != null){
         setStudentList(res.data.map(function(el, idx){
