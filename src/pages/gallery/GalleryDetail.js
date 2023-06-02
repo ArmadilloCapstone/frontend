@@ -91,14 +91,17 @@ function GalleryDetail() {
 
             <div className="detailPage" style={{ fontFamily: "Eorinai" }}>
 
-                { /* 
+              { /*}
                     <Link to={{ pathname: `/GalleryUpdate/${id}` }}> 
                         <span className="underline gallery-title" >수정 </span> 
                     </Link>
-                */}                          
-                <button className="change-detail">
+                */ }
+
+                <button className="change-detail" onClick={() => {navigate(`/GalleryUpdate/${id}`)}}>
                     <span  >수정 </span>
-                </button>
+                </button>  
+                                   
+
                 <button className="delete-detail" onClick={deleteGallery}><i className="fas fa-trash-alt"></i> 삭제</button>
             <table className="table table-striped" style={{ fontFamily: "Eorinai" }}>
                 <tbody style={{ color: "#555555" }}>

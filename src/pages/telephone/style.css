@@ -1,0 +1,32 @@
+.telephone-link-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+    padding-left: 60px;
+    padding-top: 50px;
+  }
+  
+  .telephone-link-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+    border-radius: 20px;
+    border: none;
+    text-align: left;
+    background-color: #12b560;
+    width: 270px;
+    height: 90px;
+  }
+  
+  .telephone-link-item img {
+    width: 70px;
+    height: 70px;
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+  
+  .telephone-link-item span {
+    font-size: 25px;
+  }
+  

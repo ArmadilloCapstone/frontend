@@ -3,6 +3,7 @@
     width: 100%;
     margin: 20px auto 0;
     padding: 10px;
+    color: #555555;
 }
 
 .bbswrapper .form_container {
@@ -13,13 +14,17 @@
     background: #fff;
     padding: 30px;
     box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.15);
-    border-radius: 4px;
+    border-radius: 15px;
+    color: #555555;
+    font-size: 20px;
 }
 
 .input_header {
     white-space: nowrap;
     vertical-align : middle;
     text-align: center;
+    padding-top: 20px;
+    color: #555555;
 }
 
 .input_container {
@@ -43,21 +48,20 @@
     padding: 10px;
     font-size: 16px;
     border: 1px solid #dadce0;
-    border-radius: 3px;
+    border-radius: 10px;
 }
 
 .bbsWrite-submit-button {
     background: #12B560;
     color: #ffffff;
     padding: 0.5rem 1rem;
-    font-size: 18px;
-    /* font-weight: bold; */
+    font-size: 25px;
     text-align: center;
     text-decoration: none;
-
     border: none;
-    border-radius: 20px;
-
+    border-radius: 15px;
+    width: 200px;
+    height: 60px;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     cursor: pointer;
     transition: 0.5s;
