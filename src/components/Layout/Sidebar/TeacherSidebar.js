@@ -93,7 +93,8 @@ const StyledNavLink = styled(NavLink)`
       { name: "학생 관리", path: "/StudentState",icon: user },
       { name: "보호자 관리", path: "/GuardianManagement",icon: block },
       { name: "안내장", path: "/BbsList",icon: note },
-      { name: "사진첩", path: "/GalleryList",icon: camera }
+      { name: "사진첩", path: "/GalleryList",icon: camera },
+      { name: "메신저", path: "/Message",icon: book }
     ];
 
     const user_name = useSelector((state => state.user_name))
