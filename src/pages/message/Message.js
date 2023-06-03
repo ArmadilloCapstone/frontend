@@ -30,13 +30,13 @@ const Message = () => {
 
   useEffect(() => {
     if (localStorage.getItem('useroption') == 1) {
-      axios.post("localhost/getAllParentByTid", {
+      axios.post("http://localhost/getAllParentByTid", {
         id: localStorage.getItem('userid')
       }).then((res) => {
         console.log(res.data)
         setAllChatList(res.data)
       })
-      axios.post("localhost/getAllMessageByTid", {
+      axios.post("http://localhost/getAllMessageByTid", {
         id: localStorage.getItem('userid')
       }).then((res) => {
         console.log(res.data)
@@ -45,13 +45,13 @@ const Message = () => {
     }
 
     if (localStorage.getItem('useroption') == 2) {
-      axios.post("localhost/getAllTeacherByPid", {
+      axios.post("http://localhost/getAllTeacherByPid", {
         id: localStorage.getItem('userid')
       }).then((res) => {
         console.log(res.data)
         setAllChatList(res.data)
       })
-      axios.post("localhost/getAllMessageByPid", {
+      axios.post("http://localhost/getAllMessageByPid", {
         id: localStorage.getItem('userid')
       }).then((res) => {
         console.log(res.data)
@@ -137,10 +137,9 @@ const Message = () => {
         ws.send(
           JSON.stringify({
             type: "message",
-            id: 1,
             sender_id: "T" + localStorage.getItem('userid'),
             sender_name: localStorage.getItem('username'),
-            receiver_id: "P" + "0" + selected.id.toString(),
+            receiver_id: "P" + selected.id.toString(),
             receiver_name: selected.name,
             text: inputMsg,
             date: moment(),
@@ -151,10 +150,9 @@ const Message = () => {
         ws.send(
           JSON.stringify({
             type: "message",
-            id: 0,
             sender_id: "P" + localStorage.getItem('userid'),
             sender_name: localStorage.getItem('username'),
-            receiver_id: "T" + "0" + selected.id.toString(),
+            receiver_id: "T" + selected.id.toString(),
             receiver_name: selected.name,
             text: inputMsg,
             date: moment(),
