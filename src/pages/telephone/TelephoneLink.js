@@ -39,14 +39,16 @@ function TelephoneLink() {
       "010-9876-5432": buildingImg,
     };
 
+    const image = imageMap[phoneNumber] || teacherImg;
+
     return (
       <div>
-        <a href={"tel:" + phoneNumber}>
-          <img src={imageMap[phoneNumber]} alt={name} />
-          <span>{name}</span>
-        </a>
-      </div>
-    );
+      <a href={"tel:" + phoneNumber}>
+        <img src={image} alt={name} />
+        <span>{name}</span>
+      </a>
+    </div>
+  );
   }
 
   return (

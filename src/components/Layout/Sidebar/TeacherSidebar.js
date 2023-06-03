@@ -9,6 +9,8 @@ import block from "./block.png";
 import book from "./book.png";
 import user from "./user.png";
 import note from "./note.png";
+import chat from "./chat.png";
+
 import camera from "./camera.png";
 import { useSelector } from 'react-redux';
 import "./sidebar.css";
