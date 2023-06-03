@@ -1,9 +1,10 @@
+
 .telephone-link-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: left;
-    padding-left: 60px;
+    padding-left: 50px;
     padding-top: 50px;
   }
   
@@ -15,15 +16,15 @@
     border: none;
     text-align: left;
     background-color: #12b560;
-    width: 270px;
-    height: 90px;
+    width: 300px;
+    height: 100px;
   }
   
   .telephone-link-item img {
     width: 70px;
     height: 70px;
     margin-right: 10px;
-    margin-left: 10px;
+    margin-left: 30px;
   }
   
   .telephone-link-item span {
