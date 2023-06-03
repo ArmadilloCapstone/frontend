@@ -18,10 +18,10 @@
 
 .sidebar-line{
     width: 170px;
-    height: 1px;
+    height: 2px;
     background-color: #EBECF0;
     margin-left: 15px;
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
 }
 
 .bottom-button {
