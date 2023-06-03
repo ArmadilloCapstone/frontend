@@ -147,6 +147,11 @@ export default function App() {
               <Route path="/GuardianManagement" element={<GuardianManagement />} /> :
               <Route path="/GuardianManagementPage" element={<LoginPage />} />
           }
+          {
+            (user_option == "1") ?
+              <Route path="/Message" element={<Message />} /> :
+              <Route path="/Message" element={<LoginPage />} />
+          }
 
 
           {/* <Route path="/EntireUserAddPage" element={<EntireUserAddPage />} /> */}
@@ -165,6 +170,11 @@ export default function App() {
             (user_option == "2") ?
               <Route path="/TelephoneLink" element={<TelephoneLink />} /> :
               <Route path="/TelephoneLink" element={<LoginPage />} />
+          }
+          {
+            (user_option == "2") ?
+              <Route path="/Message" element={<Message />} /> :
+              <Route path="/Message" element={<LoginPage />} />
           }
           {/* 보호자 페이지 */}
           {
@@ -217,11 +227,11 @@ export default function App() {
       </Center>
       {/* <Footer /> */}
       <Popup />
-      {
+      {/* {
         (user_option == "1" || user_option == "2") ?
           <Message/> :
           null
-      }
+      } */}
     </HashRouter>
   );
 }
