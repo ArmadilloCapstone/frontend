@@ -11,7 +11,6 @@ export default function AddStudentsOfGaurdian(props) {
     });
     const { id, name, studentList } = user;
     console.log(edited);
-    console.log(user);
 
     // 더미데이터, 빈 객체 배열로 변경 예정
     const [students, setStudents] = useState([]);
@@ -26,34 +25,33 @@ export default function AddStudentsOfGaurdian(props) {
     const checkedItemHandler = (id, name, isChecked) => {
         if (isChecked) {
             setCheckedList([...checkedList, { id: id, name: name }]);
+            return true;
         }
         else {
             setCheckedList(checkedList.filter((item) => item.id !== id));
+            return false;
         }
-        console.log(checkedList);
-
-        // setUser({
-        //     ...user,
-        //     students: [...checkedList]
-        // });
-
-        // console.log(user);
     }
 
     // 어떤 element의 체크 상태 업데이트
     const checkHandler = (e, id, name) => {
         setIsChecked(!isChecked);
-        checkedItemHandler(id, name, e.target.checked);
-        setUser({
-            ...user,
-            studentList: [...checkedList],
-        });
-        // setUser({
-        //     ...user,
-        //     students: [...checkedList],
-        // });
-        // console.log(checkedList);
-        // console.log(user);
+        let checkValid = false;
+        checkValid = checkedItemHandler(id, name, e.target.checked);
+        if (checkValid === true) {
+            setUser({
+                ...user,
+                serial_num: edited.serial_num,
+                studentList: [...checkedList, { id: id, name: name }]
+            });
+        }
+        else {
+            setUser({
+                ...user,
+                serial_num: edited.serial_num,
+                studentList: [...checkedList.filter((item) => item.id !== id)]
+            });
+        }
     }
 
     // 기존의 student List 가져오기
@@ -101,8 +99,7 @@ export default function AddStudentsOfGaurdian(props) {
         e.preventDefault();
         // e.target.reset();
 
-        await axios.post("http://dolbomi.site/guardianManage/student_submit", user); // 이름, 소속 수정 시 (edited의 student list 변경 불가)
-        // await axios.post("http://dolbomi.site/guardian_student_submit", checkedList); // (추가된 학생)
+        await axios.post("http://dolbomi.site/guardianManage/student_submit", user);
         console.log(edited);
         console.log(checkedList);
         alert('추가되었습니다!');

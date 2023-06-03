@@ -3,6 +3,7 @@ import axios from 'axios';
 import moment from "moment";
 import 'moment/locale/ko';
 import randomColor from "randomcolor";
+import './style.css';
 
 import Timeline, {
   TimelineHeaders,
@@ -30,7 +31,7 @@ function CustomTimeline() {
   const defaultTimeStart = moment().startOf("day").toDate();
   const defaultTimeEnd = moment().startOf("day").add(1, "day").toDate();
 
-  const defaultTimeRange = defaultTimeEnd - defaultTimeStart;
+  const defaultTimeRange = defaultTimeEnd-defaultTimeStart;
 
   const [student, setStudent] = useState([]);
   const [student_time, setStudent_time] = useState([]);
@@ -42,7 +43,7 @@ function CustomTimeline() {
 
   // 백엔드에서 데이터 가져오기 & 오늘의 요일에 맞는 학생들의 입실/퇴실 시간 설정 => todaylist === student_time
   useEffect(() => {
-    axios.post('http://dolbomi.site/studentTimeFindAll'  + localStorage.getItem('userid'))
+    axios.post('http://dolbomi.site/studentTimeFindAll/'  + localStorage.getItem('userid'))
       .then(function (response) {
         console.log("학생 입퇴실 데이터");
         console.log(response.data);
@@ -198,7 +199,8 @@ function CustomTimeline() {
       itemProps: {
         style: {
           "border-radius": "5px",
-          "border": "0px",
+          "border": "1px",
+          "box-shadow": ary[i].seed !== 0 ? "2px 2px 2px 0px gray" : "none",
           color: "black",
           background: randomColor({
             seed: ary[i].seed,
@@ -258,7 +260,7 @@ function CustomTimeline() {
   let items = individualItems();
 
   return (
-    <div calss="timeline_wrapper">
+    <div class="timeline_wrapper">
       <Timeline
         minZoom={defaultTimeRange}
         maxZoom={defaultTimeRange}
@@ -292,6 +294,7 @@ function CustomTimeline() {
           <button className="subjectButtons"
             key={el.id}
             style={{
+              "box-shadow": el.id !== 0 ? "2px 2px 5px 0px gray" : "none",
               background: randomColor({
                 seed: el.id,
               })

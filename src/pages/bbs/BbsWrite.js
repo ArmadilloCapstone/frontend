@@ -111,43 +111,33 @@ function BbsWrite() {
 		}
 	}
 
-	// useEffect(() => {
-	// 	if (!auth) {
-	// 		alert("로그인 한 사용자만 게시글을 작성할 수 있습니다 !");
-	// 		navigate(-1);
-	// 	}
-	// }, []);
-
 
 	return (
-		// <div style={{ padding: "20px" }}>
-		// 	<BbsEditor />
-		// </div>onSubmit={submitTeacherRecord}
 
 		<div class="bbswrapper" style={{ fontFamily: "Eorinai" }}>
 			<div class="form_container">
 				<form onSubmit={createBbs}>
-					<table class="bbsWrite">
-						<tbody class="bbsWrite">
+					<table>
+						<tbody>
 
 							<tr>
-								<th class="bbsWrite">제목</th>
-								<td class="bbsWrite">
+								<th class="input_header">제목</th>
+								<td class="input_container">
 									<input class="bbsWrite" type="text" value={title} onChange={changeTitle} size="50px" />
 								</td>
 							</tr>
 
 							<tr>
-								<th class="bbsWrite">내용</th>
-								<td class="bbsWrite">
+								<th class="input_header">내용</th>
+								<td class="input_container">
 									<textarea class="bbsWrite" value={text} onChange={changeText} rows="10"></textarea>
 								</td>
 							</tr>
 
 							<tr>
-								<th class="bbsWrite">첨부파일</th>
-								<td class="bbsWrite">
-            						<input class="bbsWrite" type="file" multiple onChange={selectFiles} />
+								<th class="input_header">첨부파일</th>
+								<td class="input_container">
+            						<input  class="bbsWrite" type="file" multiple onChange={selectFiles} />
 									{
 										selectedFiles.map((el, idx) => {
 											return <div key={idx}> {el.name} </div>

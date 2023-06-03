@@ -45,11 +45,12 @@ export const LoginPage = () => {
 
   const loginFormWrapperStyle = {
     backgroundColor: '#F5FFFA',
-    borderRadius: '30px',
+    borderRadius: '15px',
     paddingRight: '10px',
     paddingLeft: '10px',
     marginBottom: '-140px',
-    width: '55%',
+    marginTop: '80px',
+    width: '40%',
     margin: 'auto', 
     display: 'flex',
     flexDirection: 'column',
@@ -58,6 +59,21 @@ export const LoginPage = () => {
     height: '900px',
 
   };
+
+/* Mobile View */
+const mobileView = window.matchMedia('(max-width: 600px)');
+if (mobileView.matches) {
+  logoStyle.width = '120px';
+  logoStyle.height = '120px';
+  logoStyle.marginTop = '20px';
+  logoStyle.marginBottom = '10px';
+
+  loginFormWrapperStyle.width = '90%';
+  loginFormWrapperStyle.height = 'auto';
+}
+
+  
+  
 
   return (
     <div style={{ ...loginFormWrapperStyle, fontFamily: "Eorinai" }} className='login_page'>
@@ -76,6 +92,8 @@ export const LoginPage = () => {
         <LoginForm option={userOption} setUserOption={setUserOption} title={option2name(userOption)} />
           {showSignup ? <span className="signupClose" onClick={clickClose}>X</span> : null}
           {showSignup ? <SignupForm option={userOption} /> : null}
+
+          
     </div>
   );
 };

@@ -13,7 +13,7 @@ function Temp() {
 
   return (
     <div className="container" style={{ fontFamily: "Eorinai", width: "1200px" }}>
-      <div >
+      <div>
         <p className="mb-5" style={{ fontSize: "40px", fontWeight: "bold", color: "#555555" }}>
           사용자 추가
         </p>
@@ -27,31 +27,14 @@ function Temp() {
               backgroundColor: activeTab === 1 ? "#12B560" : "#E0E0E0",
               color: activeTab === 1 ? "#FFFFFF" : "#555555",
               border: "none",
-              padding: "0", 
+              padding: "0",
               width: "150px",
               height: "60px",
-              fontSize: "18px", 
+              fontSize: "18px",
               borderRadius: "20px"
             }}
           >
             파일 추가
-          </button>
-          <button
-            className={`btn ${activeTab === 2 ? "btn-primary active" : "btn-secondary"}`}
-            onClick={() => handleTabClick(2)}
-            style={{
-              borderRadius: "10px",
-              backgroundColor: activeTab === 2 ? "#12B560" : "#E0E0E0",
-              color: activeTab === 2 ? "#FFFFFF" : "#555555",
-              border: "none",
-              padding: "0", 
-              width: "150px", 
-              height: "60px", 
-              fontSize: "18px", 
-              borderRadius: "20px"
-            }}
-          >
-            파일추가2
           </button>
         </div>
       </div>

@@ -13,7 +13,7 @@ const Pickup = () => {
 
     axios.post("http://dolbomi.site/requestParent", {
 
-      pickupManId : user_id
+      pickupManId : user_id-0
     }).then((res)=>{
       if(res.data == "success"){
         setShowContent(true);   

@@ -34,13 +34,16 @@ export const ParentMain = () => {
         console.log(reason);
       });
 
-    axios.post('http://dolbomi.site/sendStudentStateToParent/' + localStorage.getItem('userid'))
-      .then(function (res) {
-        console.log(res);
-        setStudent_state(res.data.state);
-      }).catch(function (reason) {
-        console.log(reason);
-      });
+    setInterval(() => {
+      
+      axios.post('http://dolbomi.site/sendStudentStateToParent/' + localStorage.getItem('userid'))
+        .then(function (res) {
+          console.log(res);
+          setStudent_state(res.data.state);
+        }).catch(function (reason) {
+          console.log(reason);
+        });
+    }, 1000)
 
   }, []);
 

@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import home from "./home.png";
 import baby from "./baby.png";
+import phone from "./phone.png";
 import { useSelector } from 'react-redux';
 import "./sidebar.css";
 
@@ -50,9 +51,9 @@ const Icon = styled.img`
 const SidebarItem = ({ menu }) => {
   return (
     <>
-      {menu.name === "메인 페이지" && <Icon src={home} alt="Home" />}
-      {menu.name === "학생 픽업" && <Icon src={baby} alt="Baby" />}
-      {menu.name === "긴급 연락" && <Icon src={baby} alt="Baby" />}
+      {menu.name === "메인" && <Icon src={home} alt="Home" />}
+      {menu.name === "픽업" && <Icon src={baby} alt="Baby" />}
+      {menu.name === "긴급" && <Icon src={phone} alt="Phone" />}
       {menu.name}
     </>
   );
@@ -60,14 +61,14 @@ const SidebarItem = ({ menu }) => {
 
 function AdminBottomNav() {
   const menus = [
-    { name: "메인 페이지", path: "/ParentMain" },
-    { name: "학생 픽업", path: "/Pickup" },
-    { name: "긴급 연락", path: "/TelephoneLink" }
+    { name: "메인", path: "/ParentMain" },
+    { name: "픽업", path: "/Pickup" },
+    { name: "긴급", path: "/TelephoneLink" }
   ];
   const user_name = useSelector((state) => state.user_name);
 
   return (
-    <Container>
+    <Container >
       <Box className="bottom-button">
         <Button exact to={menus[0].path}>
           <SidebarItem menu={menus[0]} />

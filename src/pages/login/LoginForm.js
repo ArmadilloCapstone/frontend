@@ -45,7 +45,7 @@ export const LoginForm = (props) => {
         console.log(res.data)
         if(res.data.name !== "Error"){
 
-          //alert('๋ก๊ทธ?ธ!');
+          //alert('๋ก๊ทธ์ธ!');
           console.log(res.data)
           if(props.option == "4"){
             console.log("admin")
@@ -77,7 +77,7 @@ export const LoginForm = (props) => {
 
         }
         else{
-          alert('?ค?จ')
+          alert('์คํจ')
         }
       })
     }
@@ -98,7 +98,7 @@ export const LoginForm = (props) => {
           navigate('/GuardianPickup');
         }
         else{
-          alert('?ค?จ')
+          alert('์คํจ')
         }
       })
 
@@ -111,7 +111,7 @@ export const LoginForm = (props) => {
       { (props.option === "3")
             ?
             <div className="login_box login_sid">
-              <div className="login_name">?ผ? จ๋ฒํธ</div>
+              <div className="login_name">์ผ๋ จ๋ฒํธ</div>
               <input type="text" value ={serial} onChange={saveSerial}/>
             </div>
             :
@@ -132,10 +132,11 @@ export const LoginForm = (props) => {
             </div>
         }
         <div className="signupButton">
-        <h1 className="login_subtitle">?•์ง? ???ด ?•?? ๊ฐ??”?</h1> 
-          {(props.option === '1' || props.option === '2')?<span className="signup_button" onClick={clickSignup}>??๊ฐ??…</span> : <span className="signup_button"></span>}
+
+        <h1 className="login_subtitle">์•์ง ํ์์ด ์•๋์ ๊ฐ€์”?</h1> 
+          {(props.option === '1' || props.option === '2')?<span className="signup_button" onClick={clickSignup}>ํ์๊ฐ€์…</span> : <span className="signup_button"></span>}
         </div>
-        <div className="login_button" onClick={clickLogin}>๋ก๊ทธ?ธ</div>
+        <div className="login_button" onClick={clickLogin}>๋ก๊ทธ์ธ</div>
       </div>
   );
 };

@@ -4,6 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./bbslist.css";
 import "./bbspage.css";
+import "./bbswrite.css";
 
 
 function BbsDetail() {
@@ -33,7 +34,7 @@ function BbsDetail() {
                 let arr = Array.from(res.data);
                 console.log(arr);
                 setFiles([]);
-                for(let i = 0; i < arr.length; i++){
+                for (let i = 0; i < arr.length; i++) {
                     console.log(arr[i].originFileName)
                     setFiles((prevMessage) => ([
                         ...prevMessage,
@@ -71,49 +72,46 @@ function BbsDetail() {
     }, []);
 
     return (
-        <div style={{ fontFamily: "Eorinai" }}>
+        <div className="detailPage" style={{ fontFamily: "Eorinai" }}>
 
-            <div className="my-3 d-flex justify-content-end">
+            { /*}
+             <Link className="change-detail" to={{ pathname: `/BbsUpdate/${id}` }}>
+                    <span  >수정 </span>
+                </Link> 
+                      */}   
 
-                {
-                    /* 자신이 작성한 게시글인 경우에만 수정 삭제 가능 */
-                        <>                            
-                            <Link to={{ pathname: `/BbsUpdate/${id}` }}> { /* 게시글 상세 링크 */}
-                                <span className="underline bbs-title" >수정 </span> { /* 게시글 제목 */}
-                            </Link>
-                            <button className="btn btn-outline-danger" onClick={deleteBbs}><i className="fas fa-trash-alt"></i> 삭제</button>
-                        </>
-                        
-                }
+                <button className="change-detail" onClick={() => {navigate(`/BbsUpdate/${id}`)}}>
+                    <span  >수정 </span>
+                </button>  
 
-            </div>
-
-            <table className="table table-striped">
-                <tbody>
+                
+                <button className="delete-detail" onClick={deleteBbs}><i className="fas fa-trash-alt"></i> 삭제</button>
+            <table className="table table-striped" style={{ fontFamily: "Eorinai" }} >
+                <tbody style={{ color: "#555555" }} >
                     <tr>
-                        <th className="col-3">번호</th>
-                        <td>
-                            <span>{bbs.id}</span>
+                        <th class="input_header">번호</th>
+                        <td class="input_container">
+                            <span>{bbs.id}</span>a
                         </td>
                     </tr>
 
                     <tr>
-                        <th>제목</th>
-                        <td>
+                        <th class="input_header">제목</th>
+                        <td class="input_container">
                             <span>{bbs.title}</span>
                         </td>
                     </tr>
 
                     <tr>
-                        <th>작성일</th>
-                        <td>
+                        <th class="input_header">작성일</th>
+                        <td class="input_container">
                             <span>{bbs.date}</span>
                         </td>
                     </tr>
 
                     <tr>
-                        <th>내용</th>
-                        <td>
+                        <th class="input_header">내용</th>
+                        <td class="input_container">
                             <div>
                                 {bbs.text}
                             </div>
@@ -122,22 +120,22 @@ function BbsDetail() {
 
                     <tr>
                         <th className="col-3">첨부파일</th>
-                        <td>
+                        <td class="input_container">
                             {
                                 files.map((el) => {
                                     return <div>
-                                                <div>{el.originFileName}</div>
-                                                <div>
-                                                    <a
-                                                        href={"http://dolbomi.site/download/news/"+el.originFileName}
-                                                        download
-                                                        target="_blank"
-                                                        rel="noreferrer"
-                                                        >
-                                                            다운로드
-                                                    </a>
-                                                </div>
-                                            </div>
+                                        <div>{el.originFileName}</div>
+                                        <div>
+                                            <a
+                                                href={"http://dolbomi.site/download/news/"+bbs.title +"/" + el.originFileName}
+                                                download
+                                                target="_blank"
+                                                rel="noreferrer"
+                                            >
+                                                다운로드
+                                            </a>
+                                        </div>
+                                    </div>
                                 })
                             }
                         </td>
