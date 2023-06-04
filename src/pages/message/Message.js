@@ -11,6 +11,7 @@ const Message = () => {
   const [sendMsg, setSendMsg] = useState(false);
 
   const [allChatList, setAllChatList] = useState([]);
+  const [alarmList, setAlarmList] = useState([]);
   const [allChatMsg, setAllChatMsg] = useState([]);
   const [selected, setSelected] = useState({
     id: 0,
@@ -35,6 +36,16 @@ const Message = () => {
       }).then((res) => {
         console.log(res.data)
         setAllChatList(res.data)
+        setAlarmList(res.data.map(function(el, idx){
+
+          console.log(el);
+          var returnObj = {}
+          returnObj["id"] = el.id;
+          returnObj["alarm"] = false;
+          console.log(returnObj);
+          return returnObj;
+
+        }));
       })
       axios.post("http://dolbomi.site/getAllMessageByTid", {
         id: localStorage.getItem('userid')
@@ -50,6 +61,15 @@ const Message = () => {
       }).then((res) => {
         console.log(res.data)
         setAllChatList(res.data)
+        setAlarmList(res.data.map(function(el, idx){
+
+          var returnObj = {}
+          returnObj["id"] = el.id;
+          returnObj["alarm"] = false;
+          console.log(returnObj);
+          return returnObj;
+
+        }));
       })
       axios.post("http://dolbomi.site/getAllMessageByPid", {
         id: localStorage.getItem('userid')
@@ -111,6 +131,24 @@ const Message = () => {
     setNowChatMsg(allChatMsg.filter(el => el.receiver_name === select.name || el.sender_name === select.name));
     /* 메시지 전송 폼 visible */
     setShowForm(true);
+    setAlarmList(alarmList.map(function(el, idx){
+      if(el.id == select.id){
+        var returnObj = {}
+        returnObj["id"] = el.id;
+        returnObj["alarm"] = false;
+        console.log(returnObj);
+        return returnObj;
+      }
+      else{
+        var returnObj = {}
+        returnObj["id"] = el.id;
+        returnObj["alarm"] = el.alarm;
+        console.log(returnObj);
+        return returnObj;
+
+      }
+
+    }));
   }
 
   const onInputChange = (e) => {
@@ -121,7 +159,7 @@ const Message = () => {
     e.preventDefault();
     e.target.reset();
     sendMsgOnServer();
-    setAllChatMsg((prevItems) => [...prevItems, {
+    let items = [...allChatMsg, {
       id: allChatMsg.length,
       sender_id: "T" + localStorage.getItem('userid'),
       sender_name: localStorage.getItem('username'),
@@ -129,7 +167,17 @@ const Message = () => {
       receiver_name: selected.name,
       text: inputMsg,
       date: moment(),
-    }]);
+    }]
+    setAllChatMsg((prevItems) => ([...prevItems, {
+      id: allChatMsg.length,
+      sender_id: "T" + localStorage.getItem('userid'),
+      sender_name: localStorage.getItem('username'),
+      receiver_id: "P" + selected.id.toString(),
+      receiver_name: selected.name,
+      text: inputMsg,
+      date: moment(),
+    }]));
+    setNowChatMsg(items.filter(el => el.receiver_name === selected.name || el.sender_name === selected.name));
     onReset();
   }
 
@@ -173,22 +221,47 @@ const Message = () => {
   // }, [socketConnected, ws]);
 
   useEffect(() => {
-    if (sendMsg) {
+    if (ws) {
       ws.onmessage = (evt) => {
+        console.log(evt.data);
+        console.log(typeof(evt.data));
         const data = JSON.parse(evt.data);
-        console.log(data);
-        setAllChatMsg((prevItems) => [...prevItems, evt.data]);
+        let items = [...allChatMsg, data]
+        setAllChatMsg((prevItems) => ([...prevItems, data]));
+        setAlarmList(alarmList.map(function(el, idx){
+          console.log(el.id);
+          console.log(data.sender_id.slice(1)-0);
+          if(el.id == data.sender_id.slice(1)-0 && el.id != selected.id){
+            var returnObj = {}
+            returnObj["id"] = el.id;
+            returnObj["alarm"] = true;
+            console.log(returnObj);
+            return returnObj;
+          }
+          else{
+            var returnObj = {}
+            returnObj["id"] = el.id;
+            returnObj["alarm"] = el.alarm;
+            console.log(returnObj);
+            return returnObj;
+
+          }
+
+        }));
+
+        setNowChatMsg(items.filter(el => el.receiver_name === selected.name || el.sender_name === selected.name));
       };
     }
-  }, [sendMsg]);
+  },);
 
   return (
     <div className="chat-wrapper">
       <div className="chat-container">
         <div className="chat-list">
           <div>채팅 목록</div>
-          <div>
-            {allChatList.map((el) =>
+          <div className='list-container'>
+            <div className='list-name'>
+            {allChatList.map((el, idx) =>
               <div>
                 <button onClick={() => {
                   showChatRoom(el);
@@ -197,6 +270,14 @@ const Message = () => {
                 </button>
               </div>
             )}
+            </div>
+            <div className='list-alarm'>
+            {alarmList.map((el, idx) =>
+              <div>
+                <div>{el.alarm == true ? "안람 옴" : "안옴"}</div>
+              </div>
+            )}
+            </div>
           </div>
         </div>
 
@@ -208,7 +289,7 @@ const Message = () => {
               <div className="message-container">
                 <div>
                   보낸사람: {el.sender_name}, 받는사람: {el.receiver_name},
-                  시간: {el.date}
+                  시간: {/*el.date*/}
                 </div>
                 <hr></hr>
                 <div>내용: {el.text}</div>
