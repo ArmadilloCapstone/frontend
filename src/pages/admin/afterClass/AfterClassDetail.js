@@ -34,7 +34,12 @@ function AfterClassDetail() {
   const deleteRecord = (productId) => {
     axios.delete(`http://dolbomi.site/after_school_class/${productId}`)
       .then((result) => {
-        loadAfterClassDetail();
+        if (response.data === "success") {
+          loadAfterClassDetail();
+        }
+        else {
+          alert(response.data);
+        }
       })
       .catch(() => {
         alert('오류가 발생했습니다!');
