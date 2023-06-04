@@ -20,7 +20,7 @@ function StudentScheduleAdd() {
                 console.log(reason);
             });
     }, []);
-
+    
     useEffect(() => {
         axios.post('http://localhost:80/student_schedule/AfterSchoolClassList') // url 모름.. 변경 필요할듯
             .then(function (response) {
