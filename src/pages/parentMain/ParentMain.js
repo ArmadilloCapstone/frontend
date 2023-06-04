@@ -26,10 +26,7 @@ export const ParentMain = () => {
         setOrigin_class(res.data.original_class_num + "반");
         setDol_class("돌봄" + res.data.class_id + "반");
         setBirth_date(res.data.birth_date);
-        var data = res.data.phone_num;
-        console.log(data)
-        console.log(data.substring(9, 13))
-        setPhone_num(data.substring(0, 3) + "-" + data.substring(3, 7) + "-" + data.substring(7, 11));
+        setPhone_num(res.data.phone_num);
       }).catch(function (reason) {
         console.log(reason);
       });
