@@ -26,17 +26,17 @@ const Message = () => {
   const [inputMsg, setInputMsg] = useState("")
   const [showForm, setShowForm] = useState(false);
 
-  const webSocketUrl = `ws://dolbomi.site/room`;
+  const webSocketUrl = `ws://localhost/room`;
 
   useEffect(() => {
     if (localStorage.getItem('useroption') == 1) {
-      axios.post("http://dolbomi.site/getAllParentByTid", {
+      axios.post("http://localhost/getAllParentByTid", {
         id: localStorage.getItem('userid')
       }).then((res) => {
         console.log(res.data)
         setAllChatList(res.data)
       })
-      axios.post("http://dolbomi.site/getAllMessageByTid", {
+      axios.post("http://localhost/getAllMessageByTid", {
         id: localStorage.getItem('userid')
       }).then((res) => {
         console.log(res.data)
@@ -45,13 +45,13 @@ const Message = () => {
     }
 
     if (localStorage.getItem('useroption') == 2) {
-      axios.post("http://dolbomi.site/getAllTeacherByPid", {
+      axios.post("http://localhost/getAllTeacherByPid", {
         id: localStorage.getItem('userid')
       }).then((res) => {
         console.log(res.data)
         setAllChatList(res.data)
       })
-      axios.post("http://dolbomi.site/getAllMessageByPid", {
+      axios.post("http://localhost/getAllMessageByPid", {
         id: localStorage.getItem('userid')
       }).then((res) => {
         console.log(res.data)
@@ -164,9 +164,9 @@ const Message = () => {
       setSendMsg(true);
     }
   }
-  useEffect(() => {
-    sendMsgOnServer();
-  }, [socketConnected, ws]);
+  // useEffect(() => {
+  //   sendMsgOnServer();
+  // }, [socketConnected, ws]);
 
   useEffect(() => {
     if (sendMsg) {

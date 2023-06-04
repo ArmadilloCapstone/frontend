@@ -175,7 +175,7 @@ const StudentState = () => {
 
   useEffect(() => {
     // 백엔드의 학생 명단 가져오는 부분
-    axios.post('http://localhost/getStudentInfo/' + localStorage.getItem('userid'))
+    axios.post('http://dolbomi.site/getStudentInfo/' + localStorage.getItem('userid'))
         .then(function(response){
           setStudent(response.data.map(function(el, idx){
 
@@ -204,7 +204,7 @@ const StudentState = () => {
 
       items[idx].state = result.destination.droppableId;
 
-      axios.post('http://localhost/changeStudentState', { id : items[idx].id, student_id : items[idx].student_id,name : items[idx].name, state : items[idx].state[3] - 0})
+      axios.post('http://dolbomi.site/changeStudentState', { id : items[idx].id, student_id : items[idx].student_id,name : items[idx].name, state : items[idx].state[3] - 0})
       .then(function(response){
         console.log(response);
       }).catch(function(reason) {
