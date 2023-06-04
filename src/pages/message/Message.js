@@ -10,8 +10,66 @@ const Message = () => {
   const [ws, setWs] = useState(null);
   const [sendMsg, setSendMsg] = useState(false);
 
-  const [allChatList, setAllChatList] = useState([]);
-  const [allChatMsg, setAllChatMsg] = useState([]);
+  const [allChatList, setAllChatList] = useState([
+    {
+    id: 1,
+    name: "부모1",
+    phone_num: "010-1111-1111",
+    gender: "여자",
+    birth_date: "700115",
+    child_id: 1,
+    class_id: 1,
+    // disable : Long
+},
+{
+    id: 2,
+    name: "부모2",
+    phone_num: "010-2222-2222",
+    gender: "남자",
+    birth_date: "690328",
+    child_id: 2,
+    class_id: 1,
+    // disable : Long
+}
+  ]);
+  const [allChatMsg, setAllChatMsg] = useState([
+    {
+        id: 1,
+        sender_id: "P01",
+        sender_name: "부모1",
+        receiver_id: "T01",
+        receiver_name: "교사1",
+        text: "보낸사람: 부모1, 받은사람: 교사1, 부모가 첫번째 보낸 메시지",
+        date: moment("2023-06-01 10:30:25")
+    },
+    {
+        id: 2,
+        sender_id: "P02",
+        sender_name: "부모2",
+        receiver_id: "T01",
+        receiver_name: "교사1",
+        text: "보낸사람: 부모2, 받은사람: 교사1, 부모가 첫번째 보낸 메시지",
+        date: moment("2023-06-01 11:30:25")
+    },
+    {
+        id: 3,
+        sender_id: "T01",
+        sender_name: "교사1",
+        receiver_id: "P01",
+        receiver_name: "부모1",
+        text: "보낸사람: 교사1, 받은사람: 부모1, 교사가 첫번째 보낸 메시지",
+        date: moment("2023-06-01 12:30:25")
+    },
+    {
+        id: 4,
+        sender_id: "T01",
+        sender_name: "교사1",
+        receiver_id: "P01",
+        receiver_name: "부모2",
+        text: "보낸사람: 교사1, 받은사람: 부모2, 교사가 첫번째 보낸 메시지",
+        date: moment("2023-06-01 13:30:25")
+    }
+  ]);
   const [selected, setSelected] = useState({
     id: 0,
     name: "",
@@ -59,54 +117,60 @@ const Message = () => {
       })
     }
 
-    if (!ws) {
-      var ws2 = new WebSocket(webSocketUrl);
-      ws2.onopen = () => {
-        console.log("connected to " + webSocketUrl);
-        if (localStorage.getItem('useroption') == 1) {
-          ws2.send(
-            JSON.stringify({
-              type: "setting",
-              id: "T" + localStorage.getItem('userid'),
-              name: localStorage.getItem('username')
-            }));
-        }
-        if (localStorage.getItem('useroption') == 2) {
-          ws2.send(
-            JSON.stringify({
-              type: "setting",
-              id: "P" + localStorage.getItem('userid'),
-              name: localStorage.getItem('username')
-            }));
-        }
-        setSocketConnected(true);
-      };
-      ws2.onclose = (error) => {
-        console.log("disconnect from " + webSocketUrl);
-        console.log(error);
-      };
-      ws2.onerror = (error) => {
-        console.log("connection error " + webSocketUrl);
-        console.log(error);
-      };
-      ws2.onmessage = (evt) => {
-        console.log(evt.data);
-      };
+  //   if (!ws) {
+  //     var ws2 = new WebSocket(webSocketUrl);
+  //     ws2.onopen = () => {
+  //       console.log("connected to " + webSocketUrl);
+  //       if (localStorage.getItem('useroption') == 1) {
+  //         ws2.send(
+  //           JSON.stringify({
+  //             type: "setting",
+  //             id: "T" + localStorage.getItem('userid'),
+  //             name: localStorage.getItem('username')
+  //           }));
+  //       }
+  //       if (localStorage.getItem('useroption') == 2) {
+  //         ws2.send(
+  //           JSON.stringify({
+  //             type: "setting",
+  //             id: "P" + localStorage.getItem('userid'),
+  //             name: localStorage.getItem('username')
+  //           }));
+  //       }
+  //       setSocketConnected(true);
+  //     };
+  //     ws2.onclose = (error) => {
+  //       console.log("disconnect from " + webSocketUrl);
+  //       console.log(error);
+  //     };
+  //     ws2.onerror = (error) => {
+  //       console.log("connection error " + webSocketUrl);
+  //       console.log(error);
+  //     };
+  //     ws2.onmessage = (evt) => {
+  //       console.log(evt.data);
+  //     };
 
-      setWs(ws2);
-    }
+  //     setWs(ws2);
+  //   }
 
-    return () => {
-      console.log("clean up");
-      if (ws) {
-        ws.close();
-      }
-    };
-  }, [ws]);
+  //   return () => {
+  //     console.log("clean up");
+  //     if (ws) {
+  //       ws.close();
+  //     }
+  //   };
+  // }, [ws]);
 
   const showChatRoom = (select) => {
     /* 선택된 상대와의 채팅룸 visible */
     setSelected(select);
+    // /* 선택된 상대와의 메시지 내역 불러옴 */
+    // setNowChatMsg(allChatMsg.filter(el => el.receiver_name === select.name || el.sender_name === select.name));
+    // /* 메시지 전송 폼 visible */
+    // setShowForm(true);
+  }
+  const showChatRoom2 = (select) => {
     /* 선택된 상대와의 메시지 내역 불러옴 */
     setNowChatMsg(allChatMsg.filter(el => el.receiver_name === select.name || el.sender_name === select.name));
     /* 메시지 전송 폼 visible */
@@ -130,7 +194,12 @@ const Message = () => {
       text: inputMsg,
       date: moment(),
     }]);
+    onReset();
   }
+
+  const onReset = () => {
+    setInputMsg("");
+};
 
   const sendMsgOnServer = () => {
     if (socketConnected && ws) {
@@ -160,13 +229,12 @@ const Message = () => {
           })
         );
       }
-
       setSendMsg(true);
     }
   }
-  useEffect(() => {
-    sendMsgOnServer();
-  }, [socketConnected, ws]);
+  // useEffect(() => {
+  //   sendMsgOnServer();
+  // }, [socketConnected, ws]);
 
   useEffect(() => {
     if (sendMsg) {
@@ -188,6 +256,7 @@ const Message = () => {
               <div>
                 <button onClick={() => {
                   showChatRoom(el);
+                  showChatRoom2(el);
                 }}>
                   <div>{el.name}</div>
                 </button>
@@ -219,7 +288,7 @@ const Message = () => {
                     value={inputMsg}
                     onChange={e => onInputChange(e)}
                   />
-                  <button type='submit'>전송</button>
+                  <button type='submit' disabled={inputMsg==="" ? true : false}>전송</button>
                 </form>
                 : null
             }
