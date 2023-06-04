@@ -27,11 +27,11 @@ const Message = () => {
   const [inputMsg, setInputMsg] = useState("")
   const [showForm, setShowForm] = useState(false);
 
-  const webSocketUrl = `ws://localhost/room`;
+  const webSocketUrl = `ws://dolbomi.site/room`;
 
   useEffect(() => {
     if (localStorage.getItem('useroption') == 1) {
-      axios.post("http://localhost/getAllParentByTid", {
+      axios.post("http://dolbomi.site/getAllParentByTid", {
         id: localStorage.getItem('userid')
       }).then((res) => {
         console.log(res.data)
@@ -47,7 +47,7 @@ const Message = () => {
 
         }));
       })
-      axios.post("http://localhost/getAllMessageByTid", {
+      axios.post("http://dolbomi.site/getAllMessageByTid", {
         id: localStorage.getItem('userid')
       }).then((res) => {
         console.log(res.data)
@@ -56,7 +56,7 @@ const Message = () => {
     }
 
     if (localStorage.getItem('useroption') == 2) {
-      axios.post("http://localhost/getAllTeacherByPid", {
+      axios.post("http://dolbomi.site/getAllTeacherByPid", {
         id: localStorage.getItem('userid')
       }).then((res) => {
         console.log(res.data)
@@ -71,7 +71,7 @@ const Message = () => {
 
         }));
       })
-      axios.post("http://localhost/getAllMessageByPid", {
+      axios.post("http://dolbomi.site/getAllMessageByPid", {
         id: localStorage.getItem('userid')
       }).then((res) => {
         console.log(res.data)
