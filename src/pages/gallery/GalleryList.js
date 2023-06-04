@@ -113,6 +113,9 @@ function GalleryList() {
         loadGalleryList("all", "all");
     }, []);
 
+    galleryList.sort((a, b) => b.id - a.id);
+    currentgalleryList.sort((a, b) => b.id - a.id); // 최신순 정렬
+
 
     const changeChoice = (event) => { setChoiceVal(event.target.value); }
     const changeSearch = (event) => { setSearchVal(event.target.value); }
@@ -171,7 +174,7 @@ function GalleryList() {
 					{
 						currentgalleryList.map(function (bbs, idx) {
 							return (
-								<TableRow obj={bbs} key={idx} cnt={idx + 1} />
+								<TableRow obj={bbs} key={idx} cnt={idx + 1} page={page}/>
 							)
 						})
 					}
@@ -201,7 +204,7 @@ function TableRow(props) {
     return (
         <tr class="BbList">
 
-            <th class="BbList">{props.cnt}</th>
+            <th class="BbList">{props.cnt + ( (props.page-1) * 10)}</th>
             {
                     <>
                         <td class="BbList" >
