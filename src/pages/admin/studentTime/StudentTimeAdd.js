@@ -49,6 +49,28 @@ function StudentTimeAdd() {
     const submitStudentTimeRecord = async (e) => {
         e.preventDefault();
         e.target.reset();
+
+        if (document.getElementById('entry_1').value === '' || document.getElementById('off_1').value === '') {
+            alert('월요일 입퇴실 시간을 제대로 입력하세요!')
+            return false;
+        }
+        if (document.getElementById('entry_2').value === '' || document.getElementById('off_2').value === '') {
+            alert('화요일 입퇴실 시간을 제대로 입력하세요!')
+            return false;
+        }
+        if (document.getElementById('entry_3').value === '' || document.getElementById('off_3').value === '') {
+            alert('수요일 입퇴실 시간을 제대로 입력하세요!')
+            return false;
+        }
+        if (document.getElementById('entry_4').value === '' || document.getElementById('off_4').value === '') {
+            alert('목요일 입퇴실 시간을 제대로 입력하세요!')
+            return false;
+        }
+        if (document.getElementById('entry_5').value === '' || document.getElementById('off_5').value === '') {
+            alert('금요일 입퇴실 시간을 제대로 입력하세요!')
+            return false;
+        }
+
         await axios.post("http://localhost:80/student_time_submit", user)
             .then(function (response) {
                 console.log(response.data);
@@ -110,55 +132,55 @@ function StudentTimeAdd() {
                     <div class="form_wrap full">
                         <div class="form_item">
                             <label>월요일(입실시간)</label>
-                            <input type="time" name="entry_1" value={entry_1} onChange={e => onInputChange(e)} placeholder="월요일 입실 시간을 입력하세요." required="" />
+                            <input type="time" id="entry_1" name="entry_1" value={entry_1} onChange={e => onInputChange(e)} placeholder="월요일 입실 시간을 입력하세요." required="" />
                         </div>
                         <div class="form_item">
                             <label>월요일(퇴실시간)</label>
-                            <input type="time" name="off_1" value={off_1} onChange={e => onInputChange(e)} placeholder="월요일 퇴실 시간을 입력하세요." required="" />
+                            <input type="time" id="off_1" name="off_1" value={off_1} onChange={e => onInputChange(e)} placeholder="월요일 퇴실 시간을 입력하세요." required="" />
                         </div>
                     </div>
 
                     <div class="form_wrap full">
                         <div class="form_item">
                             <label>화요일(입실시간)</label>
-                            <input type="time" name="entry_2" value={entry_2} onChange={e => onInputChange(e)} placeholder="화요일 입실 시간을 입력하세요." required="" />
+                            <input type="time" id="entry_2" name="entry_2" value={entry_2} onChange={e => onInputChange(e)} placeholder="화요일 입실 시간을 입력하세요." required="" />
                         </div>
                         <div class="form_item">
                             <label>화요일(퇴실시간)</label>
-                            <input type="time" name="off_2" value={off_2} onChange={e => onInputChange(e)} placeholder="화요일 퇴실 시간을 입력하세요." required="" />
+                            <input type="time" id="off_2" name="off_2" value={off_2} onChange={e => onInputChange(e)} placeholder="화요일 퇴실 시간을 입력하세요." required="" />
                         </div>
                     </div>
 
                     <div class="form_wrap full">
                         <div class="form_item">
                             <label>수요일(입실시간)</label>
-                            <input type="time" name="entry_3" value={entry_3} onChange={e => onInputChange(e)} placeholder="수요일 입실 시간을 입력하세요." required="" />
+                            <input type="time" id="entry_3" name="entry_3" value={entry_3} onChange={e => onInputChange(e)} placeholder="수요일 입실 시간을 입력하세요." required="" />
                         </div>
                         <div class="form_item">
                             <label>수요일(퇴실시간)</label>
-                            <input type="time" name="off_3" value={off_3} onChange={e => onInputChange(e)} placeholder="수요일 퇴실 시간을 입력하세요." required="" />
+                            <input type="time" id="off_3" name="off_3" value={off_3} onChange={e => onInputChange(e)} placeholder="수요일 퇴실 시간을 입력하세요." required="" />
                         </div>
                     </div>
 
                     <div class="form_wrap full">
                         <div class="form_item">
                             <label>목요일(입실시간)</label>
-                            <input type="time" name="entry_4" value={entry_4} onChange={e => onInputChange(e)} placeholder="목요일 입실 시간을 입력하세요." required="" />
+                            <input type="time" id="entry_4" name="entry_4" value={entry_4} onChange={e => onInputChange(e)} placeholder="목요일 입실 시간을 입력하세요." required="" />
                         </div>
                         <div class="form_item">
                             <label>목요일(퇴실시간)</label>
-                            <input type="time" name="off_4" value={off_4} onChange={e => onInputChange(e)} placeholder="목요일 퇴실 시간을 입력하세요." required="" />
+                            <input type="time" id="off_4" name="off_4" value={off_4} onChange={e => onInputChange(e)} placeholder="목요일 퇴실 시간을 입력하세요." required="" />
                         </div>
                     </div>
 
                     <div class="form_wrap full">
                         <div class="form_item">
                             <label>금요일(입실시간)</label>
-                            <input type="time" name="entry_5" value={entry_5} onChange={e => onInputChange(e)} placeholder="금요일 입실 시간을 입력하세요." required="" />
+                            <input type="time" id="entry_5" name="entry_5" value={entry_5} onChange={e => onInputChange(e)} placeholder="금요일 입실 시간을 입력하세요." required="" />
                         </div>
                         <div class="form_item">
                             <label>금요일(퇴실시간)</label>
-                            <input type="time" name="off_5" value={off_5} onChange={e => onInputChange(e)} placeholder="금요일 퇴실 시간을 입력하세요." required="" />
+                            <input type="time" id="off_5" name="off_5" value={off_5} onChange={e => onInputChange(e)} placeholder="금요일 퇴실 시간을 입력하세요." required="" />
                         </div>
                     </div>
                     <div style={{ width: "100%", textAlign: "center" }}>

@@ -70,6 +70,21 @@ function ParentAdd() {
   const submitParentRecord = async (e) => {
     e.preventDefault();
     e.target.reset();
+
+    if (document.getElementById('name').value === '') {
+      alert('학부모 이름을 입력하세요!')
+      return false;
+    }
+    if (document.getElementById('phone_num1').value === '' || document.getElementById('phone_num2').value === ''
+    || document.getElementById('phone_num3').value === '') {
+      alert('연락처를 입력하세요!')
+      return false;
+    }
+    if (document.getElementById('birth_date').value === '') {
+      alert('생년월일을 입력하세요!')
+      return false;
+    }
+
     const postUser = changeUserForm(user);
     await axios.post('http://localhost:80/parent_submit', postUser)
       .then(function (response) {
@@ -107,7 +122,7 @@ function ParentAdd() {
           {/* <div class="form_wrap onlyone"> */}
           <div class="form_item">
             <label>학부모 이름</label>
-            <input type="text" name="name" value={name} onChange={e => onInputChange(e)} placeholder="학부모 이름을 입력하세요." required="" />
+            <input type="text" id="name" name="name" value={name} onChange={e => onInputChange(e)} placeholder="학부모 이름을 입력하세요." required="" />
           </div>
           {/* </div> */}
 
@@ -115,15 +130,15 @@ function ParentAdd() {
           <div class="form_wrap full">
             <div class="form_item">
               <label></label>
-              <input type="text" name="phone_num1" value={phone_num1} onChange={e => onInputChange(e)} placeholder="연락처를 입력하세요." required="" />
+              <input type="text" id="phone_num1" name="phone_num1" value={phone_num1} onChange={e => onInputChange(e)} placeholder="연락처를 입력하세요." required="" />
             </div>
             <div class="form_item">
               <label></label>
-              <input type="text" name="phone_num2" value={phone_num2} onChange={e => onInputChange(e)} placeholder="연락처를 입력하세요." required="" />
+              <input type="text" id="phone_num2" name="phone_num2" value={phone_num2} onChange={e => onInputChange(e)} placeholder="연락처를 입력하세요." required="" />
             </div>
             <div class="form_item">
               <label></label>
-              <input type="text" name="phone_num3" value={phone_num3} onChange={e => onInputChange(e)} placeholder="연락처를 입력하세요." required="" />
+              <input type="text" id="phone_num3" name="phone_num3" value={phone_num3} onChange={e => onInputChange(e)} placeholder="연락처를 입력하세요." required="" />
             </div>
           </div>
 
@@ -147,7 +162,7 @@ function ParentAdd() {
           <div class="form_wrap" select_box>
             <div class="form_item">
               <label>생년월일</label>
-              <input type="date" max="9999-12-31" name="birth_date" value={birth_date} onChange={e => onInputChange(e)} placeholder="생년월일을 입력하세요." required="" />
+              <input type="date" max="2023-06-08" id="birth_date" name="birth_date" value={birth_date} onChange={e => onInputChange(e)} placeholder="생년월일을 입력하세요." required="" />
             </div>
           </div>
 
