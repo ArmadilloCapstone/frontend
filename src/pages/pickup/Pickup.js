@@ -11,7 +11,7 @@ const Pickup = () => {
 
   const handleClick = () => {
 
-    axios.post("http://dolbomi.site/requestParent", {
+    axios.post("http://localhost:80/requestParent", {
 
       pickupManId : user_id-0
     }).then((res)=>{

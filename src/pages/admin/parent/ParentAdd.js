@@ -8,7 +8,7 @@ function ParentAdd() {
   const [student, setStudent] = useState([]);
 
   useEffect(() => {
-    axios.post('http://dolbomi.site/parent/studentList') // url 모름.. 변경 필요할듯
+    axios.post('http://localhost:80/parent/studentList') // url 모름.. 변경 필요할듯
       .then(function (response) {
         console.log(response.data);
         setStudent(response.data.map(function (el, idx) {
@@ -62,7 +62,7 @@ function ParentAdd() {
     e.preventDefault();
     e.target.reset();
     const postUser = changeUserForm(user);
-    await axios.post('http://dolbomi.site/parent_submit', postUser)
+    await axios.post('http://localhost:80/parent_submit', postUser)
       .then(function (response) {
         console.log(response.data);
         if (response.data === "success") {

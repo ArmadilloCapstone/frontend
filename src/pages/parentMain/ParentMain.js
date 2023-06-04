@@ -18,7 +18,7 @@ export const ParentMain = () => {
 
   useEffect(() => {
     // 백엔드의 학생 명단 가져오는 부분
-    axios.post('http://dolbomi.site/getStudent/' + localStorage.getItem('userid'))
+    axios.post('http://localhost:80/getStudent/' + localStorage.getItem('userid'))
       .then(function (res) {
         console.log(res);
         setStudent(res.data.name);
@@ -36,7 +36,7 @@ export const ParentMain = () => {
 
     setInterval(() => {
       
-      axios.post('http://dolbomi.site/sendStudentStateToParent/' + localStorage.getItem('userid'))
+      axios.post('http://localhost:80/sendStudentStateToParent/' + localStorage.getItem('userid'))
         .then(function (res) {
           console.log(res);
           setStudent_state(res.data.state);
