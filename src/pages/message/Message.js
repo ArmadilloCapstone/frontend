@@ -31,7 +31,7 @@ const Message = () => {
 
   useEffect(() => {
     if (localStorage.getItem('useroption') == 1) {
-      axios.post("http://localhost:80/getAllParentByTid", {
+      axios.post("http://dolbomi.site/getAllParentByTid", {
         id: localStorage.getItem('userid')
       }).then((res) => {
         console.log(res.data)
@@ -47,7 +47,7 @@ const Message = () => {
 
         }));
       })
-      axios.post("http://localhost:80/getAllMessageByTid", {
+      axios.post("http://dolbomi.site/getAllMessageByTid", {
         id: localStorage.getItem('userid')
       }).then((res) => {
         console.log(res.data)
@@ -56,7 +56,7 @@ const Message = () => {
     }
 
     if (localStorage.getItem('useroption') == 2) {
-      axios.post("http://localhost:80/getAllTeacherByPid", {
+      axios.post("http://dolbomi.site/getAllTeacherByPid", {
         id: localStorage.getItem('userid')
       }).then((res) => {
         console.log(res.data)
@@ -71,7 +71,7 @@ const Message = () => {
 
         }));
       })
-      axios.post("http://localhost:80/getAllMessageByPid", {
+      axios.post("http://dolbomi.site/getAllMessageByPid", {
         id: localStorage.getItem('userid')
       }).then((res) => {
         console.log(res.data)

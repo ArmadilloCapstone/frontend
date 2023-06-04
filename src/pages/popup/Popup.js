@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import "../../../public/alarm.wav"
+import "./alarm.wav"
 
 const PopupContainer = ({ children }) => {
   const [popup, setPopup] = useState(null);
@@ -38,11 +38,6 @@ const Popup = () => {
   const [showPopup, setShowPopup] = useState(false);
   const user_option = useSelector((state => state.user_option))
 
-  const handleClickButton = useCallback(() => {
-    var audio = new Audio('public/alarm.wav controls');
-    audio.play();
-  }, []);
-
   const clickPopup = () =>{
     setShowPopup(false);
   }
@@ -57,7 +52,7 @@ const Popup = () => {
       setTimeout(() => {
         console.log("pickup");
         if(user_option == 1){
-          axios.post("http://localhost:80/sendPickupFormToTeacher/" + localStorage.getItem('userid')).then((res)=>{
+          axios.post("http://dolbomi.site/sendPickupFormToTeacher/" + localStorage.getItem('userid')).then((res)=>{
             if(!!res.data){
               setStudents(res.data.map(function(el){
                 console.log(el);
@@ -70,7 +65,6 @@ const Popup = () => {
                 return returnObj;
               }));
               setShowPopup(true);
-              handleClickButton();
               console.log("showPopup is true")
             }
           
@@ -79,7 +73,7 @@ const Popup = () => {
         setInterval(() => {
           console.log("pickup");
           if(user_option == 1){
-            axios.post("http://localhost:80/sendPickupFormToTeacher/" + localStorage.getItem('userid')).then((res)=>{
+            axios.post("http://dolbomi.site/sendPickupFormToTeacher/" + localStorage.getItem('userid')).then((res)=>{
               if(!!res.data){
                 setStudents(res.data.map(function(el){
                   console.log(el);

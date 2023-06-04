@@ -47,7 +47,7 @@ function AfterClassAdd() {
             return false;
         }
 
-        await axios.post('http://localhost:80/after_school_class_submit', user)
+        await axios.post('http://dolbomi.site/after_school_class_submit', user)
             .then(function (response) {
                 console.log(response.data);
                 if (response.data === "success") {

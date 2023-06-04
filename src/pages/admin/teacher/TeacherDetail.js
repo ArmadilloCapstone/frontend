@@ -7,7 +7,7 @@ function TeacherDetail() {
 
   // On Page load display all records 
   const loadTeacherDetail = async () => {
-    await axios.post('http://localhost:80/teacher')
+    await axios.post('http://dolbomi.site/teacher')
       .then(function (response) {
         setRecord(response.data.map(function (el, idx) {
           console.log(el);
@@ -33,7 +33,7 @@ function TeacherDetail() {
 
   // Delete Teacher Record
   const deleteRecord = (productId) => {
-    axios.delete(`http://localhost:80/teacher/${productId}`)
+    axios.delete(`http://dolbomi.site/teacher/${productId}`)
       .then((result) => {
         loadTeacherDetail();
       })

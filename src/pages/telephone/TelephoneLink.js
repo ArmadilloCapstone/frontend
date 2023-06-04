@@ -11,12 +11,11 @@ function TelephoneLink() {
 
   // 주요 연락처 List 가져오기
   useEffect(() => {
-    axios.post('http://localhost:80/callList', {
-      parent_id: localStorage.getItem('userid')
-    })
+    console.log(localStorage.getItem('userid'));
+    axios.post('http://dolbomi.site/callList/' + localStorage.getItem('userid'))
       .then(function (response) {
         console.log(response.data);
-        setCallList(response.data.map(function (el) {
+        setCallList(response.data["teacherList"].map(function (el) {
           var returnObj = {}
           returnObj['name'] = el.name;
           returnObj['phone_num'] = el.phone_num;

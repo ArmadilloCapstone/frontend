@@ -7,7 +7,7 @@ function ParentDetail() {
 
   // On Page load display all records 
   const loadParentDetail = async () => {
-    await axios.post('http://localhost:80/parent')
+    await axios.post('http://dolbomi.site/parent')
       .then(function (response) {
         setRecord(response.data.map(function (el, idx) {
           console.log(el);
@@ -34,7 +34,7 @@ function ParentDetail() {
 
   // Delete Parent Record
   const deleteRecord = (productId) => {
-    axios.delete(`http://localhost:80/parent/${productId}`)
+    axios.delete(`http://dolbomi.site/parent/${productId}`)
       .then((result) => {
         loadParentDetail();
       })

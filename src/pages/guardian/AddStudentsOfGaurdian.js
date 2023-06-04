@@ -56,7 +56,7 @@ export default function AddStudentsOfGaurdian(props) {
 
     // 기존의 student List 가져오기
     const loadStudentList = async () => {
-        await axios.post('http://localhost:80/guardianManage/studentList', edited)
+        await axios.post('http://dolbomi.site/guardianManage/studentList', edited)
             .then(function (response) {
                 setStudents(response.data.map(function (el, idx) {
                     var returnObj = {}
@@ -98,7 +98,7 @@ export default function AddStudentsOfGaurdian(props) {
         e.preventDefault();
         // e.target.reset();
 
-        await axios.post("http://localhost:80/guardianManage/student_submit", user);
+        await axios.post("http://dolbomi.site/guardianManage/student_submit", user);
         console.log(edited);
         console.log(checkedList);
         alert('추가되었습니다!');

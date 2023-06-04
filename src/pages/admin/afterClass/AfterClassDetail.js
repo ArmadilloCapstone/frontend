@@ -7,7 +7,7 @@ function AfterClassDetail() {
 
   // On Page load display all records 
   const loadAfterClassDetail = async () => {
-    await axios.post('http://localhost:80/after_school_class')
+    await axios.post('http://dolbomi.site/after_school_class')
         .then(function(response){
           setRecord(response.data.map(function(el, idx){
             console.log(el);
@@ -32,7 +32,7 @@ function AfterClassDetail() {
 
   // Delete After Class Record
   const deleteRecord = (productId) => {
-    axios.delete(`http://localhost:80/after_school_class/${productId}`)
+    axios.delete(`http://dolbomi.site/after_school_class/${productId}`)
       .then((response) => {
         if (response.data === "success") {
           loadAfterClassDetail();
