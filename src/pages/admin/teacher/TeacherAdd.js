@@ -8,7 +8,7 @@ function TeacherAdd() {
     const [dolbom, setDolbom] = useState([]);
 
     useEffect(() => {
-        axios.post('http://localhost/teacher/dolbom_classList') // url 모름.. 변경 필요할듯
+        axios.post('http://dolbomi.site/teacher/dolbom_classList') // url 모름.. 변경 필요할듯
             .then(function (response) {
                 console.log(response.data);
                 setDolbom(response.data.map(function (el, idx) {
@@ -73,7 +73,7 @@ function TeacherAdd() {
         e.preventDefault();
         e.target.reset();
         const postUser = changeUserForm(user);
-        await axios.post('http://localhost/teacher_submit', postUser)
+        await axios.post('http://dolbomi.site/teacher_submit', postUser)
             .then(function (response) {
                 console.log(response.data);
                 if (response.data === "success") {
