@@ -224,9 +224,9 @@ const Message = () => {
     }
   }
 
-  useEffect(() => {
-    sendMsgOnServer();
-  }, [socketConnected, ws]);
+  // useEffect(() => {
+  //   sendMsgOnServer();
+  // }, [socketConnected, ws]);
 
   useEffect(() => {
     if (sendMsg) {

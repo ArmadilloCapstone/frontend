@@ -10,7 +10,7 @@ function StudentAdd() {
   const [original, setOriginal] = useState([]);
 
   useEffect(() => {
-    axios.post('http://dolbomi.site/student/dolbom_classList') // url 모름.. 변경 필요할듯
+    axios.post('http://localhost/student/dolbom_classList') // url 모름.. 변경 필요할듯
       .then(function (response) {
         console.log(response.data);
         setDolbom(response.data.map(function (el, idx) {
@@ -24,7 +24,7 @@ function StudentAdd() {
   }, []);
 
   useEffect(() => {
-    axios.post('http://dolbomi.site/student_original_class') // url 모름.. 변경 필요할듯
+    axios.post('http://localhost/student_original_class') // url 모름.. 변경 필요할듯
       .then(function (response) {
         console.log(response.data);
         setOriginal(response.data.map(function (el, idx) {
@@ -54,7 +54,18 @@ function StudentAdd() {
   //  Object Destructuring 
   const { name, grade, phone_num1, phone_num2, phone_num3, gender, class_name, original_class_num, birth_date } = user;
   const onInputChange = e => {
-    setUser({ ...user, [e.target.name]: e.target.value });
+    if(e.target.name == "phone_num1"  && !(e.target.value >= 0 && e.target.value <= 999)){
+        alert("올바른 숫자를 입력해 주십시오");
+    }
+    else if(e.target.name == "phone_num2"  && !(e.target.value >= 0 && e.target.value <= 9999)){
+        alert("올바른 숫자를 입력해 주십시오");
+    }
+    else if(e.target.name == "phone_num3"  && !(e.target.value >= 0 && e.target.value <= 9999)){
+        alert("올바른 숫자를 입력해 주십시오");
+    }
+    else{
+      setUser({ ...user, [e.target.name]: e.target.value });
+    }
   };
   function onInputChange_Select(e, selectIdName) {
     var selectInput = document.getElementById(selectIdName);
@@ -81,7 +92,7 @@ function StudentAdd() {
     e.preventDefault();
     e.target.reset();
     const postUser = changeUserForm(user);
-    await axios.post('http://dolbomi.site/student_submit', postUser)
+    await axios.post('http://localhost/student_submit', postUser)
       .then(function (response) {
         console.log(response.data);
         if (response.data === "success") {

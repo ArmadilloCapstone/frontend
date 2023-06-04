@@ -31,7 +31,7 @@ export const SignupForm = (props) => {
   const register = async (e) => {
     e.preventDefault();
     e.target.reset();
-    axios.post("http://dolbomi.site/signup", {
+    axios.post("http://localhost/signup", {
       "name" : name,
       "phone_num" : phone_num,
       "user_id" : id,

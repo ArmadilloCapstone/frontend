@@ -69,7 +69,7 @@ function GalleryWrite() {
 			alert("사진이 없습니다.")
 		}
 		else{
-			axios.post("http://dolbomi.site/GalleryList/create/file", formData, {
+			axios.post("http://localhost/GalleryList/create/file", formData, {
 			  headers: {
 				"Content-Type": "multipart/form-data",
 			  }

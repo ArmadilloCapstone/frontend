@@ -74,7 +74,7 @@ function BbsWrite() {
 		  formData.append("files", selectedFiles[i]);
 		}
 		if(selectedFiles.length == 0){
-			axios.post("http://dolbomi.site/BbsList/create/nofile", formData, {
+			axios.post("http://localhost/BbsList/create/nofile", formData, {
 			  headers: {
 				"Content-Type": "multipart/form-data",
 			  }
@@ -92,7 +92,7 @@ function BbsWrite() {
 
 		}
 		else{
-			axios.post("http://dolbomi.site/BbsList/create/file", formData, {
+			axios.post("http://localhost/BbsList/create/file", formData, {
 			  headers: {
 				"Content-Type": "multipart/form-data",
 			  }

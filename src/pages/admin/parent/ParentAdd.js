@@ -8,7 +8,7 @@ function ParentAdd() {
   const [student, setStudent] = useState([]);
 
   useEffect(() => {
-    axios.post('http://dolbomi.site/parent/studentList') // url 모름.. 변경 필요할듯
+    axios.post('http://localhost/parent/studentList') // url 모름.. 변경 필요할듯
       .then(function (response) {
         console.log(response.data);
         setStudent(response.data.map(function (el, idx) {
@@ -38,7 +38,18 @@ function ParentAdd() {
   const { name, phone_num1, phone_num2, phone_num3, gender, birth_date, child_name } = user;
 
   const onInputChange = e => {
-    setUser({ ...user, [e.target.name]: e.target.value });
+    if(e.target.name == "phone_num1"  && !(e.target.value >= 0 && e.target.value <= 999)){
+        alert("올바른 숫자를 입력해 주십시오");
+    }
+    else if(e.target.name == "phone_num2"  && !(e.target.value >= 0 && e.target.value <= 9999)){
+        alert("올바른 숫자를 입력해 주십시오");
+    }
+    else if(e.target.name == "phone_num3"  && !(e.target.value >= 0 && e.target.value <= 9999)){
+        alert("올바른 숫자를 입력해 주십시오");
+    }
+    else{
+      setUser({ ...user, [e.target.name]: e.target.value });
+    }
   };
   function onInputChange_Select(e, selectIdName) {
     var selectInput = document.getElementById(selectIdName);
@@ -62,7 +73,7 @@ function ParentAdd() {
     e.preventDefault();
     e.target.reset();
     const postUser = changeUserForm(user);
-    await axios.post('http://dolbomi.site/parent_submit', postUser)
+    await axios.post('http://localhost/parent_submit', postUser)
       .then(function (response) {
         console.log(response.data);
         if (response.data === "success") {

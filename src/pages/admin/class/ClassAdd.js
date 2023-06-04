@@ -18,7 +18,18 @@ function ClassAdd() {
 
 
     const onInputChange = e => {
-        setUser({ ...user, [e.target.name]: e.target.value });
+        if(e.target.name == "class_num"  && e.target.value < 1){
+            alert("양수 값만 입력할 수 있습니다.");
+        }
+        else if(e.target.name == "year"  && e.target.value < 1){
+            alert("양수 값만 입력할 수 있습니다.");
+        }
+        else if(e.target.name == "seme"  && (e.target.value != 1 && e.target.value != 2)){
+            alert("1과 2만 입력이 가능합니다..");
+        }
+        else{
+            setUser({ ...user, [e.target.name]: e.target.value });
+        }
     };
 
     function changeUserForm(data) {
@@ -36,7 +47,7 @@ function ClassAdd() {
         e.target.reset();
         const postUser = changeUserForm(user);
         console.log(postUser);
-        await axios.post('http://dolbomi.site/dolbom_class_submit', postUser)
+        await axios.post('http://localhost/dolbom_class_submit', postUser)
             .then(function (response) {
                 console.log(response.data);
                 if (response.data === "success") {
@@ -76,14 +87,14 @@ function ClassAdd() {
 
                     <div class="form_item">
                         <label>학급 번호</label>
-                        <input type="text" name="class_num" value={class_num} onChange={e => onInputChange(e)} placeholder="학급 번호를 입력하세요." required="" />
+                        <input type="number" name="class_num" value={class_num} onChange={e => onInputChange(e)} placeholder="학급 번호를 입력하세요." required="" />
                     </div>
 
                     <label>년도-학기</label>
                     <div class="form_wrap full">
                         <div class="form_item">
                             <label></label>
-                            <input type="text" name="year" value={year} onChange={e => onInputChange(e)} placeholder="년도를 입력하세요." required="" />
+                            <input type="number" name="year" value={year} onChange={e => onInputChange(e)} placeholder="년도를 입력하세요." required="" />
                         </div>
                         <div class="form_item">
                             <label></label>
