@@ -6,14 +6,13 @@ function StudentScheduleAdd() {
     const [student, setStudent] = useState([]);
     const [afterClass, setAfterClass] = useState([]);
 
-
     useEffect(() => {
         axios.post('http://dolbomi.site/student_schedule/studentList') // url 모름.. 변경 필요할듯
             .then(function (response) {
                 console.log(response.data);
                 setStudent(response.data.map(function (el, idx) {
                     var returnObj = {}
-                    returnObj['student_id'] = el.student_id;
+                    returnObj['student_id'] = el.id;
                     returnObj['name'] = el.name;
                     return returnObj;
                 }));
@@ -28,7 +27,7 @@ function StudentScheduleAdd() {
                 console.log(response.data);
                 setAfterClass(response.data.map(function (el, idx) {
                     var returnObj = {}
-                    returnObj['class_id'] = el.class_id;
+                    returnObj['class_id'] = el.id;
                     returnObj['class_name'] = el.class_name;
                     returnObj['day'] = el.day;
                     return returnObj;
@@ -39,18 +38,14 @@ function StudentScheduleAdd() {
     }, []);
 
     const [user, setUser] = useState({
-        id: 0,
-        name: "",
-        class_name: "",
         student_id: null,
         class_id: null,
-        day: ""
     });
 
     //  Object Destructuring 
-    const { student_id, class_id } = user;
     const onInputChange = e => {
         setUser({ ...user, [e.target.name]: e.target.value });
+        console.log(user)
     };
     function onInputChange_Select(e, selectIdName) {
         var selectInput = document.getElementById(selectIdName);
@@ -80,13 +75,12 @@ function StudentScheduleAdd() {
 
     const onReset = () => {
         setUser({
-            id: 0,
-            name: "",
-            class_name: "",
             student_id: null,
             class_id: null
         });
     };
+
+    console.log(student);
 
     return (
         <div class="wrapper">
@@ -99,11 +93,10 @@ function StudentScheduleAdd() {
                     <div class="form_wrap" select_box>
                         <div class="form_item">
                             <label class="select">학생 이름</label>
-                            <select id="student_id" name="student_id" onChange={e => onInputChange_Select(e, "student_id")} required>
+                            <select name="student_id" onChange={onInputChange} required>
                                 <option value="" selected>학생 이름을 선택하세요.</option>
                                 {student.map((option) => (
                                     <option
-                                        key={option.student_id}
                                         value={option.student_id}
                                     >
                                         {option.name}
@@ -116,11 +109,10 @@ function StudentScheduleAdd() {
                     <div class="form_wrap" select_box>
                         <div class="form_item">
                             <label class="select">방과후수업 이름</label>
-                            <select id="class_id" name="class_id" value={class_id} onChange={e => onInputChange_Select(e, "class_id")} required>
+                            <select name="class_id" onChange={onInputChange} required>
                                 <option value="" selected>방과후수업 이름을 선택하세요.</option>
                                 {afterClass.map((option) => (
                                     <option
-                                        key={option.class_id}
                                         value={option.class_id}
                                     >
                                         {option.class_name}{'('}{option.day}{')'}
