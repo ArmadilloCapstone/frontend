@@ -33,6 +33,20 @@ function AfterClassAdd() {
     const submitAfterClassRecord = async (e) => {
         e.preventDefault();
         e.target.reset();
+
+        if(document.getElementById('class_name').value === ''){
+            alert('방과후수업을 입력하세요!')
+            return false;
+        }
+        if(document.getElementById('start_time').value === ''){
+            alert('시작 시간을 입력하세요!')
+            return false;
+        }
+        if(document.getElementById('end_time').value === ''){
+            alert('종료 시간을 입력하세요!')
+            return false;
+        }
+
         await axios.post('http://dolbomi.site/after_school_class_submit', user)
             .then(function (response) {
                 console.log(response.data);
@@ -65,17 +79,17 @@ function AfterClassAdd() {
 
                     <div class="form_item">
                         <label>방과후수업 이름</label>
-                        <input type="text" name="class_name" value={class_name} onChange={e => onInputChange(e)} placeholder="방과후수업 이름을 입력하세요." required="" />
+                        <input type="text" id="class_name" name="class_name" value={class_name} onChange={e => onInputChange(e)} placeholder="방과후수업 이름을 입력하세요." required="" />
                     </div>
 
                     <div class="form_wrap full">
                         <div class="form_item">
                             <label>시작 시간</label>
-                            <input type="time" name="start_time" value={start_time} onChange={e => onInputChange(e)} placeholder="시작 시간을 선택하세요." required="" />
+                            <input type="time" id="start_time" name="start_time" value={start_time} onChange={e => onInputChange(e)} placeholder="시작 시간을 선택하세요." required="" />
                         </div>
                         <div class="form_item">
                             <label>종료 시간</label>
-                            <input type="time" name="end_time" value={end_time} onChange={e => onInputChange(e)} placeholder="종료 시간을 선택하세요." required="" />
+                            <input type="time" id="end_time" name="end_time" value={end_time} onChange={e => onInputChange(e)} placeholder="종료 시간을 선택하세요." required="" />
                         </div>
                     </div>
 

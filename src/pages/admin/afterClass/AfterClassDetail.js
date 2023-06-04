@@ -33,7 +33,7 @@ function AfterClassDetail() {
   // Delete After Class Record
   const deleteRecord = (productId) => {
     axios.delete(`http://dolbomi.site/after_school_class/${productId}`)
-      .then((result) => {
+      .then((response) => {
         if (response.data === "success") {
           loadAfterClassDetail();
         }

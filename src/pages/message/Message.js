@@ -163,6 +163,7 @@ const Message = () => {
 
   const showChatRoom = (select) => {
     setSelected(select);
+    loadMsgOnChatRoom();
   }
 
   const loadMsgOnChatRoom = () => {
@@ -170,9 +171,9 @@ const Message = () => {
     setNowChatMsg(filterMsg);
   }
   
-  // useCallback(() => {
-  //   loadMsgOnChatRoom();
-  // }, [...nowChatMsg]);
+  useCallback(() => {
+    loadMsgOnChatRoom();
+  }, [...nowChatMsg]);
 
   const showChattSubmitForm = () => {
     setShowForm(true);
