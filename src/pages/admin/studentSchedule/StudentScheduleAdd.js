@@ -99,7 +99,7 @@ function StudentScheduleAdd() {
                     <div class="form_wrap" select_box>
                         <div class="form_item">
                             <label class="select">학생 이름</label>
-                            <select id="name" name="student_id" onChange={e => onInputChange_Select(e, "student_id")} required>
+                            <select id="student_id" name="student_id" onChange={e => onInputChange_Select(e, "student_id")} required>
                                 <option value="" selected>학생 이름을 선택하세요.</option>
                                 {student.map((option) => (
                                     <option
@@ -116,7 +116,7 @@ function StudentScheduleAdd() {
                     <div class="form_wrap" select_box>
                         <div class="form_item">
                             <label class="select">방과후수업 이름</label>
-                            <select id="class_name" name="class_id" onChange={e => onInputChange_Select(e, "class_id")} required>
+                            <select id="class_id" name="class_id" value={class_id} onChange={e => onInputChange_Select(e, "class_id")} required>
                                 <option value="" selected>방과후수업 이름을 선택하세요.</option>
                                 {afterClass.map((option) => (
                                     <option

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import axios from "axios";
 import { Link } from 'react-router-dom';
@@ -10,8 +10,65 @@ const Message = () => {
   const [ws, setWs] = useState(null);
   const [sendMsg, setSendMsg] = useState(false);
 
-  const [allChatList, setAllChatList] = useState([]);
-  const [allChatMsg, setAllChatMsg] = useState([]);
+  const [allChatList, setAllChatList] = useState([
+    {id: 1,
+    name: "부모1",
+    phone_num: "010-1111-1111",
+    gender: "여자",
+    birth_date: "700115",
+    child_id: 1,
+    class_id: 1,
+    // disable : Long
+},
+{
+    id: 2,
+    name: "부모2",
+    phone_num: "010-2222-2222",
+    gender: "남자",
+    birth_date: "690328",
+    child_id: 2,
+    class_id: 1,
+    // disable : Long
+}
+  ]);
+  const [allChatMsg, setAllChatMsg] = useState([
+    {
+      id: 1,
+      sender_id: "P01",
+      sender_name: "부모1",
+      receiver_id: "T01",
+      receiver_name: "교사1",
+      text: "보낸사람: 부모1, 받은사람: 교사1, 부모가 첫번째 보낸 메시지",
+      date: moment("2023-06-01 10:30:25")
+  },
+  {
+      id: 2,
+      sender_id: "P02",
+      sender_name: "부모2",
+      receiver_id: "T01",
+      receiver_name: "교사1",
+      text: "보낸사람: 부모2, 받은사람: 교사1, 부모가 첫번째 보낸 메시지",
+      date: moment("2023-06-01 11:30:25")
+  },
+  {
+      id: 3,
+      sender_id: "T01",
+      sender_name: "교사1",
+      receiver_id: "P01",
+      receiver_name: "부모1",
+      text: "보낸사람: 교사1, 받은사람: 부모1, 교사가 첫번째 보낸 메시지",
+      date: moment("2023-06-01 12:30:25")
+  },
+  {
+      id: 4,
+      sender_id: "T01",
+      sender_name: "교사1",
+      receiver_id: "P01",
+      receiver_name: "부모2",
+      text: "보낸사람: 교사1, 받은사람: 부모2, 교사가 첫번째 보낸 메시지",
+      date: moment("2023-06-01 13:30:25")
+  }
+  ]);
   const [selected, setSelected] = useState({
     id: 0,
     name: "",
@@ -109,13 +166,16 @@ const Message = () => {
   }
 
   const loadMsgOnChatRoom = () => {
-    let filterMsg = allChatMsg.filter(el =>
-      el.receiver_name === selected.name || el.sender_name === selected.name);
+    let filterMsg = allChatMsg.filter(el => el.receiver_name === selected.name || el.sender_name === selected.name);
     setNowChatMsg(filterMsg);
+    // useCallback(() => {
+    //   loadMsgOnChatRoom();
+    // }, [nowChatMsg]);
   }
-  useEffect(() => {
-    loadMsgOnChatRoom();
-  }, []);
+  
+  // useCallback(() => {
+  //   loadMsgOnChatRoom();
+  // }, [nowChatMsg]);
 
   const showChattSubmitForm = () => {
     setShowForm(true);
@@ -205,7 +265,8 @@ const Message = () => {
             {nowChatMsg.map((el) =>
               <div className="message-container">
                 <div>
-                  보낸사람: {el.sender_name}, 받는사람: {el.receiver_name}, 시간: {el.date}
+                  보낸사람: {el.sender_name}, 받는사람: {el.receiver_name}, 
+                  {/* 시간: {el.date} */}
                 </div>
                 <hr></hr>
                 <div>내용: {el.text}</div>

@@ -44,42 +44,42 @@
 // ]
 
 // export const AllMsgOfT1 = [
-//     {
-//         id: 1,
-//         sender_id: "P01",
-//         sender_name: "부모1",
-//         receiver_id: "T01",
-//         receiver_name: "교사1",
-//         text: "보낸사람: 부모1, 받은사람: 교사1, 부모가 첫번째 보낸 메시지",
-//         date: moment("2023-06-01 10:30:25")
-//     },
-//     {
-//         id: 2,
-//         sender_id: "P02",
-//         sender_name: "부모2",
-//         receiver_id: "T01",
-//         receiver_name: "교사1",
-//         text: "보낸사람: 부모2, 받은사람: 교사1, 부모가 첫번째 보낸 메시지",
-//         date: moment("2023-06-01 11:30:25")
-//     },
-//     {
-//         id: 3,
-//         sender_id: "T01",
-//         sender_name: "교사1",
-//         receiver_id: "P01",
-//         receiver_name: "부모1",
-//         text: "보낸사람: 교사1, 받은사람: 부모1, 교사가 첫번째 보낸 메시지",
-//         date: moment("2023-06-01 12:30:25")
-//     },
-//     {
-//         id: 4,
-//         sender_id: "T01",
-//         sender_name: "교사1",
-//         receiver_id: "P01",
-//         receiver_name: "부모2",
-//         text: "보낸사람: 교사1, 받은사람: 부모2, 교사가 첫번째 보낸 메시지",
-//         date: moment("2023-06-01 13:30:25")
-//     }
+    // {
+    //     id: 1,
+    //     sender_id: "P01",
+    //     sender_name: "부모1",
+    //     receiver_id: "T01",
+    //     receiver_name: "교사1",
+    //     text: "보낸사람: 부모1, 받은사람: 교사1, 부모가 첫번째 보낸 메시지",
+    //     date: moment("2023-06-01 10:30:25")
+    // },
+    // {
+    //     id: 2,
+    //     sender_id: "P02",
+    //     sender_name: "부모2",
+    //     receiver_id: "T01",
+    //     receiver_name: "교사1",
+    //     text: "보낸사람: 부모2, 받은사람: 교사1, 부모가 첫번째 보낸 메시지",
+    //     date: moment("2023-06-01 11:30:25")
+    // },
+    // {
+    //     id: 3,
+    //     sender_id: "T01",
+    //     sender_name: "교사1",
+    //     receiver_id: "P01",
+    //     receiver_name: "부모1",
+    //     text: "보낸사람: 교사1, 받은사람: 부모1, 교사가 첫번째 보낸 메시지",
+    //     date: moment("2023-06-01 12:30:25")
+    // },
+    // {
+    //     id: 4,
+    //     sender_id: "T01",
+    //     sender_name: "교사1",
+    //     receiver_id: "P01",
+    //     receiver_name: "부모2",
+    //     text: "보낸사람: 교사1, 받은사람: 부모2, 교사가 첫번째 보낸 메시지",
+    //     date: moment("2023-06-01 13:30:25")
+    // }
 // ]
 
 // export const AllMsgOfT2 = [
