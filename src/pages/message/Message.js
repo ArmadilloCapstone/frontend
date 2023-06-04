@@ -168,14 +168,11 @@ const Message = () => {
   const loadMsgOnChatRoom = () => {
     let filterMsg = allChatMsg.filter(el => el.receiver_name === selected.name || el.sender_name === selected.name);
     setNowChatMsg(filterMsg);
-    // useCallback(() => {
-    //   loadMsgOnChatRoom();
-    // }, [nowChatMsg]);
   }
   
   // useCallback(() => {
   //   loadMsgOnChatRoom();
-  // }, [nowChatMsg]);
+  // }, [...nowChatMsg]);
 
   const showChattSubmitForm = () => {
     setShowForm(true);
