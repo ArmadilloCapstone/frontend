@@ -38,7 +38,18 @@ function ParentAdd() {
   const { name, phone_num1, phone_num2, phone_num3, gender, birth_date, child_name } = user;
 
   const onInputChange = e => {
-    setUser({ ...user, [e.target.name]: e.target.value });
+    if(e.target.name == "phone_num1"  && !(e.target.value >= 0 && e.target.value <= 999)){
+        alert("올바른 숫자를 입력해 주십시오");
+    }
+    else if(e.target.name == "phone_num2"  && !(e.target.value >= 0 && e.target.value <= 9999)){
+        alert("올바른 숫자를 입력해 주십시오");
+    }
+    else if(e.target.name == "phone_num3"  && !(e.target.value >= 0 && e.target.value <= 9999)){
+        alert("올바른 숫자를 입력해 주십시오");
+    }
+    else{
+      setUser({ ...user, [e.target.name]: e.target.value });
+    }
   };
   function onInputChange_Select(e, selectIdName) {
     var selectInput = document.getElementById(selectIdName);

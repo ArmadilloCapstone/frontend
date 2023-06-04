@@ -79,7 +79,7 @@ export const LoginForm = (props) => {
 
         }
         else{
-          alert('실패')
+          alert('아이디 또는 비밀번호가 틀렸습니다.')
         }
       })
     }
@@ -100,7 +100,7 @@ export const LoginForm = (props) => {
           navigate('/GuardianPickup');
         }
         else{
-          alert('실패')
+          alert('아이디 또는 비밀번호가 틀렸습니다.')
         }
       })
 

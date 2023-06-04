@@ -88,12 +88,6 @@ function BbsDetail() {
                 <button className="delete-detail" onClick={deleteBbs}><i className="fas fa-trash-alt"></i> 삭제</button>
             <table className="table table-striped" style={{ fontFamily: "Eorinai" }} >
                 <tbody style={{ color: "#555555" }} >
-                    <tr>
-                        <th class="input_header">번호</th>
-                        <td class="input_container">
-                            <span>{bbs.id}</span>a
-                        </td>
-                    </tr>
 
                     <tr>
                         <th class="input_header">제목</th>

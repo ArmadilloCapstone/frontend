@@ -82,6 +82,7 @@
 .form_item input[type="text"],
 .form_item input[type="date"],
 .form_item input[type="time"],
+.form_item input[type="number"],
 .form_item select {
     width: 100%;
     height: 50px;
