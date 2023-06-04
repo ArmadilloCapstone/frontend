@@ -13,6 +13,7 @@ function StudentScheduleAdd() {
                 console.log(response.data);
                 setStudent(response.data.map(function (el, idx) {
                     var returnObj = {}
+                    returnObj['student_id'] = el.student_id;
                     returnObj['name'] = el.name;
                     return returnObj;
                 }));
@@ -27,7 +28,9 @@ function StudentScheduleAdd() {
                 console.log(response.data);
                 setAfterClass(response.data.map(function (el, idx) {
                     var returnObj = {}
+                    returnObj['class_id'] = el.class_id;
                     returnObj['class_name'] = el.class_name;
+                    returnObj['day'] = el.day;
                     return returnObj;
                 }));
             }).catch(function (reason) {
@@ -38,11 +41,14 @@ function StudentScheduleAdd() {
     const [user, setUser] = useState({
         id: 0,
         name: "",
-        class_name: ""
+        class_name: "",
+        student_id: null,
+        class_id: null,
+        day: ""
     });
 
     //  Object Destructuring 
-    const { name, class_name } = user;
+    const { student_id, class_id } = user;
     const onInputChange = e => {
         setUser({ ...user, [e.target.name]: e.target.value });
     };
@@ -76,7 +82,9 @@ function StudentScheduleAdd() {
         setUser({
             id: 0,
             name: "",
-            class_name: ""
+            class_name: "",
+            student_id: null,
+            class_id: null
         });
     };
 
@@ -91,12 +99,12 @@ function StudentScheduleAdd() {
                     <div class="form_wrap" select_box>
                         <div class="form_item">
                             <label class="select">학생 이름</label>
-                            <select id="name" name="name" onChange={e => onInputChange_Select(e, "name")} required>
+                            <select id="name" name="student_id" onChange={e => onInputChange_Select(e, "student_id")} required>
                                 <option value="" selected>학생 이름을 선택하세요.</option>
                                 {student.map((option) => (
                                     <option
-                                        key={option.name}
-                                        value={option.name}
+                                        key={option.student_id}
+                                        value={option.student_id}
                                     >
                                         {option.name}
                                     </option>
@@ -108,14 +116,14 @@ function StudentScheduleAdd() {
                     <div class="form_wrap" select_box>
                         <div class="form_item">
                             <label class="select">방과후수업 이름</label>
-                            <select id="class_name" name="class_name" onChange={e => onInputChange_Select(e, "class_name")} required>
+                            <select id="class_name" name="class_id" onChange={e => onInputChange_Select(e, "class_id")} required>
                                 <option value="" selected>방과후수업 이름을 선택하세요.</option>
                                 {afterClass.map((option) => (
                                     <option
-                                        key={option.class_name}
-                                        value={option.class_name}
+                                        key={option.class_id}
+                                        value={option.class_id}
                                     >
-                                        {option.class_name}
+                                        {option.class_name}({option.day})
                                     </option>
                                 ))}
                             </select>
