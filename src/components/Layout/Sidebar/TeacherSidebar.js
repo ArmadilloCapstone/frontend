@@ -35,7 +35,7 @@ const Name = styled.img`
 
 const Menu = styled.div`
 margin-top: 30px;
-padding-bottom: 20px;
+padding-bottom: 10px;
 width: 200px;
 display: flex;
 flex-direction: column;
@@ -83,37 +83,40 @@ const SidebarUser = styled.div`
 `;
 
 const Line = styled.div`
+
 `;
 
 const StyledNavLink = styled(NavLink)`
   text-decoration: none;
 `;
 
-  function TeacherSidebar() {
-    const menus = [
-      { name: "출결 관리", path: "/TimelinePage" ,icon: book },
-      { name: "학생 관리", path: "/StudentState",icon: user },
-      { name: "보호자 관리", path: "/GuardianManagement",icon: block },
-      { name: "안내장", path: "/BbsList",icon: note },
-      { name: "사진첩", path: "/GalleryList",icon: camera },
-      { name: "메신저", path: "/Message",icon: chat }
-    ];
+function TeacherSidebar() {
+  const menusUp = [
+    { name: "출결 관리", path: "/TimelinePage", icon: book },
+    { name: "학생 관리", path: "/StudentState", icon: user },
+    { name: "보호자 관리", path: "/GuardianManagement", icon: block }
+  ];
+  const menusDown = [
+    { name: "안내장", path: "/BbsList", icon: note },
+    { name: "사진첩", path: "/GalleryList", icon: camera },
+    { name: "메신저", path: "/Message", icon: book }
+  ];
 
-    const user_name = useSelector((state => state.user_name))
+  const user_name = useSelector((state => state.user_name))
 
-    return (
-      <Side>
-        <div>
-          <Logo src={logo} />
-          <Name src={name} />
-        </div>
+  return (
+    <Side>
+      <div>
+        <Logo src={logo} />
+        <Name src={name} />
+      </div>
       <div className="sidebar-container">
-          <SidebarUser>
-            <TeacherIcon src={teacher} />
-            <h6 style={{ fontSize: "20px", paddingLeft: "5px", paddingTop: "10px" }}>{user_name} 교사님</h6>
-          </SidebarUser>
+        <SidebarUser>
+          <TeacherIcon src={teacher} />
+          <h6 style={{ fontSize: "20px", paddingLeft: "5px", paddingTop: "10px" }}>{user_name} 교사님</h6>
+        </SidebarUser>
         <Menu className="sidebar-content">
-          {menus.map((menu, index) => {
+          {menusUp.map((menu, index) => {
             return (
               <StyledNavLink
                 exact
@@ -122,14 +125,31 @@ const StyledNavLink = styled(NavLink)`
                 activeClassName="active"
               >
 
-                  <TabButton>
-                    <BlockIcon src={menu.icon ? menu.icon : block} />
-                    {menu.name}
-                  </TabButton>
+                <TabButton>
+                  <BlockIcon src={menu.icon ? menu.icon : block} />
+                  {menu.name}
+                </TabButton>
 
-                {menu.name === "보호자 관리" && (
-                  <Line className="sidebar-line"/>
-                )}
+              </StyledNavLink>
+            );
+          })}
+        </Menu>
+        <Line className="sidebar-line" />
+        <Menu className="sidebar-content">
+          {menusDown.map((menu, index) => {
+            return (
+              <StyledNavLink
+                exact
+                to={menu.path}
+                key={index}
+                activeClassName="active"
+              >
+
+                <TabButton>
+                  <BlockIcon src={menu.icon ? menu.icon : block} />
+                  {menu.name}
+                </TabButton>
+
               </StyledNavLink>
             );
           })}
@@ -138,6 +158,6 @@ const StyledNavLink = styled(NavLink)`
     </Side>
   );
 
-  }
+}
 
-  export default TeacherSidebar;
+export default TeacherSidebar;

@@ -31,19 +31,20 @@ function CustomTimeline() {
   const defaultTimeStart = moment().startOf("day").toDate();
   const defaultTimeEnd = moment().startOf("day").add(1, "day").toDate();
 
-  const defaultTimeRange = defaultTimeEnd-defaultTimeStart;
+  const defaultTimeRange = defaultTimeEnd - defaultTimeStart;
 
-  const [student, setStudent] = useState([]);
+  const [groups, setGroups] = useState([]);
   const [student_time, setStudent_time] = useState([]);
   const [after_school_class, setAfter_school_class] = useState([]);
   const [student_schedule, setStudent_schedule] = useState([]);
 
   const subjectButtons = [];
-
+  const [todayEnd, setTodayEnd] = useState();
+  const [endTimeList, setEndTimeList] = useState([]);
 
   // 백엔드에서 데이터 가져오기 & 오늘의 요일에 맞는 학생들의 입실/퇴실 시간 설정 => todaylist === student_time
   useEffect(() => {
-    axios.post('http://dolbomi.site/studentTimeFindAll/'  + localStorage.getItem('userid'))
+    axios.post('http://dolbomi.site/studentTimeFindAll/' + localStorage.getItem('userid'))
       .then(function (response) {
         console.log("학생 입퇴실 데이터");
         console.log(response.data);
@@ -55,22 +56,27 @@ function CustomTimeline() {
           if (moment().day() === 1) {
             returnObj['start_time'] = moment(defaultTimeStart).add(el.entry_1, 'h');
             returnObj['end_time'] = moment(defaultTimeStart).add(el.off_1, 'h');
+            returnObj['end'] = el.off_1;
           }
           else if (moment().day() === 2) {
             returnObj['start_time'] = moment(defaultTimeStart).add(el.entry_2, 'h');
             returnObj['end_time'] = moment(defaultTimeStart).add(el.off_2, 'h');
+            returnObj['end'] = el.off_2;
           }
           else if (moment().day() === 3) {
             returnObj['start_time'] = moment(defaultTimeStart).add(el.entry_3, 'h');
             returnObj['end_time'] = moment(defaultTimeStart).add(el.off_3, 'h');
+            returnObj['end'] = el.off_3;
           }
           else if (moment().day() === 4) {
             returnObj['start_time'] = moment(defaultTimeStart).add(el.entry_4, 'h');
             returnObj['end_time'] = moment(defaultTimeStart).add(el.off_4, 'h');
+            returnObj['end'] = el.off_4;
           }
           else {
             returnObj['start_time'] = moment(defaultTimeStart).add(el.entry_5, 'h');
             returnObj['end_time'] = moment(defaultTimeStart).add(el.off_5, 'h');
+            returnObj['end'] = el.off_5;
           }
           return returnObj;
         }));
@@ -215,7 +221,7 @@ function CustomTimeline() {
     axios.post('http://dolbomi.site/studentFindAll/' + localStorage.getItem('userid'))
       .then(function (response) {
         console.log(response.data);
-        setStudent(response.data.map(function (el, idx) {
+        setGroups(response.data.map(function (el, idx) {
           console.log(el);
 
           var returnObj = {}
@@ -223,6 +229,7 @@ function CustomTimeline() {
           returnObj['name'] = el.name
           returnObj['class_id'] = el.class_id;
           returnObj['title'] = el.name;
+          returnObj['end'] = "";
 
           return returnObj;
         }));
@@ -231,13 +238,13 @@ function CustomTimeline() {
       });
   }, []);
 
-  const groups = student.map(obj => {
-    console.log(obj)
-    let newList = {};
-    newList['id'] = obj.id;
-    newList['title'] = obj.name;
-    return newList;
-  });
+  // const groups = student.map(obj => {
+  //   console.log(obj)
+  //   let newList = {};
+  //   newList['id'] = obj.id;
+  //   newList['title'] = obj.name;
+  //   return newList;
+  // });
 
   /* 전체 아이템 중 각 학생마다 item group 설정 */
   function individualItems() {
@@ -259,8 +266,47 @@ function CustomTimeline() {
 
   let items = individualItems();
 
+  /* 정렬 메소드 */
+  const sortById = () => {
+    let copy = [...groups];
+    copy.sort((a, b) => a.id - b.id);
+    setGroups(copy);
+  }
+  const sortByName = () => {
+    let copy = [...groups];
+    copy.sort((a, b) => a.title.toUpperCase() < b.title.toUpperCase() ? -1 : 1);
+    setGroups(copy);
+  }
+  const sortByEndTime = () => {
+    let copyTime = [...student_time]
+    let copyGroup = [...groups]
+    copyGroup.sort((a, b) => a.id - b.id); // id순 정렬을 먼저 해준 후, end 정해주기
+    for (let i = 0; i < copyGroup.length; i++) {
+      copyGroup[i].end = copyTime[i].end;
+    }
+
+    copyGroup.sort((a, b) => a.end.toUpperCase() < b.end.toUpperCase() ? -1 : 1);
+    setGroups(copyGroup);
+    alert("오늘의 귀가 시작 시간은" + copyGroup[0].end + "입니다!")
+  }
+
   return (
     <div class="timeline_wrapper">
+      {todayEnd}
+      <div class="timeline_sort">
+        <button className="sortingButtons" onClick={sortById}
+        >번호순
+        </button>
+        <button className="sortingButtons" onClick={sortByName}
+        >이름순
+        </button>
+        <button className="sortingButtons" onClick={() => {
+                  sortByEndTime();
+                  }}
+        >귀가순
+        </button>
+      </div>
+
       <Timeline
         minZoom={defaultTimeRange}
         maxZoom={defaultTimeRange}
@@ -286,7 +332,6 @@ function CustomTimeline() {
             return <div style={newStyles} />;
           }}
         </TodayMarker>
-        {/* </TimelineMarkers> */}
       </Timeline>
 
       <div className="subjectButtons-parent">
@@ -303,8 +348,6 @@ function CustomTimeline() {
             {el.class_name}
           </button>
         ))}
-        {/* <button className="subjectButtons">돌봄교실</button>
-        <button className="subjectButtons">종이접기반B</button> */}
       </div>
 
     </div>

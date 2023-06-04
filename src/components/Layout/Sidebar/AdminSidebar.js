@@ -33,7 +33,7 @@ const Name = styled.img`
 
 const Menu = styled.div`
   margin-top: 30px;
-  padding-bottom: 20px;
+  padding-bottom: 10px;
   width: 200px;
   display: flex;
   flex-direction: column;
@@ -95,13 +95,15 @@ const StyledNavLink = styled(NavLink)`
 `;
 
 function AdminSidebar() {
-  const menus = [
+  const menusUp = [
     { name: "사용자 추가", path: "/Temp" },
     { name: "돌봄학급 관리", path: "/ClassManagementPage", icon: school },
     { name: "돌봄교사 관리", path: "/TeacherManagementPage", icon: user },
     { name: "돌봄학생 관리", path: "/StudentManagementPage", icon: user },
     { name: "학부모 관리", path: "/ParentManagementPage", icon: user },
     { name: "방과후수업 관리", path: "/AfterClassManagementPage", icon: book },
+  ];
+  const menusDown = [
     { name: "학생 출입시간", path: "/StudentTimeManagementPage" },
     { name: "학생 시간표", path: "/StudentScheduleManagementPage", icon: alarm }
   ];
@@ -120,7 +122,7 @@ function AdminSidebar() {
           </SidebarUser>
         </MenuItem>
         <Menu className="sidebar-content">
-          {menus.map((menu, index) => {
+          {menusUp.map((menu, index) => {
             return (
               <StyledNavLink
                 exact
@@ -134,9 +136,26 @@ function AdminSidebar() {
                     {menu.name}
                   </TabButton>
                 </MenuItem>
-                {menu.name === "방과후수업 관리" && (
-                  <Line className="sidebar-line"/>
-                )}
+              </StyledNavLink>
+            );
+          })}
+        </Menu>
+        <Line className="sidebar-line"/>
+        <Menu className="sidebar-content">
+          {menusDown.map((menu, index) => {
+            return (
+              <StyledNavLink
+                exact
+                to={menu.path}
+                key={index}
+                activeClassName="active"
+              >
+                <MenuItem>
+                  <TabButton>
+                    <BlockIcon src={menu.icon ? menu.icon : block} />
+                    {menu.name}
+                  </TabButton>
+                </MenuItem>
               </StyledNavLink>
             );
           })}

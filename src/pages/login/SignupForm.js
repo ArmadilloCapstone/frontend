@@ -28,7 +28,9 @@ export const SignupForm = (props) => {
     setPw(event.target.value);
   };
 
-  const register = () => {
+  const register = async (e) => {
+    e.preventDefault();
+    e.target.reset();
     axios.post("http://dolbomi.site/signup", {
       "name" : name,
       "phone_num" : phone_num,
@@ -49,23 +51,25 @@ export const SignupForm = (props) => {
 
   return (
     <div className="signup">
-      <div className="box name">
-        <div className="name">이름</div>
-        <input type="text" value ={name} onChange={saveName}/>
-      </div>
-      <div className="box className">
-        <div className="name">전화번호</div>
-        <input type="text" value ={phone_num} onChange={savePhoneNum}/>
-      </div>
-      <div className="box phone">
-        <div className="name">아이디</div>
-        <input type="text" value ={id} onChange={saveUserId}/>
-      </div>
-      <div className="box pw">
-        <div className="name">비밀번호</div>
-        <input type="password" value ={pw} onChange={saveUserPw}/>
-      </div>
-      <div className="loginButton" onClick={register}>회원가입하기</div>
+      <form name="form" onSubmit={register}>
+        <div className="box name">
+          <div className="name">이름</div>
+          <input type="text" value ={name} onChange={saveName}/>
+        </div>
+        <div className="box className">
+          <div className="name">전화번호</div>
+          <input type="text" value ={phone_num} onChange={savePhoneNum}/>
+        </div>
+        <div className="box phone">
+          <div className="name">아이디</div>
+          <input type="text" value ={id} onChange={saveUserId}/>
+        </div>
+        <div className="box pw">
+          <div className="name">비밀번호</div>
+          <input type="password" value ={pw} onChange={saveUserPw}/>
+        </div>
+        <button className="signup_Button" type="submit">회원가입하기</button>
+      </form>
     </div>
   );
 }

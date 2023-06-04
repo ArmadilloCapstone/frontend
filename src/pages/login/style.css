@@ -145,6 +145,7 @@
   .login_button {
     height: 80px;
     width: 40%;
+    display: block;
     text-align: center;
     padding-top: 15px;
     font-size: 30px;
@@ -266,9 +267,10 @@
     border-radius: 12px;
   }
   
-  .signup .loginButton {
+  .signup .signup_Button {
     height: 80px;
     width: 600px;
+    display: block;
     text-align: center;
     color: black;
     padding-top: 15px;
@@ -280,7 +282,7 @@
     margin-top: 20px;
   }
   
-  .signup .loginButton:hover {
+  .signup .signup_Button:hover {
     cursor: pointer;
     background-color: #12b560;
     color: white;
