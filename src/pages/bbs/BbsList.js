@@ -113,6 +113,8 @@ function BbsList() {
         loadBbsList("all", "all");
     }, []);
 
+    bbsList.sort((a, b) => b.id - a.id);
+    currentbbsList.sort((a, b) => b.id - a.id); // 최신순 정렬
 
     const changeChoice = (event) => { setChoiceVal(event.target.value); }
     const changeSearch = (event) => { setSearchVal(event.target.value); }
@@ -170,7 +172,7 @@ function BbsList() {
 					{
 						currentbbsList.map(function (bbs, idx) {
 							return (
-								<TableRow obj={bbs} key={idx} cnt={idx + 1} />
+								<TableRow obj={bbs} key={idx} cnt={idx + 1} page={page}/>
 							)
 						})
 					}
@@ -199,7 +201,7 @@ function TableRow(props) {
 
     return (
         <tr class="BbList">
-            <th class="BbList" style={{ textAlign: "center" }} >{props.cnt}</th>
+            <th class="BbList" style={{ textAlign: "center" }} >{props.cnt + ( (props.page-1) * 10)}</th>
             {
                     <>
                         <td class="BbList" >
