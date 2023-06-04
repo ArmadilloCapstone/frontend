@@ -64,7 +64,7 @@ function StudentScheduleAdd() {
                     alert('추가되었습니다!');
                 }
                 else {
-                    alert('잘못 입력된 값이 존재합니다!');
+                    alert(response.data);
                 }
 
             }).catch(function (reason) {
