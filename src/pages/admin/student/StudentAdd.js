@@ -100,7 +100,6 @@ function StudentAdd() {
       alert('연락처를 입력하세요!')
       return false;
     }
-    console.log(document.getElementById('birth_date').value);
     if (document.getElementById('birth_date').value === '') {
       alert('생년월일을 입력하세요!')
       return false;

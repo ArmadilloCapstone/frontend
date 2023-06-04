@@ -11,7 +11,7 @@ function TelephoneLink() {
 
   // 주요 연락처 List 가져오기
   useEffect(() => {
-    axios.post('http://dolbomi.site/callList', {
+    axios.post('http://localhost:80/callList', {
       parent_id: localStorage.getItem('userid')
     })
       .then(function (response) {
