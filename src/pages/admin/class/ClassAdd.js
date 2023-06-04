@@ -22,7 +22,7 @@ function ClassAdd() {
         else if (e.target.name == "year" && e.target.value < 1) {
             alert("양수 값만 입력할 수 있습니다.");
         }
-        else if (e.target.name == "seme" && (e.target.value != 1 && e.target.value != 2)) {
+        else if (e.target.name == "seme" && (e.target.value != "" &&e.target.value != 1 && e.target.value != 2)) {
             alert("1과 2만 입력이 가능합니다..");
         }
         else {
