@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import "../../../public/alarm.wav"
 
 const PopupContainer = ({ children }) => {
   const [popup, setPopup] = useState(null);
@@ -38,7 +39,7 @@ const Popup = () => {
   const user_option = useSelector((state => state.user_option))
 
   const handleClickButton = useCallback(() => {
-    var audio = new Audio('/alert.mp3');
+    var audio = new Audio('public/alarm.wav controls');
     audio.play();
   }, []);
 
