@@ -4,6 +4,7 @@ import moment from "moment";
 import 'moment/locale/ko';
 import randomColor from "randomcolor";
 import './style.css';
+import alarm from "../popup/alarm.wav"
 
 import Timeline, {
   TimelineHeaders,
@@ -39,8 +40,8 @@ function CustomTimeline() {
   const [student_schedule, setStudent_schedule] = useState([]);
 
   const subjectButtons = [];
-  const [todayEnd, setTodayEnd] = useState();
-  const [endTimeList, setEndTimeList] = useState([]);
+  let todayStart = "";
+  let todayEnd = "";
 
   // 백엔드에서 데이터 가져오기 & 오늘의 요일에 맞는 학생들의 입실/퇴실 시간 설정 => todaylist === student_time
   useEffect(() => {
@@ -56,26 +57,31 @@ function CustomTimeline() {
           if (moment().day() === 1) {
             returnObj['start_time'] = moment(defaultTimeStart).add(el.entry_1, 'h');
             returnObj['end_time'] = moment(defaultTimeStart).add(el.off_1, 'h');
+            returnObj['start'] = el.entry_1;
             returnObj['end'] = el.off_1;
           }
           else if (moment().day() === 2) {
             returnObj['start_time'] = moment(defaultTimeStart).add(el.entry_2, 'h');
             returnObj['end_time'] = moment(defaultTimeStart).add(el.off_2, 'h');
+            returnObj['start'] = el.entry_2;
             returnObj['end'] = el.off_2;
           }
           else if (moment().day() === 3) {
             returnObj['start_time'] = moment(defaultTimeStart).add(el.entry_3, 'h');
             returnObj['end_time'] = moment(defaultTimeStart).add(el.off_3, 'h');
+            returnObj['start'] = el.entry_3;
             returnObj['end'] = el.off_3;
           }
           else if (moment().day() === 4) {
             returnObj['start_time'] = moment(defaultTimeStart).add(el.entry_4, 'h');
             returnObj['end_time'] = moment(defaultTimeStart).add(el.off_4, 'h');
+            returnObj['start'] = el.entry_4;
             returnObj['end'] = el.off_4;
           }
           else {
             returnObj['start_time'] = moment(defaultTimeStart).add(el.entry_5, 'h');
             returnObj['end_time'] = moment(defaultTimeStart).add(el.off_5, 'h');
+            returnObj['start'] = el.entry_5;
             returnObj['end'] = el.off_5;
           }
           return returnObj;
@@ -149,6 +155,15 @@ function CustomTimeline() {
 
   const itemsForAfterSchool = afterSchoolStudentsList(after_school_class, student_schedule);
   console.log(itemsForAfterSchool);
+
+  const showAfterStudents = (el) => {
+    let returnObj = []
+    let returnObj2 = []
+    returnObj = student_schedule.filter((obj) => el.id === obj.class_id)
+    returnObj2 = groups.filter((obj) => returnObj.student_id === obj.id)
+    alert(JSON.stringify(returnObj2))
+  }
+
   /* 학생의 id를 포함한 방과후수업 목록을 item 형태로 설정 */
   const setAfterSchoolItems = itemsForAfterSchool.map(obj => {
     let newList = {};
@@ -277,6 +292,19 @@ function CustomTimeline() {
     copy.sort((a, b) => a.title.toUpperCase() < b.title.toUpperCase() ? -1 : 1);
     setGroups(copy);
   }
+  const sortByStartTime = () => {
+    let copyTime = [...student_time]
+    let copyGroup = [...groups]
+    copyGroup.sort((a, b) => a.id - b.id); // id순 정렬을 먼저 해준 후, start 정해주기
+    for (let i = 0; i < copyGroup.length; i++) {
+      copyGroup[i].start = copyTime[i].start;
+    }
+
+    copyGroup.sort((a, b) => a.start.toUpperCase() < b.start.toUpperCase() ? -1 : 1);
+    setGroups(copyGroup);
+    todayEnd =copyGroup[0].end
+    alert("오늘의 입실 시작 시간은" + copyGroup[0].start + "입니다!")
+  }
   const sortByEndTime = () => {
     let copyTime = [...student_time]
     let copyGroup = [...groups]
@@ -287,12 +315,16 @@ function CustomTimeline() {
 
     copyGroup.sort((a, b) => a.end.toUpperCase() < b.end.toUpperCase() ? -1 : 1);
     setGroups(copyGroup);
+    todayEnd =copyGroup[0].end
     alert("오늘의 귀가 시작 시간은" + copyGroup[0].end + "입니다!")
   }
 
   return (
     <div class="timeline_wrapper">
-      {todayEnd}
+      <audio
+        src={alarm}
+        autoPlay={true}>
+      </audio>
       <div class="timeline_sort">
         <button className="sortingButtons" onClick={sortById}
         >번호순
@@ -301,8 +333,13 @@ function CustomTimeline() {
         >이름순
         </button>
         <button className="sortingButtons" onClick={() => {
-                  sortByEndTime();
-                  }}
+          sortByStartTime();
+        }}
+        >입실순
+        </button>
+        <button className="sortingButtons" onClick={() => {
+          sortByEndTime();
+        }}
         >귀가순
         </button>
       </div>
@@ -344,6 +381,7 @@ function CustomTimeline() {
                 seed: el.id,
               })
             }}
+            onClick={showAfterStudents}
           >
             {el.class_name}
           </button>
