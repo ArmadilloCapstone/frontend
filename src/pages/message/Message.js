@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { useSelector } from 'react-redux';
+import { setMessageAlarm } from '../../redux/actions';
+import { useSelector, useDispatch } from 'react-redux';
 import axios from "axios";
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 import "./style.css"
 
 const Message = () => {
+  const dispatch = useDispatch();
   const [socketConnected, setSocketConnected] = useState(false);
   const [ws, setWs] = useState(null);
   const [sendMsg, setSendMsg] = useState(false);
@@ -28,6 +30,7 @@ const Message = () => {
   const [showForm, setShowForm] = useState(false);
 
   const webSocketUrl = `ws://dolbomi.site/room`;
+  const message_click = useSelector((state => state.message_click))
 
   useEffect(() => {
     if (localStorage.getItem('useroption') == 1) {
@@ -223,6 +226,9 @@ const Message = () => {
   useEffect(() => {
     if (ws) {
       ws.onmessage = (evt) => {
+        if(message_click == false){
+          dispatch(setMessageAlarm(true));
+        }
         console.log(evt.data);
         console.log(typeof(evt.data));
         const data = JSON.parse(evt.data);
@@ -255,7 +261,7 @@ const Message = () => {
   },);
 
   return (
-    <div className="chat-wrapper">
+    <div className="chat-wrapper" style={ message_click ? {display : 'block'} : {display : 'none'} }>
       <div className="chat-container">
         <div className="chat-list">
           <div>채팅 목록</div>
@@ -285,6 +291,7 @@ const Message = () => {
           <div>{selected.name}님과의 채팅룸입니다.</div>
           <hr></hr>
           <div>
+            <div className="message_area">
             {nowChatMsg.map((el) =>
               <div className="message-container">
                 <div>
@@ -295,6 +302,7 @@ const Message = () => {
                 <div>내용: {el.text}</div>
               </div>
             )}
+            </div>
             {
               showForm === true ?
                 <form onSubmit={e => handleSubmit(e)} className="message-form">

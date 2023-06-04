@@ -1,13 +1,17 @@
 .chat-wrapper{
-    margin-top: 135px;
+    position: absolute;
+    top:0px;
+    right: 180px;
+    margin-top: 70px;
     border: none;
-    border-radius: 25px;
-    width: 70%;
-    height: 60%;
+    border-radius: 15px;
+    width: 500px;
+    height: 800px;
     display: flex; 
     text-align: left; 
     background-color: oldlace;
     color: #666666;
+    z-index: 1000;
 }
 
 .chat-container {
@@ -43,7 +47,11 @@
   .chat-room hr {
     margin: 10px 0;
   }
-  
+  .message_area{
+    height: 600px;
+    background-color: white;
+    overflow: scroll;
+  }
   .message-container {
     border: 1px solid;
     padding: 10px;
