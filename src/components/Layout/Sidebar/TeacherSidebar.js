@@ -99,7 +99,7 @@ function TeacherSidebar() {
   const menusDown = [
     { name: "안내장", path: "/BbsList", icon: note },
     { name: "사진첩", path: "/GalleryList", icon: camera },
-    { name: "메신저", path: "/Message", icon: book }
+    { name: "메신저", path: "/Message", icon: chat }
   ];
 
   const user_name = useSelector((state => state.user_name))
@@ -114,8 +114,8 @@ function TeacherSidebar() {
         <SidebarUser>
           <TeacherIcon src={teacher} />
           <div>
-            <div style={{ fontSize: "15px", paddingLeft: "15px", paddingTop: "0px", textAlign:"center" }}>{localStorage.getItem('classname')}</div>
-            <div style={{ fontSize: "15px", paddingLeft: "15px", paddingTop: "10px", textAlign:"center" }}>{user_name} 교사님</div>
+            <div style={{ fontSize: "19px", color: '#555555', paddingLeft: "15px", paddingLeft: "14px", textAlign:"left" }}>{localStorage.getItem('classname')}</div>
+            <div style={{ fontSize: "18px", color: '#555555', paddingLeft: "12px", paddingTop: "4px", textAlign:"center" }}>{user_name} 교사님</div>
           </div>
         </SidebarUser>
         <Menu className="sidebar-content">
