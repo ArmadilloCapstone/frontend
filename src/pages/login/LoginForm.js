@@ -65,6 +65,7 @@ export const LoginForm = (props) => {
 
           if(props.option == "1"){
             console.log("hi");
+            localStorage.setItem('classname', res.data.class_name);
             navigate('/TimelinePage');
           }
           if(props.option == "2"){
