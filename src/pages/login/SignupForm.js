@@ -44,7 +44,7 @@ export const SignupForm = (props) => {
         alert('회원가입 되었습니다!');
       }
       else{
-        alert('실패')
+        alert(res.data);
       }
     })
   }

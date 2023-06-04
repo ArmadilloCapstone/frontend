@@ -83,7 +83,7 @@ const Message = () => {
   const [inputMsg, setInputMsg] = useState("")
   const [showForm, setShowForm] = useState(false);
 
-  const webSocketUrl = `ws://dolbomi.site/room`;
+  const webSocketUrl = `ws://localhost/room`;
 
   useEffect(() => {
     if (localStorage.getItem('useroption') == 1) {

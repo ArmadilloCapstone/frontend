@@ -50,7 +50,7 @@ const Header = () => {
                   ?
                 <Nav className="ms-auto">
                   <NavDropdown title="내 정보" id="basic-nav-dropdown">
-                    <NavDropdown.Item onClick={changePwClickHandler}>비밀번호 변경</NavDropdown.Item>
+                    {localStorage.getItem('useroption') != 3 ? <NavDropdown.Item onClick={changePwClickHandler}>비밀번호 변경</NavDropdown.Item> : null}
                   </NavDropdown>
                   <Nav.Link onClick={logoutClickHandler}>로그아웃</Nav.Link>
                 </Nav>
