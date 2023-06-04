@@ -87,13 +87,13 @@ const Message = () => {
 
   useEffect(() => {
     if (localStorage.getItem('useroption') == 1) {
-      axios.post("http://dolbomi.site/getAllParentByTid", {
+      axios.post("http://localhost:80/getAllParentByTid", {
         id: localStorage.getItem('userid')
       }).then((res) => {
         console.log(res.data)
         setAllChatList(res.data)
       })
-      axios.post("http://dolbomi.site/getAllMessageByTid", {
+      axios.post("http://localhost:80/getAllMessageByTid", {
         id: localStorage.getItem('userid')
       }).then((res) => {
         console.log(res.data)
@@ -102,13 +102,13 @@ const Message = () => {
     }
 
     if (localStorage.getItem('useroption') == 2) {
-      axios.post("http://dolbomi.site/getAllTeacherByPid", {
+      axios.post("http://localhost:80/getAllTeacherByPid", {
         id: localStorage.getItem('userid')
       }).then((res) => {
         console.log(res.data)
         setAllChatList(res.data)
       })
-      axios.post("http://dolbomi.site/getAllMessageByPid", {
+      axios.post("http://localhost:80/getAllMessageByPid", {
         id: localStorage.getItem('userid')
       }).then((res) => {
         console.log(res.data)
@@ -163,6 +163,7 @@ const Message = () => {
 
   const showChatRoom = (select) => {
     setSelected(select);
+    loadMsgOnChatRoom();
   }
 
   const loadMsgOnChatRoom = () => {
@@ -170,9 +171,9 @@ const Message = () => {
     setNowChatMsg(filterMsg);
   }
   
-  // useCallback(() => {
-  //   loadMsgOnChatRoom();
-  // }, [...nowChatMsg]);
+  useCallback(() => {
+    loadMsgOnChatRoom();
+  }, [...nowChatMsg]);
 
   const showChattSubmitForm = () => {
     setShowForm(true);
