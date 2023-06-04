@@ -1,8 +1,13 @@
 import '../adminPages.css';
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Pagination from "react-js-pagination";
 
 function StudentScheduleDetail() {
+    // Paging
+    const [page, setPage] = useState(1);
+    const [totalCnt, setTotalCnt] = useState(0);
+    
     const [record, setRecord] = useState([]);
 
     // On Page load display all records 
