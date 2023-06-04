@@ -216,7 +216,7 @@ const Message = () => {
             )}
             {
               showForm === true ?
-                <form onSubmit={handleSubmit} className="message-form">
+                <form onSubmit={e => handleSubmit(e)} className="message-form">
                   <input
                     type="text"
                     name="text"

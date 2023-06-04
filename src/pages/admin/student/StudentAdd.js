@@ -100,6 +100,7 @@ function StudentAdd() {
       alert('연락처를 입력하세요!')
       return false;
     }
+    console.log(document.getElementById('birth_date').value);
     if (document.getElementById('birth_date').value === '') {
       alert('생년월일을 입력하세요!')
       return false;
@@ -233,7 +234,7 @@ function StudentAdd() {
           <div class="form_wrap" select_box>
             <div class="form_item">
               <label>생년월일</label>
-              <input type="date" max="2023-06-08" name="birth_date" value={birth_date} onChange={e => onInputChange(e)} placeholder="생년월일을 입력하세요." required="" />
+              <input type="date" max="2023-06-08" id="birth_date" name="birth_date" value={birth_date} onChange={e => onInputChange(e)} placeholder="생년월일을 입력하세요." required="" />
             </div>
           </div>
           <div style={{ width: "100%", textAlign: "center" }}>
