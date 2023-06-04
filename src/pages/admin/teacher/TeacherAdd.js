@@ -8,7 +8,7 @@ function TeacherAdd() {
     const [dolbom, setDolbom] = useState([]);
 
     useEffect(() => {
-        axios.post('http://dolbomi.site/teacher/dolbom_classList') // url 모름.. 변경 필요할듯
+        axios.post('http://dolbomi.site/teacher/dolbom_classList')
             .then(function (response) {
                 console.log(response.data);
                 setDolbom(response.data.map(function (el, idx) {
@@ -24,7 +24,6 @@ function TeacherAdd() {
     const [user, setUser] = useState({
         id: 0,
         name: "",
-        // phone_num: "",
         phone_num1: "",
         phone_num2: "",
         phone_num3: "",
@@ -37,16 +36,16 @@ function TeacherAdd() {
     //  Object Destructuring 
     const { name, phone_num1, phone_num2, phone_num3, gender, birth_date, class_name } = user;
     const onInputChange = e => {
-        if(e.target.name == "phone_num1"  && !(e.target.value >= 0 && e.target.value <= 999)){
+        if (e.target.name == "phone_num1" && !(e.target.value >= 0 && e.target.value <= 999)) {
             alert("올바른 숫자를 입력해 주십시오");
         }
-        else if(e.target.name == "phone_num2"  && !(e.target.value >= 0 && e.target.value <= 9999)){
+        else if (e.target.name == "phone_num2" && !(e.target.value >= 0 && e.target.value <= 9999)) {
             alert("올바른 숫자를 입력해 주십시오");
         }
-        else if(e.target.name == "phone_num3"  && !(e.target.value >= 0 && e.target.value <= 9999)){
+        else if (e.target.name == "phone_num3" && !(e.target.value >= 0 && e.target.value <= 9999)) {
             alert("올바른 숫자를 입력해 주십시오");
         }
-        else{
+        else {
             setUser({ ...user, [e.target.name]: e.target.value });
         }
     };
@@ -93,7 +92,6 @@ function TeacherAdd() {
         setUser({
             id: 0,
             name: "",
-            // phone_num: "",
             phone_num1: "",
             phone_num2: "",
             phone_num3: "",
@@ -113,7 +111,6 @@ function TeacherAdd() {
                         <label>이름</label>
                         <input type="text" name="name" value={name} onChange={e => onInputChange(e)} placeholder="이름을 입력하세요." required="" />
                     </div>
-                    {/* </div> */}
 
                     <label>연락처</label>
                     <div class="form_wrap full">
@@ -134,7 +131,6 @@ function TeacherAdd() {
                     <div class="form_wrap" select_box>
                         <div class="form_item">
                             <label class="select">성별</label>
-                            {/* <select id="gender" name="gender" onChange={e => onInputChange_Select(e, "gender")} required> */}
                             <select id="gender" name="gender" value={gender} onChange={e => onInputChange(e)} required>
 
                                 <option value="" selected>성별을 선택하세요.</option>
@@ -160,7 +156,6 @@ function TeacherAdd() {
                     <div class="form_wrap" select_box>
                         <div class="form_item">
                             <label class="select">돌봄 반</label>
-                            {/* <select id="class_name" name="class_name" onChange={e => onInputChange_Select(e, "class_name")} required> */}
                             <select id="class_name" name="class_name" value={class_name} onChange={e => onInputChange(e)} required>
                                 <option value="" selected>돌봄 반을 선택하세요.</option>
                                 {dolbom.map((option) => (
@@ -180,58 +175,6 @@ function TeacherAdd() {
                 </form>
             </div >
         </div >
-
-        // <div class="col-sm-4" style={{ width: "100%", textAlign: "center" }}>
-        //     <div className="box p-3 mb-3 mt-3" style={{ border: "1px solid #d0d0d0", height: "100%", width: "700px", margin: "auto" }}>
-        //         <form onSubmit={submitTeacherRecord}>
-        //             <h5 className="mb-3 ">추가할 돌봄교사의 정보를 입력하세요.</h5>
-        //             <div class="form-group">
-        //                 <input type="text" class="form-control  mb-4" name="name" value={name} onChange={e => onInputChange(e)} placeholder="이름을 입력하세요." required="" />
-        //             </div>
-
-        //             <div class="form-group">
-        //                 <input type="text" class="form-control mb-4" name="phone_num1" value={phone_num1} onChange={e => onInputChange(e)} placeholder="연락처를 입력하세요." required="" />
-        //                 <span>-</span>
-        //                 <input type="text" class="form-control mb-4" name="phone_num2" value={phone_num2} onChange={e => onInputChange(e)} placeholder="연락처를 입력하세요." required="" />
-        //                 <span>-</span>
-        //                 <input type="text" class="form-control mb-4" name="phone_num3" value={phone_num3} onChange={e => onInputChange(e)} placeholder="연락처를 입력하세요." required="" />
-        //             </div>
-
-        //             <select id="gender" name="gender" className="custom-select d-block w-100" onChange={e => onInputChange_Select(e, "gender")} required>
-        //                 <option value="" selected>성별을 입력하세요.</option>
-        //                 {genderKind.map((option) => (
-        //                     <option
-        //                         key={option.value}
-        //                         value={option.value}
-        //                     >
-        //                         {option.value}
-        //                     </option>
-        //                 ))}
-        //             </select>
-
-        //             <div class="form-group">
-        //                 <input type="date" max="9999-12-31" class="form-control mb-4" name="birth_date" value={birth_date} onChange={e => onInputChange(e)} placeholder="생년월일을 입력하세요." required="" />
-        //             </div>
-
-        //             <select id="class_name" name="class_name" className="custom-select d-block w-100" onChange={e => onInputChange_Select(e, "class_name")} required>
-        //                 <option value="" selected>돌봄 반을 입력하세요.</option>
-        //                 {dolbom.map((option) => (
-        //                     <option
-        //                         key={option.class_name}
-        //                         value={option.class_name}
-        //                     >
-        //                         {option.class_name}
-        //                     </option>
-        //                 ))}
-        //             </select>
-
-        //             <div style={{ width: "100%", textAlign: "center" }}>
-        //                 <button type="submit" class="btn btn-primary btn-block mt-2">추가</button>
-        //             </div>
-        //         </form>
-        //     </div>
-        // </div>
-
     )
 }
 

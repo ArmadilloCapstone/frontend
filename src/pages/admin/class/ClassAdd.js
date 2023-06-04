@@ -7,27 +7,25 @@ function ClassAdd() {
         id: 0,
         class_name: "",
         class_num: "",
-        // year_seme: "",
         year: "",
         seme: ""
     });
 
     //  Object Destructuring 
-    // const { class_name, class_num, year_seme } = user;
     const { class_name, class_num, year, seme } = user;
 
 
     const onInputChange = e => {
-        if(e.target.name == "class_num"  && e.target.value < 1){
+        if (e.target.name == "class_num" && e.target.value < 1) {
             alert("양수 값만 입력할 수 있습니다.");
         }
-        else if(e.target.name == "year"  && e.target.value < 1){
+        else if (e.target.name == "year" && e.target.value < 1) {
             alert("양수 값만 입력할 수 있습니다.");
         }
-        else if(e.target.name == "seme"  && (e.target.value != 1 && e.target.value != 2)){
+        else if (e.target.name == "seme" && (e.target.value != 1 && e.target.value != 2)) {
             alert("1과 2만 입력이 가능합니다..");
         }
-        else{
+        else {
             setUser({ ...user, [e.target.name]: e.target.value });
         }
     };
@@ -109,45 +107,6 @@ function ClassAdd() {
                 </form>
             </div >
         </div >
-
-
-
-
-
-
-
-
-        // <div class="col-sm-4" style={{ width: "100%", textAlign: "center" }}>
-        //     <div className="box p-3 mb-3 mt-3" style={{ border: "1px solid #d0d0d0", height: "100%", width: "700px", margin: "auto" }}>
-        //         <form onSubmit={submitClassRecord}>
-        //             <h5 className="mb-3 ">추가할 돌봄학급의 정보를 입력하세요.</h5>
-        //             <div class="form-group">
-        //                 <input type="text" class="form-control  mb-4" name="class_name" value={class_name} onChange={e => onInputChange(e)} placeholder="학급 이름을 입력하세요." required="" />
-        //             </div>
-
-        //             <div class="form-group">
-        //                 <input type="text" class="form-control mb-4" name="class_num" value={class_num} onChange={e => onInputChange(e)} placeholder="학급 번호를 입력하세요." required="" />
-        //             </div>
-
-        //             {/* <div class="form-group">
-        //           <input type="text" class="form-control mb-4" name="year_seme" value={year_seme} onChange={e => onInputChange(e)} placeholder="년도-학기를 입력하세요." required="" />
-        //         </div> */}
-        //             <div class="form-group" display="inline-block">
-        //                 <input type="text" class="form-control mb-4" name="year" value={year}
-        //                     onChange={e => onInputChange(e)} placeholder="년도를 입력하세요." required="" />
-        //                 <span>-</span>
-        //                 <input type="text" class="form-control mb-4" name="seme" value={seme}
-        //                     onChange={e => onInputChange(e)} placeholder="학기를 입력하세요." required="" />
-        //             </div>
-
-
-        //             <div style={{ width: "100%", textAlign: "center" }}>
-        //                 <button type="submit" class="btn btn-primary btn-block mt-2">추가</button>
-        //             </div>
-        //         </form>
-        //     </div>
-        // </div>
-
     )
 }
 

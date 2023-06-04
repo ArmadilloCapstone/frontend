@@ -5,32 +5,6 @@ import axios from "axios";
 function ClassDetail() {
   const [record, setRecord] = useState([]);
 
-  const [user, setUser] = useState({
-    id: 0,
-    class_name: "",
-    class_num: "",
-    // year_seme: "",
-    year: "",
-    seme: ""
-  });
-
-  //  Object Destructuring 
-  // const { class_name, class_num, year_seme } = user;
-  const { class_name, class_num, year, seme } = user;
-  const onInputChange = e => {
-    setUser({ ...user, [e.target.name]: e.target.value });
-  };
-
-  function changeUserForm(data) {
-    var returnObj = {}
-    returnObj['class_name'] = data.class_name;
-    returnObj['class_num'] = data.class_num;
-    returnObj['year_seme'] = data.year + "-" + data.seme;
-
-    return returnObj;
-
-  }
-
   // On Page load display all records 
   const loadClassDetail = async () => {
     await axios.post('http://dolbomi.site/dolbom_class')
@@ -56,18 +30,6 @@ function ClassDetail() {
   useEffect(() => {
     loadClassDetail();
   }, []);
-
-  // Insert Class Records 
-  const submitClassRecord = async (e) => {
-    e.preventDefault();
-    e.target.reset();
-    const postUser = changeUserForm(user);
-    // await axios.post('/dolbom_class_submit', user);
-    await axios.post('http://dolbomi.site/dolbom_class_submit', postUser);
-    alert('추가되었습니다!');
-
-    loadClassDetail();
-  };
 
   // Delete Class Record
   const deleteRecord = (productId) => {
@@ -107,12 +69,6 @@ function ClassDetail() {
                       deleteRecord(name.id)
                     }
                   }}>삭제</button>
-                  
-    
-
-                {/* <Link class=" mr-2" to={`/EditEmployee/editID/${name.id}`}>
-                        <i class="fa fa-edit" aria-hidden="true"></i>
-                      </Link> */}
               </td>
             </tr>
           )}

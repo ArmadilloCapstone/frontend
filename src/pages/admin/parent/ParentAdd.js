@@ -24,30 +24,28 @@ function ParentAdd() {
   const [user, setUser] = useState({
     id: 0,
     name: "",
-    // phone_num: "",
     phone_num1: "",
     phone_num2: "",
     phone_num3: "",
     gender: "",
     birth_date: "",
     child_name: "",
-    // child_id: null
   });
 
   //  Object Destructuring 
   const { name, phone_num1, phone_num2, phone_num3, gender, birth_date, child_name } = user;
 
   const onInputChange = e => {
-    if(e.target.name == "phone_num1"  && !(e.target.value >= 0 && e.target.value <= 999)){
-        alert("올바른 숫자를 입력해 주십시오");
+    if (e.target.name == "phone_num1" && !(e.target.value >= 0 && e.target.value <= 999)) {
+      alert("올바른 숫자를 입력해 주십시오");
     }
-    else if(e.target.name == "phone_num2"  && !(e.target.value >= 0 && e.target.value <= 9999)){
-        alert("올바른 숫자를 입력해 주십시오");
+    else if (e.target.name == "phone_num2" && !(e.target.value >= 0 && e.target.value <= 9999)) {
+      alert("올바른 숫자를 입력해 주십시오");
     }
-    else if(e.target.name == "phone_num3"  && !(e.target.value >= 0 && e.target.value <= 9999)){
-        alert("올바른 숫자를 입력해 주십시오");
+    else if (e.target.name == "phone_num3" && !(e.target.value >= 0 && e.target.value <= 9999)) {
+      alert("올바른 숫자를 입력해 주십시오");
     }
-    else{
+    else {
       setUser({ ...user, [e.target.name]: e.target.value });
     }
   };
@@ -176,58 +174,6 @@ function ParentAdd() {
 
       </div >
     </div >
-
-    // <div class="col-sm-4" style={{ width: "100%", textAlign: "center" }}>
-    //   <div className="box p-3 mb-3 mt-3" style={{ border: "1px solid #d0d0d0", height: "100%", width: "700px", margin: "auto" }}>
-    //     <form onSubmit={submitParentRecord}>
-    //       <h5 className="mb-3 ">추가할 학부모의 정보를 입력하세요.</h5>
-    //       <div class="form-group">
-    //         <input type="text" class="form-control  mb-4" name="name" value={name} onChange={e => onInputChange(e)} placeholder="이름을 입력하세요." required="" />
-    //       </div>
-
-    //       <div class="form-group">
-    //         <input type="text" class="form-control mb-4" name="phone_num1" value={phone_num1} onChange={e => onInputChange(e)} placeholder="연락처를 입력하세요." required="" />
-    //         <span>-</span>
-    //         <input type="text" class="form-control mb-4" name="phone_num2" value={phone_num2} onChange={e => onInputChange(e)} placeholder="연락처를 입력하세요." required="" />
-    //         <span>-</span>
-    //         <input type="text" class="form-control mb-4" name="phone_num3" value={phone_num3} onChange={e => onInputChange(e)} placeholder="연락처를 입력하세요." required="" />
-    //       </div>
-
-    //       <select id="gender" name="gender" className="custom-select d-block w-100" onChange={e => onInputChange_Select(e, "gender")} required>
-    //         <option value="" selected>성별을 입력하세요.</option>
-    //         {genderKind.map((option) => (
-    //           <option
-    //             key={option.value}
-    //             value={option.value}
-    //           >
-    //             {option.value}
-    //           </option>
-    //         ))}
-    //       </select>
-
-    //       <div class="form-group">
-    //         <input type="date" max="9999-12-31" class="form-control  mb-4" name="birth_date" value={birth_date} onChange={e => onInputChange(e)} placeholder="생년월일을 입력하세요." required="" />
-    //       </div>
-
-    //       <select id="child_name" name="child_name" className="custom-select d-block w-100" onChange={e => onInputChange_Select(e, "child_name")} required>
-    //         <option value="" selected>학생 이름을 입력하세요.</option>
-    //         {student.map((option) => (
-    //           <option
-    //             key={option.name}
-    //             value={option.name}
-    //           >
-    //             {option.name}
-    //           </option>
-    //         ))}
-    //       </select>
-
-    //       <div style={{ width: "100%", textAlign: "center" }}>
-    //         <button type="submit" class="btn btn-primary btn-block mt-2">추가</button>
-    //       </div>
-    //     </form>
-    //   </div>
-    // </div>
-
   )
 }
 
