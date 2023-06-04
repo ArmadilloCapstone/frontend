@@ -15,6 +15,7 @@ const FileUpload = () => {
   }, []);
 
   const selectFiles = (event) => {
+    console.log(event.target.files)
     setSelectedFiles(event.target.files);
     setProgressInfos({ val: [] });
   };
@@ -32,6 +33,11 @@ const FileUpload = () => {
           ...prevMessage,
           "'" + file.name + "' 업로드가 완료되었습니다!",
         ]));
+        const files = Array.from(selectedFiles);
+        idx++;
+        if(files.length != idx){
+          IndividualUpload(idx, files[idx])
+        }
       })
       .catch(() => {
         _progressInfos[idx].percentage = 0;
@@ -53,13 +59,13 @@ const FileUpload = () => {
       val: _progressInfos,
     }
 
-    const uploadPromises = files.map((file, i) => IndividualUpload(i, file));
-
-    Promise.all(uploadPromises)
-      .then(() => UploadService.getFiles())
-      .then((files) => {
-        setFileInfos(files.data);
-      });
+    IndividualUpload(0, files[0])
+    
+    // Promise.all(uploadPromises)
+    //   .then(() => UploadService.getFiles())
+    //   .then((files) => {
+    //     setFileInfos(files.data);
+    //   });
 
     setMessage([]);
   };
