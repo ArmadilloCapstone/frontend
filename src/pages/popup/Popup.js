@@ -37,6 +37,11 @@ const Popup = () => {
   const [showPopup, setShowPopup] = useState(false);
   const user_option = useSelector((state => state.user_option))
 
+  const handleClickButton = useCallback(() => {
+    var audio = new Audio('/alert.mp3');
+    audio.play();
+  }, []);
+
   const clickPopup = () =>{
     setShowPopup(false);
   }
@@ -64,6 +69,7 @@ const Popup = () => {
                 return returnObj;
               }));
               setShowPopup(true);
+              handleClickButton();
               console.log("showPopup is true")
             }
           
