@@ -14,7 +14,7 @@ export const LoginForm = (props) => {
   const [serial, setSerial] = useState([]);
   const [id, setId] = useState([]);
   const [pw, setPw] = useState([]);
-  const [hovered, setHovered] = useState(false); 
+  const [hovered, setHovered] = useState(false);
 
   const saveSerial = event => {
     setSerial(event.target.value);
@@ -33,7 +33,9 @@ export const LoginForm = (props) => {
     props.setUserOption(props.option);
   };
 
-  const clickLogin = () => {
+  const submitLogin = async (e) => {
+    e.preventDefault();
+    e.target.reset();
 
     if(props.option != "3"){
 
@@ -108,35 +110,37 @@ export const LoginForm = (props) => {
 
   return (
     <div className='login_form'>
-      { (props.option === "3")
-            ?
-            <div className="login_box login_sid">
-              <div className="login_name">일련번호</div>
-              <input type="text" value ={serial} onChange={saveSerial}/>
-            </div>
-            :
-
-            <div className="login_box login_sid">
-              <div className="login_name">ID</div>
-              <input type="text" value ={id} onChange={saveUserId}/>
-            </div>
-
-        }
+      <form name="form" onSubmit={submitLogin}>
         { (props.option === "3")
-            ?
-            <div className='empty'></div>
-            :
-            <div className="login_box pw">
-              <div className="login_name">PW</div>
-              <input type="password" value ={pw} onChange={saveUserPw}/>
-            </div>
-        }
-        <div className="signupButton">
+              ?
+              <div className="login_box login_sid">
+                <div className="login_name">일련번호</div>
+                <input type="text" value ={serial} onChange={saveSerial}/>
+              </div>
+              :
 
-        <h1 className="login_subtitle">아직 회원이 아니신가요?</h1> 
-          {(props.option === '1' || props.option === '2')?<span className="signup_button" onClick={clickSignup}>회원가입</span> : <span className="signup_button"></span>}
-        </div>
-        <div className="login_button" onClick={clickLogin}>로그인</div>
+              <div className="login_box login_sid">
+                <div className="login_name">ID</div>
+                <input type="text" value ={id} onChange={saveUserId}/>
+              </div>
+
+          }
+          { (props.option === "3")
+              ?
+              <div className='empty'></div>
+              :
+              <div className="login_box pw">
+                <div className="login_name">PW</div>
+                <input type="password" value ={pw} onChange={saveUserPw}/>
+              </div>
+          }
+          <div className="signupButton">
+
+          <h1 className="login_subtitle">아직 회원이 아니신가요?</h1> 
+            {(props.option === '1' || props.option === '2')?<span className="signup_button" onClick={clickSignup}>회원가입</span> : <span className="signup_button"></span>}
+          </div>
+          <button className="login_button" type="submit">로그인</button>
+        </form>
       </div>
   );
 };
