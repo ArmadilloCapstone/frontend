@@ -113,7 +113,10 @@ function TeacherSidebar() {
       <div className="sidebar-container">
         <SidebarUser>
           <TeacherIcon src={teacher} />
-          <h6 style={{ fontSize: "20px", paddingLeft: "5px", paddingTop: "10px" }}>{user_name} 교사님</h6>
+          <div>
+            <div style={{ fontSize: "15px", paddingLeft: "15px", paddingTop: "0px", textAlign:"center" }}>{localStorage.getItem('classname')}</div>
+            <div style={{ fontSize: "15px", paddingLeft: "15px", paddingTop: "10px", textAlign:"center" }}>{user_name} 교사님</div>
+          </div>
         </SidebarUser>
         <Menu className="sidebar-content">
           {menusUp.map((menu, index) => {
