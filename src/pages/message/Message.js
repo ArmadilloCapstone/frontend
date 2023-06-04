@@ -115,7 +115,7 @@ const Message = () => {
   }
   useEffect(() => {
     loadMsgOnChatRoom();
-  }, [nowChatMsg]);
+  }, []);
 
   const showChattSubmitForm = () => {
     setShowForm(true);
