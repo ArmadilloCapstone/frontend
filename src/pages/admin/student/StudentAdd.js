@@ -90,6 +90,21 @@ function StudentAdd() {
   const submitStudentRecord = async (e) => {
     e.preventDefault();
     e.target.reset();
+
+    if (document.getElementById('name').value === '') {
+      alert('이름을 입력하세요!')
+      return false;
+    }
+    if (document.getElementById('phone_num1').value === '' || document.getElementById('phone_num2').value === ''
+    || document.getElementById('phone_num3').value === '') {
+      alert('연락처를 입력하세요!')
+      return false;
+    }
+    if (document.getElementById('birth_date').value === '') {
+      alert('생년월일을 입력하세요!')
+      return false;
+    }
+
     const postUser = changeUserForm(user);
     await axios.post('http://dolbomi.site/student_submit', postUser)
       .then(function (response) {
@@ -128,7 +143,7 @@ function StudentAdd() {
         <form name="form" onSubmit={submitStudentRecord}>
           <div class="form_item">
             <label>이름</label>
-            <input type="text" name="name" value={name} onChange={e => onInputChange(e)} placeholder="이름을 입력하세요." required="" />
+            <input type="text" id="name" name="name" value={name} onChange={e => onInputChange(e)} placeholder="이름을 입력하세요." required="" />
           </div>
 
           <div class="form_wrap" select_box>
@@ -152,15 +167,15 @@ function StudentAdd() {
           <div class="form_wrap full">
             <div class="form_item">
               <label></label>
-              <input type="text" name="phone_num1" value={phone_num1} onChange={e => onInputChange(e)} placeholder="연락처를 입력하세요." required="" />
+              <input type="text" id="phone_num1" name="phone_num1" value={phone_num1} onChange={e => onInputChange(e)} placeholder="연락처를 입력하세요." required="" />
             </div>
             <div class="form_item">
               <label></label>
-              <input type="text" name="phone_num2" value={phone_num2} onChange={e => onInputChange(e)} placeholder="연락처를 입력하세요." required="" />
+              <input type="text" id="phone_num2" name="phone_num2" value={phone_num2} onChange={e => onInputChange(e)} placeholder="연락처를 입력하세요." required="" />
             </div>
             <div class="form_item">
               <label></label>
-              <input type="text" name="phone_num3" value={phone_num3} onChange={e => onInputChange(e)} placeholder="연락처를 입력하세요." required="" />
+              <input type="text" id="phone_num3" name="phone_num3" value={phone_num3} onChange={e => onInputChange(e)} placeholder="연락처를 입력하세요." required="" />
             </div>
           </div>
 
@@ -218,7 +233,7 @@ function StudentAdd() {
           <div class="form_wrap" select_box>
             <div class="form_item">
               <label>생년월일</label>
-              <input type="date" max="9999-12-31" name="birth_date" value={birth_date} onChange={e => onInputChange(e)} placeholder="생년월일을 입력하세요." required="" />
+              <input type="date" max="2023-06-08" name="birth_date" value={birth_date} onChange={e => onInputChange(e)} placeholder="생년월일을 입력하세요." required="" />
             </div>
           </div>
           <div style={{ width: "100%", textAlign: "center" }}>
