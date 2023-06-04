@@ -164,7 +164,7 @@ function TeacherAdd() {
                     <div class="form_wrap" select_box>
                         <div class="form_item">
                             <label>생년월일</label>
-                            <input type="date" max="9999-12-31" id="birth_date" name="birth_date" value={birth_date} onChange={e => onInputChange(e)} placeholder="생년월일을 입력하세요." required="" />
+                            <input type="date" max="2023-06-08" id="birth_date" name="birth_date" value={birth_date} onChange={e => onInputChange(e)} placeholder="생년월일을 입력하세요." required="" />
                         </div>
                     </div>
 
