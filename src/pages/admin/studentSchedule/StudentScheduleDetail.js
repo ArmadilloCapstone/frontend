@@ -15,9 +15,8 @@ function StudentScheduleDetail() {
                     var returnObj = {}
                     returnObj['id'] = el.id;
                     returnObj['name'] = el.name;
-                    // returnObj['student_id'] = el.student_id;
                     returnObj['class_name'] = el.class_name;
-                    // returnObj['class_id'] = el.class_id;
+                    returnObj['day'] = el.day;
 
                     return returnObj;
                 }));
@@ -57,7 +56,7 @@ function StudentScheduleDetail() {
                     {record.map((name) =>
                         <tr class="admin">
                             <td class="admin">{name.name}</td>
-                            <td class="admin">{name.class_name}</td>
+                            <td class="admin">{name.class_name}{'('}{name.day}{')'}</td>
                             <td class="admin">
                                 <button class="delete"
                                     onClick={() => {

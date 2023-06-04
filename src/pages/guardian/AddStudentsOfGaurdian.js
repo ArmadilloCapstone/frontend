@@ -68,7 +68,6 @@ export default function AddStudentsOfGaurdian(props) {
             }).catch(function (reason) {
                 console.log(reason);
             });
-
     }
     useEffect(() => {
         loadStudentList();
