@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import axios from "axios";
 import { Link } from 'react-router-dom';
@@ -109,13 +109,12 @@ const Message = () => {
   }
 
   const loadMsgOnChatRoom = () => {
-    let filterMsg = allChatMsg.filter(el =>
-      el.receiver_name === selected.name || el.sender_name === selected.name);
+    let filterMsg = allChatMsg.filter(el => el.receiver_name === selected.name || el.sender_name === selected.name);
     setNowChatMsg(filterMsg);
   }
-  useEffect(() => {
+  useCallback(() => {
     loadMsgOnChatRoom();
-  }, []);
+  }, [nowChatMsg]);
 
   const showChattSubmitForm = () => {
     setShowForm(true);

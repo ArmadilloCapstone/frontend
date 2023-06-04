@@ -123,7 +123,7 @@ function StudentScheduleAdd() {
                                         key={option.class_id}
                                         value={option.class_id}
                                     >
-                                        {option.class_name}({option.day})
+                                        {option.class_name}{'('}{option.day}{')'}
                                     </option>
                                 ))}
                             </select>
