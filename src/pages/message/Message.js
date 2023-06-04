@@ -10,66 +10,9 @@ const Message = () => {
   const [ws, setWs] = useState(null);
   const [sendMsg, setSendMsg] = useState(false);
 
-  const [allChatList, setAllChatList] = useState([
-    {
-    id: 1,
-    name: "부모1",
-    phone_num: "010-1111-1111",
-    gender: "여자",
-    birth_date: "700115",
-    child_id: 1,
-    class_id: 1,
-    // disable : Long
-},
-{
-    id: 2,
-    name: "부모2",
-    phone_num: "010-2222-2222",
-    gender: "남자",
-    birth_date: "690328",
-    child_id: 2,
-    class_id: 1,
-    // disable : Long
-}
-  ]);
-  const [allChatMsg, setAllChatMsg] = useState([
-    {
-        id: 1,
-        sender_id: "P01",
-        sender_name: "부모1",
-        receiver_id: "T01",
-        receiver_name: "교사1",
-        text: "보낸사람: 부모1, 받은사람: 교사1, 부모가 첫번째 보낸 메시지",
-        date: moment("2023-06-01 10:30:25")
-    },
-    {
-        id: 2,
-        sender_id: "P02",
-        sender_name: "부모2",
-        receiver_id: "T01",
-        receiver_name: "교사1",
-        text: "보낸사람: 부모2, 받은사람: 교사1, 부모가 첫번째 보낸 메시지",
-        date: moment("2023-06-01 11:30:25")
-    },
-    {
-        id: 3,
-        sender_id: "T01",
-        sender_name: "교사1",
-        receiver_id: "P01",
-        receiver_name: "부모1",
-        text: "보낸사람: 교사1, 받은사람: 부모1, 교사가 첫번째 보낸 메시지",
-        date: moment("2023-06-01 12:30:25")
-    },
-    {
-        id: 4,
-        sender_id: "T01",
-        sender_name: "교사1",
-        receiver_id: "P01",
-        receiver_name: "부모2",
-        text: "보낸사람: 교사1, 받은사람: 부모2, 교사가 첫번째 보낸 메시지",
-        date: moment("2023-06-01 13:30:25")
-    }
-  ]);
+  const [allChatList, setAllChatList] = useState([]);
+  const [alarmList, setAlarmList] = useState([]);
+  const [allChatMsg, setAllChatMsg] = useState([]);
   const [selected, setSelected] = useState({
     id: 0,
     name: "",
@@ -86,7 +29,6 @@ const Message = () => {
 
   const webSocketUrl = `ws://localhost/room`;
 
-<<<<<<< HEAD
   useEffect(() => {
     if (localStorage.getItem('useroption') == 1) {
       axios.post("http://localhost/getAllParentByTid", {
@@ -94,6 +36,16 @@ const Message = () => {
       }).then((res) => {
         console.log(res.data)
         setAllChatList(res.data)
+        setAlarmList(res.data.map(function(el, idx){
+
+          console.log(el);
+          var returnObj = {}
+          returnObj["id"] = el.id;
+          returnObj["alarm"] = false;
+          console.log(returnObj);
+          return returnObj;
+
+        }));
       })
       axios.post("http://localhost/getAllMessageByTid", {
         id: localStorage.getItem('userid')
@@ -109,6 +61,15 @@ const Message = () => {
       }).then((res) => {
         console.log(res.data)
         setAllChatList(res.data)
+        setAlarmList(res.data.map(function(el, idx){
+
+          var returnObj = {}
+          returnObj["id"] = el.id;
+          returnObj["alarm"] = false;
+          console.log(returnObj);
+          return returnObj;
+
+        }));
       })
       axios.post("http://localhost/getAllMessageByPid", {
         id: localStorage.getItem('userid')
@@ -117,97 +78,77 @@ const Message = () => {
         setAllChatMsg(res.data)
       })
     }
-=======
-  // useEffect(() => {
-  //   if (localStorage.getItem('useroption') == 1) {
-  //     axios.post("http://dolbomi.site/getAllParentByTid", {
-  //       id: localStorage.getItem('userid')
-  //     }).then((res) => {
-  //       console.log(res.data)
-  //       setAllChatList(res.data)
-  //     })
-  //     axios.post("http://dolbomi.site/getAllMessageByTid", {
-  //       id: localStorage.getItem('userid')
-  //     }).then((res) => {
-  //       console.log(res.data)
-  //       setAllChatMsg(res.data)
-  //     })
-  //   }
 
-  //   if (localStorage.getItem('useroption') == 2) {
-  //     axios.post("http://dolbomi.site/getAllTeacherByPid", {
-  //       id: localStorage.getItem('userid')
-  //     }).then((res) => {
-  //       console.log(res.data)
-  //       setAllChatList(res.data)
-  //     })
-  //     axios.post("http://dolbomi.site/getAllMessageByPid", {
-  //       id: localStorage.getItem('userid')
-  //     }).then((res) => {
-  //       console.log(res.data)
-  //       setAllChatMsg(res.data)
-  //     })
-  //   }
->>>>>>> c590fdc1941c36f13f04da613e97da11565586aa
+    if (!ws) {
+      var ws2 = new WebSocket(webSocketUrl);
+      ws2.onopen = () => {
+        console.log("connected to " + webSocketUrl);
+        if (localStorage.getItem('useroption') == 1) {
+          ws2.send(
+            JSON.stringify({
+              type: "setting",
+              id: "T" + localStorage.getItem('userid'),
+              name: localStorage.getItem('username')
+            }));
+        }
+        if (localStorage.getItem('useroption') == 2) {
+          ws2.send(
+            JSON.stringify({
+              type: "setting",
+              id: "P" + localStorage.getItem('userid'),
+              name: localStorage.getItem('username')
+            }));
+        }
+        setSocketConnected(true);
+      };
+      ws2.onclose = (error) => {
+        console.log("disconnect from " + webSocketUrl);
+        console.log(error);
+      };
+      ws2.onerror = (error) => {
+        console.log("connection error " + webSocketUrl);
+        console.log(error);
+      };
+      ws2.onmessage = (evt) => {
+        console.log(evt.data);
+      };
 
-  //   if (!ws) {
-  //     var ws2 = new WebSocket(webSocketUrl);
-  //     ws2.onopen = () => {
-  //       console.log("connected to " + webSocketUrl);
-  //       if (localStorage.getItem('useroption') == 1) {
-  //         ws2.send(
-  //           JSON.stringify({
-  //             type: "setting",
-  //             id: "T" + localStorage.getItem('userid'),
-  //             name: localStorage.getItem('username')
-  //           }));
-  //       }
-  //       if (localStorage.getItem('useroption') == 2) {
-  //         ws2.send(
-  //           JSON.stringify({
-  //             type: "setting",
-  //             id: "P" + localStorage.getItem('userid'),
-  //             name: localStorage.getItem('username')
-  //           }));
-  //       }
-  //       setSocketConnected(true);
-  //     };
-  //     ws2.onclose = (error) => {
-  //       console.log("disconnect from " + webSocketUrl);
-  //       console.log(error);
-  //     };
-  //     ws2.onerror = (error) => {
-  //       console.log("connection error " + webSocketUrl);
-  //       console.log(error);
-  //     };
-  //     ws2.onmessage = (evt) => {
-  //       console.log(evt.data);
-  //     };
+      setWs(ws2);
+    }
 
-  //     setWs(ws2);
-  //   }
-
-  //   return () => {
-  //     console.log("clean up");
-  //     if (ws) {
-  //       ws.close();
-  //     }
-  //   };
-  // }, [ws]);
+    return () => {
+      console.log("clean up");
+      if (ws) {
+        ws.close();
+      }
+    };
+  }, [ws]);
 
   const showChatRoom = (select) => {
     /* 선택된 상대와의 채팅룸 visible */
     setSelected(select);
-    // /* 선택된 상대와의 메시지 내역 불러옴 */
-    // setNowChatMsg(allChatMsg.filter(el => el.receiver_name === select.name || el.sender_name === select.name));
-    // /* 메시지 전송 폼 visible */
-    // setShowForm(true);
-  }
-  const showChatRoom2 = (select) => {
     /* 선택된 상대와의 메시지 내역 불러옴 */
     setNowChatMsg(allChatMsg.filter(el => el.receiver_name === select.name || el.sender_name === select.name));
     /* 메시지 전송 폼 visible */
     setShowForm(true);
+    setAlarmList(alarmList.map(function(el, idx){
+      if(el.id == select.id){
+        var returnObj = {}
+        returnObj["id"] = el.id;
+        returnObj["alarm"] = false;
+        console.log(returnObj);
+        return returnObj;
+      }
+      else{
+        var returnObj = {}
+        returnObj["id"] = el.id;
+        returnObj["alarm"] = el.alarm;
+        console.log(returnObj);
+        return returnObj;
+
+      }
+
+    }));
   }
 
   const onInputChange = (e) => {
@@ -218,7 +159,7 @@ const Message = () => {
     e.preventDefault();
     e.target.reset();
     sendMsgOnServer();
-    setAllChatMsg((prevItems) => [...prevItems, {
+    let items = [...allChatMsg, {
       id: allChatMsg.length,
       sender_id: "T" + localStorage.getItem('userid'),
       sender_name: localStorage.getItem('username'),
@@ -226,7 +167,17 @@ const Message = () => {
       receiver_name: selected.name,
       text: inputMsg,
       date: moment(),
-    }]);
+    }]
+    setAllChatMsg((prevItems) => ([...prevItems, {
+      id: allChatMsg.length,
+      sender_id: "T" + localStorage.getItem('userid'),
+      sender_name: localStorage.getItem('username'),
+      receiver_id: "P" + selected.id.toString(),
+      receiver_name: selected.name,
+      text: inputMsg,
+      date: moment(),
+    }]));
+    setNowChatMsg(items.filter(el => el.receiver_name === selected.name || el.sender_name === selected.name));
     onReset();
   }
 
@@ -270,31 +221,63 @@ const Message = () => {
   // }, [socketConnected, ws]);
 
   useEffect(() => {
-    if (sendMsg) {
+    if (ws) {
       ws.onmessage = (evt) => {
+        console.log(evt.data);
+        console.log(typeof(evt.data));
         const data = JSON.parse(evt.data);
-        console.log(data);
-        setAllChatMsg((prevItems) => [...prevItems, evt.data]);
+        let items = [...allChatMsg, data]
+        setAllChatMsg((prevItems) => ([...prevItems, data]));
+        setAlarmList(alarmList.map(function(el, idx){
+          console.log(el.id);
+          console.log(data.sender_id.slice(1)-0);
+          if(el.id == data.sender_id.slice(1)-0 && el.id != selected.id){
+            var returnObj = {}
+            returnObj["id"] = el.id;
+            returnObj["alarm"] = true;
+            console.log(returnObj);
+            return returnObj;
+          }
+          else{
+            var returnObj = {}
+            returnObj["id"] = el.id;
+            returnObj["alarm"] = el.alarm;
+            console.log(returnObj);
+            return returnObj;
+
+          }
+
+        }));
+
+        setNowChatMsg(items.filter(el => el.receiver_name === selected.name || el.sender_name === selected.name));
       };
     }
-  }, [sendMsg]);
+  },);
 
   return (
     <div className="chat-wrapper">
       <div className="chat-container">
         <div className="chat-list">
           <div>채팅 목록</div>
-          <div>
-            {allChatList.map((el) =>
+          <div className='list-container'>
+            <div className='list-name'>
+            {allChatList.map((el, idx) =>
               <div>
                 <button onClick={() => {
                   showChatRoom(el);
-                  showChatRoom2(el);
                 }}>
                   <div>{el.name}</div>
                 </button>
               </div>
             )}
+            </div>
+            <div className='list-alarm'>
+            {alarmList.map((el, idx) =>
+              <div>
+                <div>{el.alarm == true ? "안람 옴" : "안옴"}</div>
+              </div>
+            )}
+            </div>
           </div>
         </div>
 
@@ -306,7 +289,7 @@ const Message = () => {
               <div className="message-container">
                 <div>
                   보낸사람: {el.sender_name}, 받는사람: {el.receiver_name},
-                  {/* 시간: {el.date} */}
+                  시간: {/*el.date*/}
                 </div>
                 <hr></hr>
                 <div>내용: {el.text}</div>
