@@ -105,12 +105,6 @@ function GalleryDetail() {
                 <button className="delete-detail" onClick={deleteGallery}><i className="fas fa-trash-alt"></i> 삭제</button>
             <table className="table table-striped" style={{ fontFamily: "Eorinai" }}>
                 <tbody style={{ color: "#555555" }}>
-                    <tr>
-                        <th>번호</th>
-                        <td>
-                            <span>{gallery.id}</span>
-                        </td>
-                    </tr>
 
                     <tr>
                         <th>제목</th>
