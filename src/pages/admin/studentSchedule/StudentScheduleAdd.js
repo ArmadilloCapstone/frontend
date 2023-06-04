@@ -57,6 +57,7 @@ function StudentScheduleAdd() {
     const submitStudentScheduleRecord = async (e) => {
         e.preventDefault();
         e.target.reset();
+        
         await axios.post('http://dolbomi.site/student_schedule_submit', user)
             .then(function (response) {
                 console.log(response.data);

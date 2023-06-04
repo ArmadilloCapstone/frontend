@@ -43,6 +43,24 @@ function ClassAdd() {
     const submitClassRecord = async (e) => {
         e.preventDefault();
         e.target.reset();
+
+        if(document.getElementById('class_name').value === ''){
+            alert('학급 이름을 입력하세요!')
+            return false;
+        }
+        if(document.getElementById('class_num').value === ''){
+            alert('학급 번호를 입력하세요!')
+            return false;
+        }
+        if(document.getElementById('year').value === ''){
+            alert('년도를 입력하세요!')
+            return false;
+        }
+        if(document.getElementById('seme').value === ''){
+            alert('학기를 입력하세요!')
+            return false;
+        }
+
         const postUser = changeUserForm(user);
         console.log(postUser);
         await axios.post('http://dolbomi.site/dolbom_class_submit', postUser)
@@ -79,24 +97,24 @@ function ClassAdd() {
                     {/* <div class="form_wrap onlyone"> */}
                     <div class="form_item">
                         <label>학급 이름</label>
-                        <input type="text" name="class_name" value={class_name} onChange={e => onInputChange(e)} placeholder="학급 이름을 입력하세요." required="" />
+                        <input type="text" id="class_name" name="class_name" value={class_name} onChange={e => onInputChange(e)} placeholder="학급 이름을 입력하세요." required="" />
                     </div>
                     {/* </div> */}
 
                     <div class="form_item">
                         <label>학급 번호</label>
-                        <input type="number" name="class_num" value={class_num} onChange={e => onInputChange(e)} placeholder="학급 번호를 입력하세요." required="" />
+                        <input type="number" id="class_num" name="class_num" value={class_num} onChange={e => onInputChange(e)} placeholder="학급 번호를 입력하세요." required="" />
                     </div>
 
                     <label>년도-학기</label>
                     <div class="form_wrap full">
                         <div class="form_item">
                             <label></label>
-                            <input type="number" name="year" value={year} onChange={e => onInputChange(e)} placeholder="년도를 입력하세요." required="" />
+                            <input type="number" id="year" name="year" value={year} onChange={e => onInputChange(e)} placeholder="년도를 입력하세요." required="" />
                         </div>
                         <div class="form_item">
                             <label></label>
-                            <input type="text" name="seme" value={seme} onChange={e => onInputChange(e)} placeholder="학기를 입력하세요." required="" />
+                            <input type="text" id="seme" name="seme" value={seme} onChange={e => onInputChange(e)} placeholder="학기를 입력하세요." required="" />
                         </div>
                     </div>
 
