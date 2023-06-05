@@ -38,32 +38,32 @@ function CustomTimeline() {
           returnObj['student_id'] = el.student_id;
           returnObj['seed'] = 0;
           if (moment().day() === 1) {
-            returnObj['start_time'] = moment(defaultTimeStart).add(el.entry_1, 'h');
-            returnObj['end_time'] = moment(defaultTimeStart).add(el.off_1, 'h');
+            returnObj['start_time'] = moment(defaultTimeStart).add(el.entry_1);
+            returnObj['end_time'] = moment(defaultTimeStart).add(el.off_1);
             returnObj['start'] = el.entry_1;
             returnObj['end'] = el.off_1;
           }
           else if (moment().day() === 2) {
-            returnObj['start_time'] = moment(defaultTimeStart).add(el.entry_2, 'h');
-            returnObj['end_time'] = moment(defaultTimeStart).add(el.off_2, 'h');
+            returnObj['start_time'] = moment(defaultTimeStart).add(el.entry_2);
+            returnObj['end_time'] = moment(defaultTimeStart).add(el.off_2);
             returnObj['start'] = el.entry_2;
             returnObj['end'] = el.off_2;
           }
           else if (moment().day() === 3) {
-            returnObj['start_time'] = moment(defaultTimeStart).add(el.entry_3, 'h');
-            returnObj['end_time'] = moment(defaultTimeStart).add(el.off_3, 'h');
+            returnObj['start_time'] = moment(defaultTimeStart).add(el.entry_3);
+            returnObj['end_time'] = moment(defaultTimeStart).add(el.off_3);
             returnObj['start'] = el.entry_3;
             returnObj['end'] = el.off_3;
           }
           else if (moment().day() === 4) {
-            returnObj['start_time'] = moment(defaultTimeStart).add(el.entry_4, 'h');
-            returnObj['end_time'] = moment(defaultTimeStart).add(el.off_4, 'h');
+            returnObj['start_time'] = moment(defaultTimeStart).add(el.entry_4);
+            returnObj['end_time'] = moment(defaultTimeStart).add(el.off_4);
             returnObj['start'] = el.entry_4;
             returnObj['end'] = el.off_4;
           }
           else {
-            returnObj['start_time'] = moment(defaultTimeStart).add(el.entry_5, 'h');
-            returnObj['end_time'] = moment(defaultTimeStart).add(el.off_5, 'h');
+            returnObj['start_time'] = moment(defaultTimeStart).add(el.entry_5);
+            returnObj['end_time'] = moment(defaultTimeStart).add(el.off_5);
             returnObj['start'] = el.entry_5;
             returnObj['end'] = el.off_5;
           }
@@ -142,18 +142,19 @@ function CustomTimeline() {
 
   /* 학생의 id를 포함한 방과후수업 목록을 item 형태로 설정 */
   const setAfterSchoolItems = itemsForAfterSchool.map(obj => {
+    console.log(after_school_class)
     let newList = {};
     newList['student_id'] = obj.student_id;
     newList['seed'] = obj.class_id;
     // newList['seed'] = obj.class_name;
     console.log(obj);
-    console.log(after_school_class);
-    newList['start_time'] = moment(defaultTimeStart).add(after_school_class.find((el) => el.class_id === obj.id).start_time, 'h');
-    newList['end_time'] = moment(defaultTimeStart).add(after_school_class.find((el) => el.class_id === obj.id).end_time, 'h');
+    newList['start_time'] = moment(defaultTimeStart).add(after_school_class.find((el) => el.id === obj.class_id).start_time);
+    newList['end_time'] = moment(defaultTimeStart).add(after_school_class.find((el) => el.id === obj.class_id).end_time);
 
     return newList;
   });
 
+  console.log(setAfterSchoolItems)
   setAfterSchoolItems.sort((a, b) => a.student_id - b.student_id); // student_id 기준으로 정렬
 
   /* 돌봄시간, 방과후시간이 모두 포함된 전체 아이템 */
