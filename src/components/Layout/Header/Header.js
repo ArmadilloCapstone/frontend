@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import { useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { setUserId, setUserName, setUserOption } from '../../../redux/actions';
+import { setUserId, setUserName, setUserOption, setMessageClick, setMessageAlarm } from '../../../redux/actions';
 import { ChangePw } from './ChangePw';
 import 'bootstrap/dist/css/bootstrap.css';
 import { useNavigate } from 'react-router-dom';
@@ -15,6 +15,8 @@ const Header = () => {
   
   const user_id = useSelector((state => state.user_id))
   const user_option = useSelector((state => state.user_option))
+  const message_click = useSelector((state => state.message_click))
+  const message_alarm = useSelector((state => state.message_alarm))
   const [showPopup, setShowPopup] = useState(false);
 
   
@@ -22,8 +24,16 @@ const Header = () => {
     dispatch(setUserId(""));
     dispatch(setUserName(""));
     dispatch(setUserOption(""));
+    dispatch(setMessageClick(false));
     localStorage.clear()
     navigate('/');
+  };  
+  const MessageClickHandler = () => {
+    console.log("hi")
+    if(!message_click){
+      dispatch(setMessageAlarm(false));
+    }
+    dispatch(setMessageClick(!message_click));
   };
 
   const changePwClickHandler = () => {
@@ -49,6 +59,7 @@ const Header = () => {
                   user_id !== ""
                   ?
                 <Nav className="ms-auto">
+                  <Nav.Link onClick={MessageClickHandler}>메시지{message_alarm ? "!!!" : ""}</Nav.Link>
                   <NavDropdown title="내 정보" id="basic-nav-dropdown">
                     {localStorage.getItem('useroption') != 3 ? <NavDropdown.Item onClick={changePwClickHandler}>비밀번호 변경</NavDropdown.Item> : null}
                   </NavDropdown>

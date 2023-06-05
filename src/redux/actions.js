@@ -14,3 +14,11 @@
     type: "SET_SHOW_SIGNUP",
     payload: data,
   });
+  export const setMessageClick = data => ({
+    type: "SET_MESSAGE_CLICK",
+    payload: data,
+  });
+  export const setMessageAlarm = data => ({
+    type: "SET_MESSAGE_ALARM",
+    payload: data,
+  });
