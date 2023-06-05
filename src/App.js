@@ -175,8 +175,8 @@ export default function App() {
           }
           {
             (user_option == "2") ?
-              <Route path="/ParentBbsDetail" element={<ParentBbsDetail />} /> :
-              <Route path="/ParentBbsDetail" element={<LoginPage />} />
+              <Route path="/ParentBbsDetail/:id" element={<ParentBbsDetail />} /> :
+              <Route path="/ParentBbsDetail/:id" element={<LoginPage />} />
           }
           {
             (user_option == "2") ?
@@ -185,8 +185,8 @@ export default function App() {
           }
           {
             (user_option == "2") ?
-              <Route path="/ParentGalleryDetail" element={<ParentGalleryDetail />} /> :
-              <Route path="/ParentGalleryDetail" element={<LoginPage />} />
+              <Route path="/ParentGalleryDetail/:id" element={<ParentGalleryDetail />} /> :
+              <Route path="/ParentGalleryDetail/:id" element={<LoginPage />} />
           }
           {/* 보호자 페이지 */}
           {
