@@ -56,6 +56,9 @@ const SidebarItem = ({ menu }) => {
       {menu.name === "픽업" && <Icon src={baby} alt="Baby" />}
       {menu.name === "긴급" && <Icon src={phone} alt="Phone" />}
       {menu.name === "메신저" && <Icon src={chat2} alt="Chat" />}
+
+      {menu.name === "안내장" && <Icon src={chat2} alt="Chat" />}
+      {menu.name === "사진첩" && <Icon src={chat2} alt="Chat" />}
     </>
   );
 };
@@ -65,7 +68,10 @@ function AdminBottomNav() {
     { name: "메인", path: "/ParentMain" },
     { name: "픽업", path: "/Pickup" },
     { name: "긴급", path: "/TelephoneLink" },
-    { name: "메신저", path: "/Message" }
+    { name: "메신저", path: "/Message" },
+
+    { name: "안내장", path: "/ParentBbsList" },
+    { name: "사진첩", path: "/ParentGalleryList" }
   ];
   const user_name = useSelector((state) => state.user_name);
 
@@ -89,6 +95,17 @@ function AdminBottomNav() {
       <Box className="bottom-button">
         <Button exact to={menus[3].path}>
           <SidebarItem menu={menus[3]} />
+        </Button>
+      </Box>
+
+      <Box className="bottom-button">
+        <Button exact to={menus[4].path}>
+          <SidebarItem menu={menus[4]} />
+        </Button>
+      </Box>
+      <Box className="bottom-button">
+        <Button exact to={menus[5].path}>
+          <SidebarItem menu={menus[5]} />
         </Button>
       </Box>
     </Container>

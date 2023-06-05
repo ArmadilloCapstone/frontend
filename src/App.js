@@ -24,7 +24,10 @@ import GuardianPickup from './pages/pickup/GuardianPickup';
 import Popup from './pages/popup/Popup';
 import GuardianManagement from './pages/guardian/GuardianManagement';
 import TelephoneLink from './pages/telephone/TelephoneLink';
-
+import ParentBbsList from './pages/parentBbs/ParentBbsList';
+import ParentBbsDetail from './pages/parentBbs/ParentBbsDetail';
+import ParentGalleryList from './pages/parentGallery/ParentGalleryList';
+import ParentGalleryDetail from './pages/parentGallery/ParentGalleryDetail';
 
 import BbsDetail from './pages/bbs/BbsDetail';
 import BbsList from './pages/bbs/BbsList';
@@ -147,9 +150,8 @@ export default function App() {
               <Route path="/GuardianManagement" element={<GuardianManagement />} /> :
               <Route path="/GuardianManagementPage" element={<LoginPage />} />
           }
-
-
           {/* <Route path="/EntireUserAddPage" element={<EntireUserAddPage />} /> */}
+
           {/* 학부모 페이지 */}
           {
             (user_option == "2") ?
@@ -165,6 +167,26 @@ export default function App() {
             (user_option == "2") ?
               <Route path="/TelephoneLink" element={<TelephoneLink />} /> :
               <Route path="/TelephoneLink" element={<LoginPage />} />
+          }
+          {
+            (user_option == "2") ?
+              <Route path="/ParentBbsList" element={<ParentBbsList />} /> :
+              <Route path="/ParentBbsList" element={<LoginPage />} />
+          }
+          {
+            (user_option == "2") ?
+              <Route path="/ParentBbsDetail" element={<ParentBbsDetail />} /> :
+              <Route path="/ParentBbsDetail" element={<LoginPage />} />
+          }
+          {
+            (user_option == "2") ?
+              <Route path="/ParentGalleryList" element={<ParentGalleryList />} /> :
+              <Route path="/ParentGalleryList" element={<LoginPage />} />
+          }
+          {
+            (user_option == "2") ?
+              <Route path="/ParentGalleryDetail" element={<ParentGalleryDetail />} /> :
+              <Route path="/ParentGalleryDetail" element={<LoginPage />} />
           }
           {/* 보호자 페이지 */}
           {
