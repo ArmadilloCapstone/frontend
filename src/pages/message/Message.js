@@ -115,36 +115,7 @@ const Message = () => {
         console.log(error);
       };
       ws2.onmessage = (evt) => {
-        if(message_click == false){
-          dispatch(setMessageAlarm(true));
-        }
         console.log(evt.data);
-        console.log(typeof(evt.data));
-        const data = JSON.parse(evt.data);
-        let items = [...allChatMsg, data]
-        setAllChatMsg((prevItems) => ([...prevItems, data]));
-        setAlarmList(alarmList.map(function(el, idx){
-          console.log(el.id);
-          console.log(data.sender_id.slice(1)-0);
-          if(el.id == data.sender_id.slice(1)-0 && el.id != selected.id){
-            var returnObj = {}
-            returnObj["id"] = el.id;
-            returnObj["alarm"] = true;
-            console.log(returnObj);
-            return returnObj;
-          }
-          else{
-            var returnObj = {}
-            returnObj["id"] = el.id;
-            returnObj["alarm"] = el.alarm;
-            console.log(returnObj);
-            return returnObj;
-
-          }
-
-        }));
-
-        setNowChatMsg(items.filter(el => el.receiver_name === selected.name || el.sender_name === selected.name));
       };
 
       setWs(ws2);
@@ -256,7 +227,42 @@ const Message = () => {
   // useEffect(() => {
   //   sendMsgOnServer();
   // }, [socketConnected, ws]);
+  useEffect(() => {
+    if (ws) {
+      ws.onmessage = (evt) => {
+        if(message_click == false){
+          dispatch(setMessageAlarm(true));
+        }
+        console.log(evt.data);
+        console.log(typeof(evt.data));
+        const data = JSON.parse(evt.data);
+        let items = [...allChatMsg, data]
+        setAllChatMsg((prevItems) => ([...prevItems, data]));
+        setAlarmList(alarmList.map(function(el, idx){
+          console.log(el.id);
+          console.log(data.sender_id.slice(1)-0);
+          if(el.id == data.sender_id.slice(1)-0 && el.id != selected.id){
+            var returnObj = {}
+            returnObj["id"] = el.id;
+            returnObj["alarm"] = true;
+            console.log(returnObj);
+            return returnObj;
+          }
+          else{
+            var returnObj = {}
+            returnObj["id"] = el.id;
+            returnObj["alarm"] = el.alarm;
+            console.log(returnObj);
+            return returnObj;
 
+          }
+
+        }));
+
+        setNowChatMsg(items.filter(el => el.receiver_name === selected.name || el.sender_name === selected.name));
+      };
+    }
+  },);
 
   return (
     <div className="chat-wrapper" style={ message_click ? {display : 'block'} : {display : 'none'} }>
