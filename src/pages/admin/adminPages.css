@@ -1,6 +1,27 @@
 .container{
   margin-top: 3px;
 }
+.admin_sort {
+  /* margin: 20px; */
+  padding-bottom: 30px;
+  padding-right: 30px;
+}
+.adminsortingButtons {
+  height: 35px;
+  width: 130px;
+  font-size: 18px;
+  margin: 6px;
+  padding: 2px;
+  float: right;
+  position: relative;
+  top: 100%;
+  left: 1%;
+  background-color: oldlace;
+  color: #555555;
+  box-shadow: 0 5px 5px rgba(163, 123, 55, 0.3);
+  border-radius: 15px;
+  border: none;
+}
 
 button.delete {
     font-family: Eorinai;
@@ -32,7 +53,7 @@ button.delete {
   
   section.tableSection {
     font-family: Eorinai;
-    margin: 20px auto 0;
+    margin: 20px auto 20px;
     padding: 10px;
     border-radius: 20px;
   }

@@ -7,25 +7,10 @@ import './style.css';
 import alarm from "../popup/alarm.wav"
 
 import Timeline, {
-  TimelineHeaders,
-  SidebarHeader,
   DateHeader,
   TodayMarker,
-  TimelineMarkers
-} from "react-calendar-timeline/lib";
-
-var keys = {
-  groupIdKey: "id",
-  groupTitleKey: "title",
-  groupRightTitleKey: "rightTitle",
-  itemIdKey: "id",
-  itemTitleKey: "title",
-  itemDivTitleKey: "title",
-  itemGroupKey: "group",
-  itemTimeStartKey: "start",
-  itemTimeEndKey: "end",
-  groupLabelKey: "title"
-};
+} from "react-calendar-timeline";
+import swal from 'sweetalert';
 
 function CustomTimeline() {
   // 초기 타임라인 시간 범위 설정
@@ -40,11 +25,10 @@ function CustomTimeline() {
   const [student_schedule, setStudent_schedule] = useState([]);
 
   const subjectButtons = [];
-  let todayStart = "";
-  let todayEnd = "";
 
   // 백엔드에서 데이터 가져오기 & 오늘의 요일에 맞는 학생들의 입실/퇴실 시간 설정 => todaylist === student_time
-  useEffect(() => {
+  // useEffect(() => {
+    const loadStudentTime = () => {
     axios.post('http://dolbomi.site/studentTimeFindAll/' + localStorage.getItem('userid'))
       .then(function (response) {
         console.log("학생 입퇴실 데이터");
@@ -53,7 +37,7 @@ function CustomTimeline() {
 
           var returnObj = {}
           returnObj['student_id'] = el.student_id;
-          returnObj['seed'] = 0; // 랜덤컬러 수정 시 "돌봄"으로 수정
+          returnObj['seed'] = 0;
           if (moment().day() === 1) {
             returnObj['start_time'] = moment(defaultTimeStart).add(el.entry_1, 'h');
             returnObj['end_time'] = moment(defaultTimeStart).add(el.off_1, 'h');
@@ -89,6 +73,10 @@ function CustomTimeline() {
       }).catch(function (reason) {
         console.log(reason);
       });
+    }
+  // }, []);
+  useEffect(() => {
+    loadStudentTime();
   }, []);
 
   // 백엔드에서 데이터 가져오기 & 오늘의 요일에 맞는 방과후교실 목록 추출 => todayAfterSchoolList === after_school_class
@@ -98,9 +86,7 @@ function CustomTimeline() {
         console.log("방과후교실 목록 데이터");
         console.log(response.data);
         setAfter_school_class(response.data.filter(function (el, idx) {
-
           if (moment().day() === el.day) {
-
             return el;
           }
         }));
@@ -146,7 +132,6 @@ function CustomTimeline() {
       for (let j = 0; j < studentSchedule.length; j++) {
         if (afterSchool[i].id === studentSchedule[j].class_id) {
           arr.push(studentSchedule[j]);
-          // arr.push( {student_id: studentSchedule[j].student_id, class_name: afterSchool[i].class_name}); // 랜덤컬러 수정 시
         }
       }
     }
@@ -155,14 +140,6 @@ function CustomTimeline() {
 
   const itemsForAfterSchool = afterSchoolStudentsList(after_school_class, student_schedule);
   console.log(itemsForAfterSchool);
-
-  const showAfterStudents = (el) => {
-    let returnObj = []
-    let returnObj2 = []
-    returnObj = student_schedule.filter((obj) => el.id === obj.class_id)
-    returnObj2 = groups.filter((obj) => returnObj.student_id === obj.id)
-    alert(JSON.stringify(returnObj2))
-  }
 
   /* 학생의 id를 포함한 방과후수업 목록을 item 형태로 설정 */
   const setAfterSchoolItems = itemsForAfterSchool.map(obj => {
@@ -189,8 +166,6 @@ function CustomTimeline() {
         seed: student_time[i].seed,
         start_time: student_time[i].start_time,
         end_time: student_time[i].end_time
-        // start_time: moment(defaultTimeStart).add(student_time[i].entry5, 'h'),
-        // end_time: moment(defaultTimeStart).add(student_time[i].off5, 'h'),
       })
     }
     for (let i = 0; i < setAfterSchoolItems.length; i++) {
@@ -205,7 +180,6 @@ function CustomTimeline() {
     console.log(allItemList)
     return allItemList;
   }
-
   let sortedAllItem = allItems();// student_id 기준으로 정렬
   console.log(sortedAllItem);
 
@@ -244,7 +218,6 @@ function CustomTimeline() {
           returnObj['name'] = el.name
           returnObj['class_id'] = el.class_id;
           returnObj['title'] = el.name;
-          returnObj['end'] = "";
 
           return returnObj;
         }));
@@ -252,14 +225,6 @@ function CustomTimeline() {
         console.log(reason);
       });
   }, []);
-
-  // const groups = student.map(obj => {
-  //   console.log(obj)
-  //   let newList = {};
-  //   newList['id'] = obj.id;
-  //   newList['title'] = obj.name;
-  //   return newList;
-  // });
 
   /* 전체 아이템 중 각 학생마다 item group 설정 */
   function individualItems() {
@@ -281,6 +246,23 @@ function CustomTimeline() {
 
   let items = individualItems();
 
+  /* 방과후교실에 가야 하는 학생들을 알려주는 메소드 */
+  const showAfterStudents = (el) => {
+    let returnObj = []
+    returnObj = sortedAllItem.filter((obj) => el.id === obj.seed)
+    let show = []
+    for (let i = 0; i < groups.length; i++) {
+      for (let j = 0; j < returnObj.length; j++) {
+        if (groups[i].id === returnObj[j].student_id) {
+          show.push(groups[i].name)
+        }
+    }
+  }
+  swal("[ " + show + " ]", "'" + el.class_name + "' 수업 참여 학생 목록입니다.", {
+    buttons: '확인',
+  });
+}
+
   /* 정렬 메소드 */
   const sortById = () => {
     let copy = [...groups];
@@ -299,11 +281,11 @@ function CustomTimeline() {
     for (let i = 0; i < copyGroup.length; i++) {
       copyGroup[i].start = copyTime[i].start;
     }
-
     copyGroup.sort((a, b) => a.start.toUpperCase() < b.start.toUpperCase() ? -1 : 1);
     setGroups(copyGroup);
-    todayEnd =copyGroup[0].end
-    alert("오늘의 입실 시작 시간은" + copyGroup[0].start + "입니다!")
+    swal("오늘의 입실 시작 시간은" + copyGroup[0].start.substr(0, 5) + "입니다!", {
+      buttons: '확인',
+    });
   }
   const sortByEndTime = () => {
     let copyTime = [...student_time]
@@ -312,12 +294,27 @@ function CustomTimeline() {
     for (let i = 0; i < copyGroup.length; i++) {
       copyGroup[i].end = copyTime[i].end;
     }
-
     copyGroup.sort((a, b) => a.end.toUpperCase() < b.end.toUpperCase() ? -1 : 1);
     setGroups(copyGroup);
-    todayEnd =copyGroup[0].end
-    alert("오늘의 귀가 시작 시간은" + copyGroup[0].end + "입니다!")
+    swal("오늘의 귀가 시작 시간은" + copyGroup[0].end.substr(0, 5) + "입니다!", {
+      buttons: '확인',
+    });
   }
+  // function SeekTodayTimes() {
+  //   let copy = [...student_time]
+  //   copy.sort((a, b) => a.start.toUpperCase() < b.start.toUpperCase() ? -1 : 1)
+  //   let todayStart = copy[0].start.substr(0, 5);
+
+  //   copy.sort((a, b) => a.end.toUpperCase() < b.end.toUpperCase() ? -1 : 1)
+  //   let todayEnd = copy[0].end.substr(0, 5);
+
+  //   return (
+  //     <div class="timeInfoBox">
+  //       <div class="timeInfoText">오늘의 입실 시작 시간은 <span class="timeInfoStart">{todayStart}</span>,
+  //        귀가 시작 시간은 <span class="timeInfoEnd">{todayEnd}</span>입니다!</div>
+  //     </div>
+  //   )
+  // }
 
   return (
     <div class="timeline_wrapper">
@@ -345,12 +342,11 @@ function CustomTimeline() {
       </div>
 
       <Timeline
+        className="timeline"
         minZoom={defaultTimeRange}
         maxZoom={defaultTimeRange}
         visibleTimeStart={defaultTimeStart}
         visibleTimeEnd={defaultTimeEnd}
-
-        className="timeline"
         groups={groups}
         items={items}
         itemTouchSendsClick={false}
@@ -362,7 +358,6 @@ function CustomTimeline() {
         defaultTimeEnd={defaultTimeEnd}
       >
         <DateHeader unit="primaryHeader" class="timeline_date" />
-
         <TodayMarker>
           {({ styles }) => {
             const newStyles = { ...styles, backgroundColor: "red", "z-index": "100" };
@@ -381,13 +376,12 @@ function CustomTimeline() {
                 seed: el.id,
               })
             }}
-            onClick={showAfterStudents}
+            onClick={el.id !== 0 ? () => showAfterStudents(el) : null}
           >
             {el.class_name}
           </button>
         ))}
       </div>
-
     </div>
 
   );

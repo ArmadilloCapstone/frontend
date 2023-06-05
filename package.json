@@ -46,6 +46,7 @@
     "sass-loader": "^13.2.2",
     "style-loader": "^3.3.2",
     "styled-components": "^6.0.0-rc.1",
+    "sweetalert": "^2.1.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
