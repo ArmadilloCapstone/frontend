@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';  
+import { useSelector } from 'react-redux';
+import {useCallback} from 'react';
+
 
 const PopupContainer = ({ children }) => {
   const [popup, setPopup] = useState(null);
@@ -31,6 +33,7 @@ const PopupContainer = ({ children }) => {
   );
 };
 
+
 const Popup = () => {
   const [students, setStudents] = useState([
   ]);
@@ -40,6 +43,15 @@ const Popup = () => {
   const clickPopup = () =>{
     setShowPopup(false);
   }
+
+  const handleClickButton = useCallback(() => {
+    var audio = new Audio('/alarm.wav');
+    audio.muted = true;
+    audio.play();
+    audio.muted = false;
+    
+  }, []);
+  
 
   useEffect(() => {
     console.log(user_option);
@@ -85,6 +97,7 @@ const Popup = () => {
                   return returnObj;
                 }));
                 setShowPopup(true);
+                handleClickButton();
                 console.log("showPopup is true")
               }
             
