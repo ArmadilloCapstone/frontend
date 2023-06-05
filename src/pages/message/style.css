@@ -94,18 +94,21 @@
     border-radius: 15px;
   }
 
-  .scrollable-container {
-    height: 400px; /* 스크롤 가능한 컨테이너의 높이를 지정합니다 */
-    overflow-y: scroll; /* 수직 스크롤바를 표시합니다 */
-    position: relative; /* 내부 요소를 기준으로 절대 위치를 설정하기 위해 부모 컨테이너를 상대 위치로 설정합니다 */
-  }
-  
-  .scrollable-container .fixed-bottom {
-    position: absolute; /* 절대 위치로 설정합니다 */
-    bottom: 0; /* 가장 아래에 위치하도록 설정합니다 */
-    left: 0; /* 왼쪽에 정렬합니다 */
-    width: 100%; /* 부모 컨테이너의 너비와 같도록 설정합니다 */
-  }
+  /* 스크롤바 설정*/
+.message_area::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* 스크롤바 막대 설정*/
+.message_area::-webkit-scrollbar-thumb {
+  background: #12b560;
+  border-radius: 10px;
+}
+
+/* 스크롤바 뒷 배경 설정*/
+.message_area::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
    
   
   

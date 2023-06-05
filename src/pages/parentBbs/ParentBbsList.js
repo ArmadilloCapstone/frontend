@@ -21,13 +21,13 @@ function ParentBbsList() {
     const [totalCnt, setTotalCnt] = useState(0);
 
     // Link 용 (함수) 
-    let navigate = useNavigate();   
+    let navigate = useNavigate();
 
     /* [POST /bbs]: 게시글 목록 가져오기 */
     const loadBbsList = async (choice, search) => {
         if (choice === "all" && search === "all") {
             await axios.post('http://dolbomi.site/BbsList/forParent', {
-                id : localStorage.getItem('userid')
+                id: localStorage.getItem('userid')
             })
                 .then((res) => {
                     console.log("[BbsList.js] useEffect() 성공");
@@ -37,11 +37,11 @@ function ParentBbsList() {
                     setTotalCnt(res.data.length);
                     console.log(res.data.length)
                     setCurrentbbsList([]);
-                    if(res.data.length >= 10){
+                    if (res.data.length >= 10) {
                         console.log("Hi")
                         res.data.map((el, idx) => {
                             console.log(idx)
-                            if(idx < 10){
+                            if (idx < 10) {
                                 setCurrentbbsList((prev) => ([
                                     ...prev,
                                     el
@@ -49,7 +49,7 @@ function ParentBbsList() {
                             }
                         })
                     }
-                    else{
+                    else {
                         res.data.map((el) => {
                             setCurrentbbsList((prev) => ([
                                 ...prev,
@@ -68,9 +68,9 @@ function ParentBbsList() {
         else {
             console.log(searchVal, choiceVal)
             await axios.post(`http://dolbomi.site/ParentBbsList/search`, {
-                parent_id : localStorage.getItem('userid'),
-                keyword : searchVal,
-                option : choiceVal
+                parent_id: localStorage.getItem('userid'),
+                keyword: searchVal,
+                option: choiceVal
             })
                 .then((res) => {
                     console.log("[BbsList.js] useEffect() 성공");
@@ -80,11 +80,11 @@ function ParentBbsList() {
                     setTotalCnt((res.data.length));
                     console.log(res.data.length)
                     setCurrentbbsList([]);
-                    if(res.data.length >= 10){
+                    if (res.data.length >= 10) {
                         console.log("Hi")
                         res.data.map((el, idx) => {
                             console.log(idx)
-                            if(idx < 10){
+                            if (idx < 10) {
                                 setCurrentbbsList((prev) => ([
                                     ...prev,
                                     el
@@ -92,7 +92,7 @@ function ParentBbsList() {
                             }
                         })
                     }
-                    else{
+                    else {
                         res.data.map((el) => {
                             setCurrentbbsList((prev) => ([
                                 ...prev,
@@ -128,9 +128,9 @@ function ParentBbsList() {
     const changePage = (page) => {
         setPage(page);
         setCurrentbbsList([]);
-        for(let i = (page-1) * 10; i < (page) * 10; i++){
+        for (let i = (page - 1) * 10; i < (page) * 10; i++) {
             console.log(i)
-            if(bbsList[i] != null){
+            if (bbsList[i] != null) {
                 setCurrentbbsList((prev) => ([
                     ...prev,
                     bbsList[i]
@@ -141,44 +141,38 @@ function ParentBbsList() {
 
 
     return (
-
         <section class="BbListSection" style={{ fontFamily: "Eorinai" }}>
-                        <div className="BbSearchContainer">
-                            <select class="BbListSearch-1" value={choiceVal} onChange={changeChoice}>
-                                <option>검색 옵션</option>
-                                <option value="title">제목</option>
-                                <option value="text">내용</option>
-                            </select>
-                            <input  class="BbListSearch-2" type="text" placeholder="검색어" value={searchVal} onChange={changeSearch} />
-                        <div className="BbButton">
-                            <button class="BbListSearch-3" type="button" onClick={search}>검색</button>
-                        </div>
-                        </div>
+            <div className="BbSearchContainer">
+                <select class="BbListSearch-1" value={choiceVal} onChange={changeChoice}>
+                    <option>검색 옵션</option>
+                    <option value="title">제목</option>
+                    <option value="text">내용</option>
+                </select>
+                <input class="BbListSearch-2" type="text" placeholder="검색어" value={searchVal} onChange={changeSearch} />
+                <div className="BbButton">
+                    <button class="BbListSearch-3" type="button" onClick={search}>검색</button>
+                </div>
+            </div>
 
             <table class="BbList-0"  >
                 <thead class="BbList-0" >
                     <tr class="BbList" >
-                        <th >번호</th>
-                        <th >제목</th>
-                        <th >작성일시</th>
+                        <th class="BbList" >번호</th>
+                        <th class="BbList" >제목</th>
+                        <th class="BbList" >작성일시</th>
                     </tr>
                 </thead>
-
-
-
-
-
-                <tbody style={{ fontFamily: "Eorinai" }}>
-					{
-						currentbbsList.map(function (bbs, idx) {
-							return (
-								<TableRow obj={bbs} key={idx} cnt={idx + 1} page={page}/>
-							)
-						})
-					}
-				</tbody>
+                <tbody class="BbList-0" style={{ fontFamily: "Eorinai" }}>
+                    {
+                        currentbbsList.map(function (bbs, idx) {
+                            return (
+                                <TableRow obj={bbs} key={idx} cnt={idx + 1} page={page} />
+                            )
+                        })
+                    }
+                </tbody>
             </table>
-
+            
             <Pagination className="pagination"
                 activePage={page}
                 itemsCountPerPage={10}
@@ -198,16 +192,16 @@ function TableRow(props) {
 
     return (
         <tr class="BbList">
-            <th class="BbList" style={{ textAlign: "center" }} >{props.cnt + ( (props.page-1) * 10)}</th>
+            <th class="BbList" style={{ textAlign: "center" }} >{props.cnt + ((props.page - 1) * 10)}</th>
             {
-                    <>
-                        <td class="BbList" >
-                            <Link to={{ pathname: `/ParentBbsDetail/${bbs.id}` }}> 
-                                <span >{bbs.title} </span> 
-                            </Link>
-                        </td>
-                        <td class="BbList">{bbs.date}</td>
-                    </>
+                <>
+                    <th class="BbList" >
+                        <Link to={{ pathname: `/ParentBbsDetail/${bbs.id}` }}>
+                            <span >{bbs.title} </span>
+                        </Link>
+                    </th>
+                    <th class="BbList">{bbs.date}</th>
+                </>
             }
         </tr>
     );

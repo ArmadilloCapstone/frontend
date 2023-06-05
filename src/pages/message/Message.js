@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { setMessageAlarm } from '../../redux/actions';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from "axios";
@@ -9,6 +9,8 @@ import check from './check.png';
 import empty from './empty.png';
 
 const Message = () => {
+  const messageEndRef = useRef(null);
+
   const dispatch = useDispatch();
   const [socketConnected, setSocketConnected] = useState(false);
   const [ws, setWs] = useState(null);
@@ -264,6 +266,11 @@ const Message = () => {
     }
   },);
 
+
+  useEffect(() => {
+    messageEndRef.current.scrollIntoView({ behavior: 'smooth' });
+  }, [nowChatMsg]);
+
   return (
     <div className="chat-wrapper" style={ message_click ? {display : 'block'} : {display : 'none'} }>
       <div className="chat-container">
@@ -321,6 +328,8 @@ const Message = () => {
                 <div>내용: {el.text}</div>
               </div>
             )}
+            {/* 스크롤바 */}
+            <div ref={messageEndRef}></div> 
             </div>
             {
               showForm === true ?
