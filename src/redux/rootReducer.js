@@ -4,7 +4,7 @@ const initialState = {
     user_option: (localStorage.getItem('useroption') || ""),
     showSignup: false,
     message_click: false,
-    message_alarm: true
+    message_alarm: false
   };
   
   const rootReducer = (state = initialState, action) => {
