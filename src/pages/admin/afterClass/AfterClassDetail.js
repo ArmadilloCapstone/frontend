@@ -8,9 +8,9 @@ function AfterClassDetail() {
   // On Page load display all records 
   const loadAfterClassDetail = async () => {
     await axios.post('http://dolbomi.site/after_school_class')
-      .then(function (response) {
-        setRecord(response.data.map(function (el, idx) {
-          console.log(el);
+        .then(function(response){
+          setRecord(response.data.map(function(el, idx){
+            console.log(el);
 
           var returnObj = {}
           returnObj['id'] = el.id;

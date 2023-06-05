@@ -7,7 +7,7 @@ function StudentDetail() {
 
   // On Page load display all records 
   const loadStudentDetail = async () => {
-    await axios.post('http://dolbomi.site/student')
+    await axios.post('http://dolbomi.site/student') // student와 parent를 연결해서 어떻게 데이터를 가져오는 거지? db 쿼리로 처리하는 건가?
       .then(function (response) {
         setRecord(response.data.map(function (el, idx) {
           console.log(el);

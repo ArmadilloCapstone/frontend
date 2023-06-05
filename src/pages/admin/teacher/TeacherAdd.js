@@ -8,7 +8,7 @@ function TeacherAdd() {
     const [dolbom, setDolbom] = useState([]);
 
     useEffect(() => {
-        axios.post('http://dolbomi.site/teacher/dolbom_classList')
+        axios.post('http://dolbomi.site/teacher/dolbom_classList') // url 모름.. 변경 필요할듯
             .then(function (response) {
                 console.log(response.data);
                 setDolbom(response.data.map(function (el, idx) {
