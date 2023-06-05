@@ -35,6 +35,8 @@
   .list-name{
     display: flex;
     flex-direction: column;
+    background-color: oldlace;
+    border: none;
   }
   .list-alarm{
     display: flex;
