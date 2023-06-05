@@ -4,6 +4,7 @@ import Modal from './Modal';
 import AddGuardian from './AddGuardian';
 import AddStudentsOfGaurdian from './AddStudentsOfGaurdian';
 import "./Guardian.css"
+import swal from 'sweetalert';
 
 export default function GuardianManagement() {
     // 모달창 나타내기 위한 변수들
@@ -51,7 +52,7 @@ export default function GuardianManagement() {
     };
 
     // 보호자의 학생 삭제 (버튼 클릭 이벤트, ui 지저분해서 학생 이름을 버튼으로 만듦!)
-    const deleteStudent = (guardian_id,student_id) => {
+    const deleteStudent = (guardian_id, student_id) => {
         axios.delete(`http://dolbomi.site/guardianManage/student/${guardian_id}/${student_id}`)
             .then((result) => {
                 loadGuardianList();
@@ -107,12 +108,17 @@ export default function GuardianManagement() {
                                     <>
                                         {stu_el.name}&nbsp;
                                         <button class="delete-student-button" onClick={() => {
-                                            const confirmBox = window.confirm(
-                                                "'" + stu_el.name + "'" + " 학생을 정말 삭제하시겠습니까?"
-                                            )
-                                            if (confirmBox === true) {
-                                                deleteStudent(el.id, stu_el.id)
-                                            }
+                                            swal({
+                                                text: "'" + stu_el.name + "'" + " 학생을 정말 삭제하시겠습니까?",
+                                                icon: "warning",
+                                                closeOnClickOutside: false,
+                                                dangerMode: true,
+                                                buttons: ["취소", "확인"]
+                                            }).then((result) => {
+                                                if (result === true) {
+                                                    deleteStudent(el.id, stu_el.id)
+                                                }
+                                            })
                                         }}>-</button>&nbsp;&nbsp;
                                     </>
                                 )}
@@ -121,24 +127,24 @@ export default function GuardianManagement() {
                                 <button class="add-student-button" onClick={() => {
                                     setAddstudentList(!addstudentList)
                                     onEdit(el);
-                                }}>추가
+                                }}>수정
                                 </button>
-                                {/* {addstudentList && (
-                                    <Modal closeModal={() => setAddstudentList(!addstudentList)}>
-                                        <AddStudentsOfGaurdian data={selected} />
-                                    </Modal>
-                                )} */}
                             </td>
 
                             <td class="guardian">
                                 <button class="delete-guardian-button"
                                     onClick={() => {
-                                        const confirmBox = window.confirm(
-                                            "'" + el.name + "'" + " 보호자를 정말 삭제하시겠습니까?"
-                                        )
-                                        if (confirmBox === true) {
-                                            deleteGuardian(el.id)
-                                        }
+                                        swal({
+                                            text: "'" + el.name + "'" + " 보호자를 정말 삭제하시겠습니까?",
+                                            icon: "warning",
+                                            closeOnClickOutside: false,
+                                            dangerMode: true,
+                                            buttons: ["취소", "확인"]
+                                        }).then((result) => {
+                                            if (result === true) {
+                                                deleteGuardian(el.id)
+                                            }
+                                        })
                                     }}>보호자 삭제
                                 </button>
 

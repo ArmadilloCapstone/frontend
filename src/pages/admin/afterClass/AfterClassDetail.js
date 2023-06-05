@@ -2,49 +2,50 @@ import '../adminPages.css';
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Pagination from "react-js-pagination";
+import swal from 'sweetalert';
 
 function AfterClassDetail() {
   const [record, setRecord] = useState([]);
   const [currentrecord, setCurrentrecord] = useState([]);
 
-    // Paging
-    const [page, setPage] = useState(1);
-    const [totalCnt, setTotalCnt] = useState(0);
-    const changePage = (page, copy) => {
-      if(copy != undefined){
-        setPage(page);
-        setCurrentrecord([]);
-        for(let i = (page-1) * 10; i < (page) * 10; i++){
-            console.log(i)
-            if(copy[i] != null){
-                setCurrentrecord((prev) => ([
-                    ...prev,
-                    copy[i]
-                ]));
-            }
+  // Paging
+  const [page, setPage] = useState(1);
+  const [totalCnt, setTotalCnt] = useState(0);
+  const changePage = (page, copy) => {
+    if (copy != undefined) {
+      setPage(page);
+      setCurrentrecord([]);
+      for (let i = (page - 1) * 10; i < (page) * 10; i++) {
+        console.log(i)
+        if (copy[i] != null) {
+          setCurrentrecord((prev) => ([
+            ...prev,
+            copy[i]
+          ]));
         }
       }
-      else{
-        setPage(page);
-        setCurrentrecord([]);
-        for(let i = (page-1) * 10; i < (page) * 10; i++){
-            console.log(i)
-            if(record[i] != null){
-                setCurrentrecord((prev) => ([
-                    ...prev,
-                    record[i]
-                ]));
-            }
+    }
+    else {
+      setPage(page);
+      setCurrentrecord([]);
+      for (let i = (page - 1) * 10; i < (page) * 10; i++) {
+        console.log(i)
+        if (record[i] != null) {
+          setCurrentrecord((prev) => ([
+            ...prev,
+            record[i]
+          ]));
         }
       }
+    }
   }
 
   // On Page load display all records 
   const loadAfterClassDetail = async () => {
     await axios.post('http://dolbomi.site/after_school_class')
-        .then(function(response){
-          let item_list = response.data.map(function (el, idx) {
-            console.log(el);
+      .then(function (response) {
+        let item_list = response.data.map(function (el, idx) {
+          console.log(el);
 
           var returnObj = {}
           returnObj['id'] = el.id;
@@ -65,25 +66,25 @@ function AfterClassDetail() {
         setTotalCnt(response.data.length);
         console.log(response.data.length)
         setCurrentrecord([]);
-        if(response.data.length >= 10){
-            console.log("Hi")
-            item_list.map((el, idx) => {
-                console.log(idx)
-                if(idx < 10){
-                  setCurrentrecord((prev) => ([
-                        ...prev,
-                        el
-                    ]));
-                }
-            })
+        if (response.data.length >= 10) {
+          console.log("Hi")
+          item_list.map((el, idx) => {
+            console.log(idx)
+            if (idx < 10) {
+              setCurrentrecord((prev) => ([
+                ...prev,
+                el
+              ]));
+            }
+          })
         }
-        else{
+        else {
           item_list.map((el) => {
             setCurrentrecord((prev) => ([
-                    ...prev,
-                    el
-                ]));
-            })
+              ...prev,
+              el
+            ]));
+          })
         };
       }).catch(function (reason) {
         console.log(reason);
@@ -102,11 +103,23 @@ function AfterClassDetail() {
           loadAfterClassDetail();
         }
         else {
-          alert(response.data);
+          swal({
+            text: response.data,
+            icon: "error",
+            timer: 3000,
+            dangerMode: true,
+            button: "확인"
+          })
         }
       })
       .catch(() => {
-        alert('오류가 발생했습니다!');
+        swal({
+          title: "오류가 발생했습니다!",
+          icon: "error",
+          timer: 3000,
+          dangerMode: true,
+          button: "확인"
+        })
       });
   };
 
@@ -177,12 +190,17 @@ function AfterClassDetail() {
                 <td class="admin">
                   <button class="delete"
                     onClick={() => {
-                      const confirmBox = window.confirm(
-                        "'" + name.class_name + "'" + " 방과후수업을 정말 삭제하시겠습니까?"
-                      )
-                      if (confirmBox === true) {
-                        deleteRecord(name.id)
-                      }
+                      swal({
+                        text: "'" + name.class_name + "'" + " 방과후수업을 정말 삭제하시겠습니까?",
+                        icon: "warning",
+                        closeOnClickOutside: false,
+                        dangerMode: true,
+                        buttons: ["취소", "확인"]
+                      }).then((result) => {
+                        if (result === true) {
+                          deleteRecord(name.id)
+                        }
+                      })
                     }}>삭제</button>
                 </td>
               </tr>
@@ -190,13 +208,13 @@ function AfterClassDetail() {
           </tbody>
         </table>
         <Pagination className="pagination"
-                activePage={page}
-                itemsCountPerPage={10}
-                totalItemsCount={totalCnt}
-                pageRangeDisplayed={5}
-                prevPageText={"‹"}
-                nextPageText={"›"}
-                onChange={changePage} />
+          activePage={page}
+          itemsCountPerPage={10}
+          totalItemsCount={totalCnt}
+          pageRangeDisplayed={5}
+          prevPageText={"‹"}
+          nextPageText={"›"}
+          onChange={changePage} />
 
       </section>
     </div>

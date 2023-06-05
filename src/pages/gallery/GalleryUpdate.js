@@ -1,8 +1,7 @@
 import axios from "axios";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useRef, useState } from "react";
-// import { AuthContext } from "../context/AuthProvider";
-// import { HttpHeadersContext } from "../context/HttpHeadersProvider";
+import swal from 'sweetalert';
 
 function GalleryUpdate() {
 
@@ -17,51 +16,51 @@ function GalleryUpdate() {
 	const [imageUrl, setImageUrl] = useState(null);
 	const [fileChange, setFileChange] = useState(false);
 	const imgRef = useRef();
-	const param =  useParams(); // 파라미터 가져오기
+	const param = useParams(); // 파라미터 가져오기
 
 	useEffect(() => {
 		console.log(param.gallery_id);
 		const getBoard = async () => {
-		  const {data} = await axios.post(`http://dolbomi.site/album/${param.gallery_id}`);
-		  return data;
+			const { data } = await axios.post(`http://dolbomi.site/album/${param.gallery_id}`);
+			return data;
 		}
 		getBoard().then((result) => {
-		  setTitle(result.title);
-		  setText(result.contents);
-		  // 이미지는 파일을 불러올 필요가 없이 미리보기 url만 가져온다.
-		  // 이미지를 선택하지 않고 올리면 db에 저장되어 있는 이미지를 그대로 사용!
+			setTitle(result.title);
+			setText(result.contents);
+			// 이미지는 파일을 불러올 필요가 없이 미리보기 url만 가져온다.
+			// 이미지를 선택하지 않고 올리면 db에 저장되어 있는 이미지를 그대로 사용!
 		});
-		
-        axios.post(`http://dolbomi.site/album/files/${param.gallery_id}`)
-            .then((res) => {
-                console.log("[GalleryDetail.js] getGalleryDetail() success :D");
-                console.log(res.data);
-                let arr = Array.from(res.data.map((el) =>{
+
+		axios.post(`http://dolbomi.site/album/files/${param.gallery_id}`)
+			.then((res) => {
+				console.log("[GalleryDetail.js] getGalleryDetail() success :D");
+				console.log(res.data);
+				let arr = Array.from(res.data.map((el) => {
 					var returnObj = {}
 					returnObj['name'] = el.originFileName;
 					return returnObj;
 				}));
-                console.log(arr);
-                setSelectedFiles([]);
-                for(let i = 0; i < arr.length; i++){
-                    console.log(arr[i].originFileName)
-                    setSelectedFiles((prevMessage) => ([
-                        ...prevMessage,
-                        arr[i]
-                    ]));
-                }
-            })
-            .catch((err) => {
-                console.log("[GalleryDetail.js] getGalleryDetail() error :<");
-                console.log(err);
-            });
-	  }, [])
+				console.log(arr);
+				setSelectedFiles([]);
+				for (let i = 0; i < arr.length; i++) {
+					console.log(arr[i].originFileName)
+					setSelectedFiles((prevMessage) => ([
+						...prevMessage,
+						arr[i]
+					]));
+				}
+			})
+			.catch((err) => {
+				console.log("[GalleryDetail.js] getGalleryDetail() error :<");
+				console.log(err);
+			});
+	}, [])
 
-	  const selectFiles = (event) => {
+	const selectFiles = (event) => {
 		let arr = Array.from(event.target.files);
 		setFileChange(true)
 		setSelectedFiles([]);
-		for(let i = 0; i < arr.length; i++){
+		for (let i = 0; i < arr.length; i++) {
 			console.log(arr[i].name)
 			setSelectedFiles((prevMessage) => ([
 				...prevMessage,
@@ -98,44 +97,54 @@ function GalleryUpdate() {
 		formData.append("album_id", param.gallery_id);
 		formData.append("title", title);
 		formData.append("text", text);
-		if(fileChange){
-			for(let i = 0; i < selectedFiles.length; i++){
+		if (fileChange) {
+			for (let i = 0; i < selectedFiles.length; i++) {
 				console.log(i);
 				console.log(selectedFiles[i]);
 				formData.append("files", selectedFiles[i]);
 			}
 			axios.post("http://dolbomi.site/GalleryList/update/file", formData, {
-			  headers: {
-				"Content-Type": "multipart/form-data",
-			  }
+				headers: {
+					"Content-Type": "multipart/form-data",
+				}
 			})
-			.then((resp) => {
-				console.log("[GalleryWrite.js] createGallery() success :D");
-				console.log(resp.data);
-				alert("새로운 게시글을 성공적으로 수정했습니다 :D");
-				navigate(`/gallerydetail/${param.gallery_id}`); // 새롭게 등록한 글 상세로 이동
-			})
-			.catch((err) => {
-				console.log("[GalleryWrite.js] createGallery() error :<");
-				console.log(err);
-			});
+				.then((resp) => {
+					console.log("[GalleryWrite.js] createGallery() success :D");
+					console.log(resp.data);
+					swal({
+						title: "게시글을 성공적으로 수정했습니다!",
+						icon: "success",
+						timer: 3000,
+						button: "확인"
+					})
+					navigate(`/gallerydetail/${param.gallery_id}`); // 새롭게 등록한 글 상세로 이동
+				})
+				.catch((err) => {
+					console.log("[GalleryWrite.js] createGallery() error :<");
+					console.log(err);
+				});
 		}
-		else{
+		else {
 			axios.post("http://dolbomi.site/GalleryList/update/nofile", formData, {
-			  headers: {
-				"Content-Type": "multipart/form-data",
-			  }
+				headers: {
+					"Content-Type": "multipart/form-data",
+				}
 			})
-			.then((resp) => {
-				console.log("[GalleryWrite.js] createGallery() success :D");
-				console.log(resp.data);
-				alert("새로운 게시글을 성공적으로 수정했습니다 :D");
-				navigate(`/gallerydetail/${param.gallery_id}`); // 새롭게 등록한 글 상세로 이동
-			})
-			.catch((err) => {
-				console.log("[GalleryWrite.js] createGallery() error :<");
-				console.log(err);
-			});
+				.then((resp) => {
+					console.log("[GalleryWrite.js] createGallery() success :D");
+					console.log(resp.data);
+					swal({
+						title: "게시글을 성공적으로 수정했습니다!",
+						icon: "success",
+						timer: 3000,
+						button: "확인"
+					})
+					navigate(`/gallerydetail/${param.gallery_id}`); // 새롭게 등록한 글 상세로 이동
+				})
+				.catch((err) => {
+					console.log("[GalleryWrite.js] createGallery() error :<");
+					console.log(err);
+				});
 		}
 
 	}
@@ -167,11 +176,11 @@ function GalleryUpdate() {
 								<td>
 									{
 										selectedFiles.map((el, idx) => {
-											return <img src={imageUrl? imageUrl : "http://dolbomi.site/download/album/" + title + "/" + el.name}/>
+											return <img src={imageUrl ? imageUrl : "http://dolbomi.site/download/album/" + title + "/" + el.name} />
 										})
 									}
 									<br></br>
-            						<input type="file" onChange={selectFiles} />
+									<input type="file" onChange={selectFiles} />
 									{
 										selectedFiles.map((el, idx) => {
 											return <div key={idx}> {el.name} </div>

@@ -1,6 +1,7 @@
 import '../addPages.css'
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import swal from 'sweetalert';
 
 function StudentTimeAdd() {
     const [student, setStudent] = useState([]);
@@ -36,6 +37,18 @@ function StudentTimeAdd() {
 
     //  Object Destructuring 
     const { name, entry_1, off_1, entry_2, off_2, entry_3, off_3, entry_4, off_4, entry_5, off_5 } = user;
+
+    // 경고 메시지 날리는 메소드
+    function WarningSwal(message) {
+        swal({
+            title: message,
+            icon: "warning",
+            timer: 2000,
+            dangerMode: true,
+            button: "확인"
+        })
+    }
+
     const onInputChange = e => {
         setUser({ ...user, [e.target.name]: e.target.value });
     };
@@ -51,23 +64,23 @@ function StudentTimeAdd() {
         e.target.reset();
 
         if (document.getElementById('entry_1').value === '' || document.getElementById('off_1').value === '') {
-            alert('월요일 입퇴실 시간을 제대로 입력하세요!')
+            WarningSwal('월요일 입퇴실 시간을 제대로 입력하세요!');
             return false;
         }
         if (document.getElementById('entry_2').value === '' || document.getElementById('off_2').value === '') {
-            alert('화요일 입퇴실 시간을 제대로 입력하세요!')
+            WarningSwal('화요일 입퇴실 시간을 제대로 입력하세요!');
             return false;
         }
         if (document.getElementById('entry_3').value === '' || document.getElementById('off_3').value === '') {
-            alert('수요일 입퇴실 시간을 제대로 입력하세요!')
+            WarningSwal('수요일 입퇴실 시간을 제대로 입력하세요!');
             return false;
         }
         if (document.getElementById('entry_4').value === '' || document.getElementById('off_4').value === '') {
-            alert('목요일 입퇴실 시간을 제대로 입력하세요!')
+            WarningSwal('목요일 입퇴실 시간을 제대로 입력하세요!');
             return false;
         }
         if (document.getElementById('entry_5').value === '' || document.getElementById('off_5').value === '') {
-            alert('금요일 입퇴실 시간을 제대로 입력하세요!')
+            WarningSwal('금요일 입퇴실 시간을 제대로 입력하세요!');
             return false;
         }
 
@@ -75,10 +88,21 @@ function StudentTimeAdd() {
             .then(function (response) {
                 console.log(response.data);
                 if (response.data === "success") {
-                    alert('추가되었습니다!');
+                    swal({
+                        title: "추가되었습니다!",
+                        icon: "success",
+                        timer: 3000,
+                        button: "확인"
+                    })
                 }
                 else {
-                    alert(response.data);
+                    swal({
+                        title: response.data,
+                        icon: "error",
+                        timer: 3000,
+                        dangerMode: true,
+                        button: "확인"
+                    })
                 }
 
             }).catch(function (reason) {

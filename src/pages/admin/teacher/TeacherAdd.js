@@ -1,6 +1,7 @@
 import '../addPages.css'
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import swal from 'sweetalert';
 
 function TeacherAdd() {
     let genderKind = [{ value: "남" }, { value: "여" }];
@@ -35,25 +36,37 @@ function TeacherAdd() {
 
     //  Object Destructuring 
     const { name, phone_num1, phone_num2, phone_num3, gender, birth_date, class_name } = user;
+
+    // 경고 메시지 날리는 메소드
+    function WarningSwal(message) {
+        swal({
+            title: message,
+            icon: "warning",
+            timer: 2000,
+            dangerMode: true,
+            button: "확인"
+        })
+    }
+
     const onInputChange = e => {
         if (e.target.name == "phone_num1" && !(e.target.value >= 0 && e.target.value <= 999)) {
-            alert("올바른 숫자를 입력해 주십시오");
+            WarningSwal("올바른 숫자를 입력해 주십시오");
         }
         else if (e.target.name == "phone_num2" && !(e.target.value >= 0 && e.target.value <= 9999)) {
-            alert("올바른 숫자를 입력해 주십시오");
+            WarningSwal("올바른 숫자를 입력해 주십시오");
         }
         else if (e.target.name == "phone_num3" && !(e.target.value >= 0 && e.target.value <= 9999)) {
-            alert("올바른 숫자를 입력해 주십시오");
+            WarningSwal("올바른 숫자를 입력해 주십시오");
         }
         else {
             setUser({ ...user, [e.target.name]: e.target.value });
         }
     };
-    function onInputChange_Select(e, selectIdName) {
-        var selectInput = document.getElementById(selectIdName);
-        var value = (selectInput.options[selectInput.selectedIndex].value);
-        setUser({ ...user, [e.target.name]: value });
-    };
+    // function onInputChange_Select(e, selectIdName) {
+    //     var selectInput = document.getElementById(selectIdName);
+    //     var value = (selectInput.options[selectInput.selectedIndex].value);
+    //     setUser({ ...user, [e.target.name]: value });
+    // };
 
     // 서버로 전송하는 데이터(연락처) format 변경
     function changeUserForm(data) {
@@ -73,16 +86,16 @@ function TeacherAdd() {
         e.target.reset();
 
         if (document.getElementById('name').value === '') {
-            alert('이름을 입력하세요!')
+            WarningSwal('이름을 입력하세요!');
             return false;
         }
         if (document.getElementById('phone_num1').value === '' || document.getElementById('phone_num2').value === ''
             || document.getElementById('phone_num3').value === '') {
-            alert('연락처를 입력하세요!')
+            WarningSwal('연락처를 입력하세요!');
             return false;
         }
         if (document.getElementById('birth_date').value === '') {
-            alert('생년월일을 입력하세요!')
+            WarningSwal('생년월일을 입력하세요!');
             return false;
         }
 
@@ -91,12 +104,22 @@ function TeacherAdd() {
             .then(function (response) {
                 console.log(response.data);
                 if (response.data === "success") {
-                    alert('추가되었습니다!');
+                    swal({
+                        title: "추가되었습니다!",
+                        icon: "success",
+                        timer: 3000,
+                        button: "확인"
+                    })
                 }
                 else {
-                    alert('잘못 입력된 값이 존재합니다!');
+                    swal({
+                        title: "잘못 입력된 값이 존재합니다!",
+                        icon: "error",
+                        timer: 3000,
+                        dangerMode: true,
+                        button: "확인"
+                    })
                 }
-
             }).catch(function (reason) {
                 console.log(reason.data);
             });

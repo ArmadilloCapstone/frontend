@@ -1,6 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import swal from 'sweetalert';
 
 function ClassAdd() {
     const [user, setUser] = useState({
@@ -14,16 +15,26 @@ function ClassAdd() {
     //  Object Destructuring 
     const { class_name, class_num, year, seme } = user;
 
+    function WarningSwal(message) {
+        swal({
+            title: message,
+            icon: "warning",
+            timer: 2000,
+            dangerMode: true,
+            button: "확인"
+        })
+    }
+
 
     const onInputChange = e => {
         if (e.target.name == "class_num" && e.target.value < 1) {
-            alert("양수 값만 입력할 수 있습니다.");
+            WarningSwal("양수 값만 입력할 수 있습니다.")
         }
         else if (e.target.name == "year" && e.target.value < 1) {
-            alert("양수 값만 입력할 수 있습니다.");
+            WarningSwal("양수 값만 입력할 수 있습니다.")
         }
         else if (e.target.name == "seme" && (e.target.value != "" &&e.target.value != 1 && e.target.value != 2)) {
-            alert("1과 2만 입력이 가능합니다..");
+            WarningSwal("1과 2만 입력이 가능합니다.")
         }
         else {
             setUser({ ...user, [e.target.name]: e.target.value });
@@ -37,7 +48,6 @@ function ClassAdd() {
         returnObj['year_seme'] = data.year + "-" + data.seme;
 
         return returnObj;
-
     }
 
     const submitClassRecord = async (e) => {
@@ -45,19 +55,19 @@ function ClassAdd() {
         e.target.reset();
 
         if(document.getElementById('class_name').value === ''){
-            alert('학급 이름을 입력하세요!')
+            WarningSwal("학급 이름을 입력하세요!");
             return false;
         }
         if(document.getElementById('class_num').value === ''){
-            alert('학급 번호를 입력하세요!')
+            WarningSwal("학급 번호를 입력하세요!");
             return false;
         }
         if(document.getElementById('year').value === ''){
-            alert('년도를 입력하세요!')
+            WarningSwal("년도를 입력하세요!");
             return false;
         }
         if(document.getElementById('seme').value === ''){
-            alert('학기를 입력하세요!')
+            WarningSwal("학기를 입력하세요!");
             return false;
         }
 
@@ -67,10 +77,21 @@ function ClassAdd() {
             .then(function (response) {
                 console.log(response.data);
                 if (response.data === "success") {
-                    alert('추가되었습니다!');
+                    swal({
+                        title: "추가되었습니다!",
+                        icon: "success",
+                        timer: 3000,
+                        button: "확인"
+                    })
                 }
                 else {
-                    alert('잘못 입력된 값이 존재합니다!');
+                    swal({
+                        title: "잘못 입력된 값이 존재합니다!",
+                        icon: "error",
+                        timer: 3000,
+                        dangerMode: true,
+                        button: "확인"
+                    })
                 }
 
             }).catch(function (reason) {

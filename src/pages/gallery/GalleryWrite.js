@@ -3,8 +3,7 @@ import "./gallerywrite.css";
 
 import { useRef, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import { AuthContext } from "../context/AuthProvider";
-// import { HttpHeadersContext } from "../context/HttpHeadersProvider";
+import swal from 'sweetalert';
 
 function GalleryWrite() {
 
@@ -22,7 +21,7 @@ function GalleryWrite() {
 	const selectFiles = (event) => {
 		let arr = Array.from(event.target.files);
 		setSelectedFiles([]);
-		for(let i = 0; i < arr.length; i++){
+		for (let i = 0; i < arr.length; i++) {
 			console.log(arr[i].name)
 			setSelectedFiles((prevMessage) => ([
 				...prevMessage,
@@ -60,47 +59,46 @@ function GalleryWrite() {
 		formData.append("teacher_id", localStorage.getItem('userid'));
 		formData.append("title", title);
 		formData.append("text", text);
-		for(let i = 0; i < selectedFiles.length; i++){
-		  console.log(i);
-		  console.log(selectedFiles[i]);
-		  formData.append("files", selectedFiles[i]);
+		for (let i = 0; i < selectedFiles.length; i++) {
+			console.log(i);
+			console.log(selectedFiles[i]);
+			formData.append("files", selectedFiles[i]);
 		}
-		if(selectedFiles.length == 0){
-			alert("사진이 없습니다.")
+		if (selectedFiles.length == 0) {
+			swal({
+				title: "사진이 없습니다!",
+				icon: "warning",
+				timer: 3000,
+				dangerMode: true,
+				button: "확인"
+			})
 		}
-		else{
+		else {
 			axios.post("http://dolbomi.site/GalleryList/create/file", formData, {
-			  headers: {
-				"Content-Type": "multipart/form-data",
-			  }
+				headers: {
+					"Content-Type": "multipart/form-data",
+				}
 			})
-			.then((resp) => {
-				console.log("[GalleryWrite.js] createGallery() success :D");
-				console.log(resp.data);
-				alert("새로운 게시글을 성공적으로 등록했습니다 :D");
-				navigate(`/gallerydetail/${resp.data.id}`); // 새롭게 등록한 글 상세로 이동
-			})
-			.catch((err) => {
-				console.log("[GalleryWrite.js] createGallery() error :<");
-				console.log(err);
-			});
+				.then((resp) => {
+					console.log("[GalleryWrite.js] createGallery() success :D");
+					console.log(resp.data);
+					swal({
+						title: "새로운 게시글을 성공적으로 등록했습니다!",
+						icon: "success",
+						timer: 3000,
+						button: "확인"
+					})
+					navigate(`/gallerydetail/${resp.data.id}`); // 새롭게 등록한 글 상세로 이동
+				})
+				.catch((err) => {
+					console.log("[GalleryWrite.js] createGallery() error :<");
+					console.log(err);
+				});
 
 		}
 	}
 
-	// useEffect(() => {
-	// 	if (!auth) {
-	// 		alert("로그인 한 사용자만 게시글을 작성할 수 있습니다 !");
-	// 		navigate(-1);
-	// 	}
-	// }, []);
-
-
 	return (
-		// <div style={{ padding: "20px" }}>
-		// 	<GalleryEditor />
-		// </div>onSubmit={submitTeacherRecord}
-
 		<div class="gallerywrapper">
 			<div class="form_container">
 				<form onSubmit={createGallery}>
@@ -124,8 +122,8 @@ function GalleryWrite() {
 							<tr>
 								<th class="input_header">첨부파일</th>
 								<td class="input_container">
-									<img style={{width: "700px", margin: "10px"}} src={imageUrl}/>
-            						<input class="galleryWrite" type="file" onChange={selectFiles} />
+									<img style={{ width: "700px", margin: "10px" }} src={imageUrl} />
+									<input class="galleryWrite" type="file" onChange={selectFiles} />
 									{
 										selectedFiles.map((el, idx) => {
 											return <div key={idx}> {el.name} </div>
@@ -143,44 +141,6 @@ function GalleryWrite() {
 
 			</div>
 		</div>
-
-
-
-
-		// <div>
-		// 	<form>
-		// 		<table>
-		// 			<tbody>
-
-		// 				<tr>
-		// 					<th className="table-primary">제목</th>
-		// 					<td>
-		// 						<input type="text" className="form-control" value={title} onChange={changeTitle} size="50px" />
-		// 					</td>
-		// 				</tr>
-
-		// 				<tr>
-		// 					<th className="table-primary">내용</th>
-		// 					<td>
-		// 						<textarea className="form-control" value={text} onChange={changeText} rows="10"></textarea>
-		// 					</td>
-		// 				</tr>
-
-		// 				<tr>
-		// 					<th className="table-primary">첨부파일</th>
-		// 					<td>
-		// 						<input type="file" className="form-control" accept="image/*" multiple onChange={changeFile} />
-		// 					</td>
-
-		// 				</tr>
-		// 			</tbody>
-		// 		</table>
-		// 	</form>
-
-		// 	<div className="my-5 d-flex justify-content-center">
-		// 		<button className="btn btn-outline-secondary" onClick={createGallery}><i className="fas fa-pen"></i> 등록하기</button>
-		// 	</div>
-		// </div>
 	);
 }
 
