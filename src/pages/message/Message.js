@@ -126,7 +126,10 @@ const Message = () => {
       }
     };
   }, [ws]);
-
+  const Date2String = (date) => {
+    let m = moment(date);
+    return m.format("YYYY.MM.DD HH:mm")
+  }
   const showChatRoom = (select) => {
     /* 선택된 상대와의 채팅룸 visible */
     setSelected(select);
@@ -296,7 +299,7 @@ const Message = () => {
               <div className="message-container">
                 <div>
                   보낸사람: {el.sender_name}, 받는사람: {el.receiver_name},
-                  시간: {/*el.date*/}
+                  시간: {Date2String(el.date)}
                 </div>
                 <hr></hr>
                 <div>내용: {el.text}</div>

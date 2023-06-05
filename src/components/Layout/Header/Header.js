@@ -59,7 +59,7 @@ const Header = () => {
                   user_id !== ""
                   ?
                 <Nav className="ms-auto">
-                  <Nav.Link onClick={MessageClickHandler}>메시지{message_alarm ? "!!!" : ""}</Nav.Link>
+                {(localStorage.getItem('useroption') == 1 || localStorage.getItem('useroption') == 2) ? <Nav.Link onClick={MessageClickHandler}>메시지{message_alarm ? "!!!" : ""}</Nav.Link> : null}
                   <NavDropdown title="내 정보" id="basic-nav-dropdown">
                     {localStorage.getItem('useroption') != 3 ? <NavDropdown.Item onClick={changePwClickHandler}>비밀번호 변경</NavDropdown.Item> : null}
                   </NavDropdown>
