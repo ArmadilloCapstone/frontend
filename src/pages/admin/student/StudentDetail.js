@@ -1,7 +1,6 @@
 import '../adminPages.css';
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from 'react-router-dom';
 
 function StudentDetail() {
   const [record, setRecord] = useState([]);
@@ -45,50 +44,88 @@ function StudentDetail() {
       });
   };
 
+  // 정렬 메소드
+  const sortByName = () => {
+    let copy = [...record];
+    copy.sort((a, b) => a.name.toUpperCase() < b.name.toUpperCase() ? -1 : 1);
+    setRecord(copy);
+  }
+  const sortByGrade = () => {
+    let copy = [...record];
+    copy.sort((a, b) => a.grade < b.grade ? -1 : 1);
+    setRecord(copy);
+  }
+  const sortByDolbom = () => {
+    let copy = [...record];
+    copy.sort((a, b) => a.class_name.toUpperCase() < b.class_name.toUpperCase() ? -1 : 1);
+    setRecord(copy);
+  }
+  const sortByOriginal = () => {
+    let copy = [...record];
+    copy.sort((a, b) => a.original_class_num < b.original_class_num ? -1 : 1);
+    setRecord(copy);
+  }
+
   return (
-    <section class="tableSection">
-      <table class="admin">
-        <thead class="admin">
-          <tr class="admin">
-            <th class="admin">이름</th>
-            <th class="admin">학년</th>
-            <th class="admin">연락처</th>
-            <th class="admin">성별</th>
-            <th class="admin">돌봄 반</th>
-            <th class="admin">기존 반</th>
-            <th class="admin">생년월일</th>
-            <th class="admin">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-
-          {record.map((name) =>
+    <div>
+      <div class="admin_sort">
+        <button className="adminsortingButtons" onClick={() => sortByOriginal()}
+        >기존학급순
+        </button>
+        <button className="adminsortingButtons" onClick={() => sortByDolbom()}
+        >돌봄학급순
+        </button>
+        <button className="adminsortingButtons" onClick={() => sortByGrade()}
+        >학년순
+        </button>
+        <button className="adminsortingButtons" onClick={() => sortByName()}
+        >이름순
+        </button>
+      </div>
+      <section class="tableSection">
+        <table class="admin">
+          <thead class="admin">
             <tr class="admin">
-              <td class="admin">{name.name}</td>
-              <td class="admin">{name.grade}</td>
-              <td class="admin">{name.phone_num}</td>
-              <td class="admin">{name.gender}</td>
-              <td class="admin">{name.class_name}</td>
-              <td class="admin">{name.original_class_num}</td>
-              <td class="admin">{name.birth_date}</td>
-              <td class="admin">
-                <button class="delete"
-                  onClick={() => {
-                    const confirmBox = window.confirm(
-                      "'" + name.name + "'" + " 돌봄학생을 정말 삭제하시겠습니까?"
-                    )
-                    if (confirmBox === true) {
-                      deleteRecord(name.id)
-                    }
-                  }}>삭제</button>
-
-              </td>
+              <th class="admin">이름</th>
+              <th class="admin">학년</th>
+              <th class="admin">연락처</th>
+              <th class="admin">성별</th>
+              <th class="admin">돌봄 반</th>
+              <th class="admin">기존 반</th>
+              <th class="admin">생년월일</th>
+              <th class="admin">Action</th>
             </tr>
-          )}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
 
-    </section >
+            {record.map((name) =>
+              <tr class="admin">
+                <td class="admin">{name.name}</td>
+                <td class="admin">{name.grade}</td>
+                <td class="admin">{name.phone_num}</td>
+                <td class="admin">{name.gender}</td>
+                <td class="admin">{name.class_name}</td>
+                <td class="admin">{name.original_class_num}</td>
+                <td class="admin">{name.birth_date}</td>
+                <td class="admin">
+                  <button class="delete"
+                    onClick={() => {
+                      const confirmBox = window.confirm(
+                        "'" + name.name + "'" + " 돌봄학생을 정말 삭제하시겠습니까?"
+                      )
+                      if (confirmBox === true) {
+                        deleteRecord(name.id)
+                      }
+                    }}>삭제</button>
+
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+
+      </section >
+    </div>
   )
 }
 

@@ -1,3 +1,4 @@
+/*
 import './StudentState.css';
 import Draggable from "react-draggable";
 import axios from 'axios';
@@ -147,8 +148,7 @@ const StudentState = () => {
 };
 
 export default StudentState;
-
-/*
+*/
 
 import './StudentState.css';
 import { DragDropContext, Draggable, Droppable} from "react-beautiful-dnd";
@@ -235,13 +235,17 @@ const StudentState = () => {
     <div className='statebody'>
     <div className="StudentState">
     <DragDropContext onDragEnd={handleChange}>
+      <div className='box_container'>
+      <div className='topbar'>
+        <div className="icon">
+        <img src={soon} alt="Icon" style={iconSize} />
+        </div>
+      <h5 style={{ padding: "15px 0px 15px 0px", fontSize: "25px", fontWeight: "bolder"}}>도착하지 않았어요</h5>
+      </div>
+      <div className='item_container'>
       <Droppable droppableId="box1">
         {provided => (
           <div className="box box1" id="box1" {...provided.droppableProps} ref={provided.innerRef}>
-            <div className="icon">
-            <img src={soon} alt="Icon" style={iconSize} />
-            </div>
-            <h5 style={{ padding: "15px 0px 15px 0px", fontSize: "25px", fontWeight: "bolder"}}>도착하지 않았어요</h5>
             {student.filter((item) => item.state === "box1").map((student, idx) => (
               <Draggable draggableId={"s" + student.id}  index={idx} key={student.id}>
                 {(provided, snapshot) => {
@@ -260,13 +264,19 @@ const StudentState = () => {
           </div>
         )}
         </Droppable>
+      </div>
+      </div>
+      <div className='box_container'>
+      <div className='topbar'>
+        <div className="icon">
+        <img src={arrived} alt="Icon" style={iconSize} />
+        </div>
+        <h5 style={{ padding: "15px 0px 15px 0px", fontSize: "25px", fontWeight: "bolder"}}>도착하지 않았어요</h5>
+      </div>
+      <div className='item_container'>
       <Droppable droppableId="box2">
         {provided => (
           <div className="box box2" id="box2" {...provided.droppableProps} ref={provided.innerRef}>
-            <div className="icon">
-            <img src={arrived} alt="Icon" style={iconSize} />
-            </div>
-            <h5 style={{ padding: "15px 0px 15px 0px", fontSize: "25px", fontWeight: "bolder"}}>도착하지 않았어요</h5>
             {student.filter((item) => item.state === "box2").map((student, idx) => (
               <Draggable draggableId={"s" + student.id}  index={idx} key={student.id}>
                 {(provided, snapshot) => {
@@ -284,14 +294,20 @@ const StudentState = () => {
             {provided.placeholder} 
           </div>
         )}
-        </Droppable>
+      </Droppable>
+      </div>
+      </div>
+      <div className='box_container'>
+      <div className='topbar'>
+        <div className="icon">
+        <img src={art} alt="Icon" style={iconSize} />
+        </div>
+        <h5 style={{ padding: "15px 0px 15px 0px", fontSize: "25px", fontWeight: "bolder"}}>돌봄교실에 도착했어요</h5>
+      </div>
+      <div className='item_container'>
       <Droppable droppableId="box3">
         {provided => (
           <div className="box box3" id="box3" {...provided.droppableProps} ref={provided.innerRef}>
-            <div className="icon">
-            <img src={art} alt="Icon" style={iconSize} />
-            </div>
-            <h5 style={{ padding: "15px 0px 15px 0px", fontSize: "25px", fontWeight: "bolder"}}>돌봄교실에 도착했어요</h5>
             {student.filter((item) => item.state === "box3").map((student, idx) => (
               <Draggable draggableId={"s" + student.id}  index={idx} key={student.id}>
                 {(provided, snapshot) => {
@@ -310,15 +326,21 @@ const StudentState = () => {
           </div>
         )}
         </Droppable>
+      </div>
+      </div>
 
+      <div className='box_container'>
+      <div className='topbar'>
+        <div className="icon">
+        <img src={house} alt="Icon" style={iconSize} />
+        </div>
+        <h5 style={{ padding: "15px 0px 15px 0px", fontSize: "25px", fontWeight: "bolder"}}>도착하지 않았어요</h5>
+      </div>
+      <div className='item_container'>
       
       <Droppable droppableId="box4">
         {provided => (
           <div className="box box4" id="box4" {...provided.droppableProps} ref={provided.innerRef}>
-            <div className="icon">
-            <img src={house} alt="Icon" style={iconSize} />
-            </div>
-            <h5 style={{ padding: "15px 0px 15px 0px", fontSize: "25px", fontWeight: "bolder"}}>도착하지 않았어요</h5>
             {student.filter((item) => item.state === "box4").map((student, idx) => (
               <Draggable draggableId={"s" + student.id}  index={idx} key={student.id}>
                 {(provided, snapshot) => {
@@ -337,6 +359,8 @@ const StudentState = () => {
           </div>
         )}
         </Droppable>
+      </div>
+      </div>
       </DragDropContext>
 
       {
@@ -347,5 +371,3 @@ const StudentState = () => {
 };
 
 export default StudentState;
-
-*/

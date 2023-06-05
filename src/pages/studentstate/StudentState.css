@@ -14,7 +14,7 @@
 	width: 1250px;
 	height: 400px;
 }
-.StudentState .box {
+.StudentState .box_container {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -25,19 +25,29 @@
 	margin: 6px;
 	padding: 6px;
 }
+.StudentState .topbar {
+	text-align: center;
+}
+.StudentState .item_container {
+	width:100%;
+}
 .StudentState .item {
 	width: 80%;
 	height: 35px;
 	background-color: #12b560;
 	color : #f2f2f2;
 	border: 2px solid #12B560;
-	margin: 7px 0;
+	margin: 7px auto;
 	text-align: center;
 	border-radius: 15px;
 	font-size: 10px;
 	cursor: pointer;
 	font-size: 17px;
 	padding: 3px;
+}
+.StudentState .box {
+	height: 420px;
+	border: solid 1px black;
 }
 .StudentState .highlight {
 	background-color: yellow;

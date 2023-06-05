@@ -48,56 +48,111 @@ function StudentTimeDetail() {
             });
     };
 
-    return (
-        <section class="tableSection">
-            <table class="admin">
-                <thead class="admin">
-                    <tr class="admin">
-                        <th class="admin">이름</th>
-                        <th class="admin">월(입)</th>
-                        <th class="admin">월(퇴)</th>
-                        <th class="admin">화(입)</th>
-                        <th class="admin">화(퇴)</th>
-                        <th class="admin">수(입)</th>
-                        <th class="admin">수(퇴)</th>
-                        <th class="admin">목(입)</th>
-                        <th class="admin">목(퇴)</th>
-                        <th class="admin">금(입)</th>
-                        <th class="admin">금(퇴)</th>
-                        <th class="admin">Action</th>
-                    </tr>
-                </thead>
-                <tbody class="admin">
+    // 정렬 메소드
+    const sortByName = () => {
+        let copy = [...record];
+        copy.sort((a, b) => a.name.toUpperCase() < b.name.toUpperCase() ? -1 : 1);
+        setRecord(copy);
+    }
+    const sortByMon = () => {
+        let copy = [...record];
+        copy.sort((a, b) => a.entry_1.toUpperCase() < b.entry_1.toUpperCase() ? -1 : 1);
+        setRecord(copy);
+    }
+    const sortByTue = () => {
+        let copy = [...record];
+        copy.sort((a, b) => a.entry_2.toUpperCase() < b.entry_2.toUpperCase() ? -1 : 1);
+        setRecord(copy);
+    }
+    const sortByWed = () => {
+        let copy = [...record];
+        copy.sort((a, b) => a.entry_3.toUpperCase() < b.entry_3.toUpperCase() ? -1 : 1);
+        setRecord(copy);
+    }
+    const sortByThu = () => {
+        let copy = [...record];
+        copy.sort((a, b) => a.entry_4.toUpperCase() < b.entry_4.toUpperCase() ? -1 : 1);
+        setRecord(copy);
+    }
+    const sortByFri = () => {
+        let copy = [...record];
+        copy.sort((a, b) => a.entry_5.toUpperCase() < b.entry_5.toUpperCase() ? -1 : 1);
+        setRecord(copy);
+    }
+    
 
-                    {record.map((name) =>
+    return (
+        <div>
+            <div class="admin_sort">
+                <button className="adminsortingButtons" onClick={() => sortByFri()}
+                >시간순(금)
+                </button>
+                <button className="adminsortingButtons" onClick={() => sortByThu()}
+                >시간순(목)
+                </button>
+                <button className="adminsortingButtons" onClick={() => sortByWed()}
+                >시간순(수)
+                </button>
+                <button className="adminsortingButtons" onClick={() => sortByTue()}
+                >시간순(화)
+                </button>
+                <button className="adminsortingButtons" onClick={() => sortByMon()}
+                >시간순(월)
+                </button>
+                <button className="adminsortingButtons" onClick={() => sortByName()}
+                >이름순
+                </button>
+            </div>
+            <section class="tableSection">
+                <table class="admin">
+                    <thead class="admin">
                         <tr class="admin">
-                            <td class="admin">{name.name}</td>
-                            <td class="admin">{name.entry_1}</td>
-                            <td class="admin">{name.off_1}</td>
-                            <td class="admin">{name.entry_2}</td>
-                            <td class="admin">{name.off_2}</td>
-                            <td class="admin">{name.entry_3}</td>
-                            <td class="admin">{name.off_3}</td>
-                            <td class="admin">{name.entry_4}</td>
-                            <td class="admin">{name.off_4}</td>
-                            <td class="admin">{name.entry_5}</td>
-                            <td class="admin">{name.off_5}</td>
-                            <td class="admin">
-                                <button class="delete"
-                                    onClick={() => {
-                                        const confirmBox = window.confirm(
-                                            "'" + name.name + "'" + "의 출입시간을 정말 삭제하시겠습니까?"
-                                        )
-                                        if (confirmBox === true) {
-                                            deleteRecord(name.id)
-                                        }
-                                    }}>삭제</button>
-                            </td>
+                            <th class="admin">이름</th>
+                            <th class="admin">월(입)</th>
+                            <th class="admin">월(퇴)</th>
+                            <th class="admin">화(입)</th>
+                            <th class="admin">화(퇴)</th>
+                            <th class="admin">수(입)</th>
+                            <th class="admin">수(퇴)</th>
+                            <th class="admin">목(입)</th>
+                            <th class="admin">목(퇴)</th>
+                            <th class="admin">금(입)</th>
+                            <th class="admin">금(퇴)</th>
+                            <th class="admin">Action</th>
                         </tr>
-                    )}
-                </tbody>
-            </table>
-        </section>
+                    </thead>
+                    <tbody class="admin">
+
+                        {record.map((name) =>
+                            <tr class="admin">
+                                <td class="admin">{name.name}</td>
+                                <td class="admin">{name.entry_1}</td>
+                                <td class="admin">{name.off_1}</td>
+                                <td class="admin">{name.entry_2}</td>
+                                <td class="admin">{name.off_2}</td>
+                                <td class="admin">{name.entry_3}</td>
+                                <td class="admin">{name.off_3}</td>
+                                <td class="admin">{name.entry_4}</td>
+                                <td class="admin">{name.off_4}</td>
+                                <td class="admin">{name.entry_5}</td>
+                                <td class="admin">{name.off_5}</td>
+                                <td class="admin">
+                                    <button class="delete"
+                                        onClick={() => {
+                                            const confirmBox = window.confirm(
+                                                "'" + name.name + "'" + "의 출입시간을 정말 삭제하시겠습니까?"
+                                            )
+                                            if (confirmBox === true) {
+                                                deleteRecord(name.id)
+                                            }
+                                        }}>삭제</button>
+                                </td>
+                            </tr>
+                        )}
+                    </tbody>
+                </table>
+            </section>
+        </div>
     )
 }
 
