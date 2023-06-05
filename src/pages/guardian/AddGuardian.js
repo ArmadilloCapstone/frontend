@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import loadGuardianList from "./GuardianManagement"
 import "./Add.css"
+import swal from 'sweetalert';
 
 export default function AddGuardian() {
     const [serialNumList, setSerialNumList] = useState([]); // id, serial_num 모두 type이 number이 맞는지 확인..! (문제: 코드 순서였음.. 하)
@@ -72,7 +72,14 @@ export default function AddGuardian() {
             .then(function (response) {
                 console.log(response.data);
                 if(response.data === "success") {
-                    alert('추가되었습니다!');
+                    // alert('추가되었습니다!');
+                    swal('', '추가되었습니다!', "success");
+                    // swal({
+                    //     title: "추가되었습니다!",
+                    //     type: "success",
+                    //     timer: "3000",
+                    //     buttons: '확인'
+                    //     });
                 }
                 else {
                     alert('잘못 입력된 값이 존재합니다!');
