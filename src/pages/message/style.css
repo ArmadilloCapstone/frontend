@@ -47,7 +47,6 @@
   .list-alarm{
     display: flex;
     flex-direction: column;
-
   }
   .chat-room {
     align-content: space-between;
@@ -103,39 +102,69 @@
 
   @media (max-width: 768px) {
     .chat-wrapper {
-      right: 0;
-      top: 0;
-      margin: 10px;
-      width: auto;
-      height: auto;
-      max-width: 100%;
-      max-height: 100%;
+      position: absolute;
+      left: -80px;
+      top: 100px;
+      padding-left: 20px;
+      margin-left: 100px;
+      width: 360px;
+      height: 560px;
+
     }
   
     .chat-container {
       flex-direction: column;
       margin-left: 0;
       margin-top: 0;
+      height: 600px;
+      padding-left: -140px;
     }
   
     .chat-list {
       margin-right: 0;
-      margin-bottom: 10px;
-      font-size: 20px;
+      margin-bottom: 0px;
+      font-size: 18px;
       font-weight: bold;
+
+    }
+
+    .chat-list-title{
+      padding-top: 10px;
+      font-size: 25px;
     }
   
     .list-container {
       flex-direction: column;
     }
+
+
+    .list-name{
+      display: inline-block;
+      flex-direction: column;
+      background-color: oldlace;
+      border: none;
+      width: 100px;
+    }
+    .list-alarm{
+      display: inline-block;
+      flex-direction: column;
+      width: 100px;
+      margin-left: -45px;
+    }
+
+
   
     .chat-room {
       margin-left: 0;
+      margin-right: 15px;
       width: auto;
+      padding-top: 30px;
+
     }
   
     .message_area {
-      height: 400px;
+      height: 245px;
+      padding-right: 10px;
     }
   
     .message-container {
