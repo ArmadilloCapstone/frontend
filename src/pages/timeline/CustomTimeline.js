@@ -27,7 +27,7 @@ function CustomTimeline() {
 
   // 백엔드에서 데이터 가져오기 & 오늘의 요일에 맞는 학생들의 입실/퇴실 시간 설정 => todaylist === student_time
   // useEffect(() => {
-    const loadStudentTime = () => {
+  const loadStudentTime = () => {
     axios.post('http://dolbomi.site/studentTimeFindAll/' + localStorage.getItem('userid'))
       .then(function (response) {
         console.log("학생 입퇴실 데이터");
@@ -72,7 +72,7 @@ function CustomTimeline() {
       }).catch(function (reason) {
         console.log(reason);
       });
-    }
+  }
   // }, []);
   useEffect(() => {
     loadStudentTime();
@@ -136,9 +136,8 @@ function CustomTimeline() {
     }
     return arr;
   }
-
   const itemsForAfterSchool = afterSchoolStudentsList(after_school_class, student_schedule);
-  console.log(itemsForAfterSchool);
+  console.log(itemsForAfterSchool)
 
   /* 학생의 id를 포함한 방과후수업 목록을 item 형태로 설정 */
   const setAfterSchoolItems = itemsForAfterSchool.map(obj => {
@@ -256,12 +255,12 @@ function CustomTimeline() {
         if (groups[i].id === returnObj[j].student_id) {
           show.push(groups[i].name)
         }
+      }
     }
+    swal("[ " + show + " ]", "'" + el.class_name + "' 수업 참여 학생 목록입니다.", {
+      buttons: '확인',
+    });
   }
-  swal("[ " + show + " ]", "'" + el.class_name + "' 수업 참여 학생 목록입니다.", {
-    buttons: '확인',
-  });
-}
 
   /* 정렬 메소드 */
   const sortById = () => {

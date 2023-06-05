@@ -13,6 +13,8 @@ const initialState = {
         return { ...state, user_id: action.payload };
       case "SET_USER_NAME":
         return { ...state, user_name: action.payload };
+      case "SET_CLASS_NAME":
+        return { ...state, class_name: action.payload };
       case "SET_USER_OPTION":
         return { ...state, user_option: action.payload };
       case "SET_SHOW_SIGNUP":

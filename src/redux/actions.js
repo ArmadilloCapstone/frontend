@@ -6,6 +6,10 @@
     type: "SET_USER_NAME",
     payload: data,
   });
+  export const setClassName = data => ({
+    type: "SET_CLASS_NAME",
+    payload: data,
+  });
   export const setUserOption = data => ({
     type: "SET_USER_OPTION",
     payload: data,

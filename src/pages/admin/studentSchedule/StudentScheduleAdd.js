@@ -98,10 +98,6 @@ function StudentScheduleAdd() {
         <div class="wrapper">
             <div class="form_container">
                 <form name="form" onSubmit={submitStudentScheduleRecord}>
-                    <div class="heading">
-                        <h2>학생 시간표 추가</h2>
-                    </div>
-
                     <div class="form_wrap" select_box>
                         <div class="form_item">
                             <label class="select">학생 이름</label>

@@ -15,6 +15,7 @@ function ClassAdd() {
     //  Object Destructuring 
     const { class_name, class_num, year, seme } = user;
 
+    // 경고 메시지 날리는 메소드
     function WarningSwal(message) {
         swal({
             title: message,
@@ -24,7 +25,6 @@ function ClassAdd() {
             button: "확인"
         })
     }
-
 
     const onInputChange = e => {
         if (e.target.name == "class_num" && e.target.value < 1) {

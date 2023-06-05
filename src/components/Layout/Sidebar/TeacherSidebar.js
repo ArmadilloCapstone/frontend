@@ -102,6 +102,7 @@ function TeacherSidebar() {
   ];
 
   const user_name = useSelector((state => state.user_name))
+  const class_name = useSelector((state => state.class_name))
 
   return (
     <Side>
@@ -113,7 +114,7 @@ function TeacherSidebar() {
         <SidebarUser>
           <TeacherIcon src={teacher} />
           <div>
-            <div style={{ fontSize: "19px", color: '#555555', paddingLeft: "15px", paddingLeft: "14px", textAlign:"left" }}>{localStorage.getItem('classname')}</div>
+            <div style={{ fontSize: "19px", color: '#555555', paddingLeft: "15px", paddingLeft: "14px", textAlign:"left" }}>{class_name}</div>
             <div style={{ fontSize: "18px", color: '#555555', paddingLeft: "12px", paddingTop: "4px", textAlign:"center" }}>{user_name} 교사님</div>
           </div>
         </SidebarUser>
