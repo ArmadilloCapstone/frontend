@@ -4,7 +4,6 @@ import styled from "styled-components";
 import home from "./home.png";
 import baby from "./baby.png";
 import phone from "./phone.png";
-import chat2 from "./chat2.png";
 import note2 from "./note2.png";
 import camera2 from "./camera2.png";
 import { useSelector } from 'react-redux';
@@ -48,7 +47,7 @@ const Button = styled(NavLink)`
 const Icon = styled.img`
   width: 30px;
   height: 30px;
-  margin-right: -16px;
+  margin-right: -8px;
   margin-left: -8px;
 `;
 
@@ -58,7 +57,6 @@ const SidebarItem = ({ menu }) => {
       {menu.name === "메인" && <Icon src={home} alt="Home" />}
       {menu.name === "픽업" && <Icon src={baby} alt="Baby" />}
       {menu.name === "긴급" && <Icon src={phone} alt="Phone" />}
-      {menu.name === "메신저" && <Icon src={chat2} alt="Chat" />}
 
       {menu.name === "안내장" && <Icon src={note2} alt="Note" />}
       {menu.name === "사진첩" && <Icon src={camera2} alt="Camera" />}
@@ -71,7 +69,6 @@ function AdminBottomNav() {
     { name: "메인", path: "/ParentMain" },
     { name: "픽업", path: "/Pickup" },
     { name: "긴급", path: "/TelephoneLink" },
-    { name: "메신저", path: "/Message" },
 
     { name: "안내장", path: "/ParentBbsList" },
     { name: "사진첩", path: "/ParentGalleryList" }
@@ -106,11 +103,7 @@ function AdminBottomNav() {
           <SidebarItem menu={menus[4]} />
         </Button>
       </Box>
-      <Box className="bottom-button">
-        <Button exact to={menus[5].path}>
-          <SidebarItem menu={menus[5]} />
-        </Button>
-      </Box>
+
     </Container>
   );
 }

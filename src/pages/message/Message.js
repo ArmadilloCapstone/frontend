@@ -268,9 +268,16 @@ const Message = () => {
   return (
     <div className="chat-wrapper" style={ message_click ? {display : 'block'} : {display : 'none'} }>
       <div className="chat-container">
+
+
+
+
+
         <div className="chat-list">
           <div className="chat-list-title">채팅 목록</div>
-          <div className='list-container'>
+
+
+          <div className='list-container' style={{  flexDirection: 'row' }}>
             <div className='list-name'>
             {allChatList.map((el, idx) =>
               <div>
@@ -286,14 +293,14 @@ const Message = () => {
 
             <div className='list-alarm'>
             {alarmList.map((el, idx) =>
-              <div style={{ paddingTop:'15px'}}>
-        {el.alarm ? (
-          <img src={check} style={{ marginLeft: '10px', width: '30px', height: '30px' }} />
-        ) : (
-          <img src={empty} style={{ marginLeft: '20px',width: '30px', height: '30px' }} />
-        )}
-              </div>
+                  <div style={{ paddingTop:'15px'}}>
+            {el.alarm ? (
+              <img src={check} style={{ marginLeft: '10px', width: '30px', height: '30px' }} />
+            ) : (
+              <img src={empty} style={{ marginLeft: '20px',width: '30px', height: '30px' }} />
             )}
+                  </div>
+                )}
             </div>
 
 
