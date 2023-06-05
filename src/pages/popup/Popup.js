@@ -64,7 +64,7 @@ const Popup = () => {
         console.log("pickup");
         if(user_option == 1){
           axios.post("http://dolbomi.site/sendPickupFormToTeacher/" + localStorage.getItem('userid')).then((res)=>{
-            if(!!res.data){
+            if(res.data.length != 0){
               setStudents(res.data.map(function(el){
                 console.log(el);
                 var returnObj = {}
@@ -76,6 +76,7 @@ const Popup = () => {
                 return returnObj;
               }));
               setShowPopup(true);
+              handleClickButton();
               console.log("showPopup is true")
             }
           
@@ -85,7 +86,7 @@ const Popup = () => {
           console.log("pickup");
           if(user_option == 1){
             axios.post("http://dolbomi.site/sendPickupFormToTeacher/" + localStorage.getItem('userid')).then((res)=>{
-              if(!!res.data){
+              if(res.data.length != 0){
                 setStudents(res.data.map(function(el){
                   console.log(el);
                   var returnObj = {}
