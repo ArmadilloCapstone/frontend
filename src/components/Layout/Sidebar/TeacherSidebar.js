@@ -9,7 +9,7 @@ import block from "./block.png";
 import book from "./book.png";
 import user from "./user.png";
 import note from "./note.png";
-import chat from "./chat.png";
+// import chat from "./chat.png";
 
 import camera from "./camera.png";
 import { useSelector } from 'react-redux';
@@ -99,7 +99,6 @@ function TeacherSidebar() {
   const menusDown = [
     { name: "안내장", path: "/BbsList", icon: note },
     { name: "사진첩", path: "/GalleryList", icon: camera },
-    { name: "메신저", path: "/Message", icon: chat }
   ];
 
   const user_name = useSelector((state => state.user_name))

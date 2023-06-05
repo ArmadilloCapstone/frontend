@@ -4,6 +4,7 @@ import styled from "styled-components";
 import home from "./home.png";
 import baby from "./baby.png";
 import phone from "./phone.png";
+import chat2 from "./chat2.png";
 import { useSelector } from 'react-redux';
 import "./sidebar.css";
 
@@ -54,8 +55,7 @@ const SidebarItem = ({ menu }) => {
       {menu.name === "메인" && <Icon src={home} alt="Home" />}
       {menu.name === "픽업" && <Icon src={baby} alt="Baby" />}
       {menu.name === "긴급" && <Icon src={phone} alt="Phone" />}
-      {menu.name === "메신저" && <Icon src={phone} alt="Phone" />}
-      {menu.name}
+      {menu.name === "메신저" && <Icon src={chat2} alt="Chat" />}
     </>
   );
 };

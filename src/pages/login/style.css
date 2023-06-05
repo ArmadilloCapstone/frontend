@@ -110,7 +110,7 @@
   }
   
   .login_subtitle {
-    margin-top: 7px;
+    margin-top: -20px;
     font-size: 15px;
     color: #555555;
     text-align: center;
@@ -129,7 +129,7 @@
     border: none;
     font-size: 20px;
     height: 40px;
-    padding-top: 10px;
+    padding-top: 2px;
     padding-bottom: 0px;
     text-align: center;
     position: relative;
@@ -154,7 +154,7 @@
     border: none;
     margin: 0 auto;
     margin-bottom: 50px;
-    margin-top: 50px;
+    margin-top: 10px;
     background-color: #ffffff;
     color: #666666;
   }
@@ -171,7 +171,7 @@
   }
   
   .login_sid {
-    margin-top: 10px;
+    margin-top: 2px;
   }
   
   .signupClose {

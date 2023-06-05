@@ -297,7 +297,7 @@ const Message = () => {
             <div className="message_area">
             {nowChatMsg.map((el) =>
               <div className="message-container">
-                <div>
+                <div className={`message ${el.receiver_name === selected.name ? "receiver" : "sender"}`}>
                   보낸사람: {el.sender_name}, 받는사람: {el.receiver_name},
                   시간: {Date2String(el.date)}
                 </div>
