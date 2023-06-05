@@ -47,8 +47,10 @@
 }
 .StudentState .box {
 	height: 420px;
-	border: solid 1px black;
+	background-color: #f5f5dd;
+	border-radius: 20px;
+	padding-top: 15px;
 }
 .StudentState .highlight {
-	background-color: yellow;
+	background-color: #f5f5dd;
 }

@@ -63,15 +63,19 @@
     overflow: scroll;
     border-radius: 20px;
     border-color: white;
+
+
+  
   }
   .message-container {
     border: 1px solid;
     padding: 10px;
     margin-top: 20px;
+    margin-left: 15px;
     border-radius: 20px;
     border-color: white;
-    padding-bottom: 20px;
-    margin-left: 15px;
+    padding-bottom: 0px;
+
   }
 
 
@@ -179,6 +183,8 @@
     .message_area {
       height: 245px;
       padding-right: 10px;
+
+      
     }
   
     .message-container {
