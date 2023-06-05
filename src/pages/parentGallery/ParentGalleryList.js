@@ -26,8 +26,8 @@ function ParentGalleryList() {
     /* [POST /gallery]: 게시글 목록 가져오기 */
     const loadGalleryList = async (choice, search) => {
         if (choice === "all" && search === "all") {
-            await axios.post('http://dolbomi.site/GalleryList', {
-                parent_id: localStorage.getItem('userid')
+            await axios.post('http://dolbomi.site/GalleryList/forParent', {
+                id: localStorage.getItem('userid')
             })
                 .then((res) => {
                     console.log("[GalleryList.js] useEffect() 성공");
@@ -67,7 +67,7 @@ function ParentGalleryList() {
 
         else {
             console.log(searchVal, choiceVal)
-            await axios.post(`http://dolbomi.site/GalleryList/search`, {
+            await axios.post(`http://dolbomi.site/ParentGalleryList/search`, {
                 parent_id: localStorage.getItem('userid'),
                 keyword: searchVal,
                 option: choiceVal

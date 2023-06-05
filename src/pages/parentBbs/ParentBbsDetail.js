@@ -128,7 +128,7 @@ function ParentBbsDetail() {
             </table>
 
             <div className="my-3 d-flex justify-content-center">
-                <Link className="btn btn-outline-secondary" to="/BbsList"><i className="fas fa-list"></i> 글목록</Link>
+                <Link className="btn btn-outline-secondary" to="/ParentBbsList"><i className="fas fa-list"></i> 글목록</Link>
             </div><br /><br />
 
         </div>

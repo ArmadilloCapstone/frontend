@@ -21,13 +21,13 @@ function ParentBbsList() {
     const [totalCnt, setTotalCnt] = useState(0);
 
     // Link 용 (함수) 
-    let navigate = useNavigate();
+    let navigate = useNavigate();   
 
     /* [POST /bbs]: 게시글 목록 가져오기 */
     const loadBbsList = async (choice, search) => {
         if (choice === "all" && search === "all") {
-            await axios.post('http://dolbomi.site/BbsList', {
-                parent_id : localStorage.getItem('userid')
+            await axios.post('http://dolbomi.site/BbsList/forParent', {
+                id : localStorage.getItem('userid')
             })
                 .then((res) => {
                     console.log("[BbsList.js] useEffect() 성공");
@@ -67,7 +67,7 @@ function ParentBbsList() {
 
         else {
             console.log(searchVal, choiceVal)
-            await axios.post(`http://dolbomi.site/BbsList/search`, {
+            await axios.post(`http://dolbomi.site/ParentBbsList/search`, {
                 parent_id : localStorage.getItem('userid'),
                 keyword : searchVal,
                 option : choiceVal
