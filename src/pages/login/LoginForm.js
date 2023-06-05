@@ -1,7 +1,7 @@
 import './style.css';
 import React, { useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { setShowSignup, setUserId, setUserName, setUserOption } from '../../redux/actions';
+import { setShowSignup, setUserId, setUserName, setUserOption, setClassName } from '../../redux/actions';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
@@ -78,6 +78,7 @@ export const LoginForm = (props) => {
           if (props.option == "1") {
             console.log("hi");
             localStorage.setItem('classname', res.data.class_name);
+            dispatch(setClassName((res.data.class_name)));
             navigate('/TimelinePage');
           }
           if (props.option == "2") {
