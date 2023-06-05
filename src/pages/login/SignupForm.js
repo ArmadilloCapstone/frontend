@@ -80,7 +80,7 @@ export const SignupForm = (props) => {
           <div className="name">비밀번호</div>
           <input type="password" value={pw} onChange={saveUserPw} />
         </div>
-        <button className="signup_Button" type="submit">회원가입하기</button>
+        <button className="signup_Button" type="submit" style={{borderColor:'white'}}>회원가입하기</button>
       </form>
     </div>
   );

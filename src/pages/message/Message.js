@@ -5,8 +5,8 @@ import axios from "axios";
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 import "./style.css"
-import check from './check.png';
-import empty from './empty.png';
+import circle from './circle.png';
+
 
 const Message = () => {
   const messageEndRef = useRef(null);
@@ -15,6 +15,7 @@ const Message = () => {
   const [socketConnected, setSocketConnected] = useState(false);
   const [ws, setWs] = useState(null);
   const [sendMsg, setSendMsg] = useState(false);
+  const messageContainerRef = useRef(null);
 
   const [allChatList, setAllChatList] = useState([]);
   const [alarmList, setAlarmList] = useState([]);
@@ -275,10 +276,6 @@ const Message = () => {
     <div className="chat-wrapper" style={ message_click ? {display : 'block'} : {display : 'none'} }>
       <div className="chat-container">
 
-
-
-
-
         <div className="chat-list">
           <div className="chat-list-title">채팅 목록</div>
 
@@ -301,9 +298,9 @@ const Message = () => {
             {alarmList.map((el, idx) =>
                   <div style={{ paddingTop:'15px'}}>
             {el.alarm ? (
-              <img src={check} style={{ marginLeft: '10px', width: '30px', height: '30px' }} />
+              <img src={circle} style={{ marginLeft: '15px', width: '30px', height: '30px' }} />
             ) : (
-              <img src={empty} style={{ marginLeft: '20px',width: '30px', height: '30px' }} />
+              <div style={{ marginLeft: '15px', width: '30px', height: '30px' }} />
             )}
                   </div>
                 )}
@@ -320,12 +317,12 @@ const Message = () => {
             <div className="message_area">
             {nowChatMsg.map((el) =>
               <div className="message-container">
-                <div className={`message ${el.receiver_name === selected.name ? "receiver" : "sender"}`}>
-
-                  시간: {Date2String(el.date)}
+                <div className={`message ${el.receiver_name === selected.name ? "receiver" : "sender"}`} style={el.receiver_name === selected.name ? {color: "#12b560", textAlign:'right'} : {}}>
+                  {Date2String(el.date)}
                 </div>
                 <hr></hr>
-                <div>내용: {el.text}</div>
+                <div style={el.receiver_name === selected.name ? {color: "#12b560", textAlign:'right'} : {}}>{el.text}</div>
+
               </div>
             )}
             {/* 스크롤바 */}

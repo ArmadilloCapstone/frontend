@@ -8,6 +8,7 @@ import { ChangePw } from './ChangePw';
 import 'bootstrap/dist/css/bootstrap.css';
 import { useNavigate } from 'react-router-dom';
 import './style.css';
+import circle from './circle.png';
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -59,7 +60,7 @@ const Header = () => {
                   user_id !== ""
                   ?
                 <Nav className="ms-auto">
-                {(localStorage.getItem('useroption') == 1 || localStorage.getItem('useroption') == 2) ? <Nav.Link onClick={MessageClickHandler}>메시지{message_alarm ? "!!!" : ""}</Nav.Link> : null}
+                {(localStorage.getItem('useroption') == 1 || localStorage.getItem('useroption') == 2) ? <Nav.Link onClick={MessageClickHandler}>메시지{message_alarm ? <img src={circle} style={{ marginLeft: '2px', width: '10px', height: '10px' }} /> : ""}</Nav.Link> : null}
                   <NavDropdown title="내 정보" id="basic-nav-dropdown">
                     {localStorage.getItem('useroption') != 3 ? <NavDropdown.Item onClick={changePwClickHandler}>비밀번호 변경</NavDropdown.Item> : null}
                   </NavDropdown>

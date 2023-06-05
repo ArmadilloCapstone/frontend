@@ -49,7 +49,7 @@ const Pickup = () => {
                 alignItems: 'center',
                 border: 'none',
                 borderRadius: '20px',
-                fontSize: '20px',
+                fontSize: '18px',
                 fontWeight: 'bold',
                 display: 'block',
                 boxShadow: '4px 4px 20px #8C92AC'

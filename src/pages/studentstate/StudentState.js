@@ -271,7 +271,7 @@ const StudentState = () => {
         <div className="icon">
         <img src={arrived} alt="Icon" style={iconSize} />
         </div>
-        <h5 style={{ padding: "15px 0px 15px 0px", fontSize: "25px", fontWeight: "bolder"}}>도착하지 않았어요</h5>
+        <h5 style={{ padding: "15px 0px 15px 0px", fontSize: "25px", fontWeight: "bolder"}}>돌봄교실에 도착했어요</h5>
       </div>
       <div className='item_container'>
       <Droppable droppableId="box2">
@@ -302,7 +302,7 @@ const StudentState = () => {
         <div className="icon">
         <img src={art} alt="Icon" style={iconSize} />
         </div>
-        <h5 style={{ padding: "15px 0px 15px 0px", fontSize: "25px", fontWeight: "bolder"}}>돌봄교실에 도착했어요</h5>
+        <h5 style={{ padding: "15px 0px 15px 0px", fontSize: "25px", fontWeight: "bolder"}}>방과후수업 다녀올게요</h5>
       </div>
       <div className='item_container'>
       <Droppable droppableId="box3">
@@ -334,7 +334,7 @@ const StudentState = () => {
         <div className="icon">
         <img src={house} alt="Icon" style={iconSize} />
         </div>
-        <h5 style={{ padding: "15px 0px 15px 0px", fontSize: "25px", fontWeight: "bolder"}}>도착하지 않았어요</h5>
+        <h5 style={{ padding: "15px 0px 15px 0px", fontSize: "25px", fontWeight: "bolder"}}>집에 갈게요</h5>
       </div>
       <div className='item_container'>
       
