@@ -3,8 +3,7 @@ import "./bbswrite.css";
 
 import { useRef, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import { AuthContext } from "../context/AuthProvider";
-// import { HttpHeadersContext } from "../context/HttpHeadersProvider";
+import swal from 'sweetalert';
 
 function BbsWrite() {
 
@@ -22,7 +21,7 @@ function BbsWrite() {
 	const selectFiles = (event) => {
 		let arr = Array.from(event.target.files);
 		setSelectedFiles([]);
-		for(let i = 0; i < arr.length; i++){
+		for (let i = 0; i < arr.length; i++) {
 			console.log(arr[i].name)
 			setSelectedFiles((prevMessage) => ([
 				...prevMessage,
@@ -68,45 +67,55 @@ function BbsWrite() {
 		formData.append("teacher_id", localStorage.getItem('userid'));
 		formData.append("title", title);
 		formData.append("text", text);
-		for(let i = 0; i < selectedFiles.length; i++){
-		  console.log(i);
-		  console.log(selectedFiles[i]);
-		  formData.append("files", selectedFiles[i]);
+		for (let i = 0; i < selectedFiles.length; i++) {
+			console.log(i);
+			console.log(selectedFiles[i]);
+			formData.append("files", selectedFiles[i]);
 		}
-		if(selectedFiles.length == 0){
+		if (selectedFiles.length == 0) {
 			axios.post("http://dolbomi.site/BbsList/create/nofile", formData, {
-			  headers: {
-				"Content-Type": "multipart/form-data",
-			  }
+				headers: {
+					"Content-Type": "multipart/form-data",
+				}
 			})
-			.then((resp) => {
-				console.log("[BbsWrite.js] createBbs() success :D");
-				console.log(resp.data);
-				alert("새로운 게시글을 성공적으로 등록했습니다 :D");
-				navigate(`/bbsdetail/${resp.data.id}`); // 새롭게 등록한 글 상세로 이동
-			})
-			.catch((err) => {
-				console.log("[BbsWrite.js] createBbs() error :<");
-				console.log(err);
-			});
+				.then((resp) => {
+					console.log("[BbsWrite.js] createBbs() success :D");
+					console.log(resp.data);
+					swal({
+						title: "새로운 게시글을 성공적으로 등록했습니다!",
+						icon: "success",
+						timer: 3000,
+						button: "확인"
+					})
+					navigate(`/bbsdetail/${resp.data.id}`); // 새롭게 등록한 글 상세로 이동
+				})
+				.catch((err) => {
+					console.log("[BbsWrite.js] createBbs() error :<");
+					console.log(err);
+				});
 
 		}
-		else{
+		else {
 			axios.post("http://dolbomi.site/BbsList/create/file", formData, {
-			  headers: {
-				"Content-Type": "multipart/form-data",
-			  }
+				headers: {
+					"Content-Type": "multipart/form-data",
+				}
 			})
-			.then((resp) => {
-				console.log("[BbsWrite.js] createBbs() success :D");
-				console.log(resp.data);
-				alert("새로운 게시글을 성공적으로 등록했습니다 :D");
-				navigate(`/bbsdetail/${resp.data.id}`); // 새롭게 등록한 글 상세로 이동
-			})
-			.catch((err) => {
-				console.log("[BbsWrite.js] createBbs() error :<");
-				console.log(err);
-			});
+				.then((resp) => {
+					console.log("[BbsWrite.js] createBbs() success :D");
+					console.log(resp.data);
+					swal({
+						title: "새로운 게시글을 성공적으로 등록했습니다!",
+						icon: "success",
+						timer: 3000,
+						button: "확인"
+					})
+					navigate(`/bbsdetail/${resp.data.id}`); // 새롭게 등록한 글 상세로 이동
+				})
+				.catch((err) => {
+					console.log("[BbsWrite.js] createBbs() error :<");
+					console.log(err);
+				});
 
 		}
 	}
@@ -137,7 +146,7 @@ function BbsWrite() {
 							<tr>
 								<th class="input_header">첨부파일</th>
 								<td class="input_container">
-            						<input  class="bbsWrite" type="file" multiple onChange={selectFiles} />
+									<input class="bbsWrite" type="file" multiple onChange={selectFiles} />
 									{
 										selectedFiles.map((el, idx) => {
 											return <div key={idx}> {el.name} </div>
@@ -155,44 +164,6 @@ function BbsWrite() {
 
 			</div>
 		</div>
-
-
-
-
-		// <div>
-		// 	<form>
-		// 		<table>
-		// 			<tbody>
-
-		// 				<tr>
-		// 					<th className="table-primary">제목</th>
-		// 					<td>
-		// 						<input type="text" className="form-control" value={title} onChange={changeTitle} size="50px" />
-		// 					</td>
-		// 				</tr>
-
-		// 				<tr>
-		// 					<th className="table-primary">내용</th>
-		// 					<td>
-		// 						<textarea className="form-control" value={text} onChange={changeText} rows="10"></textarea>
-		// 					</td>
-		// 				</tr>
-
-		// 				<tr>
-		// 					<th className="table-primary">첨부파일</th>
-		// 					<td>
-		// 						<input type="file" className="form-control" accept="image/*" multiple onChange={changeFile} />
-		// 					</td>
-
-		// 				</tr>
-		// 			</tbody>
-		// 		</table>
-		// 	</form>
-
-		// 	<div className="my-5 d-flex justify-content-center">
-		// 		<button className="btn btn-outline-secondary" onClick={createBbs}><i className="fas fa-pen"></i> 등록하기</button>
-		// 	</div>
-		// </div>
 	);
 }
 

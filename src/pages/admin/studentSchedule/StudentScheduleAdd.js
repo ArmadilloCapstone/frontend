@@ -1,6 +1,7 @@
 import '../addPages.css'
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import swal from 'sweetalert';
 
 function StudentScheduleAdd() {
     const [student, setStudent] = useState([]);
@@ -20,7 +21,7 @@ function StudentScheduleAdd() {
                 console.log(reason);
             });
     }, []);
-    
+
     useEffect(() => {
         axios.post('http://dolbomi.site/student_schedule/AfterSchoolClassList') // url 모름.. 변경 필요할듯
             .then(function (response) {
@@ -37,21 +38,21 @@ function StudentScheduleAdd() {
             });
     }, []);
 
+    //  Object Destructuring 
     const [user, setUser] = useState({
         student_id: null,
         class_id: null,
     });
 
-    //  Object Destructuring 
     const onInputChange = e => {
         setUser({ ...user, [e.target.name]: e.target.value });
         console.log(user)
     };
-    function onInputChange_Select(e, selectIdName) {
-        var selectInput = document.getElementById(selectIdName);
-        var value = (selectInput.options[selectInput.selectedIndex].value);
-        setUser({ ...user, [e.target.name]: value });
-    };
+    // function onInputChange_Select(e, selectIdName) {
+    //     var selectInput = document.getElementById(selectIdName);
+    //     var value = (selectInput.options[selectInput.selectedIndex].value);
+    //     setUser({ ...user, [e.target.name]: value });
+    // };
 
     // Insert Student Schedule Records 
     const submitStudentScheduleRecord = async (e) => {
@@ -61,10 +62,21 @@ function StudentScheduleAdd() {
             .then(function (response) {
                 console.log(response.data);
                 if (response.data === "success") {
-                    alert('추가되었습니다!');
+                    swal({
+                        title: "추가되었습니다!",
+                        icon: "success",
+                        timer: 3000,
+                        button: "확인"
+                    })
                 }
                 else {
-                    alert(response.data);
+                    swal({
+                        title: response.data,
+                        icon: "error",
+                        timer: 3000,
+                        dangerMode: true,
+                        button: "확인"
+                    })
                 }
 
             }).catch(function (reason) {

@@ -71,26 +71,32 @@ export default function AddGuardian() {
         await axios.post("http://dolbomi.site/guardianManage/guardian_submit", user)
             .then(function (response) {
                 console.log(response.data);
-                if(response.data === "success") {
-                    // alert('추가되었습니다!');
-                    swal('', '추가되었습니다!', "success");
-                    // swal({
-                    //     title: "추가되었습니다!",
-                    //     type: "success",
-                    //     timer: "3000",
-                    //     buttons: '확인'
-                    //     });
+                if (response.data === "success") {
+                    swal({
+                        title: "추가되었습니다!",
+                        icon: "success",
+                        timer: 3000,
+                        button: "확인"
+                    }).then(function () {
+                        window.close(); //클로즈 먼저해야만 새로고침이 되었음
+                        window.location.reload();
+                    });
                 }
                 else {
-                    alert('잘못 입력된 값이 존재합니다!');
+                    swal({
+                        title: "잘못 입력된 값이 존재합니다!",
+                        icon: "error",
+                        timer: 3000,
+                        button: "확인"
+                    }).then(function () {
+                        window.close(); //클로즈 먼저해야만 새로고침이 되었음
+                        window.location.reload();
+                    });
                 }
 
             }).catch(function (reason) {
                 console.log(reason.data);
             });
-
-        window.close(); //클로즈 먼저해야만 새로고침이 되었음
-        window.location.reload();
     };
 
     return (

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import "./Add.css"
+import swal from 'sweetalert';
 
 export default function AddStudentsOfGaurdian(props) {
     const [edited, setEdited] = useState(props.data); // 선택한 row의 보호자 데이터 불러오기
@@ -101,9 +102,15 @@ export default function AddStudentsOfGaurdian(props) {
         await axios.post("http://dolbomi.site/guardianManage/student_submit", user);
         console.log(edited);
         console.log(checkedList);
-        alert('추가되었습니다!');
-        window.close(); //클로즈 먼저해야만 새로고침이 되었음
-        window.location.reload();
+        swal({
+            title: "수정되었습니다!",
+            icon: "success",
+            timer: 3000,
+            button: "확인"
+        }).then(function () {
+            window.close(); //클로즈 먼저해야만 새로고침이 되었음
+            window.location.reload();
+        });
     };
 
     return (

@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setShowSignup, setUserId, setUserName, setUserOption } from '../../redux/actions';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import swal from 'sweetalert';
 
 export const LoginForm = (props) => {
   const dispatch = useDispatch();
@@ -28,6 +29,17 @@ export const LoginForm = (props) => {
     setPw(event.target.value);
   };
 
+  // 경고 메시지 날리는 메소드
+  function WarningSwal(message) {
+    swal({
+      title: message,
+      icon: "warning",
+      timer: 2000,
+      dangerMode: true,
+      button: "확인"
+    })
+  }
+
   const clickSignup = () => {
     dispatch(setShowSignup(!showSignup));
     props.setUserOption(props.option);
@@ -37,24 +49,24 @@ export const LoginForm = (props) => {
     e.preventDefault();
     e.target.reset();
 
-    if(props.option != "3"){
+    if (props.option != "3") {
 
       axios.post("http://dolbomi.site/login", {
-        "user_id" : id,
-        "user_pw" : pw,
-        "option" : (props.option - 0)
+        "user_id": id,
+        "user_pw": pw,
+        "option": (props.option - 0)
       }).then((res) => {
         console.log(res.data)
-        if(res.data.name !== "Error"){
+        if (res.data.name !== "Error") {
 
           //alert('로그인!');
           console.log(res.data)
-          if(props.option == "4"){
+          if (props.option == "4") {
             console.log("admin")
             localStorage.setItem('userid', res.data.user_id);
             dispatch(setUserId(res.data.user_id));
           }
-          else{
+          else {
             localStorage.setItem('userid', res.data.id);
             dispatch(setUserId(res.data.id));
           }
@@ -63,34 +75,34 @@ export const LoginForm = (props) => {
           localStorage.setItem('useroption', (props.option - 0));
           dispatch(setUserOption((props.option - 0)));
 
-          if(props.option == "1"){
+          if (props.option == "1") {
             console.log("hi");
             localStorage.setItem('classname', res.data.class_name);
             navigate('/TimelinePage');
           }
-          if(props.option == "2"){
+          if (props.option == "2") {
             console.log("hi");
             navigate('/ParentMain');
           }
-          if(props.option == "4"){
+          if (props.option == "4") {
             console.log("hi");
             navigate('/ClassManagementPage');
           }
 
 
         }
-        else{
-          alert('아이디 또는 비밀번호가 틀렸습니다.')
+        else {
+          WarningSwal('아이디 또는 비밀번호가 틀렸습니다.')
         }
       })
     }
-    else{
+    else {
       axios.post("http://dolbomi.site/login", {
-        "serial_num" : serial,
-        "option" : (props.option - 0)
+        "serial_num": serial,
+        "option": (props.option - 0)
       }).then((res) => {
         console.log(res.data)
-        if(res.data.name !== "Error"){
+        if (res.data.name !== "Error") {
           dispatch(setShowSignup(!showSignup));
           localStorage.setItem('userid', res.data.serial_num);
           localStorage.setItem('username', res.data.name);
@@ -100,8 +112,8 @@ export const LoginForm = (props) => {
           dispatch(setUserOption((props.option - 0)));
           navigate('/GuardianPickup');
         }
-        else{
-          alert('아이디 또는 비밀번호가 틀렸습니다.')
+        else {
+          WarningSwal('아이디 또는 비밀번호가 틀렸습니다.')
         }
       })
 
@@ -112,37 +124,37 @@ export const LoginForm = (props) => {
   return (
     <div className='login_form'>
       <form name="form" onSubmit={submitLogin}>
-        { (props.option === "3")
-              ?
-              <div className="login_box login_sid">
-                <div className="login_name">일련번호</div>
-                <input type="text" value ={serial} onChange={saveSerial}/>
-              </div>
-              :
-
-              <div className="login_box login_sid">
-                <div className="login_name">ID</div>
-                <input type="text" value ={id} onChange={saveUserId}/>
-              </div>
-
-          }
-          { (props.option === "3")
-              ?
-              <div className='empty'></div>
-              :
-              <div className="login_box pw">
-                <div className="login_name">PW</div>
-                <input type="password" value ={pw} onChange={saveUserPw}/>
-              </div>
-          }
-          <div className="signupButton">
-
-          <h1 className="login_subtitle">아직 회원이 아니신가요?</h1> 
-            {(props.option === '1' || props.option === '2')?<span className="signup_button" onClick={clickSignup}>회원가입</span> : <span className="signup_button"></span>}
+        {(props.option === "3")
+          ?
+          <div className="login_box login_sid">
+            <div className="login_name">일련번호</div>
+            <input type="text" value={serial} onChange={saveSerial} />
           </div>
-          <button className="login_button" type="submit">로그인</button>
-        </form>
-      </div>
+          :
+
+          <div className="login_box login_sid">
+            <div className="login_name">ID</div>
+            <input type="text" value={id} onChange={saveUserId} />
+          </div>
+
+        }
+        {(props.option === "3")
+          ?
+          <div className='empty'></div>
+          :
+          <div className="login_box pw">
+            <div className="login_name">PW</div>
+            <input type="password" value={pw} onChange={saveUserPw} />
+          </div>
+        }
+        <div className="signupButton">
+
+          <h1 className="login_subtitle">아직 회원이 아니신가요?</h1>
+          {(props.option === '1' || props.option === '2') ? <span className="signup_button" onClick={clickSignup}>회원가입</span> : <span className="signup_button"></span>}
+        </div>
+        <button className="login_button" type="submit">로그인</button>
+      </form>
+    </div>
   );
 };
 

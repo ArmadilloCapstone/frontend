@@ -2,11 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-// import CommentWrite from "../comment/CommentWrite";
-// import CommentList from "../comment/CommentList";
-// import { AuthContext } from "../context/AuthProvider";
-
-
+import swal from 'sweetalert';
 
 function GalleryDetail() {
 
@@ -59,8 +55,12 @@ function GalleryDetail() {
             .then((resp) => {
                 console.log("[GalleryDetail.js] deleteGallery() success :D");
                 console.log(resp.data);
-
-                alert("게시글을 성공적으로 삭제했습니다 :D");
+                swal({
+                    title: "게시글을 성공적으로 삭제했습니다!",
+                    icon: "success",
+                    timer: 3000,
+                    button: "확인"
+                })
                 navigate("/gallerylist");
 
             }).catch((err) => {

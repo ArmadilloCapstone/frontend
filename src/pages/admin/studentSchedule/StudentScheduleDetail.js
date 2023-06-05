@@ -2,40 +2,41 @@ import '../adminPages.css';
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Pagination from "react-js-pagination";
+import swal from 'sweetalert';
 
 function StudentScheduleDetail() {
     const [record, setRecord] = useState([]);
     const [currentrecord, setCurrentrecord] = useState([]);
-  
-      // Paging
-      const [page, setPage] = useState(1);
-      const [totalCnt, setTotalCnt] = useState(0);
-      const changePage = (page, copy) => {
-        if(copy != undefined){
-          setPage(page);
-          setCurrentrecord([]);
-          for(let i = (page-1) * 10; i < (page) * 10; i++){
-              console.log(i)
-              if(copy[i] != null){
-                  setCurrentrecord((prev) => ([
-                      ...prev,
-                      copy[i]
-                  ]));
-              }
-          }
+
+    // Paging
+    const [page, setPage] = useState(1);
+    const [totalCnt, setTotalCnt] = useState(0);
+    const changePage = (page, copy) => {
+        if (copy != undefined) {
+            setPage(page);
+            setCurrentrecord([]);
+            for (let i = (page - 1) * 10; i < (page) * 10; i++) {
+                console.log(i)
+                if (copy[i] != null) {
+                    setCurrentrecord((prev) => ([
+                        ...prev,
+                        copy[i]
+                    ]));
+                }
+            }
         }
-        else{
-          setPage(page);
-          setCurrentrecord([]);
-          for(let i = (page-1) * 10; i < (page) * 10; i++){
-              console.log(i)
-              if(record[i] != null){
-                  setCurrentrecord((prev) => ([
-                      ...prev,
-                      record[i]
-                  ]));
-              }
-          }
+        else {
+            setPage(page);
+            setCurrentrecord([]);
+            for (let i = (page - 1) * 10; i < (page) * 10; i++) {
+                console.log(i)
+                if (record[i] != null) {
+                    setCurrentrecord((prev) => ([
+                        ...prev,
+                        record[i]
+                    ]));
+                }
+            }
         }
     }
 
@@ -51,11 +52,11 @@ function StudentScheduleDetail() {
                     returnObj['name'] = el.name;
                     returnObj['class_name'] = el.class_name;
                     returnObj['day'] = el.day;
-                    if(el.day === "월") returnObj['dayNum'] = 1;
-                    else if(el.day === "화") returnObj['dayNum'] = 2;
-                    else if(el.day === "수") returnObj['dayNum'] = 3;
-                    else if(el.day === "목") returnObj['dayNum'] = 4;
-                    else if(el.day === "금") returnObj['dayNum'] = 5;
+                    if (el.day === "월") returnObj['dayNum'] = 1;
+                    else if (el.day === "화") returnObj['dayNum'] = 2;
+                    else if (el.day === "수") returnObj['dayNum'] = 3;
+                    else if (el.day === "목") returnObj['dayNum'] = 4;
+                    else if (el.day === "금") returnObj['dayNum'] = 5;
 
                     return returnObj;
                 })
@@ -64,21 +65,21 @@ function StudentScheduleDetail() {
                 setTotalCnt(response.data.length);
                 console.log(response.data.length)
                 setCurrentrecord([]);
-                if(response.data.length >= 10){
+                if (response.data.length >= 10) {
                     console.log("Hi")
                     item_list.map((el, idx) => {
                         console.log(idx)
-                        if(idx < 10){
-                          setCurrentrecord((prev) => ([
+                        if (idx < 10) {
+                            setCurrentrecord((prev) => ([
                                 ...prev,
                                 el
                             ]));
                         }
                     })
                 }
-                else{
-                  item_list.map((el) => {
-                    setCurrentrecord((prev) => ([
+                else {
+                    item_list.map((el) => {
+                        setCurrentrecord((prev) => ([
                             ...prev,
                             el
                         ]));
@@ -100,7 +101,13 @@ function StudentScheduleDetail() {
                 loadStudentScheduleDetail();
             })
             .catch(() => {
-                alert('오류가 발생했습니다!');
+                swal({
+                    title: "오류가 발생했습니다!",
+                    icon: "error",
+                    timer: 3000,
+                    dangerMode: true,
+                    button: "확인"
+                })
             });
     };
 
@@ -152,26 +159,31 @@ function StudentScheduleDetail() {
                                 <td class="admin">
                                     <button class="delete"
                                         onClick={() => {
-                                            const confirmBox = window.confirm(
-                                                "'" + name.name + "'" + " 학생의 시간표를 정말 삭제하시겠습니까?"
-                                            )
-                                            if (confirmBox === true) {
-                                                deleteRecord(name.id)
-                                            }
+                                            swal({
+                                                text: "'" + name.name + "'" + " 학생의 시간표를 정말 삭제하시겠습니까?",
+                                                icon: "warning",
+                                                closeOnClickOutside: false,
+                                                dangerMode: true,
+                                                buttons: ["취소", "확인"]
+                                            }).then((result) => {
+                                                if (result === true) {
+                                                    deleteRecord(name.id)
+                                                }
+                                            })
                                         }}>삭제</button>
                                 </td>
                             </tr>
                         )}
                     </tbody>
                 </table>
-        <Pagination className="pagination"
-                activePage={page}
-                itemsCountPerPage={10}
-                totalItemsCount={totalCnt}
-                pageRangeDisplayed={5}
-                prevPageText={"‹"}
-                nextPageText={"›"}
-                onChange={changePage} />
+                <Pagination className="pagination"
+                    activePage={page}
+                    itemsCountPerPage={10}
+                    totalItemsCount={totalCnt}
+                    pageRangeDisplayed={5}
+                    prevPageText={"‹"}
+                    nextPageText={"›"}
+                    onChange={changePage} />
             </section>
         </div>
     )

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import { setShowSignup } from '../../redux/actions';
+import swal from 'sweetalert';
 
 export const SignupForm = (props) => {
   const dispatch = useDispatch();
@@ -19,7 +20,7 @@ export const SignupForm = (props) => {
   const savePhoneNum = event => {
     setPhoneNum(event.target.value);
   };
-  
+
   const saveUserId = event => {
     setId(event.target.value);
   };
@@ -32,19 +33,30 @@ export const SignupForm = (props) => {
     e.preventDefault();
     e.target.reset();
     axios.post("http://dolbomi.site/signup", {
-      "name" : name,
-      "phone_num" : phone_num,
-      "user_id" : id,
-      "user_pw" : pw,
-      "option" : (props.option - 0)
+      "name": name,
+      "phone_num": phone_num,
+      "user_id": id,
+      "user_pw": pw,
+      "option": (props.option - 0)
     }).then((res) => {
       console.log(res.data)
-      if(res.data == "success"){
+      if (res.data == "success") {
         dispatch(setShowSignup(!showSignup));
-        alert('회원가입 되었습니다!');
+        swal({
+          title: "회원가입 되었습니다!",
+          icon: "success",
+          timer: 3000,
+          button: "확인"
+        })
       }
-      else{
-        alert(res.data);
+      else {
+        swal({
+          title: res.data,
+          icon: "error",
+          timer: 3000,
+          dangerMode: true,
+          button: "확인"
+        })
       }
     })
   }
@@ -54,19 +66,19 @@ export const SignupForm = (props) => {
       <form name="form" onSubmit={register}>
         <div className="box name">
           <div className="name">이름</div>
-          <input type="text" value ={name} onChange={saveName}/>
+          <input type="text" value={name} onChange={saveName} />
         </div>
         <div className="box className">
           <div className="name">전화번호</div>
-          <input type="text" value ={phone_num} onChange={savePhoneNum}/>
+          <input type="text" value={phone_num} onChange={savePhoneNum} />
         </div>
         <div className="box phone">
           <div className="name">아이디</div>
-          <input type="text" value ={id} onChange={saveUserId}/>
+          <input type="text" value={id} onChange={saveUserId} />
         </div>
         <div className="box pw">
           <div className="name">비밀번호</div>
-          <input type="password" value ={pw} onChange={saveUserPw}/>
+          <input type="password" value={pw} onChange={saveUserPw} />
         </div>
         <button className="signup_Button" type="submit">회원가입하기</button>
       </form>

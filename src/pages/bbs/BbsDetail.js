@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import "./bbslist.css";
 import "./bbspage.css";
 import "./bbswrite.css";
-
+import swal from 'sweetalert';
 
 function BbsDetail() {
     const [bbs, setBbs] = useState({});
@@ -55,8 +55,12 @@ function BbsDetail() {
             .then((resp) => {
                 console.log("[BbsDetail.js] deleteBbs() success :D");
                 console.log(resp.data);
-
-                alert("게시글을 성공적으로 삭제했습니다 :D");
+                swal({
+                    title: "게시글을 성공적으로 삭제했습니다!",
+                    icon: "success",
+                    timer: 3000,
+                    button: "확인"
+                })
                 navigate("/bbslist");
 
             }).catch((err) => {

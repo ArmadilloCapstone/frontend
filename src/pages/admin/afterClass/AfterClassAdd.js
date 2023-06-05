@@ -1,6 +1,7 @@
 import '../addPages.css'
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import swal from 'sweetalert';
 
 function AfterClassAdd() {
     let dayKind = [
@@ -21,6 +22,18 @@ function AfterClassAdd() {
 
     //  Object Destructuring 
     const { class_name, start_time, end_time, day } = user;
+
+    // 경고 메시지 날리는 메소드
+    function WarningSwal(message) {
+        swal({
+            title: message,
+            icon: "warning",
+            timer: 2000,
+            dangerMode: true,
+            button: "확인"
+        })
+    }
+
     const onInputChange = e => {
         setUser({ ...user, [e.target.name]: e.target.value });
     };
@@ -35,15 +48,15 @@ function AfterClassAdd() {
         e.target.reset();
 
         if(document.getElementById('class_name').value === ''){
-            alert('방과후수업을 입력하세요!')
+            WarningSwal("방과후수업을 입력하세요!")
             return false;
         }
         if(document.getElementById('start_time').value === ''){
-            alert('시작 시간을 입력하세요!')
+            WarningSwal("시작 시간을 입력하세요!")
             return false;
         }
         if(document.getElementById('end_time').value === ''){
-            alert('종료 시간을 입력하세요!')
+            WarningSwal("종료 시간을 입력하세요!")
             return false;
         }
 
@@ -51,10 +64,21 @@ function AfterClassAdd() {
             .then(function (response) {
                 console.log(response.data);
                 if (response.data === "success") {
-                    alert('추가되었습니다!');
+                    swal({
+                        title: "추가되었습니다!",
+                        icon: "success",
+                        timer: 3000,
+                        button: "확인"
+                    })
                 }
                 else {
-                    alert('잘못 입력된 값이 존재합니다!');
+                    swal({
+                        title: "잘못 입력된 값이 존재합니다!",
+                        icon: "error",
+                        timer: 3000,
+                        dangerMode: true,
+                        button: "확인"
+                    })
                 }
             }).catch(function (reason) {
                 console.log(reason.data);
