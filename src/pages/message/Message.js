@@ -5,6 +5,8 @@ import axios from "axios";
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 import "./style.css"
+import check from './check.png';
+import empty from './empty.png';
 
 const Message = () => {
   const dispatch = useDispatch();
@@ -267,12 +269,12 @@ const Message = () => {
     <div className="chat-wrapper" style={ message_click ? {display : 'block'} : {display : 'none'} }>
       <div className="chat-container">
         <div className="chat-list">
-          <div>채팅 목록</div>
+          <div className="chat-list-title">채팅 목록</div>
           <div className='list-container'>
             <div className='list-name'>
             {allChatList.map((el, idx) =>
               <div>
-                <button onClick={() => {
+                <button style={{ color: '#555555', border: 'none', backgroundColor: 'oldlace', paddingTop:'15px'}} onClick={() => {
                   showChatRoom(el);
                 }}>
                   <div>{el.name}</div>
@@ -280,13 +282,21 @@ const Message = () => {
               </div>
             )}
             </div>
+
+
             <div className='list-alarm'>
             {alarmList.map((el, idx) =>
-              <div>
-                <div>{el.alarm == true ? "안람 옴" : "안옴"}</div>
+              <div style={{ paddingTop:'15px'}}>
+        {el.alarm ? (
+          <img src={check} style={{ marginLeft: '10px', width: '30px', height: '30px' }} />
+        ) : (
+          <img src={empty} style={{ marginLeft: '20px',width: '30px', height: '30px' }} />
+        )}
               </div>
             )}
             </div>
+
+
           </div>
         </div>
 
@@ -298,7 +308,7 @@ const Message = () => {
             {nowChatMsg.map((el) =>
               <div className="message-container">
                 <div className={`message ${el.receiver_name === selected.name ? "receiver" : "sender"}`}>
-                  보낸사람: {el.sender_name}, 받는사람: {el.receiver_name},
+
                   시간: {Date2String(el.date)}
                 </div>
                 <hr></hr>
@@ -315,7 +325,7 @@ const Message = () => {
                     value={inputMsg}
                     onChange={e => onInputChange(e)}
                   />
-                  <button type='submit' disabled={inputMsg==="" ? true : false}>전송</button>
+                  <button style={{ backgroundColor: '#12b560', marginLeft: '20px',width: '90px', height: '50px', border:'none', borderRadius:'10px', color: 'white', fontSize:'22px' }} type='submit' disabled={inputMsg==="" ? true : false}>전송</button>
                 </form>
                 : null
             }
@@ -327,3 +337,4 @@ const Message = () => {
 };
 
 export default Message;
+
