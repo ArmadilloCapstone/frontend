@@ -321,10 +321,10 @@ function CustomTimeline() {
 
   return (
     <div class="timeline_wrapper">
-      <audio
+      {/* <audio
         src={alarm}
         autoPlay={true}>
-      </audio>
+      </audio> */}
       <div class="timeline_sort">
         <button className="sortingButtons" onClick={sortById}
         >번호순
