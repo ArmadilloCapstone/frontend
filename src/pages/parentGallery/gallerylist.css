@@ -126,9 +126,9 @@
 tr.BbList {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items:flex-start;
   padding-left: 10px;
-  height: 80px;
+  height: 150px;
 }
 
 

@@ -125,48 +125,4 @@ gap: 20px;
 
 
 
- @media all and (max-width: 768px) {
-    
-  table.BbList, thead.BbList, tbody.BbList, th.BbList, td.BbList, tr.BbList {
-    display: block;
-  }
-  
-  th.BbList {
-    text-align: right;
-  }
-  
-  table.BbList {
-    position: relative; 
-    padding-bottom: 0;
-    border: none;
-    box-shadow: 0 0 10px rgba(0,0,0,.2);
-  }
-  
-  thead.BbList {
-    float: left;
-    white-space: nowrap;
-  }
-  
-  tbody.BbList {
-    overflow-x: auto;
-    overflow-y: hidden;
-    position: relative;
-    white-space: nowrap;
-  }
-  
-  tr.BbList {
-    display: inline-block;
-    vertical-align: top;
-    margin-top: 30px;
-  }
-  
-  th.BbList {
-    border-bottom: 1px solid #a39485;
-  }
-  
-  td.BbList {
-    border-bottom: 1px solid #e5e5e5;
-  }
-  
-  
-  }
+ 
