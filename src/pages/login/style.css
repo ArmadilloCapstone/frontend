@@ -293,6 +293,12 @@
   .signup .button {
     cursor: pointer;
   }
+
+
+  .pink-border {
+    border: 2px solid pink;
+  }
+  
   
 
 

@@ -78,19 +78,27 @@ export const SignupForm = (props) => {
         </div>
         <div className="box className">
           <div className="name">전화번호</div>
+
           <div class="form_wrap full">
-            <div class="form_item">
-              <label></label>
-              <input type="text" id="phone_num1" name="phone_num1" value={phone_num1} onChange={savePhoneNum1} placeholder="연락처를 입력하세요." required="" />
-            </div>
-            <div class="form_item">
-              <label></label>
-              <input type="text" id="phone_num2" name="phone_num2" value={phone_num2} onChange={savePhoneNum2} placeholder="연락처를 입력하세요." required="" />
-            </div>
-            <div class="form_item">
-              <label></label>
-              <input type="text" id="phone_num3" name="phone_num3" value={phone_num3} onChange={savePhoneNum3} placeholder="연락처를 입력하세요." required="" />
-            </div>
+
+
+          <div className="form_item">
+            <label></label>
+            <input style={{borderColor: '#666666', borderRadius: '10px',  borderStyle: 'solid', borderWidth: '2px'}} type="text" id="phone_num1" name="phone_num1" value={phone_num1} onChange={savePhoneNum1} />
+          </div>
+          <span style={{marginTop: '45px',paddingRight:'5px'}}>-</span>
+          <div className="form_item">
+            <label></label>
+            <input style={{borderColor: '#666666', borderRadius: '10px',  borderStyle: 'solid', borderWidth: '2px'}} className="pink-border" type="text" id="phone_num2" name="phone_num2" value={phone_num2} onChange={savePhoneNum2} />
+          </div>
+          <span style={{marginTop: '45px',paddingRight:'5px'}}>-</span>
+          <div className="form_item">
+            <label></label>
+            <input style={{borderColor: '#666666', borderRadius: '10px',  borderStyle: 'solid', borderWidth: '2px'}} className="pink-border" type="text" id="phone_num3" name="phone_num3" value={phone_num3} onChange={savePhoneNum3} />
+          </div>
+
+
+            
           </div>
         </div>
         <div className="box phone">

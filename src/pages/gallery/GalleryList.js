@@ -3,8 +3,8 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Pagination from "react-js-pagination";
 
-import "./tgallerylist.css";
-import "./tgallerypage.css";
+import "./gallerylist.css";
+import "./gallerypage.css";
 
 function GalleryList() {
 
@@ -157,7 +157,7 @@ function GalleryList() {
 
                 <table class="BbList-0"  >
                 <thead class="BbList-0" >
-                    <tr class="BbList-t" >
+                    <tr class="BbList" >
                         <th >번호</th>
                         <th >제목</th>
                         <th >작성일시</th>
