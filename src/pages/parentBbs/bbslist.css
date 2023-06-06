@@ -1,4 +1,4 @@
-.underline:hover{
+.underline:hover {
   text-decoration: underline;
   cursor: pointer;
 }
@@ -9,31 +9,29 @@
   margin-top: 95px;
   margin-left: 40px;
   color: #73685d;
-
 }
 
-.BbSearchContainer{
-margin-bottom: 20px;
-margin-top: 40px;
-display: flex; 
-align-items: center; 
-gap: 20px;
+.BbSearchContainer {
+  margin-bottom: 20px;
+  margin-top: -60px;
+  margin-left: -20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
-  
+
 .BbListSearch-1 {
-  border-bottom: 1px solid rgba(0,0,0,.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   width: 300px;
   height: 50px;
   color: #73685d;
-
-  margin-right: 20px;
+  margin-right: 10px;
   background: white;
-  
   font-size: 19px;
   border: 2px solid #dadce0;
   border-radius: 7px;
+  margin-left: -50px;
 }
-
 
 .BbListSearch-2 {
   display: flex;
@@ -44,34 +42,29 @@ gap: 20px;
   font-size: 19px;
   border: 2px solid #dadce0;
   border-radius: 7px;
+  margin-left: -60px;
 }
 
-
-
-.BbButton{
-  width: 100px;
+.BbButton {
+  width: 400px;
   height: 50px;
+  margin-left: -100px;
 }
 
 .BbListSearch-3 {
-  background-color: #12B560;
+  background-color: #12b560;
   color: #ffffff;
-  width: 200px;
+  width: 300px;
   height: 50px;
-  margin-left: 140px;
+  margin-left:70px;
   font-size: 19px;
   font-weight: bold;
   text-align: center;
   text-decoration: none;
-
   border: none;
   border-radius: 10px;
-
-
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-
   cursor: pointer;
-
   transition: 0.5s;
 }
 
@@ -79,104 +72,74 @@ gap: 20px;
 
 
 
-
-
-.BbList-0 {
+.BbList-0 table{
+  display: block; /* or display: block; */
+  flex-direction: column;
+  justify-content: space-between;
   border: 1px #a39485 solid;
-  border-radius: 20px;
+  border-radius: 40px;
   font-weight: bold;
-  font-size: 20px;
-  box-shadow: 0 2px 5px rgba(0,0,0,.25);
-  width: 1000px;
-  height: 50px;
+  font-size: 18px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
   margin-top: 23px;
-  border-collapse: collapse;
-  overflow: hidden;
+  overflow-x: auto;
+  min-height: 600px;
 }
 
+.BbList-0 tbody {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 18px;
+  min-height: 400px;
+  height: 400px;
+  margin-top: 0px;
+  border: none;
+  box-shadow: none;
+  overflow-y: auto;
+}
 
+.BbList {
 
-
-  
-.BbList{
-  padding: 1em .5em;
-  vertical-align: middle;
-  border-bottom: 1px solid rgba(0,0,0,.1);
+  padding: 0px;
   background: #fff;
   color: #73685d;
-      text-align: center;
+
+  white-space: nowrap;
+  flex: 1;
+  border: none;
+
 }
 
-.btn-outline-secondary{
+.btn-outline-secondary {
   height: 50px;
   width: 100px;
-  background-color: #12B560;
+  background-color: #12b560;
   color: white;
   border: none;
   text-align: center;
   font-size: 22px;
   border-radius: 10px;
-  
 }
 
-.table-primary{
-  color: #555555;
-  padding-top: 20px;
+/* Align tr.BbList vertically */
+tr.BbList {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 40px;
+  padding-bottom: 10px;
+  height: 80px;
 }
 
 
 
+th.BbList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
 
-
-
-
-
-
-
-
- @media all and (max-width: 768px) {
-    
-  table.BbList, thead.BbList, tbody.BbList, th.BbList, td.BbList, tr.BbList {
-    display: block;
-  }
   
-  th.BbList {
-    text-align: right;
-  }
-  
-  table.BbList {
-    position: relative; 
-    padding-bottom: 0;
-    border: none;
-    box-shadow: 0 0 10px rgba(0,0,0,.2);
-  }
-  
-  thead.BbList {
-    float: left;
-    white-space: nowrap;
-  }
-  
-  tbody.BbList {
-    overflow-x: auto;
-    overflow-y: hidden;
-    position: relative;
-    white-space: nowrap;
-  }
-  
-  tr.BbList {
-    display: inline-block;
-    vertical-align: top;
-    margin-top: 30px;
-  }
-  
-  th.BbList {
-    border-bottom: 1px solid #a39485;
-  }
-  
-  td.BbList {
-    border-bottom: 1px solid #e5e5e5;
-  }
-  
-  
-  }
+  text-align: center;
+}

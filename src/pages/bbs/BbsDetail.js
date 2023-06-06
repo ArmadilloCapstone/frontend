@@ -93,7 +93,7 @@ function BbsDetail() {
             <table className="table table-striped" style={{ fontFamily: "Eorinai" }} >
                 <tbody style={{ color: "#555555" }} >
 
-                    <tr>
+                    <tr class="tr">
                         <th class="input_header">제목</th>
                         <td class="input_container">
                             <span>{bbs.title}</span>

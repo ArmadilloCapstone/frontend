@@ -155,7 +155,9 @@ function ParentGalleryList() {
                 </div>
             </div>
 
+
             <table class="BbList-0"  >
+                {/*
                 <thead class="BbList-0" >
                     <tr class="BbList" >
                         <th >번호</th>
@@ -163,13 +165,14 @@ function ParentGalleryList() {
                         <th >작성일시</th>
                     </tr>
                 </thead>
+                  */}
 
 
 
 
 
 
-                <tbody style={{ fontFamily: "Eorinai" }}>
+                <tbody class="BbList-0" style={{ fontFamily: "Eorinai" }}>
                     {
                         currentgalleryList.map(function (bbs, idx) {
                             return (
