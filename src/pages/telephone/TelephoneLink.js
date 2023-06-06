@@ -4,10 +4,7 @@ import './style.css';
 import teacherImg from './teacher.png';
 
 function TelephoneLink() {
-  const [callList, setCallList] = useState([
-    {name: "수빈", phone_num: "010-2532-7535"},
-    {name: "왜", phone_num: "010-1111-1111"}
-  ]);
+  const [callList, setCallList] = useState([]);
 
   // 주요 연락처 List 가져오기
   useEffect(() => {
