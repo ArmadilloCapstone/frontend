@@ -3,8 +3,8 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Pagination from "react-js-pagination";
 
-import "./gallerylist.css";
-import "./gallerypage.css";
+import "./pgallerylist.css";
+import "./pgallerypage.css";
 
 function ParentGalleryList() {
 

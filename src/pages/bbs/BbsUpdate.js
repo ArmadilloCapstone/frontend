@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useRef, useState } from "react";
-import "./bbslist.css";
-import "./bbspage.css";
+import "./tbbslist.css";
+import "./tbbspage.css";
 import swal from 'sweetalert';
 
 function BbsUpdate() {

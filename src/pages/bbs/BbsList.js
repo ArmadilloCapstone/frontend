@@ -3,8 +3,8 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Pagination from "react-js-pagination";
 
-import "./bbslist.css";
-import "./bbspage.css";
+import "./tbbslist.css";
+import "./tbbspage.css";
 
 function BbsList() {
 
@@ -157,7 +157,7 @@ function BbsList() {
 
             <table class="BbList-0"  >
                 <thead class="BbList-0" >
-                    <tr class="BbList" >
+                    <tr class="List-h" >
                         <th >번호</th>
                         <th >제목</th>
                         <th >작성일시</th>

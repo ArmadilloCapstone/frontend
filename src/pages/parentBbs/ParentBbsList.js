@@ -3,8 +3,8 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Pagination from "react-js-pagination";
 
-import "./bbslist.css";
-import "./bbspage.css";
+import "./pbbslist.css";
+import "./pbbspage.css";
 
 function ParentBbsList() {
 
