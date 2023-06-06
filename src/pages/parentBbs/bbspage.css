@@ -34,7 +34,10 @@
 .pagination {
   display: flex;
   justify-content: center;
+  align-items: center;
   margin-top: 15px;
+  padding-left: 20px;
+  width: 300px;
   
 }
 

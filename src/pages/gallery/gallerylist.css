@@ -6,9 +6,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
 
 .BbListSection {
-
   color: #73685d;
-
 }
 
 .BbSearchContainer{
@@ -81,16 +79,14 @@ gap: 20px;
 
 
 .BbList-0 {
-  border: 1px #a39485 solid;
-  border-radius: 20px;
-  font-weight: bold;
-  font-size: 20px;
-  box-shadow: 0 2px 5px rgba(0,0,0,.25);
-  width: 1000px;
-  height: 50px;
-  margin-top: 23px;
-  border-collapse: collapse;
-  overflow: hidden;
+  margin-left: 10px;
+  border-left: -20px;
+  background: #fff;
+  color: #73685d;
+  width: 300px;
+  white-space: nowrap;
+  flex: 1;
+  border: none;
 }
 
 
@@ -98,7 +94,7 @@ gap: 20px;
 
   
 .BbList{
-  padding: 1em .5em;
+
   vertical-align: middle;
   border-bottom: 1px solid rgba(0,0,0,.1);
   background: #fff;
