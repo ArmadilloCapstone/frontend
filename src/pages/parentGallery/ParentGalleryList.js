@@ -145,7 +145,6 @@ function ParentGalleryList() {
         <section class="BbListSection" style={{ fontFamily: "Eorinai" }}>
             <div className="BbSearchContainer">
                 <select class="BbListSearch-1" value={choiceVal} onChange={changeChoice}>
-                    <option>검색 옵션</option>
                     <option value="title">제목</option>
                     <option value="text">내용</option>
                 </select>
