@@ -48,15 +48,16 @@
 .BbButton {
   width: 400px;
   height: 50px;
-  margin-left: -100px;
+  margin-left: -400px;
 }
 
 .BbListSearch-3 {
   background-color: #12b560;
   color: #ffffff;
-  width: 300px;
+  width: 400px;
   height: 50px;
-  margin-left:70px;
+  margin-left: -10px;
+  padding-left: -20px;
   font-size: 19px;
   font-weight: bold;
   text-align: center;
@@ -128,8 +129,9 @@ tr.BbList {
   flex-direction: column;
   align-items: flex-start;
   padding-left: 40px;
+  padding-top: 10px;
   padding-bottom: 10px;
-  height: 150px;
+  height: 300px;
 }
 
 
@@ -138,8 +140,8 @@ th.BbList {
   display: flex;
   flex-direction: column;
   align-items: center;
-
-
+margin-top: -20px;
+border: none;
   
   text-align: center;
 }
