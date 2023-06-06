@@ -213,7 +213,7 @@ function TableRow(props) {
                             <span className="underline gallery-title" >{gallery.title} </span> { /* 게시글 제목 */}
                         </Link>
                     </td>
-                    <td class="BbList">{gallery.date}</td>
+                    <td class="BbList">{gallery.uploaded_date}</td>
                 </>
 
             }
