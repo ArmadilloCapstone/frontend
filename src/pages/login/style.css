@@ -294,10 +294,11 @@
     cursor: pointer;
   }
 
-
-  .pink-border {
-    border: 2px solid pink;
+  .hyphen{
+    margin-top: 45px;
+    padding-right: 8px; 
   }
+
   
   
 
@@ -371,10 +372,11 @@
   
     .signup {
       top: 50px;
-      width: 90%;
+      width: 350px;
       margin: 0 auto;
       padding: 15px;
       border-radius: 10px;
+      display: block;
     }
   
     .signup .title {
@@ -416,6 +418,37 @@
       font-size: 20px;
       margin-bottom: 20px;
       margin-top: 10px;
+    }
+
+    .signup .signup_Button {
+      height: 80px;
+      width: 300px;
+      display: block;
+      text-align: center;
+      color: #555555;
+      padding-top: 0px;
+      font-size: 25px;
+      background-color: white;
+      border-radius: 12px;
+      margin: 0 auto;
+      margin-bottom: 50px;
+      margin-top: 20px;
+  
+    }
+    
+    .signup .signup_Button:hover {
+      cursor: pointer;
+      background-color: #12b560;
+      color: white;
+    }
+    
+    .signup .button {
+      cursor: pointer;
+    }
+
+    .hyphen{
+      margin-top: 33px;
+      padding-right: 5px; 
     }
   }
   

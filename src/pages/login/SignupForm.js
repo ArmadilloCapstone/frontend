@@ -86,12 +86,12 @@ export const SignupForm = (props) => {
             <label></label>
             <input style={{borderColor: '#666666', borderRadius: '10px',  borderStyle: 'solid', borderWidth: '2px'}} type="text" id="phone_num1" name="phone_num1" value={phone_num1} onChange={savePhoneNum1} />
           </div>
-          <span style={{marginTop: '45px',paddingRight:'5px'}}>-</span>
+          <span className="hyphen">-</span>
           <div className="form_item">
             <label></label>
             <input style={{borderColor: '#666666', borderRadius: '10px',  borderStyle: 'solid', borderWidth: '2px'}} className="pink-border" type="text" id="phone_num2" name="phone_num2" value={phone_num2} onChange={savePhoneNum2} />
           </div>
-          <span style={{marginTop: '45px',paddingRight:'5px'}}>-</span>
+          <span className="hyphen">-</span>
           <div className="form_item">
             <label></label>
             <input style={{borderColor: '#666666', borderRadius: '10px',  borderStyle: 'solid', borderWidth: '2px'}} className="pink-border" type="text" id="phone_num3" name="phone_num3" value={phone_num3} onChange={savePhoneNum3} />
