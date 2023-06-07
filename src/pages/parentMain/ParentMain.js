@@ -32,14 +32,15 @@ export const ParentMain = () => {
       });
 
     setInterval(() => {
-      
-      axios.post('http://dolbomi.site/sendStudentStateToParent/' + localStorage.getItem('userid'))
+      if(localStorage.getItem('useroption') == 2){
+        axios.post('http://dolbomi.site/sendStudentStateToParent/' + localStorage.getItem('userid'))
         .then(function (res) {
           console.log(res);
           setStudent_state(res.data.state);
         }).catch(function (reason) {
           console.log(reason);
         });
+      }
     }, 1000)
 
   }, []);
