@@ -24,7 +24,7 @@ function TelephoneLink() {
 
   return (
     <div className="telephone-link-container" >
-      <div className="telephone-link-header">돌봄1반 교사연락처</div> 
+      <div className="telephone-link-header">돌봄교사 연락처</div> 
       <div className="gray-line"></div>
         {callList.map((el, index) => (
           <div className="telephone-link-item" key={index}>
