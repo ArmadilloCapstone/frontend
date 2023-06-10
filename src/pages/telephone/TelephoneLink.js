@@ -23,14 +23,16 @@ function TelephoneLink() {
   }, []);
 
   return (
-    <div className="telephone-link-container">
-      {callList.map((el, index) => (
-        <div className="telephone-link-item" key={index}>
-            <a href={"tel:" + el.phone_num}>
-              <img src={teacherImg} alt={el.name} />
-              <span>{el.name}</span>
-            </a>
-        </div>
+    <div className="telephone-link-container" >
+      <div className="telephone-link-header">돌봄1반 교사연락처</div> 
+      <div className="gray-line"></div>
+        {callList.map((el, index) => (
+          <div className="telephone-link-item" key={index}>
+              <a href={"tel:" + el.phone_num}>
+                <img src={teacherImg} alt={el.name} />
+                <span>{el.name}</span>
+              </a>
+          </div>
       ))}
     </div>
   );
