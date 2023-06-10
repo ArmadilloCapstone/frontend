@@ -63,25 +63,6 @@ const Pickup = () => {
       {showContent && (
         <div style={{ textAlign: 'center' }}>
           <div style={{ marginTop: '30px', marginLeft: '25px', fontSize: '30px' }}>호출 완료되었습니다.</div>
-            {/* <button
-            onClick={handleClick}       // 추후 메인 페이지로 돌아가는 handleClick2 구현 필요 (메인 페이지 구현 시)
-            style={{
-              marginLeft: '100px',
-              marginTop: '20px',
-              width: '300px',
-              height: '80px',
-              backgroundColor: '#00A3FF',
-              color: 'white',
-              border: 'none',
-              borderRadius: '13px',
-              fontSize: '24px',
-              fontWeight: 'bold',
-              display: 'block',
-              boxShadow: '3px 4px 10px #8C92AC'
-            }}
-            >
-            메인 페이지로 이동
-            </button> */}
         </div>
 
       )}
@@ -108,12 +89,3 @@ const Pickup = () => {
 }
 
 export default Pickup;
-
-
-
-
-/*
-
-
-
-*/

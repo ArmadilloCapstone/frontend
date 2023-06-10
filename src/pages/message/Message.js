@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import { setMessageAlarm } from '../../redux/actions';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from "axios";
-import { Link } from 'react-router-dom';
 import moment from 'moment';
 import "./style.css"
 import circle from './circle.png';
@@ -227,9 +226,7 @@ const Message = () => {
       setSendMsg(true);
     }
   }
-  // useEffect(() => {
-  //   sendMsgOnServer();
-  // }, [socketConnected, ws]);
+
   useEffect(() => {
     if (ws) {
       ws.onmessage = (evt) => {

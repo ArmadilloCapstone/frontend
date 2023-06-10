@@ -7,7 +7,7 @@ function ParentGalleryDetail() {
 
     const [gallery, setGallery] = useState({});
     const [files, setFiles] = useState([]);
-    const { id } = useParams(); // 파라미터 가져오기
+    const { id } = useParams(); 
 
     const navigate = useNavigate();
 

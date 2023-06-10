@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux';
 import couple from "./couple.png";
 
 export const ParentMain = () => {
-  // 더미데이터 -> 추후에 백엔드에서 학생 명단 받아오면 대체할 부분
   const [name, setStudent] = useState("");
   const [grade, setGrade] = useState("");
   const [origin_class, setOrigin_class] = useState("");
@@ -17,7 +16,6 @@ export const ParentMain = () => {
   const user_name = useSelector((state => state.user_name))
 
   useEffect(() => {
-    // 백엔드의 학생 명단 가져오는 부분
     axios.post('http://dolbomi.site/getStudent/' + localStorage.getItem('userid'))
       .then(function (res) {
         console.log(res);

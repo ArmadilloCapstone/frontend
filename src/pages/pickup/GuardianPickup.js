@@ -82,14 +82,13 @@ const GuardianPickup = () => {
         }
     })
     
-    // 백엔드로 parentId 보내는 코드
     axios.post("http://dolbomi.site/requestGuardian", {
         pickupManId : localStorage.getItem('userid'),
         pickupManName : localStorage.getItem('username'),
         studentPickupFormList : list
     }).then((res)=>{
       if(res.data == "success"){
-        setShowContent(true);    // 버튼 클릭 시 호출 완료를 보여줌
+        setShowContent(true);
       }
       else{
         alert("error")
@@ -172,11 +171,3 @@ const GuardianPickup = () => {
 
 export default GuardianPickup;
 
-
-
-
-/*
-
-
-
-*/

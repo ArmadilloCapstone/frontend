@@ -2,7 +2,6 @@
   margin-top: 3px;
 }
 .admin_sort {
-  /* margin: 20px; */
   padding-bottom: 30px;
   padding-right: 30px;
 }
@@ -46,10 +45,6 @@ button.delete {
     
     transition: 0.5s;
   }
-
-/* body {
-    padding:1.5em;
-  } */
   
   section.tableSection {
     font-family: Eorinai;

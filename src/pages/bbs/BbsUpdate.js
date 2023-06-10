@@ -1,6 +1,6 @@
 import axios from "axios";
-import { useParams, useLocation, useNavigate } from "react-router-dom";
-import { useContext, useEffect, useRef, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
 import "./bbslist.css";
 import "./bbspage.css";
 import swal from 'sweetalert';
@@ -16,7 +16,7 @@ function BbsUpdate() {
 	const [imageUrl, setImageUrl] = useState(null);
 	const [fileChange, setFileChange] = useState(false);
 	const imgRef = useRef();
-	const param = useParams(); // 파라미터 가져오기
+	const param = useParams();
 
 	useEffect(() => {
 		console.log(param.bbs_id);
@@ -102,9 +102,6 @@ function BbsUpdate() {
 		const reader = new FileReader();
 		const file = imgRef.current.files[0];
 		console.log(file);
-
-		// const formData = new FormData();
-		// formData.append('file', e.target.files[0]);
 
 		reader.readAsDataURL(file);
 		reader.onloadend = () => {

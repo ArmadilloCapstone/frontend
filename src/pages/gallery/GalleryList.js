@@ -208,8 +208,8 @@ function TableRow(props) {
                     <>
                         <td class="BbList" >
 
-                            <Link to={{ pathname: `/GalleryDetail/${gallery.id}` }}> { /* 게시글 상세 링크 */}
-                                <span className="underline gallery-title" >{gallery.title} </span> { /* 게시글 제목 */}
+                            <Link to={{ pathname: `/GalleryDetail/${gallery.id}` }}> 
+                                <span className="underline gallery-title" >{gallery.title} </span> 
                             </Link>
                         </td>
                         <td class="BbList">{gallery.uploaded_date}</td>

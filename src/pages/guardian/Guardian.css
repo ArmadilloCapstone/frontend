@@ -42,8 +42,6 @@ button.guardian-add-button {
     display: inline-block;
     width: auto;
     cursor: pointer;
-    /* margin-bottom: 15px; */
-    /* padding: 0.1rem 0.5rem; */
 
     background-color: brown;
     color: white;
@@ -109,14 +107,6 @@ button.guardian-add-button {
     margin-top: 30px;
     border-color: white;
   }
-
-  /* tbody.guardian {
-    background-color: white;
-    color: #12B560;
-    font-size: 18px;
-    margin-top: 30px;
-    border-color: white;
-  } */
     
   td.guardian, th.guardian {
     padding: 1em .5em;

@@ -1,16 +1,13 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import swal from 'sweetalert';
 
 function GalleryDetail() {
-
-    // const { auth, setAuth } = useContext(AuthContext)
-
     const [gallery, setGallery] = useState({});
     const [files, setFiles] = useState([]);
-    const { id } = useParams(); // 파라미터 가져오기
+    const { id } = useParams();
 
     const navigate = useNavigate();
 
@@ -28,25 +25,6 @@ function GalleryDetail() {
                 console.log("[GalleryDetail.js] getGalleryDetail() error :<");
                 console.log(err);
             });
-        // await axios.post(`http://dolbomi.site/album/files/${id}`)
-        //     .then((res) => {
-        //         console.log("[GalleryDetail.js] getGalleryDetail() success :D");
-        //         console.log(res.data);
-        //         let arr = Array.from(res.data);
-        //         console.log(arr);
-        //         for(let i = 0; i < arr.length; i++){
-        //             console.log(arr[i].originFileName)
-        //             setFiles((prevMessage) => ([
-        //                 ...prevMessage,
-        //                 arr[i]
-        //             ]));
-        //         }
-        //     })
-        //     .catch((err) => {
-        //         console.log("[GalleryDetail.js] getGalleryDetail() error :<");
-        //         console.log(err);
-        //     });
-
     }
 
     const deleteGallery = async () => {
@@ -75,34 +53,14 @@ function GalleryDetail() {
         console.log(id)
     }, []);
 
-    // const updateGallery = {
-    //     id: gallery.id,
-    //     title: gallery.title,
-    //     text: gallery.text,
-    //     file_url: gallery.file_url
-    // }
-
-    // const parentGallery = {
-    //     id: gallery.id,
-    //     title: gallery.title
-    // }
-
     return (
 
-            <div className="detailPage" style={{ fontFamily: "Eorinai" }}>
-
-              { /*}
-                    <Link to={{ pathname: `/GalleryUpdate/${id}` }}> 
-                        <span className="underline gallery-title" >수정 </span> 
-                    </Link>
-                */ }
-
-                <button className="change-detail" onClick={() => {navigate(`/GalleryUpdate/${id}`)}}>
-                    <span  >수정 </span>
-                </button>  
-                                   
-
-                <button className="delete-detail" onClick={deleteGallery}><i className="fas fa-trash-alt"></i> 삭제</button>
+        <div className="detailPage" style={{ fontFamily: "Eorinai" }}>
+            <button className="change-detail" onClick={() => { navigate(`/GalleryUpdate/${id}`) }}>
+                <span  >수정 </span>
+            </button>
+            <button className="delete-detail" onClick={deleteGallery}><i className="fas fa-trash-alt"></i> 삭제</button>
+            
             <table className="table table-striped" style={{ fontFamily: "Eorinai" }}>
                 <tbody style={{ color: "#555555" }}>
 
@@ -133,20 +91,20 @@ function GalleryDetail() {
                         <th className="col-3">첨부파일</th>
                         <td>
                             <div>
-                                <img src={"http://dolbomi.site/download/album/"+gallery.title + "/" + gallery.file_url}/>
+                                <img src={"http://dolbomi.site/download/album/" + gallery.title + "/" + gallery.file_url} />
                                 <div>{gallery.file_url}</div>
                                 <div>
                                     <a
-                                        href={"http://dolbomi.site/download/album/"+gallery.title + "/" + gallery.file_url}
+                                        href={"http://dolbomi.site/download/album/" + gallery.title + "/" + gallery.file_url}
                                         download
                                         target="_blank"
                                         rel="noreferrer"
-                                        >
-                                            다운로드
+                                    >
+                                        다운로드
                                     </a>
                                 </div>
                             </div>
-                            
+
                         </td>
                     </tr>
 

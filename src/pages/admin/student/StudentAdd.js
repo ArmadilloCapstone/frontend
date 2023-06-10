@@ -11,7 +11,7 @@ function StudentAdd() {
   const [original, setOriginal] = useState([]);
 
   useEffect(() => {
-    axios.post('http://dolbomi.site/student/dolbom_classList') // url 모름.. 변경 필요할듯
+    axios.post('http://dolbomi.site/student/dolbom_classList')
       .then(function (response) {
         console.log(response.data);
         setDolbom(response.data.map(function (el, idx) {
@@ -25,7 +25,7 @@ function StudentAdd() {
   }, []);
 
   useEffect(() => {
-    axios.post('http://dolbomi.site/student_original_class') // url 모름.. 변경 필요할듯
+    axios.post('http://dolbomi.site/student_original_class')
       .then(function (response) {
         console.log(response.data);
         setOriginal(response.data.map(function (el, idx) {

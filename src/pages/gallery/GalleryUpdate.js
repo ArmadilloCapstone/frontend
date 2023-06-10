@@ -1,13 +1,9 @@
 import axios from "axios";
-import { useParams, useLocation, useNavigate } from "react-router-dom";
-import { useContext, useEffect, useRef, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
 import swal from 'sweetalert';
 
 function GalleryUpdate() {
-
-	// const { headers, setHeaders } = useContext(HttpHeadersContext);
-	// const { auth, setAuth } = useContext(AuthContext);
-
 	const navigate = useNavigate();
 
 	const [title, setTitle] = useState("");
@@ -16,7 +12,7 @@ function GalleryUpdate() {
 	const [imageUrl, setImageUrl] = useState(null);
 	const [fileChange, setFileChange] = useState(false);
 	const imgRef = useRef();
-	const param = useParams(); // 파라미터 가져오기
+	const param = useParams();
 
 	useEffect(() => {
 		console.log(param.gallery_id);
@@ -70,9 +66,6 @@ function GalleryUpdate() {
 		const reader = new FileReader();
 		const file = event.target.files[0];
 		console.log(file);
-
-		// const formData = new FormData();
-		// formData.append('file', e.target.files[0]);
 
 		reader.readAsDataURL(file);
 		reader.onloadend = () => {

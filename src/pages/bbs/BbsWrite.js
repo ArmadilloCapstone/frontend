@@ -1,15 +1,11 @@
 import axios from "axios";
 import "./bbswrite.css";
 
-import { useRef, useEffect, useState } from "react";
+import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import swal from 'sweetalert';
 
 function BbsWrite() {
-
-	// const { auth, setAuth } = useContext(AuthContext)
-	// const { headers, setHeaders } = useContext(HttpHeadersContext);
-
 	const navigate = useNavigate();
 
 	const [title, setTitle] = useState("");
@@ -45,9 +41,6 @@ function BbsWrite() {
 		const reader = new FileReader();
 		const file = imgRef.current.files[0];
 		console.log(file);
-
-		// const formData = new FormData();
-		// formData.append('file', e.target.files[0]);
 
 		reader.readAsDataURL(file);
 		reader.onloadend = () => {

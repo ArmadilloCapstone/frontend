@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -10,7 +10,7 @@ import swal from 'sweetalert';
 function BbsDetail() {
     const [bbs, setBbs] = useState({});
     const [files, setFiles] = useState([]);
-    const { id } = useParams(); // 파라미터 가져오기
+    const { id } = useParams();
 
     const navigate = useNavigate();
 
@@ -78,18 +78,12 @@ function BbsDetail() {
     return (
         <div className="detailPage" style={{ fontFamily: "Eorinai" }}>
 
-            { /*}
-             <Link className="change-detail" to={{ pathname: `/BbsUpdate/${id}` }}>
-                    <span  >수정 </span>
-                </Link> 
-                      */}   
+            <button className="change-detail" onClick={() => { navigate(`/BbsUpdate/${id}`) }}>
+                <span  >수정 </span>
+            </button>
 
-                <button className="change-detail" onClick={() => {navigate(`/BbsUpdate/${id}`)}}>
-                    <span  >수정 </span>
-                </button>  
 
-                
-                <button className="delete-detail" onClick={deleteBbs}><i className="fas fa-trash-alt"></i> 삭제</button>
+            <button className="delete-detail" onClick={deleteBbs}><i className="fas fa-trash-alt"></i> 삭제</button>
             <table className="table table-striped" style={{ fontFamily: "Eorinai" }} >
                 <tbody style={{ color: "#555555" }} >
 
@@ -125,7 +119,7 @@ function BbsDetail() {
                                         <div>{el.originFileName}</div>
                                         <div>
                                             <a
-                                                href={"http://dolbomi.site/download/news/"+bbs.title +"/" + el.originFileName}
+                                                href={"http://dolbomi.site/download/news/" + bbs.title + "/" + el.originFileName}
                                                 download
                                                 target="_blank"
                                                 rel="noreferrer"

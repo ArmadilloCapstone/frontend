@@ -12,9 +12,7 @@ export default function GuardianManagement() {
     const [addGuardian, setAddGuardian] = useState(false); // 새로운 보호자 추가
     const [addstudentList, setAddstudentList] = useState(false); // 기존 보호자의 학생명단 추가
 
-    const [guardianList, setGuardianList] = useState([
-        // {id: 1, name: "가가가", info: "태권도장 기사", studentList: [{id: 1, name:  "가가가"}]}
-    ]);
+    const [guardianList, setGuardianList] = useState([]);
 
     // 기존의 guardian List 가져오기
     const loadGuardianList = async () => {
@@ -28,7 +26,7 @@ export default function GuardianManagement() {
                     returnObj['name'] = el.name;
                     returnObj['info'] = el.info;
                     returnObj['serial_num'] = el.serial_num;
-                    returnObj['studentList'] = el.studentList; // 서버에서 guardian의 id == student_of_guardian의 guardian id 조건으로 데이터 찾아서 전송해줘야 할듯?
+                    returnObj['studentList'] = el.studentList;
 
                     return returnObj;
                 }));
@@ -51,7 +49,7 @@ export default function GuardianManagement() {
             });
     };
 
-    // 보호자의 학생 삭제 (버튼 클릭 이벤트, ui 지저분해서 학생 이름을 버튼으로 만듦!)
+    // 보호자의 학생 삭제
     const deleteStudent = (guardian_id, student_id) => {
         axios.delete(`http://dolbomi.site/guardianManage/student/${guardian_id}/${student_id}`)
             .then((result) => {

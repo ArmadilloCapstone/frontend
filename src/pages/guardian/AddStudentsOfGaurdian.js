@@ -13,7 +13,6 @@ export default function AddStudentsOfGaurdian(props) {
     const { id, name, studentList } = user;
     console.log(edited);
 
-    // 더미데이터, 빈 객체 배열로 변경 예정
     const [students, setStudents] = useState([]);
 
     // 체크된 studentList 관리할 변수
@@ -97,7 +96,6 @@ export default function AddStudentsOfGaurdian(props) {
     // form 제출
     const submitGuardian = async (e) => {
         e.preventDefault();
-        // e.target.reset();
 
         await axios.post("http://dolbomi.site/guardianManage/student_submit", user);
         console.log(edited);
@@ -108,7 +106,7 @@ export default function AddStudentsOfGaurdian(props) {
             timer: 3000,
             button: "확인"
         }).then(function () {
-            window.close(); //클로즈 먼저해야만 새로고침이 되었음
+            window.close();
             window.location.reload();
         });
     };

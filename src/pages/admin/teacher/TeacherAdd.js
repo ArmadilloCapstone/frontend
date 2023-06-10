@@ -9,7 +9,7 @@ function TeacherAdd() {
     const [dolbom, setDolbom] = useState([]);
 
     useEffect(() => {
-        axios.post('http://dolbomi.site/teacher/dolbom_classList') // url 모름.. 변경 필요할듯
+        axios.post('http://dolbomi.site/teacher/dolbom_classList')
             .then(function (response) {
                 console.log(response.data);
                 setDolbom(response.data.map(function (el, idx) {
@@ -62,11 +62,6 @@ function TeacherAdd() {
             setUser({ ...user, [e.target.name]: e.target.value });
         }
     };
-    // function onInputChange_Select(e, selectIdName) {
-    //     var selectInput = document.getElementById(selectIdName);
-    //     var value = (selectInput.options[selectInput.selectedIndex].value);
-    //     setUser({ ...user, [e.target.name]: value });
-    // };
 
     // 서버로 전송하는 데이터(연락처) format 변경
     function changeUserForm(data) {

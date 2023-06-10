@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ClassDetail from './ClassDetail';
 import ClassAdd from './ClassAdd';
-import { BrowserRouter as Router, Route, Routes, withRouter } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import styled from "styled-components";
 
 const Container = styled.div`

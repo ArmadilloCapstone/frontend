@@ -10,10 +10,6 @@ export const LoginPage = () => {
   const dispatch = useDispatch();
   const showSignup = useSelector((state => state.showSignup))
   const [userOption, setUserOption] = useState("1");
-  const [hovered1, setHovered1] = useState(false);
-  const [hovered2, setHovered2] = useState(false);
-  const [hovered3, setHovered3] = useState(false);
-  const [hovered4, setHovered4] = useState(false);
 
   const clickClose = () => {
     dispatch(setShowSignup(!showSignup));

@@ -4,7 +4,7 @@ import "./Add.css"
 import swal from 'sweetalert';
 
 export default function AddGuardian() {
-    const [serialNumList, setSerialNumList] = useState([]); // id, serial_num 모두 type이 number이 맞는지 확인..! (문제: 코드 순서였음.. 하)
+    const [serialNumList, setSerialNumList] = useState([]);
 
     const [user, setUser] = useState({
         id: 0,
@@ -17,7 +17,7 @@ export default function AddGuardian() {
     const { name, info, serial_num, studentList } = user;
 
 
-    // 6자리의 중복 없는 serial_num 생성하기 (serial_num 테이블 필요할듯, 중복 대조 위해서)
+    // 6자리의 중복 없는 serial_num 생성하기
     const loadSerialNum = async () => {
         await axios.post('http://dolbomi.site/guardianManage/guardianList')
             .then(function (response) {
@@ -41,13 +41,12 @@ export default function AddGuardian() {
     function createSerialNum() {
         // 100,000 ~ 999,999 사이의 정수 1개 랜덤으로 생성
         let randomNumber = Math.floor(Math.random() * 900000 + 100000);
-        // return randomNumber;
         if (isValid(randomNumber)) {
             return randomNumber;
         }
         else {
             return createSerialNum();
-        } // 맞겠지?
+        }
     }
 
     function isValid(n) {
@@ -78,7 +77,7 @@ export default function AddGuardian() {
                         timer: 3000,
                         button: "확인"
                     }).then(function () {
-                        window.close(); //클로즈 먼저해야만 새로고침이 되었음
+                        window.close();
                         window.location.reload();
                     });
                 }
@@ -89,7 +88,7 @@ export default function AddGuardian() {
                         timer: 3000,
                         button: "확인"
                     }).then(function () {
-                        window.close(); //클로즈 먼저해야만 새로고침이 되었음
+                        window.close(); 
                         window.location.reload();
                     });
                 }

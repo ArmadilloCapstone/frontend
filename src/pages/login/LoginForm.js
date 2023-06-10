@@ -59,7 +59,6 @@ export const LoginForm = (props) => {
         console.log(res.data)
         if (res.data.name !== "Error") {
 
-          //alert('로그인!');
           console.log(res.data)
           if (props.option == "4") {
             console.log("admin")

@@ -6,7 +6,6 @@ import teacherImg from './teacher.png';
 function TelephoneLink() {
   const [callList, setCallList] = useState([]);
 
-  // 주요 연락처 List 가져오기
   useEffect(() => {
     console.log(localStorage.getItem('userid'));
     axios.post('http://dolbomi.site/callList/' + localStorage.getItem('userid'))

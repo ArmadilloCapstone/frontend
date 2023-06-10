@@ -26,7 +26,6 @@ function CustomTimeline() {
   const subjectButtons = [];
 
   // 백엔드에서 데이터 가져오기 & 오늘의 요일에 맞는 학생들의 입실/퇴실 시간 설정 => todaylist === student_time
-  // useEffect(() => {
   const loadStudentTime = () => {
     axios.post('http://dolbomi.site/studentTimeFindAll/' + localStorage.getItem('userid'))
       .then(function (response) {
@@ -73,7 +72,6 @@ function CustomTimeline() {
         console.log(reason);
       });
   }
-  // }, []);
   useEffect(() => {
     loadStudentTime();
   }, []);
@@ -145,7 +143,6 @@ function CustomTimeline() {
     let newList = {};
     newList['student_id'] = obj.student_id;
     newList['seed'] = obj.class_id;
-    // newList['seed'] = obj.class_name;
     console.log(obj);
     newList['start_time'] = moment(defaultTimeStart).add(after_school_class.find((el) => el.id === obj.class_id).start_time);
     newList['end_time'] = moment(defaultTimeStart).add(after_school_class.find((el) => el.id === obj.class_id).end_time);
@@ -299,21 +296,6 @@ function CustomTimeline() {
       buttons: '확인',
     });
   }
-  // function SeekTodayTimes() {
-  //   let copy = [...student_time]
-  //   copy.sort((a, b) => a.start.toUpperCase() < b.start.toUpperCase() ? -1 : 1)
-  //   let todayStart = copy[0].start.substr(0, 5);
-
-  //   copy.sort((a, b) => a.end.toUpperCase() < b.end.toUpperCase() ? -1 : 1)
-  //   let todayEnd = copy[0].end.substr(0, 5);
-
-  //   return (
-  //     <div class="timeInfoBox">
-  //       <div class="timeInfoText">오늘의 입실 시작 시간은 <span class="timeInfoStart">{todayStart}</span>,
-  //        귀가 시작 시간은 <span class="timeInfoEnd">{todayEnd}</span>입니다!</div>
-  //     </div>
-  //   )
-  // }
 
   return (
     <div class="timeline_wrapper">

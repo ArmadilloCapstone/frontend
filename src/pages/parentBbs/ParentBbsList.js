@@ -154,16 +154,8 @@ function ParentBbsList() {
             </div>
 
             <table class="BbList-0"  >
-                {/*
-                <thead class="BbList-0" >
-                    <tr class="BbList" >
-                        <th class="BbList" >번호</th>
-                        <th class="BbList" >제목</th>
-                        <th class="BbList" >작성일</th>
-                    </tr>
-                </thead>
-    */}
-                <tbody class="BbList-0" style={{ fontFamily: "Eorinai",  }}>
+
+                <tbody class="BbList-0" style={{ fontFamily: "Eorinai", }}>
                     {
                         currentbbsList.map(function (bbs, idx) {
                             return (
@@ -176,8 +168,8 @@ function ParentBbsList() {
 
 
 
-            
-            
+
+
             <Pagination className="pagination"
                 activePage={page}
                 itemsCountPerPage={10}

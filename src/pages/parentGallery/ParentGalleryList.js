@@ -156,20 +156,6 @@ function ParentGalleryList() {
 
 
             <table class="BbList-0"  >
-                {/*
-                <thead class="BbList-0" >
-                    <tr class="BbList" >
-                        <th >번호</th>
-                        <th >제목</th>
-                        <th >작성일시</th>
-                    </tr>
-                </thead>
-                  */}
-
-
-
-
-
 
                 <tbody class="BbList-0" style={{ fontFamily: "Eorinai" }}>
                     {
@@ -208,8 +194,8 @@ function TableRow(props) {
                 <>
                     <td class="BbList" >
 
-                        <Link to={{ pathname: `/ParentGalleryDetail/${gallery.id}` }}> { /* 게시글 상세 링크 */}
-                            <span className="underline gallery-title" >{gallery.title} </span> { /* 게시글 제목 */}
+                        <Link to={{ pathname: `/ParentGalleryDetail/${gallery.id}` }}> 
+                            <span className="underline gallery-title" >{gallery.title} </span> 
                         </Link>
                     </td>
                     <td class="BbList">{gallery.uploaded_date}</td>

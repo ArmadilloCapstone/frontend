@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import swal from 'sweetalert';
 
@@ -115,12 +115,10 @@ function ClassAdd() {
             <div class="form_container CM">
                 <form name="form" onSubmit={submitClassRecord}>
 
-                    {/* <div class="form_wrap onlyone"> */}
                     <div class="form_item">
                         <label>학급 이름</label>
                         <input type="text" id="class_name" name="class_name" value={class_name} onChange={e => onInputChange(e)} placeholder="학급 이름을 입력하세요." required="" />
                     </div>
-                    {/* </div> */}
 
                     <div class="form_item">
                         <label>학급 번호</label>

@@ -4,13 +4,11 @@ import { useParams, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./bbslist.css";
 import "./bbspage.css";
-// import "./bbswrite.css";
-
 
 function ParentBbsDetail() {
     const [bbs, setBbs] = useState({});
     const [files, setFiles] = useState([]);
-    const { id } = useParams(); // 파라미터 가져오기
+    const { id } = useParams(); 
 
     const navigate = useNavigate();
 

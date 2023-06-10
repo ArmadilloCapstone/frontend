@@ -9,7 +9,7 @@ function ParentAdd() {
   const [student, setStudent] = useState([]);
 
   useEffect(() => {
-    axios.post('http://dolbomi.site/parent/studentList') // url 모름.. 변경 필요할듯
+    axios.post('http://dolbomi.site/parent/studentList')
       .then(function (response) {
         console.log(response.data);
         setStudent(response.data.map(function (el, idx) {
@@ -142,12 +142,11 @@ function ParentAdd() {
     <div class="wrapper">
       <div class="form_container">
         <form name="form" onSubmit={submitParentRecord}>
-          {/* <div class="form_wrap onlyone"> */}
+          
           <div class="form_item">
             <label>학부모 이름</label>
             <input type="text" id="name" name="name" value={name} onChange={e => onInputChange(e)} placeholder="학부모 이름을 입력하세요." required="" />
           </div>
-          {/* </div> */}
 
           <label>학부모 연락처</label>
           <div class="form_wrap full">

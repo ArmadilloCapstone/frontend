@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
-import { BrowserRouter as Router, HashRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import Header from './components/Layout/Header/Header';
@@ -10,7 +10,6 @@ import { LoginPage } from './pages/login/LoginPage';
 import { TimelinePage } from './pages/timeline/TimelinePage';
 import StudentState from './pages/studentstate/StudentState';
 import { ParentMain } from './pages/parentMain/ParentMain';
-// import { EntireUserAddPage } from './pages/admin/entrire/EntireUserAddPage';
 import Temp from './pages/admin/Temp/Temp';
 import TeacherManagementPage from './pages/admin/teacher/TeacherManagementPage';
 import StudentManagementPage from './pages/admin/student/StudentManagementPage';
@@ -41,12 +40,6 @@ import GalleryWrite from './pages/gallery/GalleryWrite';
 
 import Message from './pages/message/Message';
 
-import GuardianManagementPage from './pages/guardian/GuardianManagementPage';
-
-import Footer from './components/Layout/Footer/Footer';
-
-
-import { Button, Badge } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Center = styled.div`
@@ -150,7 +143,6 @@ export default function App() {
               <Route path="/GuardianManagement" element={<GuardianManagement />} /> :
               <Route path="/GuardianManagementPage" element={<LoginPage />} />
           }
-          {/* <Route path="/EntireUserAddPage" element={<EntireUserAddPage />} /> */}
 
           {/* 학부모 페이지 */}
           {
@@ -237,7 +229,6 @@ export default function App() {
           }
         </Routes>
       </Center>
-      {/* <Footer /> */}
       <Popup />
       {
         (user_option == "1" || user_option == "2") ?

@@ -8,7 +8,7 @@ function StudentScheduleAdd() {
     const [afterClass, setAfterClass] = useState([]);
 
     useEffect(() => {
-        axios.post('http://dolbomi.site/student_schedule/studentList') // url 모름.. 변경 필요할듯
+        axios.post('http://dolbomi.site/student_schedule/studentList')
             .then(function (response) {
                 console.log(response.data);
                 setStudent(response.data.map(function (el, idx) {
@@ -23,7 +23,7 @@ function StudentScheduleAdd() {
     }, []);
 
     useEffect(() => {
-        axios.post('http://dolbomi.site/student_schedule/AfterSchoolClassList') // url 모름.. 변경 필요할듯
+        axios.post('http://dolbomi.site/student_schedule/AfterSchoolClassList')
             .then(function (response) {
                 console.log(response.data);
                 setAfterClass(response.data.map(function (el, idx) {
@@ -48,11 +48,6 @@ function StudentScheduleAdd() {
         setUser({ ...user, [e.target.name]: e.target.value });
         console.log(user)
     };
-    // function onInputChange_Select(e, selectIdName) {
-    //     var selectInput = document.getElementById(selectIdName);
-    //     var value = (selectInput.options[selectInput.selectedIndex].value);
-    //     setUser({ ...user, [e.target.name]: value });
-    // };
 
     // Insert Student Schedule Records 
     const submitStudentScheduleRecord = async (e) => {

@@ -5,7 +5,7 @@ const FileUpload = () => {
   const [selectedFiles, setSelectedFiles] = useState(undefined);
   const [progressInfos, setProgressInfos] = useState({ val: [] });
   const [message, setMessage] = useState([]);
-  const [fileInfos, setFileInfos] = useState([]);
+  const [setFileInfos] = useState([]);
   const progressInfosRef = useRef(null)
 
   useEffect(() => {
@@ -35,7 +35,7 @@ const FileUpload = () => {
         ]));
         const files = Array.from(selectedFiles);
         idx++;
-        if(files.length != idx){
+        if (files.length != idx) {
           IndividualUpload(idx, files[idx])
         }
       })
@@ -60,18 +60,11 @@ const FileUpload = () => {
     }
 
     IndividualUpload(0, files[0])
-    
-    // Promise.all(uploadPromises)
-    //   .then(() => UploadService.getFiles())
-    //   .then((files) => {
-    //     setFileInfos(files.data);
-    //   });
-
     setMessage([]);
   };
 
   return (
-    <div className="my-3" style={{ color: "#555555", fontSize: "35px", fontWeight: "bold",  backgroundColor: "#ffffff", paddingLeft: "20px", paddingTop: "40px" }}>
+    <div className="my-3" style={{ color: "#555555", fontSize: "35px", fontWeight: "bold", backgroundColor: "#ffffff", paddingLeft: "20px", paddingTop: "40px" }}>
       {progressInfos && progressInfos.val.length > 0 &&
         progressInfos.val.map((progressInfo, index) => (
           <div className="mb-2" key={index}>
@@ -91,9 +84,9 @@ const FileUpload = () => {
           </div>
         ))}
 
-      <div className="row my-3" style={{ borderRadius: "0px"}}>
+      <div className="row my-3" style={{ borderRadius: "0px" }}>
         <div className="col-8" >
-          <label className="btn btn-default p-0">     
+          <label className="btn btn-default p-0">
             <input type="file" accept=".csv" multiple onChange={selectFiles} />
           </label>
         </div>
@@ -118,18 +111,6 @@ const FileUpload = () => {
           </ul>
         </div>
       )}
-
-      {/* <div className="card">
-        <div className="card-header">추가된 파일 리스트</div>
-        <ul className="list-group list-group-flush">
-          {fileInfos &&
-            fileInfos.map((file, index) => (
-              <li className="list-group-item" key={index}>
-                <a href={file.url}>{file.name}</a>
-              </li>
-            ))}
-        </ul>
-      </div> */}
     </div>
   );
 };
