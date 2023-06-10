@@ -320,7 +320,7 @@ function CustomTimeline() {
     {/* 학생 출결 로그 조회 버튼  */}
         <button className="attendanceLog">
           
-        <a href={"http://dolbomi.site/exportPickupLog/" + localStorage.getItem("userid")}
+        <a className="logLinkText" href={"http://dolbomi.site/exportPickupLog/" + localStorage.getItem("userid")}
           download
           target="_blank"
           rel="noreferrer"

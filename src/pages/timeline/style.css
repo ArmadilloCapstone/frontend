@@ -54,12 +54,17 @@
   position: relative;
   top: 100%;
   left: 59%;
-  background-color: #0f9443;
-  color: white;
+  background-color: #12B560;
   border-radius: 10px;
   border: none;
   font-size: 18px;
   letter-spacing: 2px;
+  box-shadow: 0 3px 5px rgba(55, 163, 100, 0.43);
+}
+
+.logLinkText {
+  text-decoration: none;
+  color: white;
 }
 
 
