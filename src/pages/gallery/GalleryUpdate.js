@@ -15,7 +15,7 @@ function GalleryUpdate() {
 	const param = useParams();
 
 	useEffect(() => {
-		console.log(param.gallery_id);
+		// console.log(param.gallery_id);
 		const getBoard = async () => {
 			const { data } = await axios.post(`http://dolbomi.site/album/${param.gallery_id}`);
 			return data;
@@ -29,17 +29,17 @@ function GalleryUpdate() {
 
 		axios.post(`http://dolbomi.site/album/files/${param.gallery_id}`)
 			.then((res) => {
-				console.log("[GalleryDetail.js] getGalleryDetail() success :D");
-				console.log(res.data);
+				// console.log("[GalleryDetail.js] getGalleryDetail() success :D");
+				// console.log(res.data);
 				let arr = Array.from(res.data.map((el) => {
 					var returnObj = {}
 					returnObj['name'] = el.originFileName;
 					return returnObj;
 				}));
-				console.log(arr);
+				// console.log(arr);
 				setSelectedFiles([]);
 				for (let i = 0; i < arr.length; i++) {
-					console.log(arr[i].originFileName)
+					// console.log(arr[i].originFileName)
 					setSelectedFiles((prevMessage) => ([
 						...prevMessage,
 						arr[i]
@@ -47,8 +47,8 @@ function GalleryUpdate() {
 				}
 			})
 			.catch((err) => {
-				console.log("[GalleryDetail.js] getGalleryDetail() error :<");
-				console.log(err);
+				// console.log("[GalleryDetail.js] getGalleryDetail() error :<");
+				// console.log(err);
 			});
 	}, [])
 
@@ -57,7 +57,7 @@ function GalleryUpdate() {
 		setFileChange(true)
 		setSelectedFiles([]);
 		for (let i = 0; i < arr.length; i++) {
-			console.log(arr[i].name)
+			// console.log(arr[i].name)
 			setSelectedFiles((prevMessage) => ([
 				...prevMessage,
 				arr[i]
@@ -65,12 +65,12 @@ function GalleryUpdate() {
 		}
 		const reader = new FileReader();
 		const file = event.target.files[0];
-		console.log(file);
+		// console.log(file);
 
 		reader.readAsDataURL(file);
 		reader.onloadend = () => {
 			setImageUrl(reader.result);
-			console.log("이미지주소", reader.result);
+			// console.log("이미지주소", reader.result);
 		};
 	};
 
@@ -92,8 +92,8 @@ function GalleryUpdate() {
 		formData.append("text", text);
 		if (fileChange) {
 			for (let i = 0; i < selectedFiles.length; i++) {
-				console.log(i);
-				console.log(selectedFiles[i]);
+				// console.log(i);
+				// console.log(selectedFiles[i]);
 				formData.append("files", selectedFiles[i]);
 			}
 			axios.post("http://dolbomi.site/GalleryList/update/file", formData, {
@@ -102,8 +102,8 @@ function GalleryUpdate() {
 				}
 			})
 				.then((resp) => {
-					console.log("[GalleryWrite.js] createGallery() success :D");
-					console.log(resp.data);
+					// console.log("[GalleryWrite.js] createGallery() success :D");
+					// console.log(resp.data);
 					swal({
 						title: "게시글을 성공적으로 수정했습니다!",
 						icon: "success",
@@ -113,8 +113,8 @@ function GalleryUpdate() {
 					navigate(`/gallerydetail/${param.gallery_id}`); // 새롭게 등록한 글 상세로 이동
 				})
 				.catch((err) => {
-					console.log("[GalleryWrite.js] createGallery() error :<");
-					console.log(err);
+					// console.log("[GalleryWrite.js] createGallery() error :<");
+					// console.log(err);
 				});
 		}
 		else {
@@ -124,8 +124,8 @@ function GalleryUpdate() {
 				}
 			})
 				.then((resp) => {
-					console.log("[GalleryWrite.js] createGallery() success :D");
-					console.log(resp.data);
+					// console.log("[GalleryWrite.js] createGallery() success :D");
+					// console.log(resp.data);
 					swal({
 						title: "게시글을 성공적으로 수정했습니다!",
 						icon: "success",
@@ -135,8 +135,8 @@ function GalleryUpdate() {
 					navigate(`/gallerydetail/${param.gallery_id}`); // 새롭게 등록한 글 상세로 이동
 				})
 				.catch((err) => {
-					console.log("[GalleryWrite.js] createGallery() error :<");
-					console.log(err);
+					// console.log("[GalleryWrite.js] createGallery() error :<");
+					// console.log(err);
 				});
 		}
 

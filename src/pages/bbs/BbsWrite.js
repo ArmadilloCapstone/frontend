@@ -18,7 +18,7 @@ function BbsWrite() {
 		let arr = Array.from(event.target.files);
 		setSelectedFiles([]);
 		for (let i = 0; i < arr.length; i++) {
-			console.log(arr[i].name)
+			// console.log(arr[i].name)
 			setSelectedFiles((prevMessage) => ([
 				...prevMessage,
 				arr[i]
@@ -40,12 +40,12 @@ function BbsWrite() {
 		e.preventDefault();
 		const reader = new FileReader();
 		const file = imgRef.current.files[0];
-		console.log(file);
+		// console.log(file);
 
 		reader.readAsDataURL(file);
 		reader.onloadend = () => {
 			setImageUrl(reader.result);
-			console.log("이미지주소", reader.result);
+			// console.log("이미지주소", reader.result);
 		};
 	}
 
@@ -61,8 +61,8 @@ function BbsWrite() {
 		formData.append("title", title);
 		formData.append("text", text);
 		for (let i = 0; i < selectedFiles.length; i++) {
-			console.log(i);
-			console.log(selectedFiles[i]);
+			// console.log(i);
+			// console.log(selectedFiles[i]);
 			formData.append("files", selectedFiles[i]);
 		}
 		if (selectedFiles.length == 0) {
@@ -72,8 +72,8 @@ function BbsWrite() {
 				}
 			})
 				.then((resp) => {
-					console.log("[BbsWrite.js] createBbs() success :D");
-					console.log(resp.data);
+					// console.log("[BbsWrite.js] createBbs() success :D");
+					// console.log(resp.data);
 					swal({
 						title: "새로운 게시글을 성공적으로 등록했습니다!",
 						icon: "success",
@@ -83,8 +83,8 @@ function BbsWrite() {
 					navigate(`/bbsdetail/${resp.data.id}`); // 새롭게 등록한 글 상세로 이동
 				})
 				.catch((err) => {
-					console.log("[BbsWrite.js] createBbs() error :<");
-					console.log(err);
+					// console.log("[BbsWrite.js] createBbs() error :<");
+					// console.log(err);
 				});
 
 		}
@@ -95,8 +95,8 @@ function BbsWrite() {
 				}
 			})
 				.then((resp) => {
-					console.log("[BbsWrite.js] createBbs() success :D");
-					console.log(resp.data);
+					// console.log("[BbsWrite.js] createBbs() success :D");
+					// console.log(resp.data);
 					swal({
 						title: "새로운 게시글을 성공적으로 등록했습니다!",
 						icon: "success",
@@ -106,8 +106,8 @@ function BbsWrite() {
 					navigate(`/bbsdetail/${resp.data.id}`); // 새롭게 등록한 글 상세로 이동
 				})
 				.catch((err) => {
-					console.log("[BbsWrite.js] createBbs() error :<");
-					console.log(err);
+					// console.log("[BbsWrite.js] createBbs() error :<");
+					// console.log(err);
 				});
 
 		}

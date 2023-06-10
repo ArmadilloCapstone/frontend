@@ -9,14 +9,14 @@ function StudentTimeAdd() {
     useEffect(() => {
         axios.post('http://dolbomi.site/student_time/studentList')
             .then(function (response) {
-                console.log(response.data);
+                // console.log(response.data);
                 setStudent(response.data.map(function (el, idx) {
                     var returnObj = {}
                     returnObj['name'] = el.name;
                     return returnObj;
                 }));
             }).catch(function (reason) {
-                console.log(reason);
+                // console.log(reason);
             });
     }, []);
 
@@ -86,7 +86,7 @@ function StudentTimeAdd() {
 
         await axios.post("http://dolbomi.site/student_time_submit", user)
             .then(function (response) {
-                console.log(response.data);
+                // console.log(response.data);
                 if (response.data === "success") {
                     swal({
                         title: "추가되었습니다!",
@@ -106,7 +106,7 @@ function StudentTimeAdd() {
                 }
 
             }).catch(function (reason) {
-                console.log(reason.data);
+                // console.log(reason.data);
             });
         onReset();
     };

@@ -15,7 +15,7 @@ export const LoginPage = () => {
     dispatch(setShowSignup(!showSignup));
   };
   const clickradio = (e) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     setUserOption(e.target.value);
   };
   const option2name = (num) => {

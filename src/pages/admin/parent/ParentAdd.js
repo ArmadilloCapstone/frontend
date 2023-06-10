@@ -11,14 +11,14 @@ function ParentAdd() {
   useEffect(() => {
     axios.post('http://dolbomi.site/parent/studentList')
       .then(function (response) {
-        console.log(response.data);
+        // console.log(response.data);
         setStudent(response.data.map(function (el, idx) {
           var returnObj = {}
           returnObj['name'] = el.name;
           return returnObj;
         }));
       }).catch(function (reason) {
-        console.log(reason);
+        // console.log(reason);
       });
   }, []);
 
@@ -100,7 +100,7 @@ function ParentAdd() {
     const postUser = changeUserForm(user);
     await axios.post('http://dolbomi.site/parent_submit', postUser)
       .then(function (response) {
-        console.log(response.data);
+        // console.log(response.data);
         if (response.data === "success") {
           swal({
             title: "추가되었습니다!",
@@ -120,7 +120,7 @@ function ParentAdd() {
         }
 
       }).catch(function (reason) {
-        console.log(reason.data);
+        // console.log(reason.data);
       });
     onReset();
   };

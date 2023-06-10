@@ -31,7 +31,7 @@ const Header = () => {
     navigate('/');
   };  
   const MessageClickHandler = () => {
-    console.log("hi")
+    // console.log("hi")
     if(!message_click){
       dispatch(setMessageAlarm(false));
     }
@@ -47,8 +47,8 @@ const Header = () => {
   };
 
   useEffect(() => {
-    console.log(user_option)
-    console.log(localStorage.getItem('useroption') || "")
+    // console.log(user_option)
+    // console.log(localStorage.getItem('useroption') || "")
   }, []);
     return (
         <header className="header">

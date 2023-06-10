@@ -30,17 +30,17 @@ function ParentBbsList() {
                 id: localStorage.getItem('userid')
             })
                 .then((res) => {
-                    console.log("[BbsList.js] useEffect() 성공");
-                    console.log(res.data);
+                    // console.log("[BbsList.js] useEffect() 성공");
+                    // console.log(res.data);
 
                     setBbsList(res.data);
                     setTotalCnt(res.data.length);
-                    console.log(res.data.length)
+                    // console.log(res.data.length)
                     setCurrentbbsList([]);
                     if (res.data.length >= 10) {
-                        console.log("Hi")
+                        // console.log("Hi")
                         res.data.map((el, idx) => {
-                            console.log(idx)
+                            // console.log(idx)
                             if (idx < 10) {
                                 setCurrentbbsList((prev) => ([
                                     ...prev,
@@ -59,31 +59,31 @@ function ParentBbsList() {
                     }
                 })
                 .catch((err) => {
-                    console.log("[BbsList.js] useEffect() 실패");
-                    console.log(err);
+                    // console.log("[BbsList.js] useEffect() 실패");
+                    // console.log(err);
 
                 });
         }
 
         else {
-            console.log(searchVal, choiceVal)
+            // console.log(searchVal, choiceVal)
             await axios.post(`http://dolbomi.site/ParentBbsList/search`, {
                 parent_id: localStorage.getItem('userid'),
                 keyword: searchVal,
                 option: choiceVal
             })
                 .then((res) => {
-                    console.log("[BbsList.js] useEffect() 성공");
-                    console.log(res.data);
+                    // console.log("[BbsList.js] useEffect() 성공");
+                    // console.log(res.data);
 
                     setBbsList(res.data);
                     setTotalCnt((res.data.length));
-                    console.log(res.data.length)
+                    // console.log(res.data.length)
                     setCurrentbbsList([]);
                     if (res.data.length >= 10) {
-                        console.log("Hi")
+                        // console.log("Hi")
                         res.data.map((el, idx) => {
-                            console.log(idx)
+                            // console.log(idx)
                             if (idx < 10) {
                                 setCurrentbbsList((prev) => ([
                                     ...prev,
@@ -102,8 +102,8 @@ function ParentBbsList() {
                     }
                 })
                 .catch((err) => {
-                    console.log("[BbsList.js] useEffect() 실패");
-                    console.log(err);
+                    // console.log("[BbsList.js] useEffect() 실패");
+                    // console.log(err);
 
                 });
         }
@@ -119,7 +119,7 @@ function ParentBbsList() {
     const changeChoice = (event) => { setChoiceVal(event.target.value); }
     const changeSearch = (event) => { setSearchVal(event.target.value); }
     const search = () => {
-        console.log("[BbsList.js searchBtn()] choiceVal=" + choiceVal + ", searchVal=" + searchVal);
+        // console.log("[BbsList.js searchBtn()] choiceVal=" + choiceVal + ", searchVal=" + searchVal);
 
         navigate("/ParentBbslist");
         loadBbsList(choiceVal, searchVal);
@@ -129,7 +129,7 @@ function ParentBbsList() {
         setPage(page);
         setCurrentbbsList([]);
         for (let i = (page - 1) * 10; i < (page) * 10; i++) {
-            console.log(i)
+            // console.log(i)
             if (bbsList[i] != null) {
                 setCurrentbbsList((prev) => ([
                     ...prev,

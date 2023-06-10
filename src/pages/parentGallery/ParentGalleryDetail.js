@@ -12,24 +12,24 @@ function ParentGalleryDetail() {
     const navigate = useNavigate();
 
     const getGalleryDetail = async () => {
-        console.log("hi")
+        // console.log("hi")
         await axios.post(`http://dolbomi.site/album/${id}`)
             .then((resp) => {
-                console.log("[GalleryDetail.js] getGalleryDetail() success :D");
-                console.log(resp.data);
+                // console.log("[GalleryDetail.js] getGalleryDetail() success :D");
+                // console.log(resp.data);
 
                 setGallery(resp.data);
                 setFiles(resp.data.file_url);
             })
             .catch((err) => {
-                console.log("[GalleryDetail.js] getGalleryDetail() error :<");
-                console.log(err);
+                // console.log("[GalleryDetail.js] getGalleryDetail() error :<");
+                // console.log(err);
             });
     }
 
     useEffect(() => {
         getGalleryDetail();
-        console.log(id)
+        // console.log(id)
     }, []);
 
     return (

@@ -15,7 +15,7 @@ const FileUpload = () => {
   }, []);
 
   const selectFiles = (event) => {
-    console.log(event.target.files)
+    // console.log(event.target.files)
     setSelectedFiles(event.target.files);
     setProgressInfos({ val: [] });
   };

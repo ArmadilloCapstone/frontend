@@ -41,15 +41,15 @@ const Message = () => {
       axios.post("http://dolbomi.site/getAllParentByTid", {
         id: localStorage.getItem('userid')
       }).then((res) => {
-        console.log(res.data)
+        // console.log(res.data)
         setAllChatList(res.data)
         setAlarmList(res.data.map(function(el, idx){
 
-          console.log(el);
+          // console.log(el);
           var returnObj = {}
           returnObj["id"] = el.id;
           returnObj["alarm"] = false;
-          console.log(returnObj);
+          // console.log(returnObj);
           return returnObj;
 
         }));
@@ -57,7 +57,7 @@ const Message = () => {
       axios.post("http://dolbomi.site/getAllMessageByTid", {
         id: localStorage.getItem('userid')
       }).then((res) => {
-        console.log(res.data)
+        // console.log(res.data)
         setAllChatMsg(res.data)
       })
     }
@@ -66,14 +66,14 @@ const Message = () => {
       axios.post("http://dolbomi.site/getAllTeacherByPid", {
         id: localStorage.getItem('userid')
       }).then((res) => {
-        console.log(res.data)
+        // console.log(res.data)
         setAllChatList(res.data)
         setAlarmList(res.data.map(function(el, idx){
 
           var returnObj = {}
           returnObj["id"] = el.id;
           returnObj["alarm"] = false;
-          console.log(returnObj);
+          // console.log(returnObj);
           return returnObj;
 
         }));
@@ -81,7 +81,7 @@ const Message = () => {
       axios.post("http://dolbomi.site/getAllMessageByPid", {
         id: localStorage.getItem('userid')
       }).then((res) => {
-        console.log(res.data)
+        // console.log(res.data)
         setAllChatMsg(res.data)
       })
     }
@@ -89,7 +89,7 @@ const Message = () => {
     if (!ws) {
       var ws2 = new WebSocket(webSocketUrl);
       ws2.onopen = () => {
-        console.log("connected to " + webSocketUrl);
+        // console.log("connected to " + webSocketUrl);
         if (localStorage.getItem('useroption') == 1) {
           ws2.send(
             JSON.stringify({
@@ -109,22 +109,22 @@ const Message = () => {
         setSocketConnected(true);
       };
       ws2.onclose = (error) => {
-        console.log("disconnect from " + webSocketUrl);
-        console.log(error);
+        // console.log("disconnect from " + webSocketUrl);
+        // console.log(error);
       };
       ws2.onerror = (error) => {
-        console.log("connection error " + webSocketUrl);
-        console.log(error);
+        // console.log("connection error " + webSocketUrl);
+        // console.log(error);
       };
       ws2.onmessage = (evt) => {
-        console.log(evt.data);
+        // console.log(evt.data);
       };
 
       setWs(ws2);
     }
 
     return () => {
-      console.log("clean up");
+      // console.log("clean up");
       if (ws) {
         ws.close();
       }
@@ -146,14 +146,14 @@ const Message = () => {
         var returnObj = {}
         returnObj["id"] = el.id;
         returnObj["alarm"] = false;
-        console.log(returnObj);
+        // console.log(returnObj);
         return returnObj;
       }
       else{
         var returnObj = {}
         returnObj["id"] = el.id;
         returnObj["alarm"] = el.alarm;
-        console.log(returnObj);
+        // console.log(returnObj);
         return returnObj;
 
       }
@@ -233,26 +233,26 @@ const Message = () => {
         if(message_click == false){
           dispatch(setMessageAlarm(true));
         }
-        console.log(evt.data);
-        console.log(typeof(evt.data));
+        // console.log(evt.data);
+        // console.log(typeof(evt.data));
         const data = JSON.parse(evt.data);
         let items = [...allChatMsg, data]
         setAllChatMsg((prevItems) => ([...prevItems, data]));
         setAlarmList(alarmList.map(function(el, idx){
-          console.log(el.id);
-          console.log(data.sender_id.slice(1)-0);
+          // console.log(el.id);
+          // console.log(data.sender_id.slice(1)-0);
           if(el.id == data.sender_id.slice(1)-0 && el.id != selected.id){
             var returnObj = {}
             returnObj["id"] = el.id;
             returnObj["alarm"] = true;
-            console.log(returnObj);
+            // console.log(returnObj);
             return returnObj;
           }
           else{
             var returnObj = {}
             returnObj["id"] = el.id;
             returnObj["alarm"] = el.alarm;
-            console.log(returnObj);
+            // console.log(returnObj);
             return returnObj;
 
           }

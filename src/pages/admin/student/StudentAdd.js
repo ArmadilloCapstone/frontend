@@ -13,28 +13,28 @@ function StudentAdd() {
   useEffect(() => {
     axios.post('http://dolbomi.site/student/dolbom_classList')
       .then(function (response) {
-        console.log(response.data);
+        // console.log(response.data);
         setDolbom(response.data.map(function (el, idx) {
           var returnObj = {}
           returnObj['class_name'] = el.class_name;
           return returnObj;
         }));
       }).catch(function (reason) {
-        console.log(reason);
+        // console.log(reason);
       });
   }, []);
 
   useEffect(() => {
     axios.post('http://dolbomi.site/student_original_class')
       .then(function (response) {
-        console.log(response.data);
+        // console.log(response.data);
         setOriginal(response.data.map(function (el, idx) {
           var returnObj = {}
           returnObj['original_class_num'] = el.original_class_num;
           return returnObj;
         }));
       }).catch(function (reason) {
-        console.log(reason);
+        // console.log(reason);
       });
   }, []);
 
@@ -121,7 +121,7 @@ function StudentAdd() {
     const postUser = changeUserForm(user);
     await axios.post('http://dolbomi.site/student_submit', postUser)
       .then(function (response) {
-        console.log(response.data);
+        // console.log(response.data);
         if (response.data === "success") {
           swal({
             title: "추가되었습니다!",
@@ -141,7 +141,7 @@ function StudentAdd() {
         }
 
       }).catch(function (reason) {
-        console.log(reason.data);
+        // console.log(reason.data);
       });
     onReset();
   };

@@ -16,7 +16,7 @@ function StudentDetail() {
       setPage(page);
       setCurrentrecord([]);
       for (let i = (page - 1) * 10; i < (page) * 10; i++) {
-        console.log(i)
+        // console.log(i)
         if (copy[i] != null) {
           setCurrentrecord((prev) => ([
             ...prev,
@@ -29,7 +29,7 @@ function StudentDetail() {
       setPage(page);
       setCurrentrecord([]);
       for (let i = (page - 1) * 10; i < (page) * 10; i++) {
-        console.log(i)
+        // console.log(i)
         if (record[i] != null) {
           setCurrentrecord((prev) => ([
             ...prev,
@@ -44,7 +44,7 @@ function StudentDetail() {
     await axios.post('http://dolbomi.site/student')
       .then(function (response) {
         let item_list = response.data.map(function (el, idx) {
-          console.log(el);
+          // console.log(el);
 
           var returnObj = {}
           returnObj['id'] = el.id;
@@ -58,15 +58,15 @@ function StudentDetail() {
 
           return returnObj;
         })
-        console.log(item_list)
+        // console.log(item_list)
         setRecord(item_list);
         setTotalCnt(response.data.length);
-        console.log(response.data.length)
+        // console.log(response.data.length)
         setCurrentrecord([]);
         if (response.data.length >= 10) {
-          console.log("Hi")
+          // console.log("Hi")
           item_list.map((el, idx) => {
-            console.log(idx)
+            // console.log(idx)
             if (idx < 10) {
               setCurrentrecord((prev) => ([
                 ...prev,
@@ -84,7 +84,7 @@ function StudentDetail() {
           })
         }
       }).catch(function (reason) {
-        console.log(reason);
+        // console.log(reason);
       });
 
   }

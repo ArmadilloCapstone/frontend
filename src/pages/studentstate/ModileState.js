@@ -58,18 +58,18 @@ const ModileState = () => {
         .then(function(response){
           setStudent(response.data.map(function(el, idx){
 
-            console.log(el);
+            // console.log(el);
             var returnObj = {}
             returnObj["id"] = el.id;
             returnObj["student_id"] = el.student_id;
             returnObj["name"] = el.name;
             returnObj["state"] = "box" + el.state;
-            console.log(returnObj);
+            // console.log(returnObj);
             return returnObj;
 
           }));
         }).catch(function(reason){
-      console.log(reason);
+      // console.log(reason);
     });
   }, []);
 
@@ -81,16 +81,16 @@ const ModileState = () => {
       const dt = [...student];
       const idx = dt.findIndex(i => i.id === ns.id);
       dt[idx].state = ret.id;
-      console.log(dt[idx].student_id, dt[idx].state[3] - 0)
+      // console.log(dt[idx].student_id, dt[idx].state[3] - 0)
       // 서버에 dt 보내는 코드 작성 위치
       axios.post('http://dolbomi.site/changeStudentState', { id : dt[idx].id, student_id : dt[idx].student_id,name : dt[idx].name, state : dt[idx].state[3] - 0})
           .then(function(response){
-            console.log(response);
+            // console.log(response);
           }).catch(function(reason) {
-        console.log(reason);
+        // console.log(reason);
       });
 
-      console.log(dt[idx])
+      // console.log(dt[idx])
       setStudent(dt);
     }
   }, [student]);

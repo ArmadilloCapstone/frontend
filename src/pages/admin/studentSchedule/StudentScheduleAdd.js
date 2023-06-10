@@ -10,7 +10,7 @@ function StudentScheduleAdd() {
     useEffect(() => {
         axios.post('http://dolbomi.site/student_schedule/studentList')
             .then(function (response) {
-                console.log(response.data);
+                // console.log(response.data);
                 setStudent(response.data.map(function (el, idx) {
                     var returnObj = {}
                     returnObj['student_id'] = el.id;
@@ -18,14 +18,14 @@ function StudentScheduleAdd() {
                     return returnObj;
                 }));
             }).catch(function (reason) {
-                console.log(reason);
+                // console.log(reason);
             });
     }, []);
 
     useEffect(() => {
         axios.post('http://dolbomi.site/student_schedule/AfterSchoolClassList')
             .then(function (response) {
-                console.log(response.data);
+                // console.log(response.data);
                 setAfterClass(response.data.map(function (el, idx) {
                     var returnObj = {}
                     returnObj['class_id'] = el.id;
@@ -34,7 +34,7 @@ function StudentScheduleAdd() {
                     return returnObj;
                 }));
             }).catch(function (reason) {
-                console.log(reason);
+                // console.log(reason);
             });
     }, []);
 
@@ -46,7 +46,7 @@ function StudentScheduleAdd() {
 
     const onInputChange = e => {
         setUser({ ...user, [e.target.name]: e.target.value });
-        console.log(user)
+        // console.log(user)
     };
 
     // Insert Student Schedule Records 
@@ -55,7 +55,7 @@ function StudentScheduleAdd() {
         e.target.reset();
         await axios.post('http://dolbomi.site/student_schedule_submit', user)
             .then(function (response) {
-                console.log(response.data);
+                // console.log(response.data);
                 if (response.data === "success") {
                     swal({
                         title: "추가되었습니다!",
@@ -75,7 +75,7 @@ function StudentScheduleAdd() {
                 }
 
             }).catch(function (reason) {
-                console.log(reason.data);
+                // console.log(reason.data);
             });
         onReset();
     };
@@ -87,7 +87,7 @@ function StudentScheduleAdd() {
         });
     };
 
-    console.log(student);
+    // console.log(student);
 
     return (
         <div class="wrapper">

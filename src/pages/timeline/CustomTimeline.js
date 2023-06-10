@@ -29,8 +29,8 @@ function CustomTimeline() {
   const loadStudentTime = () => {
     axios.post('http://dolbomi.site/studentTimeFindAll/' + localStorage.getItem('userid'))
       .then(function (response) {
-        console.log("학생 입퇴실 데이터");
-        console.log(response.data);
+        // console.log("학생 입퇴실 데이터");
+        // console.log(response.data);
         setStudent_time(response.data.map(function (el, idx) {
 
           var returnObj = {}
@@ -69,7 +69,7 @@ function CustomTimeline() {
           return returnObj;
         }));
       }).catch(function (reason) {
-        console.log(reason);
+        // console.log(reason);
       });
   }
   useEffect(() => {
@@ -80,15 +80,15 @@ function CustomTimeline() {
   useEffect(() => {
     axios.post('http://dolbomi.site/AfterSchoolClassFindAll')
       .then(function (response) {
-        console.log("방과후교실 목록 데이터");
-        console.log(response.data);
+        // console.log("방과후교실 목록 데이터");
+        // console.log(response.data);
         setAfter_school_class(response.data.filter(function (el, idx) {
           if (moment().day() === el.day) {
             return el;
           }
         }));
       }).catch(function (reason) {
-        console.log(reason);
+        // console.log(reason);
       });
   }, []);
 
@@ -106,10 +106,10 @@ function CustomTimeline() {
   useEffect(() => {
     axios.post('http://dolbomi.site/studentScheduleFindAll/' + localStorage.getItem('userid'))
       .then(function (response) {
-        console.log("학생 방과후교실 시간표 데이터");
-        console.log(response.data);
+        // console.log("학생 방과후교실 시간표 데이터");
+        // console.log(response.data);
         setStudent_schedule(response.data.map(function (el, idx) {
-          console.log(el);
+          // console.log(el);
 
           var returnObj = {}
           returnObj['student_id'] = el.student_id;
@@ -117,7 +117,7 @@ function CustomTimeline() {
           return returnObj;
         }));
       }).catch(function (reason) {
-        console.log(reason);
+        // console.log(reason);
       });
   }, []);
 
@@ -135,22 +135,22 @@ function CustomTimeline() {
     return arr;
   }
   const itemsForAfterSchool = afterSchoolStudentsList(after_school_class, student_schedule);
-  console.log(itemsForAfterSchool)
+  // console.log(itemsForAfterSchool)
 
   /* 학생의 id를 포함한 방과후수업 목록을 item 형태로 설정 */
   const setAfterSchoolItems = itemsForAfterSchool.map(obj => {
-    console.log(after_school_class)
+    // console.log(after_school_class)
     let newList = {};
     newList['student_id'] = obj.student_id;
     newList['seed'] = obj.class_id;
-    console.log(obj);
+    // console.log(obj);
     newList['start_time'] = moment(defaultTimeStart).add(after_school_class.find((el) => el.id === obj.class_id).start_time);
     newList['end_time'] = moment(defaultTimeStart).add(after_school_class.find((el) => el.id === obj.class_id).end_time);
 
     return newList;
   });
 
-  console.log(setAfterSchoolItems)
+  // console.log(setAfterSchoolItems)
   setAfterSchoolItems.sort((a, b) => a.student_id - b.student_id); // student_id 기준으로 정렬
 
   /* 돌봄시간, 방과후시간이 모두 포함된 전체 아이템 */
@@ -173,11 +173,11 @@ function CustomTimeline() {
       })
     }
     allItemList.sort((a, b) => a.student_id - b.student_id);
-    console.log(allItemList)
+    // console.log(allItemList)
     return allItemList;
   }
   let sortedAllItem = allItems();// student_id 기준으로 정렬
-  console.log(sortedAllItem);
+  // console.log(sortedAllItem);
 
   /* 타임라인에 나타내기 위한 형태로 설정 */
   let id = 1;
@@ -205,9 +205,9 @@ function CustomTimeline() {
   useEffect(() => {
     axios.post('http://dolbomi.site/studentFindAll/' + localStorage.getItem('userid'))
       .then(function (response) {
-        console.log(response.data);
+        // console.log(response.data);
         setGroups(response.data.map(function (el, idx) {
-          console.log(el);
+          // console.log(el);
 
           var returnObj = {}
           returnObj['id'] = el.id;
@@ -218,7 +218,7 @@ function CustomTimeline() {
           return returnObj;
         }));
       }).catch(function (reason) {
-        console.log(reason);
+        // console.log(reason);
       });
   }, []);
 

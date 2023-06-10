@@ -56,12 +56,12 @@ export const LoginForm = (props) => {
         "user_pw": pw,
         "option": (props.option - 0)
       }).then((res) => {
-        console.log(res.data)
+        // console.log(res.data)
         if (res.data.name !== "Error") {
 
-          console.log(res.data)
+          // console.log(res.data)
           if (props.option == "4") {
-            console.log("admin")
+            // console.log("admin")
             localStorage.setItem('userid', res.data.user_id);
             dispatch(setUserId(res.data.user_id));
           }
@@ -75,17 +75,17 @@ export const LoginForm = (props) => {
           dispatch(setUserOption((props.option - 0)));
 
           if (props.option == "1") {
-            console.log("hi");
+            // console.log("hi");
             localStorage.setItem('classname', res.data.class_name);
             dispatch(setClassName((res.data.class_name)));
             navigate('/TimelinePage');
           }
           if (props.option == "2") {
-            console.log("hi");
+            // console.log("hi");
             navigate('/ParentMain');
           }
           if (props.option == "4") {
-            console.log("hi");
+            // console.log("hi");
             navigate('/ClassManagementPage');
           }
 
@@ -101,7 +101,7 @@ export const LoginForm = (props) => {
         "serial_num": serial,
         "option": (props.option - 0)
       }).then((res) => {
-        console.log(res.data)
+        // console.log(res.data)
         if (res.data.name !== "Error") {
           localStorage.setItem('userid', res.data.serial_num);
           localStorage.setItem('username', res.data.name);

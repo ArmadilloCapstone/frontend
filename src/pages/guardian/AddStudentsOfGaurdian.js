@@ -11,7 +11,7 @@ export default function AddStudentsOfGaurdian(props) {
         studentList: []
     });
     const { id, name, studentList } = user;
-    console.log(edited);
+    // console.log(edited);
 
     const [students, setStudents] = useState([]);
 
@@ -66,7 +66,7 @@ export default function AddStudentsOfGaurdian(props) {
                     return returnObj;
                 }));
             }).catch(function (reason) {
-                console.log(reason);
+                // console.log(reason);
             });
     }
     useEffect(() => {
@@ -98,8 +98,8 @@ export default function AddStudentsOfGaurdian(props) {
         e.preventDefault();
 
         await axios.post("http://dolbomi.site/guardianManage/student_submit", user);
-        console.log(edited);
-        console.log(checkedList);
+        // console.log(edited);
+        // console.log(checkedList);
         swal({
             title: "수정되었습니다!",
             icon: "success",

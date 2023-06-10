@@ -54,17 +54,17 @@ const Popup = () => {
   
 
   useEffect(() => {
-    console.log(user_option);
+    // console.log(user_option);
       var now = new Date();
       const period = 20; // 초단위 주기
       var lastsec = 1;
       setTimeout(() => {
-        console.log("pickup");
+        // console.log("pickup");
         if(user_option == 1){
           axios.post("http://dolbomi.site/sendPickupFormToTeacher/" + localStorage.getItem('userid')).then((res)=>{
             if(res.data.length != 0){
               setStudents(res.data.map(function(el){
-                console.log(el);
+                // console.log(el);
                 var returnObj = {}
                 returnObj['id'] = el.studentId;
                 returnObj['name'] = el.studentName;
@@ -75,18 +75,18 @@ const Popup = () => {
               }));
               setShowPopup(true);
               handleClickButton();
-              console.log("showPopup is true")
+              // console.log("showPopup is true")
             }
           
           })
         }
         setInterval(() => {
-          console.log("pickup");
+          // console.log("pickup");
           if(user_option == 1){
             axios.post("http://dolbomi.site/sendPickupFormToTeacher/" + localStorage.getItem('userid')).then((res)=>{
               if(res.data.length != 0){
                 setStudents(res.data.map(function(el){
-                  console.log(el);
+                  // console.log(el);
                   var returnObj = {}
                   returnObj['id'] = el.studentId;
                   returnObj['name'] = el.studentName;
@@ -97,14 +97,14 @@ const Popup = () => {
                 }));
                 setShowPopup(true);
                 handleClickButton();
-                console.log("showPopup is true")
+                // console.log("showPopup is true")
               }
             
             })
           }
         }, period * 1000);
       }, lastsec* 1000);
-        console.log(showPopup)
+        // console.log(showPopup)
   }, []);
 
 

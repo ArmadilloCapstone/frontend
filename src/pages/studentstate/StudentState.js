@@ -27,36 +27,36 @@ const StudentState = () => {
         .then(function(response){
           setStudent(response.data.map(function(el, idx){
 
-            console.log(el);
+            // console.log(el);
             var returnObj = {}
             returnObj["id"] = el.id;
             returnObj["student_id"] = el.student_id;
             returnObj["name"] = el.name;
             returnObj["state"] = "box" + el.state;
-            console.log(returnObj);
+            // console.log(returnObj);
             return returnObj;
 
           }));
         }).catch(function(reason){
-      console.log(reason);
+      // console.log(reason);
     });
   }, []);
 
   const handleChange = (result) => {
-    console.log(result);
+    // console.log(result);
     if (!result.destination) return;
     if(result.destination.droppableId != result.source.droppableId){
       const items = [...student];
 
-      const idx = items.findIndex((e) => {console.log(e); return e.id == result.draggableId.slice(1)-0});
+      const idx = items.findIndex((e) => {// console.log(e); return e.id == result.draggableId.slice(1)-0});
 
       items[idx].state = result.destination.droppableId;
 
       axios.post('http://dolbomi.site/changeStudentState', { id : items[idx].id, student_id : items[idx].student_id,name : items[idx].name, state : items[idx].state[3] - 0})
       .then(function(response){
-        console.log(response);
+        // console.log(response);
       }).catch(function(reason) {
-        console.log(reason);
+        // console.log(reason);
       });
 
       setStudent(items);
@@ -70,11 +70,11 @@ const StudentState = () => {
       const dt = [...student];
       const idx = dt.findIndex(i => i.id === ns.id);
       dt[idx].state = ret.id;
-      console.log(dt[idx].student_id, dt[idx].state[3] - 0)
+      // console.log(dt[idx].student_id, dt[idx].state[3] - 0)
       // 서버에 dt 보내는 코드 작성 위치
 
 
-      console.log(dt[idx])
+      // console.log(dt[idx])
       setStudent(dt);
     }
   }, [student]);

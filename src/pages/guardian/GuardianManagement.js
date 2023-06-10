@@ -19,7 +19,7 @@ export default function GuardianManagement() {
         await axios.post('http://dolbomi.site/guardianManage')
             .then(function (response) {
                 setGuardianList(response.data.map(function (el, id) {
-                    console.log(el);
+                    // console.log(el);
 
                     var returnObj = {}
                     returnObj['id'] = el.id;
@@ -31,7 +31,7 @@ export default function GuardianManagement() {
                     return returnObj;
                 }));
             }).catch(function (reason) {
-                console.log(reason);
+                // console.log(reason);
             });
     }
     useEffect(() => {
@@ -68,7 +68,7 @@ export default function GuardianManagement() {
             serial_num: guardian.serial_num,
             studentList: guardian.studentList
         };
-        console.log(data);
+        // console.log(data);
         setSelected(data);
     }
 

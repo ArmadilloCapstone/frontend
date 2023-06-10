@@ -7,10 +7,10 @@ function TelephoneLink() {
   const [callList, setCallList] = useState([]);
 
   useEffect(() => {
-    console.log(localStorage.getItem('userid'));
+    // console.log(localStorage.getItem('userid'));
     axios.post('http://dolbomi.site/callList/' + localStorage.getItem('userid'))
       .then(function (response) {
-        console.log(response.data);
+        // console.log(response.data);
         setCallList(response.data["teacherList"].map(function (el) {
           var returnObj = {}
           returnObj['name'] = el.name;
@@ -18,7 +18,7 @@ function TelephoneLink() {
           return returnObj;
         }));
       }).catch(function (reason) {
-        console.log(reason);
+        // console.log(reason);
       });
   }, []);
 

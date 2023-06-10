@@ -30,17 +30,17 @@ function GalleryList() {
                 id : localStorage.getItem('userid')
             })
                 .then((res) => {
-                    console.log("[GalleryList.js] useEffect() 성공");
-                    console.log(res.data);
+                    // console.log("[GalleryList.js] useEffect() 성공");
+                    // console.log(res.data);
 
                     setGalleryList(res.data);
                     setTotalCnt(res.data.length);
-                    console.log(res.data.length)
+                    // console.log(res.data.length)
                     setCurrentgalleryList([]);
                     if(res.data.length >= 10){
-                        console.log("Hi")
+                        // console.log("Hi")
                         res.data.map((el, idx) => {
-                            console.log(idx)
+                            // console.log(idx)
                             if(idx < 10){
                                 setCurrentgalleryList((prev) => ([
                                     ...prev,
@@ -59,31 +59,31 @@ function GalleryList() {
                     }
                 })
                 .catch((err) => {
-                    console.log("[GalleryList.js] useEffect() 실패");
-                    console.log(err);
+                    // console.log("[GalleryList.js] useEffect() 실패");
+                    // console.log(err);
 
                 });
         }
 
         else {
-            console.log(searchVal, choiceVal)
+            // console.log(searchVal, choiceVal)
             await axios.post(`http://dolbomi.site/GalleryList/search`, {
                 teacher_id : localStorage.getItem('userid'),
                 keyword : searchVal,
                 option : choiceVal
             })
                 .then((res) => {
-                    console.log("[GalleryList.js] useEffect() 성공");
-                    console.log(res.data);
+                    // console.log("[GalleryList.js] useEffect() 성공");
+                    // console.log(res.data);
 
                     setGalleryList(res.data);
                     setTotalCnt((res.data.length));
-                    console.log(res.data.length)
+                    // console.log(res.data.length)
                     setCurrentgalleryList([]);
                     if(res.data.length >= 10){
-                        console.log("Hi")
+                        // console.log("Hi")
                         res.data.map((el, idx) => {
-                            console.log(idx)
+                            // console.log(idx)
                             if(idx < 10){
                                 setCurrentgalleryList((prev) => ([
                                     ...prev,
@@ -102,8 +102,8 @@ function GalleryList() {
                     }
                 })
                 .catch((err) => {
-                    console.log("[GalleryList.js] useEffect() 실패");
-                    console.log(err);
+                    // console.log("[GalleryList.js] useEffect() 실패");
+                    // console.log(err);
 
                 });
         }
@@ -120,7 +120,7 @@ function GalleryList() {
     const changeChoice = (event) => { setChoiceVal(event.target.value); }
     const changeSearch = (event) => { setSearchVal(event.target.value); }
     const search = () => {
-        console.log("[GalleryList.js searchBtn()] choiceVal=" + choiceVal + ", searchVal=" + searchVal);
+        // console.log("[GalleryList.js searchBtn()] choiceVal=" + choiceVal + ", searchVal=" + searchVal);
 
         navigate("/Gallerylist");
         loadGalleryList(choiceVal, searchVal);
@@ -130,7 +130,7 @@ function GalleryList() {
         setPage(page);
         setCurrentgalleryList([]);
         for(let i = (page-1) * 10; i < (page) * 10; i++){
-            console.log(i)
+            // console.log(i)
             if(galleryList[i] != null){
                 setCurrentgalleryList((prev) => ([
                     ...prev,

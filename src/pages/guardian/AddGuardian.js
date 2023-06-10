@@ -22,7 +22,7 @@ export default function AddGuardian() {
         await axios.post('http://dolbomi.site/guardianManage/guardianList')
             .then(function (response) {
                 setSerialNumList(response.data.map(function (el, id) {
-                    console.log(el);
+                    // console.log(el);
 
                     var returnObj = {}
                     returnObj['id'] = id;
@@ -31,7 +31,7 @@ export default function AddGuardian() {
                     return returnObj;
                 }));
             }).catch(function (reason) {
-                console.log(reason);
+                // console.log(reason);
             });
     }
     useEffect(() => {
@@ -66,10 +66,10 @@ export default function AddGuardian() {
     const submitGuardian = async (e) => {
         e.preventDefault();
         e.target.reset();
-        console.log(user);
+        // console.log(user);
         await axios.post("http://dolbomi.site/guardianManage/guardian_submit", user)
             .then(function (response) {
-                console.log(response.data);
+                // console.log(response.data);
                 if (response.data === "success") {
                     swal({
                         title: "추가되었습니다!",
@@ -94,7 +94,7 @@ export default function AddGuardian() {
                 }
 
             }).catch(function (reason) {
-                console.log(reason.data);
+                // console.log(reason.data);
             });
     };
 

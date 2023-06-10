@@ -47,7 +47,7 @@ export const SignupForm = (props) => {
       "user_pw": pw,
       "option": (props.option - 0)
     }).then((res) => {
-      console.log(res.data)
+      // console.log(res.data)
       if (res.data == "success") {
         dispatch(setShowSignup(!showSignup));
         swal({

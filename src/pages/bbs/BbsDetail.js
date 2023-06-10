@@ -15,27 +15,27 @@ function BbsDetail() {
     const navigate = useNavigate();
 
     const getBbsDetail = async () => {
-        console.log("hi")
+        // console.log("hi")
         await axios.post(`http://dolbomi.site/news/${id}`)
             .then((resp) => {
-                console.log("[BbsDetail.js] getBbsDetail() success :D");
-                console.log(resp.data);
+                // console.log("[BbsDetail.js] getBbsDetail() success :D");
+                // console.log(resp.data);
 
                 setBbs(resp.data);
             })
             .catch((err) => {
-                console.log("[BbsDetail.js] getBbsDetail() error :<");
-                console.log(err);
+                // console.log("[BbsDetail.js] getBbsDetail() error :<");
+                // console.log(err);
             });
         await axios.post(`http://dolbomi.site/news/files/${id}`)
             .then((res) => {
-                console.log("[BbsDetail.js] getBbsDetail() success :D");
-                console.log(res.data);
+                // console.log("[BbsDetail.js] getBbsDetail() success :D");
+                // console.log(res.data);
                 let arr = Array.from(res.data);
-                console.log(arr);
+                // console.log(arr);
                 setFiles([]);
                 for (let i = 0; i < arr.length; i++) {
-                    console.log(arr[i].originFileName)
+                    // console.log(arr[i].originFileName)
                     setFiles((prevMessage) => ([
                         ...prevMessage,
                         arr[i]
@@ -43,8 +43,8 @@ function BbsDetail() {
                 }
             })
             .catch((err) => {
-                console.log("[BbsDetail.js] getBbsDetail() error :<");
-                console.log(err);
+                // console.log("[BbsDetail.js] getBbsDetail() error :<");
+                // console.log(err);
             });
 
     }
@@ -53,8 +53,8 @@ function BbsDetail() {
 
         await axios.delete(`http://dolbomi.site/news/${id}`)
             .then((resp) => {
-                console.log("[BbsDetail.js] deleteBbs() success :D");
-                console.log(resp.data);
+                // console.log("[BbsDetail.js] deleteBbs() success :D");
+                // console.log(resp.data);
                 swal({
                     title: "게시글을 성공적으로 삭제했습니다!",
                     icon: "success",
@@ -64,15 +64,15 @@ function BbsDetail() {
                 navigate("/bbslist");
 
             }).catch((err) => {
-                console.log("[BbsDetail.js] deleteBbs() error :<");
-                console.log(err);
+                // console.log("[BbsDetail.js] deleteBbs() error :<");
+                // console.log(err);
             });
 
     }
 
     useEffect(() => {
         getBbsDetail();
-        console.log(id)
+        // console.log(id)
     }, []);
 
     return (

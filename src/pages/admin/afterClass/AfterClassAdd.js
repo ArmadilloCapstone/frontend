@@ -62,7 +62,7 @@ function AfterClassAdd() {
 
         await axios.post('http://dolbomi.site/after_school_class_submit', user)
             .then(function (response) {
-                console.log(response.data);
+                // console.log(response.data);
                 if (response.data === "success") {
                     swal({
                         title: "추가되었습니다!",
@@ -81,7 +81,7 @@ function AfterClassAdd() {
                     })
                 }
             }).catch(function (reason) {
-                console.log(reason.data);
+                // console.log(reason.data);
             });
         onReset();
     };

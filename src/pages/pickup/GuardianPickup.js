@@ -38,7 +38,7 @@ const GuardianPickup = () => {
   }, []);
   
   const clickButton = (idx) => {
-    console.log("hi")
+    // console.log("hi")
     setStudentList((prev) =>
     prev.map((el, i) => {
       if (i !== idx) {
@@ -48,7 +48,7 @@ const GuardianPickup = () => {
       return el;
     })
   );
-    console.log(studentList)
+    // console.log(studentList)
   }
 
   const handleClick = () => {

@@ -72,10 +72,10 @@ function ClassAdd() {
         }
 
         const postUser = changeUserForm(user);
-        console.log(postUser);
+        // console.log(postUser);
         await axios.post('http://dolbomi.site/dolbom_class_submit', postUser)
             .then(function (response) {
-                console.log(response.data);
+                // console.log(response.data);
                 if (response.data === "success") {
                     swal({
                         title: "추가되었습니다!",
@@ -95,7 +95,7 @@ function ClassAdd() {
                 }
 
             }).catch(function (reason) {
-                console.log(reason.data);
+                // console.log(reason.data);
             });
         onReset();
     };

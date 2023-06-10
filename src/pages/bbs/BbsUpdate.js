@@ -19,7 +19,7 @@ function BbsUpdate() {
 	const param = useParams();
 
 	useEffect(() => {
-		console.log(param.bbs_id);
+		// console.log(param.bbs_id);
 		const getBoard = async () => {
 			const { data } = await axios.post(`http://dolbomi.site/news/${param.bbs_id}`);
 			return data;
@@ -34,17 +34,17 @@ function BbsUpdate() {
 
 		axios.post(`http://dolbomi.site/news/files/${param.bbs_id}`)
 			.then((res) => {
-				console.log("[BbsDetail.js] getBbsDetail() success :D");
-				console.log(res.data);
+				// console.log("[BbsDetail.js] getBbsDetail() success :D");
+				// console.log(res.data);
 				let arr = Array.from(res.data.map((el) => {
 					var returnObj = {}
 					returnObj['name'] = el.originFileName;
 					return returnObj;
 				}));
-				console.log(arr);
+				// console.log(arr);
 				setSelectedFiles([]);
 				for (let i = 0; i < arr.length; i++) {
-					console.log(arr[i].originFileName)
+					// console.log(arr[i].originFileName)
 					setSelectedFiles((prevMessage) => ([
 						...prevMessage,
 						arr[i]
@@ -52,8 +52,8 @@ function BbsUpdate() {
 				}
 			})
 			.catch((err) => {
-				console.log("[BbsDetail.js] getBbsDetail() error :<");
-				console.log(err);
+				// console.log("[BbsDetail.js] getBbsDetail() error :<");
+				// console.log(err);
 			});
 	}, [])
 
@@ -62,7 +62,7 @@ function BbsUpdate() {
 		setFileChange(true)
 		setSelectedFiles([]);
 		for (let i = 0; i < arr.length; i++) {
-			console.log(arr[i].name)
+			// console.log(arr[i].name)
 			setSelectedFiles((prevMessage) => ([
 				...prevMessage,
 				arr[i]
@@ -90,10 +90,10 @@ function BbsUpdate() {
 				arr.push(obj[key]);
 			}
 		}
-		console.log(arr)
+		// console.log(arr)
 		setSelectedFiles([]);
 		for (let i = 0; i < arr.length; i++) {
-			console.log("'" + arr[i].name + "' 업로드가 완료되었습니다!")
+			// console.log("'" + arr[i].name + "' 업로드가 완료되었습니다!")
 			setSelectedFiles((prevMessage) => ([
 				...prevMessage,
 				"'" + arr[i].name + "' 업로드가 완료되었습니다!",
@@ -101,12 +101,12 @@ function BbsUpdate() {
 		}
 		const reader = new FileReader();
 		const file = imgRef.current.files[0];
-		console.log(file);
+		// console.log(file);
 
 		reader.readAsDataURL(file);
 		reader.onloadend = () => {
 			setImageUrl(reader.result);
-			console.log("이미지주소", reader.result);
+			// console.log("이미지주소", reader.result);
 		};
 	}
 
@@ -122,8 +122,8 @@ function BbsUpdate() {
 		formData.append("text", text);
 		if (fileChange) {
 			for (let i = 0; i < selectedFiles.length; i++) {
-				console.log(i);
-				console.log(selectedFiles[i]);
+				// console.log(i);
+				// console.log(selectedFiles[i]);
 				formData.append("files", selectedFiles[i]);
 			}
 			axios.post("http://dolbomi.site/BbsList/update/file", formData, {
@@ -132,8 +132,8 @@ function BbsUpdate() {
 				}
 			})
 				.then((resp) => {
-					console.log("[BbsWrite.js] createBbs() success :D");
-					console.log(resp.data);
+					// console.log("[BbsWrite.js] createBbs() success :D");
+					// console.log(resp.data);
 					swal({
 						title: "게시글을 성공적으로 수정했습니다!",
 						icon: "success",
@@ -143,8 +143,8 @@ function BbsUpdate() {
 					navigate(`/bbsdetail/${param.bbs_id}`); // 새롭게 등록한 글 상세로 이동
 				})
 				.catch((err) => {
-					console.log("[BbsWrite.js] createBbs() error :<");
-					console.log(err);
+					// console.log("[BbsWrite.js] createBbs() error :<");
+					// console.log(err);
 				});
 		}
 		else {
@@ -154,8 +154,8 @@ function BbsUpdate() {
 				}
 			})
 				.then((resp) => {
-					console.log("[BbsWrite.js] createBbs() success :D");
-					console.log(resp.data);
+					// console.log("[BbsWrite.js] createBbs() success :D");
+					// console.log(resp.data);
 					swal({
 						title: "게시글을 성공적으로 수정했습니다!",
 						icon: "success",
@@ -165,8 +165,8 @@ function BbsUpdate() {
 					navigate(`/bbsdetail/${param.bbs_id}`); // 새롭게 등록한 글 상세로 이동
 				})
 				.catch((err) => {
-					console.log("[BbsWrite.js] createBbs() error :<");
-					console.log(err);
+					// console.log("[BbsWrite.js] createBbs() error :<");
+					// console.log(err);
 				});
 		}
 

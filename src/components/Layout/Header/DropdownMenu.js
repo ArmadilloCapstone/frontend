@@ -7,7 +7,7 @@ const DropdownMenu = () => {
   const [boardIsOpen, boardRef, boardHandler] = useDetectClose(false);
 
   const logoutClickHandler = () => {
-    console.log("logout");
+    // console.log("logout");
   };
 
   return (

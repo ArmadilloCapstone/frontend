@@ -19,7 +19,7 @@ export const ChangePw = (props) => {
         "user_new_pw" : user_new_pw,
         "option" : localStorage.getItem('useroption')
     }).then((res) => {
-      console.log(res.data)
+      // console.log(res.data)
       if(res.data == "success"){
         alert('비밀번호가 변경되었습니다.');
       }

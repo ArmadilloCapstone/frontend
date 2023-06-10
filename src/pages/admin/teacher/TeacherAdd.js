@@ -11,14 +11,14 @@ function TeacherAdd() {
     useEffect(() => {
         axios.post('http://dolbomi.site/teacher/dolbom_classList')
             .then(function (response) {
-                console.log(response.data);
+                // console.log(response.data);
                 setDolbom(response.data.map(function (el, idx) {
                     var returnObj = {}
                     returnObj['class_name'] = el.class_name;
                     return returnObj;
                 }));
             }).catch(function (reason) {
-                console.log(reason);
+                // console.log(reason);
             });
     }, []);
 
@@ -97,7 +97,7 @@ function TeacherAdd() {
         const postUser = changeUserForm(user);
         await axios.post('http://dolbomi.site/teacher_submit', postUser)
             .then(function (response) {
-                console.log(response.data);
+                // console.log(response.data);
                 if (response.data === "success") {
                     swal({
                         title: "추가되었습니다!",
@@ -116,7 +116,7 @@ function TeacherAdd() {
                     })
                 }
             }).catch(function (reason) {
-                console.log(reason.data);
+                // console.log(reason.data);
             });
         onReset();
     };

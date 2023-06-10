@@ -8,7 +8,7 @@ export default store;
 
 const listener = () => {
     const state = store.getState();
-    console.log(state);
+    // console.log(state);
 };
 
 store.subscribe(listener);
