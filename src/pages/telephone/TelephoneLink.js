@@ -28,7 +28,7 @@ function TelephoneLink() {
       <div className="gray-line"></div>
         {callList.map((el, index) => (
           <div className="telephone-link-item" key={index}>
-              <a href={"tel:" + el.phone_num}>
+              <a className="telephone-link" href={"tel:" + el.phone_num}>
                 <img src={teacherImg} alt={el.name} />
                 <span>{el.name}</span>
               </a>
