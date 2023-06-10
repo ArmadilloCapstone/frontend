@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import { useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { setUserId, setUserName, setUserOption, setMessageClick, setMessageAlarm } from '../../../redux/actions';
+import { setUserId, setUserName, setUserOption, setMessageClick, setMessageAlarm, setClassName } from '../../../redux/actions';
 import { ChangePw } from './ChangePw';
 import 'bootstrap/dist/css/bootstrap.css';
 import { useNavigate } from 'react-router-dom';
@@ -24,6 +24,7 @@ const Header = () => {
   const logoutClickHandler = () => {
     dispatch(setUserId(""));
     dispatch(setUserName(""));
+    dispatch(setClassName(""));
     dispatch(setUserOption(""));
     dispatch(setMessageClick(false));
     localStorage.clear()

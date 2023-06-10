@@ -2,6 +2,7 @@ const initialState = {
     user_id: (localStorage.getItem('userid') || ""),
     user_name: (localStorage.getItem('username') || ""),
     user_option: (localStorage.getItem('useroption') || ""),
+    class_name: (localStorage.getItem('classname') || ""),
     showSignup: false,
     message_click: false,
     message_alarm: false

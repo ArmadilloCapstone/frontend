@@ -104,7 +104,6 @@ export const LoginForm = (props) => {
       }).then((res) => {
         console.log(res.data)
         if (res.data.name !== "Error") {
-          dispatch(setShowSignup(!showSignup));
           localStorage.setItem('userid', res.data.serial_num);
           localStorage.setItem('username', res.data.name);
           localStorage.setItem('useroption', (props.option - 0));
