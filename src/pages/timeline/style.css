@@ -15,22 +15,20 @@
   width: 100%;
   margin: 20px 20px 0;
 }
-
-#root > div.sc-fhEMZX.dJtJU > div.timeline_wrapper > div.react-calendar-timeline.timeline > div.rct-header-root {
+#root > div.sc-gYomcK.leBFdE > div.timeline_wrapper > div.react-calendar-timeline.timeline > div.rct-header-root {
   background-color: #12B560;
   border: none;
 }
-
-#root > div.sc-fhEMZX.dJtJU > div.timeline_wrapper > div.react-calendar-timeline.timeline > div.rct-outer > div.rct-sidebar > div > div:nth-child(even) {
+#root > div.sc-gYomcK.leBFdE > div.timeline_wrapper > div.react-calendar-timeline.timeline > div.rct-outer > div.rct-sidebar > div > div:nth-child(even) {
   background-color: rgba(208, 255, 189, 0.493);
 }
 
-#root > div.sc-fhEMZX.dJtJU > div.timeline_wrapper > div.react-calendar-timeline.timeline > div.rct-outer > div.rct-scroll > div > div.rct-horizontal-lines > div {
+#root > div.sc-gYomcK.leBFdE > div.timeline_wrapper > div.react-calendar-timeline.timeline > div.rct-outer > div.rct-scroll > div > div.rct-horizontal-lines > div {
   border: 0.5px solid #bbb;
   background-color: white;
 }
 
-#root > div.sc-fhEMZX.dJtJU > div.timeline_wrapper > div.react-calendar-timeline.timeline > div.rct-outer > div.rct-scroll > div > div > div > span {
+#root > div.sc-gYomcK.leBFdE > div.timeline_wrapper > div.react-calendar-timeline.timeline > div.rct-outer > div.rct-scroll > div > div > div > span {
   opacity: 0;
 }
 
