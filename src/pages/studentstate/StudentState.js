@@ -48,7 +48,10 @@ const StudentState = () => {
     if(result.destination.droppableId != result.source.droppableId){
       const items = [...student];
 
-      const idx = items.findIndex((e) => {// console.log(e); return e.id == result.draggableId.slice(1)-0});
+      const idx = items.findIndex((e) => {
+        // console.log(e);
+         return e.id == result.draggableId.slice(1)-0
+        });
 
       items[idx].state = result.destination.droppableId;
 
