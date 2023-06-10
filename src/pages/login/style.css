@@ -70,7 +70,8 @@
   }
   
   .radioGroup input:checked {
-    border: 0.4em solid #12b560;
+    border: 0.4em solid transparent; 
+    background-color: #12b560; 
   }
   
   .radioGroup input:focus-visible {

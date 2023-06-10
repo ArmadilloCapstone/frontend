@@ -334,6 +334,11 @@ function CustomTimeline() {
         }}
         >귀가순
         </button>
+
+    {/* 학생 출결 로그 조회 버튼  */}
+        <button className="attendanceLog"
+        >출결log
+        </button>
       </div>
 
       <Timeline

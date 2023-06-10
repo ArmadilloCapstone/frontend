@@ -43,10 +43,26 @@
   left: 1%;
   background-color: oldlace;
   color: #555555;
-  box-shadow: 0 5px 5px rgba(163, 123, 55, 0.3);
-  border-radius: 15px;
+  box-shadow: 0 3px 5px rgba(163, 123, 55, 0.3);
+  border-radius: 10px;
   border: none;
 }
+
+.attendanceLog {
+  height: 35px;
+  width: 105px;
+  margin: 4px;
+  position: relative;
+  top: 100%;
+  left: 59%;
+  background-color: #0f9443;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  font-size: 18px;
+  letter-spacing: 2px;
+}
+
 
 .subjectButtons-parent {
   margin: 5px 20px;
@@ -62,23 +78,3 @@ button.subjectButtons {
   border: none;
   background-color: #12B560;
 }
-
-/* .timeInfoBox {
-  background-color: rgba(208, 255, 189, 0.493);;
-  color: black;
-  box-shadow: 0 3px 5px rgba(80, 163, 55, 0.3);
-  border-radius: 10px;
-  border: none;
-  margin: 20px auto;
-  padding: 10px;
-  text-align: center;
-  width: 800px;
-}
-
-.timeInfoText {
-
-}
-
-.timeInfoStart, .timeInfoEnd {
-  color: brown;
-} */
