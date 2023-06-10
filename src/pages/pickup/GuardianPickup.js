@@ -18,18 +18,12 @@ const GuardianPickup = () => {
   const [showContent, setShowContent] = useState(false);
   const user_id = useSelector((state => state.user_id))
   const [studentList, setStudentList] = useState([]);
-  const [dummy, setDummy] = useState([
-    {id : "1", name : "정재윤1", grade : 1, gender : 1},
-    {id : "2", name : "정재윤2", grade : 1, gender : 1},
-    {id : "3", name : "정재윤3", grade : 1, gender : 1},
-    {id : "4", name : "정재윤4", grade : 1, gender : 1}
-]);
 
   useEffect(() => {
     axios.post("http://dolbomi.site/guardian", {
       id : localStorage.getItem('userid')
     }).then((res)=>{
-      if(res.data != null){
+      
         setStudentList(res.data.map(function(el, idx){
           var returnObj = {}
           returnObj['id'] = el.id;
@@ -39,18 +33,7 @@ const GuardianPickup = () => {
           returnObj['checked'] = true;
           return returnObj;
         }));
-      }
-      else{
-        setStudentList(dummy.map(function(el, idx){
-        var returnObj = {}
-        returnObj['id'] = el.id;
-        returnObj['name'] = el.name;
-        returnObj['grade'] = el.grade;
-        returnObj['gender'] = el.gender;
-        returnObj['checked'] = true;
-        return returnObj;
-        }))
-      }
+      
     })
   }, []);
   
